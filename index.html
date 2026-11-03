@@ -67,10 +67,169 @@
 .spanel{display:none}
 .spanel.on{display:block}
 .hero{background:linear-gradient(rgba(7,24,38,.68),rgba(7,24,38,.88)),url('assets/bn-hero.jpg') center/cover no-repeat;border-radius:16px;padding:24px 16px 18px;margin:14px 0 6px}
+
+.bn-header{position:relative;background:#0a2540}
+.tb-lang{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:8px;font-size:.95rem;padding:7px 10px;cursor:pointer;line-height:1;margin-left:auto;font-family:inherit;font-weight:700;white-space:nowrap}
+.tb-lang:hover{background:rgba(255,255,255,.25)}
+.tb-translate{display:none;position:absolute;top:56px;right:12px;background:#fff;border-radius:10px;padding:8px 10px;box-shadow:0 10px 32px rgba(0,0,0,.3);z-index:1000}
+.tb-translate.open{display:block}
+.tb-translate .goog-te-gadget{font-size:.85rem}
+.tb-gadget-hidden{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden}
+.lang-list{min-width:216px;max-height:46vh;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#e7aebd transparent}
+.lang-list::-webkit-scrollbar{width:8px}
+.lang-list::-webkit-scrollbar-thumb{background:#e7aebd;border-radius:8px}
+.lang-list::-webkit-scrollbar-track{background:transparent}
+.lang-row{display:flex;align-items:center;gap:10px;width:100%;padding:10px;border:0;background:#fff;border-radius:8px;font-size:.95rem;color:#0b3d62;cursor:pointer;text-align:left;font-family:inherit}
+.lang-row:hover{background:#fdf0f2}
+.lang-row .flag{font-size:1.15rem;line-height:1}
+.lang-row .check{margin-left:auto;color:#B31942;font-weight:700;visibility:hidden}
+.lang-row.active{background:#fdf0f2;font-weight:600}
+.lang-row.active .check{visibility:visible}
+.lang-search{padding:2px 0 8px}
+.lang-search input{width:100%;box-sizing:border-box;padding:10px;border:1px solid #e7aebd;border-radius:8px;font-size:.95rem;font-family:inherit;color:#0b3d62;background:#fff}
+.lang-search input:focus{outline:2px solid #B31942;border-color:#B31942}
+.goog-te-banner-frame{display:none !important}
+iframe.goog-te-banner-frame{display:none !important}
+.goog-te-banner-frame.skiptranslate{display:none !important}
+body{top:0 !important}
+.bn-wxbar{background:#dbe9f4;color:#0b3d62;display:flex;align-items:center;gap:10px;padding:6px 12px;border-bottom:1px solid #b8d4e8}
+.bn-wx-loc{min-width:118px;line-height:1.15;flex:0 0 auto}
+.bn-wx-loc b{display:block;font-size:.82rem;color:#0a2540;white-space:nowrap}
+.bn-wx-loc span{font-size:.68rem;color:#4a6b8a;white-space:nowrap}
+.bn-wx-cards{display:flex;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.bn-wx-cards::-webkit-scrollbar{display:none}
+.bn-wx-card{padding:1px 9px;display:flex;flex-direction:column;align-items:center;line-height:1.2;min-width:52px;border-left:1px solid #b8d4e8;flex:0 0 auto}
+.bn-wx-card:first-child{border-left:0}
+.bn-wx-card b{font-size:.78rem;color:#0b3d62;font-weight:800;white-space:nowrap}
+.bn-wx-card i{font-style:normal;font-size:.58rem;letter-spacing:.6px;text-transform:uppercase;color:#4a6b8a;white-space:nowrap}
+.bn-wx-card.cond{min-width:138px;align-items:flex-start}
+.bn-wx-btn{background:#B31942;color:#fff;border:0;border-radius:999px;padding:7px 11px;font-family:inherit;font-size:.75rem;font-weight:800;cursor:pointer;white-space:nowrap;flex:0 0 auto}
+.bn-wx-btn:hover{background:#E63946}
+@media(max-width:640px){.topbar b{font-size:.96rem}.tb-lang{font-size:.82rem;padding:6px 8px}.tb-translate{left:8px;right:8px}.lang-list{min-width:0}.bn-wxbar{gap:6px;padding:6px 8px}.bn-wx-loc{min-width:88px}.bn-wx-loc b{font-size:.74rem}.bn-wx-loc span{font-size:.62rem}.bn-wx-btn{font-size:.7rem;padding:6px 8px}}
 </style>
 </head>
 <body>
-<div class="topbar"><a href="index.html"><img class="anchor" src="assets/bn-logo.webp" alt="Boaters Nation logo"><b>Boaters <span>Nation</span></b> 🇺🇸</a></div>
+<header class="bn-header"><div class="topbar"><a href="index.html"><img class="anchor" src="assets/bn-logo.webp" alt="Boaters Nation logo"><b>Boaters <span>Nation</span></b> 🇺🇸</a><button class="tb-lang" id="lang-btn" aria-label="Translate this page" title="Translate">🌐 Language</button></div>
+<div class="tb-translate" id="translate-panel"><div class="lang-search"><input id="lang-q" type="text" placeholder="Search languages\u2026" aria-label="Search languages" autocomplete="off"></div><div class="lang-list" role="menu" aria-label="Choose language">
+<button class="lang-row active" data-lang="en"><span class="flag">🇺🇸</span>English<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="af"><span class="flag">🇿🇦</span>Afrikaans<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="sq"><span class="flag">🇦🇱</span>Shqip<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="am"><span class="flag">🇪🇹</span>አማርኛ<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ar"><span class="flag">🇸🇦</span>العربية<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="hy"><span class="flag">🇦🇲</span>Հայերեն<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="az"><span class="flag">🇦🇿</span>Azərbaycan<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="eu"><span class="flag">🇪🇸</span>Euskara<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="be"><span class="flag">🇧🇾</span>Беларуская<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="bn"><span class="flag">🇧🇩</span>বাংলা<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="bs"><span class="flag">🇧🇦</span>Bosanski<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="bg"><span class="flag">🇧🇬</span>Български<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ca"><span class="flag">🇪🇸</span>Català<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ceb"><span class="flag">🇵🇭</span>Cebuano<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="zh-CN"><span class="flag">🇨🇳</span>简体中文<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="zh-TW"><span class="flag">🇹🇼</span>繁體中文<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="co"><span class="flag">🇫🇷</span>Corsu<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="hr"><span class="flag">🇭🇷</span>Hrvatski<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="cs"><span class="flag">🇨🇿</span>Čeština<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="da"><span class="flag">🇩🇰</span>Dansk<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="nl"><span class="flag">🇳🇱</span>Nederlands<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="eo"><span class="flag">🌐</span>Esperanto<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="et"><span class="flag">🇪🇪</span>Eesti<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="fi"><span class="flag">🇫🇮</span>Suomi<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="fr"><span class="flag">🇫🇷</span>Français<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="fy"><span class="flag">🇳🇱</span>Frysk<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="gl"><span class="flag">🇪🇸</span>Galego<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ka"><span class="flag">🇬🇪</span>ქართული<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="de"><span class="flag">🇩🇪</span>Deutsch<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="el"><span class="flag">🇬🇷</span>Ελληνικά<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="gu"><span class="flag">🇮🇳</span>ગુજરાતી<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ht"><span class="flag">🇭🇹</span>Kreyòl Ayisyen<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ha"><span class="flag">🇳🇬</span>Hausa<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="haw"><span class="flag">🇺🇸</span>ʻŌlelo Hawaiʻi<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="iw"><span class="flag">🇮🇱</span>עברית<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="hi"><span class="flag">🇮🇳</span>हिन्दी<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="hmn"><span class="flag">🌐</span>Hmong<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="hu"><span class="flag">🇭🇺</span>Magyar<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="is"><span class="flag">🇮🇸</span>Íslenska<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ig"><span class="flag">🇳🇬</span>Igbo<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="id"><span class="flag">🇮🇩</span>Bahasa Indonesia<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ga"><span class="flag">🇮🇪</span>Gaeilge<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="it"><span class="flag">🇮🇹</span>Italiano<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ja"><span class="flag">🇯🇵</span>日本語<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="jv"><span class="flag">🇮🇩</span>Basa Jawa<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="kn"><span class="flag">🇮🇳</span>ಕನ್ನಡ<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="kk"><span class="flag">🇰🇿</span>Қазақша<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="km"><span class="flag">🇰🇭</span>ខ្មែរ<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ko"><span class="flag">🇰🇷</span>한국어<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ku"><span class="flag">🌐</span>Kurdî<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ky"><span class="flag">🇰🇬</span>Кыргызча<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="lo"><span class="flag">🇱🇦</span>ລາວ<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="la"><span class="flag">🌐</span>Latīna<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="lv"><span class="flag">🇱🇻</span>Latviešu<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="lt"><span class="flag">🇱🇹</span>Lietuvių<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="lb"><span class="flag">🇱🇺</span>Lëtzebuergesch<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="mk"><span class="flag">🇲🇰</span>Македонски<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="mg"><span class="flag">🇲🇬</span>Malagasy<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ms"><span class="flag">🇲🇾</span>Bahasa Melayu<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ml"><span class="flag">🇮🇳</span>മലയാളം<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="mt"><span class="flag">🇲🇹</span>Malti<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="mi"><span class="flag">🇳🇿</span>Te Reo Māori<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="mr"><span class="flag">🇮🇳</span>मराठी<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="mn"><span class="flag">🇲🇳</span>Монгол<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="my"><span class="flag">🇲🇲</span>မြန်မာ<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ne"><span class="flag">🇳🇵</span>नेपाली<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="no"><span class="flag">🇳🇴</span>Norsk<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ny"><span class="flag">🇲🇼</span>Chichewa<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ps"><span class="flag">🇦🇫</span>پښتو<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="fa"><span class="flag">🇮🇷</span>فارسی<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="pl"><span class="flag">🇵🇱</span>Polski<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="pt"><span class="flag">🇧🇷</span>Português<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="pa"><span class="flag">🇮🇳</span>ਪੰਜਾਬੀ<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ro"><span class="flag">🇷🇴</span>Română<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ru"><span class="flag">🇷🇺</span>Русский<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="sm"><span class="flag">🇼🇸</span>Gagana Samoa<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="gd"><span class="flag">🇬🇧</span>Gàidhlig<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="sr"><span class="flag">🇷🇸</span>Српски<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="st"><span class="flag">🇱🇸</span>Sesotho<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="sn"><span class="flag">🇿🇼</span>Shona<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="sd"><span class="flag">🇵🇰</span>سنڌي<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="si"><span class="flag">🇱🇰</span>සිංහල<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="sk"><span class="flag">🇸🇰</span>Slovenčina<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="sl"><span class="flag">🇸🇮</span>Slovenščina<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="so"><span class="flag">🇸🇴</span>Soomaali<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="es"><span class="flag">🇪🇸</span>Español<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="su"><span class="flag">🇮🇩</span>Basa Sunda<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="sw"><span class="flag">🇰🇪</span>Kiswahili<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="sv"><span class="flag">🇸🇪</span>Svenska<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="tl"><span class="flag">🇵🇭</span>Filipino<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="tg"><span class="flag">🇹🇯</span>Тоҷикӣ<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ta"><span class="flag">🇮🇳</span>தமிழ்<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="te"><span class="flag">🇮🇳</span>తెలుగు<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="th"><span class="flag">🇹🇭</span>ไทย<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="tr"><span class="flag">🇹🇷</span>Türkçe<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="uk"><span class="flag">🇺🇦</span>Українська<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="ur"><span class="flag">🇵🇰</span>اردو<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="uz"><span class="flag">🇺🇿</span>Oʻzbek<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="vi"><span class="flag">🇻🇳</span>Tiếng Việt<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="cy"><span class="flag">🇬🇧</span>Cymraeg<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="xh"><span class="flag">🇿🇦</span>isiXhosa<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="yi"><span class="flag">🌐</span>ייִדיש<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="yo"><span class="flag">🇳🇬</span>Yorùbá<span class="check">&#10003;</span></button>
+<button class="lang-row" data-lang="zu"><span class="flag">🇿🇦</span>isiZulu<span class="check">&#10003;</span></button><div id="lang-none" style="display:none;padding:10px;font-size:.9rem;color:#445A6A">No language matches</div>
+</div></div>
+<div class="tb-gadget-hidden" aria-hidden="true"><div id="google_translate_element"></div></div>
+<div class="bn-wxbar" id="bn-wxbar" aria-live="polite">
+  <div class="bn-wx-loc"><b id="bnWxPlace">📍 Your location</b><span id="bnWxUpdated">Local weather</span></div>
+  <div class="bn-wx-cards" aria-label="Your local weather">
+    <span class="bn-wx-card"><b id="bnWxAir">--°</b><i>Air</i></span>
+    <span class="bn-wx-card"><b id="bnWxFeels">--°</b><i>Feels</i></span>
+    <span class="bn-wx-card"><b id="bnWxWind">--</b><i>Wind mph</i></span>
+    <span class="bn-wx-card"><b id="bnWxGust">--</b><i>Gust mph</i></span>
+    <span class="bn-wx-card"><b id="bnWxHum">--%</b><i>Humidity</i></span>
+    <span class="bn-wx-card cond"><b id="bnWxCond">Finding your weather…</b><i>Conditions</i></span>
+  </div>
+  <button type="button" class="bn-wx-btn" id="bnWxBtn">Use my location</button>
+</div>
+</header>
 <div class="wrap">
   <div class="hero">
   <div class="kicker">🇺🇸 Boaters Nation 🇺🇸</div>
@@ -241,6 +400,158 @@ function bnZip(ev){
   }
   return false;
 }
+</script>
+<script>
+/* Boaters Nation local weather: follows the visitor's own device location. */
+(function(){
+  function $(id){ return document.getElementById(id); }
+  function set(id, txt){ var el = $(id); if (el) el.textContent = txt; }
+  function compass(deg){
+    if (deg == null || isNaN(deg)) return '';
+    var dirs = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];
+    return dirs[Math.round(deg / 22.5) % 16] + ' ';
+  }
+  function codeLabel(c){
+    var m = {0:'Clear',1:'Mainly clear',2:'Partly cloudy',3:'Overcast',45:'Fog',48:'Fog',51:'Light drizzle',53:'Drizzle',55:'Drizzle',56:'Freezing drizzle',57:'Freezing drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',66:'Freezing rain',67:'Freezing rain',71:'Light snow',73:'Snow',75:'Heavy snow',77:'Snow grains',80:'Light showers',81:'Showers',82:'Heavy showers',85:'Snow showers',86:'Snow showers',95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'};
+    return m[c] || 'Weather';
+  }
+  function savePos(lat, lon){
+    try { localStorage.setItem('bnWxPos', JSON.stringify({lat:lat, lon:lon, t:Date.now()})); } catch(e){}
+  }
+  function readPos(){
+    try { var p = JSON.parse(localStorage.getItem('bnWxPos') || 'null'); return (p && isFinite(p.lat) && isFinite(p.lon)) ? p : null; } catch(e){ return null; }
+  }
+  function placeName(lat, lon){
+    fetch('https://api.weather.gov/points/' + lat.toFixed(4) + ',' + lon.toFixed(4))
+      .then(function(r){ if (!r.ok) throw new Error('nws'); return r.json(); })
+      .then(function(d){
+        var p = d && d.properties && d.properties.relativeLocation && d.properties.relativeLocation.properties;
+        if (p && p.city) set('bnWxPlace', '📍 ' + p.city + (p.state ? ', ' + p.state : ''));
+        else throw new Error('nocity');
+      })
+      .catch(function(){
+        fetch('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=' + lat + '&longitude=' + lon + '&localityLanguage=en')
+          .then(function(r){ return r.json(); })
+          .then(function(d){
+            var city = d.city || d.locality || '';
+            var st = (d.principalSubdivisionCode || '').split('-').pop() || '';
+            if (city) set('bnWxPlace', '📍 ' + city + (st ? ', ' + st : ''));
+          }).catch(function(){});
+      });
+  }
+  function loadWeather(lat, lon){
+    placeName(lat, lon);
+    var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + encodeURIComponent(lat) + '&longitude=' + encodeURIComponent(lon)
+      + '&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m'
+      + '&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=auto&forecast_days=1';
+    fetch(url)
+      .then(function(r){ if (!r.ok) throw new Error('wx'); return r.json(); })
+      .then(function(d){
+        var c = d.current || {};
+        if (c.temperature_2m != null) set('bnWxAir', Math.round(c.temperature_2m) + '°');
+        if (c.apparent_temperature != null) set('bnWxFeels', Math.round(c.apparent_temperature) + '°');
+        if (c.wind_speed_10m != null) set('bnWxWind', compass(c.wind_direction_10m) + Math.round(c.wind_speed_10m));
+        if (c.wind_gusts_10m != null) set('bnWxGust', Math.round(c.wind_gusts_10m));
+        if (c.relative_humidity_2m != null) set('bnWxHum', Math.round(c.relative_humidity_2m) + '%');
+        set('bnWxCond', codeLabel(c.weather_code));
+        if (c.time) {
+          var dt = new Date(c.time);
+          if (!isNaN(dt)) set('bnWxUpdated', 'Updated ' + dt.toLocaleTimeString([], {hour:'numeric', minute:'2-digit'}));
+        }
+        var b = $('bnWxBtn'); if (b) b.textContent = 'Refresh';
+      })
+      .catch(function(){ set('bnWxCond', 'Weather unavailable right now'); });
+  }
+  function locate(){
+    if (!navigator.geolocation) {
+      set('bnWxPlace', '📍 Location unavailable');
+      set('bnWxCond', 'Use the ZIP finder for your waters');
+      return;
+    }
+    set('bnWxPlace', '📍 Locating…');
+    navigator.geolocation.getCurrentPosition(function(pos){
+      savePos(pos.coords.latitude, pos.coords.longitude);
+      loadWeather(pos.coords.latitude, pos.coords.longitude);
+    }, function(){
+      set('bnWxPlace', '📍 Location off');
+      set('bnWxUpdated', 'Weather follows your device');
+      set('bnWxCond', 'Allow location, then tap Use my location');
+    }, {enableHighAccuracy:false, timeout:10000, maximumAge:600000});
+  }
+  var btn = $('bnWxBtn');
+  if (btn) btn.addEventListener('click', locate);
+  var saved = readPos();
+  if (saved && (Date.now() - (saved.t || 0)) < 1800000) loadWeather(saved.lat, saved.lon);
+  else locate();
+  setInterval(function(){ var p = readPos(); if (p) loadWeather(p.lat, p.lon); }, 900000);
+})();
+</script>
+<script>
+function googleTranslateElementInit(){ new google.translate.TranslateElement({pageLanguage:'en',layout:google.translate.TranslateElement.InlineLayout.SIMPLE,autoDisplay:false},'google_translate_element'); }
+document.getElementById('lang-btn').addEventListener('click',function(e){ e.stopPropagation(); document.getElementById('translate-panel').classList.toggle('open'); });
+document.addEventListener('click',function(e){ var p=document.getElementById('translate-panel'); if(p&&p.classList.contains('open')&&!e.target.closest('#translate-panel')&&!e.target.closest('#lang-btn')) p.classList.remove('open'); });
+(function(){
+  function gtSet(code){
+    var host=location.hostname, dom=null;
+    if(host && host.indexOf('.')>0 && host!=='localhost' && !/^\d+\.\d+\.\d+\.\d+$/.test(host)){ var parts=host.split('.'); dom='.'+parts.slice(-2).join('.'); }
+    function write(val,exp){
+      var base='googtrans='+val+'; path=/' + (exp?'; expires='+exp:'');
+      document.cookie=base;
+      if(dom) document.cookie=base+'; domain='+dom;
+    }
+    if(code==='en'){ write('', 'Thu, 01 Jan 1970 00:00:00 GMT'); write('/en/en'); }
+    else { write('/en/'+code); }
+  }
+  var rows=document.querySelectorAll('#translate-panel .lang-row');
+  var m=document.cookie.match(/googtrans=\/en\/([a-zA-Z-]+)/);
+  var cur=m?m[1]:'en';
+  rows.forEach(function(r){ r.classList.toggle('active', r.getAttribute('data-lang')===cur); });
+  rows.forEach(function(r){ r.addEventListener('click',function(){ gtSet(r.getAttribute('data-lang')); location.reload(); }); });
+})();
+</script>
+<script>
+/* Language search: filter the 104 rows by native name, English name, or code */
+(function(){
+  var EN = {"en": "English", "af": "Afrikaans", "sq": "Albanian", "am": "Amharic", "ar": "Arabic", "hy": "Armenian", "az": "Azerbaijani", "eu": "Basque", "be": "Belarusian", "bn": "Bengali", "bs": "Bosnian", "bg": "Bulgarian", "ca": "Catalan", "ceb": "Cebuano", "zh-CN": "Chinese Simplified", "zh-TW": "Chinese Traditional", "co": "Corsican", "hr": "Croatian", "cs": "Czech", "da": "Danish", "nl": "Dutch", "eo": "Esperanto", "et": "Estonian", "fi": "Finnish", "fr": "French", "fy": "Frisian", "gl": "Galician", "ka": "Georgian", "de": "German", "el": "Greek", "gu": "Gujarati", "ht": "Haitian Creole", "ha": "Hausa", "haw": "Hawaiian", "iw": "Hebrew", "hi": "Hindi", "hmn": "Hmong", "hu": "Hungarian", "is": "Icelandic", "ig": "Igbo", "id": "Indonesian", "ga": "Irish", "it": "Italian", "ja": "Japanese", "jv": "Javanese", "kn": "Kannada", "kk": "Kazakh", "km": "Khmer", "ko": "Korean", "ku": "Kurdish", "ky": "Kyrgyz", "lo": "Lao", "la": "Latin", "lv": "Latvian", "lt": "Lithuanian", "lb": "Luxembourgish", "mk": "Macedonian", "mg": "Malagasy", "ms": "Malay", "ml": "Malayalam", "mt": "Maltese", "mi": "Maori", "mr": "Marathi", "mn": "Mongolian", "my": "Myanmar Burmese", "ne": "Nepali", "no": "Norwegian", "ny": "Nyanja Chichewa", "ps": "Pashto", "fa": "Persian", "pl": "Polish", "pt": "Portuguese", "pa": "Punjabi", "ro": "Romanian", "ru": "Russian", "sm": "Samoan", "gd": "Scots Gaelic", "sr": "Serbian", "st": "Sesotho", "sn": "Shona", "sd": "Sindhi", "si": "Sinhala", "sk": "Slovak", "sl": "Slovenian", "so": "Somali", "es": "Spanish", "su": "Sundanese", "sw": "Swahili", "sv": "Swedish", "tl": "Tagalog Filipino", "tg": "Tajik", "ta": "Tamil", "te": "Telugu", "th": "Thai", "tr": "Turkish", "uk": "Ukrainian", "ur": "Urdu", "uz": "Uzbek", "vi": "Vietnamese", "cy": "Welsh", "xh": "Xhosa", "yi": "Yiddish", "yo": "Yoruba", "zu": "Zulu"};
+  function norm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+  var q = document.getElementById('lang-q'); if(!q) return;
+  var rows = Array.prototype.slice.call(document.querySelectorAll('#translate-panel .lang-row'));
+  var none = document.getElementById('lang-none');
+  q.addEventListener('click', function(e){ e.stopPropagation(); });
+  q.addEventListener('input', function(){
+    var t = norm(q.value.trim()), shown = 0;
+    rows.forEach(function(r){
+      var code = r.getAttribute('data-lang');
+      var hit = !t || norm(r.textContent).indexOf(t) >= 0 || norm(EN[code]||'').indexOf(t) >= 0 || code.toLowerCase() === t;
+      r.style.display = hit ? '' : 'none'; if(hit) shown++;
+    });
+    if(none) none.style.display = shown ? 'none' : '';
+  });
+})();
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script>
+/* Keep Google Translate's top banner hidden: GT re-injects it on every
+   translation, so watch for it and hide it each time it appears. */
+(function(){
+  function hideEl(f){ f.style.setProperty('display','none','important'); f.style.setProperty('visibility','hidden','important'); }
+  function killBar(){
+    document.querySelectorAll('.goog-te-banner-frame').forEach(hideEl);
+    var tt=document.getElementById('goog-gt-tt'); if(tt) tt.style.setProperty('display','none','important');
+    document.querySelectorAll('iframe').forEach(function(f){
+      try{
+        var src=f.getAttribute('src')||'';
+        if(src.indexOf('translate')>-1){ hideEl(f); return; }
+        var r=f.getBoundingClientRect(), cs=getComputedStyle(f);
+        if((cs.position==='fixed'||cs.position==='absolute') && r.top<=2 && r.height>=20 && r.height<=180 && r.width>=window.innerWidth*0.9) hideEl(f);
+      }catch(e){}
+    });
+    if(document.body) document.body.style.setProperty('top','0px','important');
+  }
+  new MutationObserver(killBar).observe(document.documentElement,{childList:true,subtree:true});
+  setInterval(killBar,2000);
+  killBar();
+})();
 </script>
 </body>
 </html>
