@@ -1,7 +1,7 @@
 /* Boaters Nation — region data.
    ONE array drives the homepage grid, the ZIP finder, and region.html.
 
-   status: "live"     = verified and open (today: Tampa Bay only)
+   status: "live"     = verified and open
            "building" = in the works — shows a waitlist, never placeholder data
 
    zipPrefixes: first 3 digits of real ZIP codes in the region, as STRINGS
@@ -18,7 +18,6 @@ var BN_REGIONS = [
     name: "Tampa Bay, FL",
     blurb: "Tampa, St. Pete, Clearwater, Bradenton and Sarasota — the bay where Boaters Nation started.",
     status: "live",
-    liveUrl: "https://tampabayboating.com",
     zipPrefixes: ["335", "336", "337", "342", "346"]
   },
   {

@@ -357,7 +357,7 @@ body{top:0 !important}
   <div class="note" style="margin-top:16px"><b>Own a marine business?</b> When your region opens, your free listing comes first — sponsors get the featured spots. That's the whole model, same as Tampa Bay.</div>
   </div>
 
-  <p class="fine">🇺🇸 <b>Boaters Nation</b> — a nationwide sister site to <a href="https://tampabayboating.com" style="color:#c9d8e4">TampaBayBoating.com</a>.<br>"Bringing the boating community together."</p>
+  <p class="fine">🇺🇸 <b>Boaters Nation</b> — Everything boating in America, free for boaters.</p>
 </div>
 <script src="regions.js"></script>
 <script>
@@ -422,10 +422,10 @@ function bnZip(ev){
   if (!/^\d{5}$/.test(z)) { out.innerHTML = 'Type a 5-digit ZIP code.'; return false; }
   var r = bnRegionForZip(z);
   if (r && r.status === 'live') {
+    var dest = r.page || ('region.html?r=' + r.slug);
     out.innerHTML = '<b style="color:#4ade80">' + r.name + ' is LIVE.</b><br>'
-      + 'That ZIP is covered — map, fuel, events and stays, all verified, on Tampa Bay Boating.'
-      + '<br><a class="btn" href="https://tampabayboating.com">Open Tampa Bay Boating →</a>'
-      + '<a class="btn ghost" href="region.html?r=' + r.slug + '">What\'s inside</a>';
+      + 'That ZIP is covered — map, fuel, events and stays, all verified.'
+      + '<br><a class="btn" href="' + dest + '">Open ' + r.name + ' →</a>';
   } else if (r) {
     out.innerHTML = '<b style="color:#E63946">' + r.name + ' is in the works.</b><br>'
       + 'We open a region only when every pin is verified — no filler, no guesses. '
