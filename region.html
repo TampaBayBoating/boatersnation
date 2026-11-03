@@ -263,6 +263,8 @@ function bnTabR(name, btn){
     return;
   }
 
+  if (r.page) { location.replace(r.page); return; }
+
   document.title = r.name + ' | Boaters Nation';
   var head = '<div class="kicker">Region</div><h1>' + r.name + '</h1>'
     + '<p class="intro">' + r.blurb + '</p>';

@@ -67,7 +67,8 @@ var BN_REGIONS = [
     slug: "new-england",
     name: "New England",
     blurb: "Maine to Connecticut — rocky coasts, working harbors and summer islands.",
-    status: "building",
+    status: "live",
+    page: "region-new-england.html",
     zipPrefixes: ["019", "020", "021", "025", "026", "027", "028", "038", "039", "040", "041", "045", "063", "064"]
   },
   {
