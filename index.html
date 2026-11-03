@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boaters Nation | Everything Boating in America</title>
+<meta name="description" content="One free site for boaters on every lake, river and coast — local conditions, a boater's map, events, dock-and-dine, fuel prices and waterfront stays with docks. Verified region by region.">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#071826;color:#e8eef4;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.45}
+  .topbar{background:#0a2540;padding:10px 16px;display:flex;align-items:center;gap:10px;border-bottom:2px solid #123c5e}
+  .topbar a{display:flex;align-items:center;gap:10px;color:#e8eef4;text-decoration:none}
+  .anchor{width:38px;height:38px;border-radius:50%;background:#FFB703;color:#0a2540;display:flex;align-items:center;justify-content:center;font-size:1.25rem;font-weight:900}
+  .topbar b{font-size:1.05rem;letter-spacing:.2px}
+  .topbar span{color:#FFB703;font-weight:800}
+  .wrap{max-width:760px;margin:0 auto;padding:18px 14px 30px}
+  .kicker{color:#FFB703;font-weight:800;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;text-align:center}
+  h1{font-size:1.75rem;line-height:1.15;text-align:center;margin:6px 0 8px}
+  .intro{text-align:center;color:#c9d8e4;font-size:.98rem;max-width:580px;margin:0 auto 16px}
+  h2{font-size:1.2rem;margin:20px 0 8px}
+  .sub{color:#c9d8e4;font-size:.92rem;margin-bottom:10px}
+  .regions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .region{display:block;background:#0a2540;border:1.5px solid #123c5e;border-radius:12px;padding:11px 12px;font-size:.92rem;color:#e8eef4;text-decoration:none}
+  .region b{display:block;font-size:.98rem}
+  .region .bl{color:#9db4c6;font-size:.82rem;display:block;margin-top:2px}
+  .chip{display:inline-block;margin-top:6px;font-size:.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:999px}
+  .chip.live{background:#14532d;color:#4ade80}
+  .chip.building{background:#123c5e;color:#9db4c6}
+  .region.on{border-color:#FFB703}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 12px}
+  .tab{flex:1 1 30%;padding:10px 6px;border-radius:999px;border:1.5px solid rgba(232,238,244,.35);background:transparent;color:#e8eef4;font-weight:800;font-size:.85rem;cursor:pointer;font-family:inherit}
+  .tab.on{background:#FFB703;color:#0a2540;border-color:#FFB703}
+  .panel{display:none}
+  .panel.on{display:block}
+  .card{background:#eef5fb;color:#0a2540;border-radius:14px;padding:12px 14px;margin-bottom:10px}
+  .card h3{font-size:1rem;margin-bottom:2px}
+  .card p{font-size:.88rem;color:#33536e;line-height:1.35}
+  .tag{display:inline-block;font-size:.64rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#0072B2}
+  .note{background:#0a2540;border:1px solid #123c5e;border-radius:14px;padding:13px 15px;color:#c9d8e4;font-size:.9rem;margin-bottom:12px}
+  .note b{color:#fff}
+  .steps{display:grid;grid-template-columns:1fr;gap:8px}
+  .step{background:#0a2540;border:1px solid #123c5e;border-radius:12px;padding:11px 13px;font-size:.92rem}
+  .step b{color:#FFB703}
+  .fine{text-align:center;color:#7d97ab;font-size:.8rem;margin-top:18px}
+  .fine b{color:#c9d8e4}
+  .zipform{margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .zipform input{padding:11px 14px;border-radius:999px;border:1.5px solid #123c5e;background:#071826;color:#fff;font-size:1rem;width:210px;text-align:center;font-family:inherit}
+  .zipform button{padding:11px 22px;border-radius:999px;border:none;background:#FFB703;color:#0a2540;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+  .btn{display:inline-block;margin-top:10px;padding:10px 18px;border-radius:999px;background:#FFB703;color:#0a2540;font-weight:800;font-size:.9rem;text-decoration:none}
+  .btn.ghost{background:transparent;border:1.5px solid #FFB703;color:#FFB703;margin-left:6px}
+  .wl{margin-top:12px;display:grid;gap:8px;text-align:left}
+  .wl label{font-size:.8rem;font-weight:700;color:#c9d8e4}
+  .wl input{display:block;width:100%;margin-top:3px;padding:11px 12px;border-radius:10px;border:1.5px solid #123c5e;background:#071826;color:#fff;font-size:1rem;font-family:inherit}
+  .wl button{padding:12px;border-radius:999px;border:none;background:#FFB703;color:#0a2540;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+  @media(min-width:560px){.regions{grid-template-columns:1fr 1fr 1fr}.steps{grid-template-columns:1fr 1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="topbar"><a href="index.html"><div class="anchor">⚓</div><b>Boaters <span>Nation</span></b></a></div>
+<div class="wrap">
+  <div class="kicker">Boaters Nation</div>
+  <h1>Everything Boating in America</h1>
+  <p class="intro">One free site for boaters on every lake, river and coast: local conditions, a boater's map, events, dock-and-dine, fuel prices and waterfront stays with docks — verified by hand, region by region. Local businesses sponsor it, so boaters never pay.</p>
+
+  <div class="note" style="text-align:center">
+    <b>Start with your ZIP code</b><br>
+    <span style="font-size:.88rem">Type your ZIP and land on your water — your map, your events, your fuel prices.</span>
+    <form class="zipform" onsubmit="return bnZip(event)">
+      <input id="bn-zip" inputmode="numeric" maxlength="5" placeholder="ZIP code — try 33602" aria-label="ZIP code">
+      <button type="submit">Find My Water</button>
+    </form>
+    <div id="bn-zip-out" style="margin-top:10px;font-size:.92rem"></div>
+  </div>
+
+  <h2>Pick Your Waters</h2>
+  <p class="sub">One region at a time, built the same way Tampa Bay was — every pin and price verified before it goes up. A region opens only when it's ready; until then, join its waitlist and help it move up the list.</p>
+  <div class="regions" id="bn-regions"></div>
+
+  <h2>What's Inside Every Region</h2>
+  <div class="tabs">
+    <button type="button" class="tab on" onclick="bnTab('cond',this)">Conditions</button>
+    <button type="button" class="tab" onclick="bnTab('map',this)">Boater's Map</button>
+    <button type="button" class="tab" onclick="bnTab('events',this)">Events</button>
+    <button type="button" class="tab" onclick="bnTab('dine',this)">Dock &amp; Dine</button>
+    <button type="button" class="tab" onclick="bnTab('stays',this)">Stay on the Water</button>
+    <button type="button" class="tab" onclick="bnTab('fuel',this)">Fuel Prices</button>
+  </div>
+
+  <div class="panel on" id="p-cond">
+    <div class="card"><span class="tag">Conditions</span><h3>One plain-English score for the day</h3>
+      <p>Wind, waves, tides and weather rolled into a single boating score with a straight verdict — figured for beginners through experts — so you know before you leave the dock.</p></div>
+  </div>
+  <div class="panel" id="p-map">
+    <div class="card"><span class="tag">The Map</span><h3>Every ramp, fuel dock &amp; marina — pinned</h3>
+      <p>One map per region: boat ramps, marina fuel, bait, dock-and-dine, storage, services. Every pin carries a phone number or a website, and every popup ends with directions. If it isn't verified, it isn't on the map.</p></div>
+  </div>
+  <div class="panel" id="p-events">
+    <div class="card"><span class="tag">Events</span><h3>Boat parades, tournaments &amp; waterfront festivals</h3>
+      <p>A calendar per region — boat shows, fishing tournaments, parades, sandbar parties and beach events, checked against the organizer before it posts. Event listings are always free.</p></div>
+  </div>
+  <div class="panel" id="p-dine">
+    <div class="card"><span class="tag">Dock &amp; Dine</span><h3>Pull up, tie up, eat</h3>
+      <p>Restaurants you can actually reach by boat — with dock details a boater needs: slip count, depth, whether the dock is theirs or the city's. No guessing from a parking-lot review site.</p></div>
+  </div>
+  <div class="panel" id="p-stays">
+    <div class="card"><span class="tag">Stay on the Water</span><h3>Houses where your boat sleeps at the dock</h3>
+      <p>Vacation, monthly and yearly waterfront rentals — every one checked for a real dock a guest's boat can use. Cards click straight to the owner's own booking page. Owners and managers list free.</p></div>
+  </div>
+  <div class="panel" id="p-fuel">
+    <div class="card"><span class="tag">Fuel Prices</span><h3>Cheapest non-ethanol &amp; diesel near the water</h3>
+      <p>Checked every morning: the lowest ethanol-free and diesel prices around each region's ramps and marinas — because boaters drive out of their way for fuel, and a wrong price burns trust.</p></div>
+  </div>
+
+  <h2>How It Grows</h2>
+  <div class="steps">
+    <div class="step"><b>1 · One region at a time.</b><br>No nationwide data dump. Each region launches only when its map, events and prices are verified the local way.</div>
+    <div class="step"><b>2 · Free for boaters, always.</b><br>Sponsors and featured local businesses pay. Boaters, event listings and rental listings never do.</div>
+    <div class="step"><b>3 · Middleman only.</b><br>We connect boaters to local businesses and take no bookings, no sales, no cut of anyone's money.</div>
+  </div>
+
+  <div class="note" style="margin-top:16px"><b>Own a marine business?</b> When your region opens, your free listing comes first — sponsors get the featured spots. That's the whole model, same as Tampa Bay.</div>
+
+  <p class="fine"><b>Boaters Nation</b> — a nationwide sister site to <a href="https://tampabayboating.com" style="color:#c9d8e4">TampaBayBoating.com</a>.<br>"Bringing the boating community together."</p>
+</div>
+<script src="regions.js"></script>
+<script>
+function bnTab(name, btn){
+  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('on'); });
+  document.getElementById('p-' + name).classList.add('on');
+  document.querySelectorAll('.tab').forEach(function(t){ t.classList.toggle('on', t === btn); });
+}
+
+/* Region grid — rendered from regions.js */
+(function(){
+  var html = '';
+  BN_REGIONS.forEach(function(r){
+    var chip = r.status === 'live'
+      ? '<span class="chip live">● Live now</span>'
+      : '<span class="chip building">In the works</span>';
+    html += '<a class="region' + (r.status === 'live' ? ' on' : '') + '" href="region.html?r=' + r.slug + '">'
+      + '<b>' + r.name + '</b><span class="bl">' + r.blurb + '</span>' + chip + '</a>';
+  });
+  document.getElementById('bn-regions').innerHTML = html;
+})();
+
+/* Waitlist form (FormSubmit). Fields: email + zip. */
+function bnWaitlistForm(regionName, zip){
+  return '<form class="wl" method="POST" action="https://formsubmit.co/david@tampabayboating.com">'
+    + '<input type="hidden" name="_subject" value="Boaters Nation waitlist">'
+    + '<input type="hidden" name="region" value="' + regionName + '">'
+    + '<label>Email<input type="email" name="email" required placeholder="you@example.com"></label>'
+    + '<label>ZIP code<input type="text" name="zip" inputmode="numeric" maxlength="5" value="' + (zip || '') + '"></label>'
+    + '<button type="submit">Tell me when it opens</button></form>';
+}
+
+/* ZIP finder */
+function bnZip(ev){
+  ev.preventDefault();
+  var z = (document.getElementById('bn-zip').value || '').trim();
+  var out = document.getElementById('bn-zip-out');
+  if (!/^\d{5}$/.test(z)) { out.innerHTML = 'Type a 5-digit ZIP code.'; return false; }
+  var r = bnRegionForZip(z);
+  if (r && r.status === 'live') {
+    out.innerHTML = '<b style="color:#4ade80">' + r.name + ' is LIVE.</b><br>'
+      + 'That ZIP is covered — map, fuel, events and stays, all verified, on Tampa Bay Boating.'
+      + '<br><a class="btn" href="https://tampabayboating.com">Open Tampa Bay Boating →</a>'
+      + '<a class="btn ghost" href="region.html?r=' + r.slug + '">What\'s inside</a>';
+  } else if (r) {
+    out.innerHTML = '<b style="color:#FFB703">' + r.name + ' is in the works.</b><br>'
+      + 'We open a region only when every pin is verified — no filler, no guesses. '
+      + 'Join the waitlist and we will email you the day your water goes live.'
+      + bnWaitlistForm(r.name, z);
+  } else {
+    out.innerHTML = '<b style="color:#FFB703">Not covered yet.</b><br>'
+      + 'Boaters Nation opens region by region — and the ZIPs with the most boaters waiting open first. '
+      + 'Joining the waitlist is how your area moves up the list.'
+      + bnWaitlistForm('Not covered yet', z);
+  }
+  return false;
+}
+</script>
+</body>
+</html>

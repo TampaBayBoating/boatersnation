@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Region | Boaters Nation</title>
+<meta name="description" content="Boaters Nation region page — local conditions, boater's map, events, dock-and-dine, fuel prices and waterfront stays, verified region by region.">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#071826;color:#e8eef4;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.45}
+  .topbar{background:#0a2540;padding:10px 16px;display:flex;align-items:center;gap:10px;border-bottom:2px solid #123c5e}
+  .topbar a{display:flex;align-items:center;gap:10px;color:#e8eef4;text-decoration:none}
+  .anchor{width:38px;height:38px;border-radius:50%;background:#FFB703;color:#0a2540;display:flex;align-items:center;justify-content:center;font-size:1.25rem;font-weight:900}
+  .topbar b{font-size:1.05rem;letter-spacing:.2px}
+  .topbar span{color:#FFB703;font-weight:800}
+  .wrap{max-width:760px;margin:0 auto;padding:18px 14px 30px}
+  .back{color:#9db4c6;font-size:.88rem;text-decoration:none;font-weight:700}
+  .kicker{color:#FFB703;font-weight:800;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;margin-top:12px}
+  h1{font-size:1.65rem;line-height:1.15;margin:6px 0 8px}
+  .intro{color:#c9d8e4;font-size:.98rem;margin-bottom:14px}
+  h2{font-size:1.2rem;margin:20px 0 8px}
+  .chip{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:999px}
+  .chip.live{background:#14532d;color:#4ade80}
+  .chip.building{background:#123c5e;color:#9db4c6}
+  .feats{display:grid;grid-template-columns:1fr;gap:8px}
+  .feat{display:block;background:#eef5fb;color:#0a2540;border-radius:14px;padding:12px 14px;text-decoration:none}
+  .feat h3{font-size:1rem;margin-bottom:2px}
+  .feat p{font-size:.88rem;color:#33536e;line-height:1.35}
+  .feat .go{color:#0072B2;font-weight:800;font-size:.85rem}
+  .featdiv{background:#0a2540;border:1px solid #123c5e;border-radius:14px;padding:12px 14px}
+  .featdiv h3{font-size:1rem;margin-bottom:2px;color:#fff}
+  .featdiv p{font-size:.88rem;color:#9db4c6;line-height:1.35}
+  .note{background:#0a2540;border:1px solid #123c5e;border-radius:14px;padding:13px 15px;color:#c9d8e4;font-size:.9rem;margin-bottom:12px}
+  .note b{color:#fff}
+  .btn{display:inline-block;margin-top:10px;padding:10px 18px;border-radius:999px;background:#FFB703;color:#0a2540;font-weight:800;font-size:.9rem;text-decoration:none}
+  .wl{margin-top:12px;display:grid;gap:8px;text-align:left}
+  .wl label{font-size:.8rem;font-weight:700;color:#c9d8e4}
+  .wl input{display:block;width:100%;margin-top:3px;padding:11px 12px;border-radius:10px;border:1.5px solid #123c5e;background:#071826;color:#fff;font-size:1rem;font-family:inherit}
+  .wl button{padding:12px;border-radius:999px;border:none;background:#FFB703;color:#0a2540;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+  .fine{text-align:center;color:#7d97ab;font-size:.8rem;margin-top:18px}
+  .fine b{color:#c9d8e4}
+  @media(min-width:560px){.feats{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="topbar"><a href="index.html"><div class="anchor">⚓</div><b>Boaters <span>Nation</span></b></a></div>
+<div class="wrap">
+  <a class="back" href="index.html">← All regions</a>
+  <div id="bn-region"></div>
+  <p class="fine"><b>Boaters Nation</b> — a nationwide sister site to <a href="https://tampabayboating.com" style="color:#c9d8e4">TampaBayBoating.com</a>.<br>"Bringing the boating community together."</p>
+</div>
+<script src="regions.js"></script>
+<script>
+/* The six features every region gets — same promise, region by region. */
+var BN_FEATURES = [
+  { name: "Conditions",        desc: "One plain-English boating score for the day — wind, waves, tides and weather in a single verdict.", tbb: "https://tampabayboating.com/#/tides",  go: "Today's conditions" },
+  { name: "Boater's Map",      desc: "Every ramp, fuel dock and marina pinned — each with a phone number or website and directions.",        tbb: "https://tampabayboating.com/#/map",    go: "Open the map" },
+  { name: "Events",            desc: "Boat shows, tournaments, parades and waterfront festivals — checked against the organizer. Listings are free.", tbb: "https://tampabayboating.com/#/events", go: "See events" },
+  { name: "Dock & Dine",       desc: "Restaurants you can reach by boat, with the dock details a boater actually needs.",                        tbb: "https://tampabayboating.com/#/dining", go: "See dock & dine" },
+  { name: "Stay on the Water", desc: "Waterfront houses where your boat sleeps at the dock — cards click straight to the owner's own booking page.", tbb: "https://tampabayboating.com/waterfront-stays.html", go: "See the houses" },
+  { name: "Fuel Prices",       desc: "The cheapest non-ethanol and diesel near the water, checked every morning.",                               tbb: "https://tampabayboating.com/#/fuel",   go: "See fuel prices" }
+];
+
+function bnWaitlistForm(regionName, zip){
+  return '<form class="wl" method="POST" action="https://formsubmit.co/david@tampabayboating.com">'
+    + '<input type="hidden" name="_subject" value="Boaters Nation waitlist">'
+    + '<input type="hidden" name="region" value="' + regionName + '">'
+    + '<label>Email<input type="email" name="email" required placeholder="you@example.com"></label>'
+    + '<label>ZIP code<input type="text" name="zip" inputmode="numeric" maxlength="5" value="' + (zip || '') + '"></label>'
+    + '<button type="submit">Tell me when it opens</button></form>';
+}
+
+(function(){
+  var qs = new URLSearchParams(location.search);
+  var r = bnRegionBySlug(qs.get('r') || '');
+  var zip = qs.get('zip') || '';
+  var out = document.getElementById('bn-region');
+
+  if (!r) {
+    document.title = 'Region not found | Boaters Nation';
+    out.innerHTML = '<div class="kicker">Boaters Nation</div><h1>That region isn\'t on the chart</h1>'
+      + '<p class="intro">Head back to the homepage and pick your waters — or type your ZIP code and we\'ll route you.</p>'
+      + '<a class="btn" href="index.html">Back to the homepage</a>';
+    return;
+  }
+
+  document.title = r.name + ' | Boaters Nation';
+  var head = '<div class="kicker">Region</div><h1>' + r.name + '</h1>'
+    + '<p class="intro">' + r.blurb + '</p>';
+
+  if (r.status === 'live') {
+    var cards = '';
+    BN_FEATURES.forEach(function(f){
+      cards += '<a class="feat" href="' + f.tbb + '"><h3>' + f.name + '</h3><p>' + f.desc + '</p>'
+        + '<span class="go">' + f.go + ' →</span></a>';
+    });
+    out.innerHTML = head
+      + '<p><span class="chip live">● Live now</span></p>'
+      + '<div class="note" style="margin-top:12px"><b>This region is open.</b> Tampa Bay is the original Boaters Nation region — '
+      + 'fully built and verified on Tampa Bay Boating. Everything below takes you straight to it.</div>'
+      + '<h2>Your Tampa Bay toolkit</h2><div class="feats">' + cards + '</div>'
+      + '<a class="btn" href="https://tampabayboating.com">Open TampaBayBoating.com →</a>';
+  } else {
+    var coming = '';
+    BN_FEATURES.forEach(function(f){
+      coming += '<div class="featdiv"><h3>' + f.name + '</h3><p>' + f.desc + '</p></div>';
+    });
+    out.innerHTML = head
+      + '<p><span class="chip building">In the works</span></p>'
+      + '<div class="note" style="margin-top:12px"><b>This region isn\'t open yet — on purpose.</b> '
+      + 'A Boaters Nation region launches only when its map pins, events and prices are verified the local way. '
+      + 'Until then you get a waitlist, not placeholder pages. Join it and we will email you the day ' + r.name + ' goes live — '
+      + 'and the regions with the most boaters waiting open first.</div>'
+      + '<h2>What\'s coming</h2><div class="feats">' + coming + '</div>'
+      + '<h2>Join the waitlist</h2>'
+      + '<div class="note">' + bnWaitlistForm(r.name, zip) + '</div>'
+      + '<div class="note"><b>Want to see the finished product?</b> Tampa Bay is live now, built to this exact standard. '
+      + '<a href="region.html?r=tampa-bay" style="color:#FFB703;font-weight:800">Take a look →</a></div>';
+  }
+})();
+</script>
+</body>
+</html>

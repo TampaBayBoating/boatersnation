@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://boatersnation.com/sitemap.xml
