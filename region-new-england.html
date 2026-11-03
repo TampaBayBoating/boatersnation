@@ -123,7 +123,8 @@ main{display:block}
 .stab2{font:inherit;font-size:.86rem;font-weight:700;padding:7px 13px;border-radius:99px;border:1px solid #33536e;background:#10293f;color:#c9d8e4;cursor:pointer}
 .stab2.on{background:#B31942;border-color:#B31942;color:#fff}
 .subpanel{display:none}.subpanel.on{display:block}
-.pin-dot{border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.55)}
+.pin-dot{border-radius:50%;border:2px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.45)}
+.tbb-cam-pin{width:26px;height:26px;border-radius:50%;background:#e02424;border:2px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center}
 .leaflet-popup-content{font-family:inherit;font-size:.9rem;line-height:1.4}
 .leaflet-popup-content a{font-weight:800;color:#B31942}
 </style>
@@ -281,10 +282,12 @@ function initMap(){
   if (bnMap) { bnMap.invalidateSize(); return; }
   if (!window.L) return;
   bnMap = L.map('bnmap');
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18, attribution: '&copy; OpenStreetMap contributors'}).addTo(bnMap);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}', {maxZoom: 18, maxNativeZoom: 16, attribution: 'Esri, GEBCO, NOAA, NGS, OSU'}).addTo(bnMap);
   var groups = {}, bounds = [];
   BN_PINS.forEach(function(p){
-    var icon = L.divIcon({className: '', html: '<div class="pin-dot" style="width:14px;height:14px;background:' + p.col + '"></div>', iconSize: [18, 18], iconAnchor: [9, 9]});
+    var TBB_COL = {'Ramps':'#4f46e5','Marinas & Fuel':'#e25822','Bait & Tackle':'#2e9e5b','Dock & Dine':'#8b5cf6','Stays':'#2563eb','Live Cams':'#e02424'}; var icon;
+    if (p.c === 'Live Cams') { icon = L.divIcon({className: 'tbb-pin', html: '<div class="tbb-cam-pin"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#fff"/></svg></div>', iconSize: [26, 26], iconAnchor: [13, 13]}); }
+    else { icon = L.divIcon({className: 'tbb-pin', html: '<div class="pin-dot" style="width:14px;height:14px;background:' + (TBB_COL[p.c] || p.col) + '"></div>', iconSize: [18, 18], iconAnchor: [9, 9]}); }
     var q = encodeURIComponent(p.a || p.n);
     var pop = '<b>' + esc(p.n) + '</b><br>' + esc(p.c) + ' · ' + esc(p.ct) +
       (p.a ? '<br>' + esc(p.a) : '') + (p.ph ? '<br>📞 ' + esc(p.ph) : '') +
