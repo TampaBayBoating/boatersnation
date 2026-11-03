@@ -39,6 +39,11 @@
   .wl button{padding:12px;border-radius:999px;border:none;background:#B31942;color:#ffffff;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
   .fine{text-align:center;color:#7d97ab;font-size:.8rem;margin-top:18px}
   .fine b{color:#c9d8e4}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 12px}
+.tab{flex:1 1 30%;padding:10px 6px;border-radius:999px;border:1.5px solid rgba(232,238,244,.35);background:transparent;color:#e8eef4;font-weight:800;font-size:.85rem;cursor:pointer;font-family:inherit}
+.tab.on{background:#B31942;color:#ffffff;border-color:#E63946}
+.panel{display:none}
+.panel.on{display:block}
   @media(min-width:560px){.feats{grid-template-columns:1fr 1fr}}
 </style>
 </head>
@@ -70,6 +75,12 @@ function bnWaitlistForm(regionName, zip){
     + '<button type="submit">Tell me when it opens</button></form>';
 }
 
+function bnTabR(name, btn){
+  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('on'); });
+  document.getElementById('p-' + name).classList.add('on');
+  document.querySelectorAll('.tab').forEach(function(t){ t.classList.toggle('on', t === btn); });
+}
+
 (function(){
   var qs = new URLSearchParams(location.search);
   var r = bnRegionBySlug(qs.get('r') || '');
@@ -89,21 +100,25 @@ function bnWaitlistForm(regionName, zip){
     + '<p class="intro">' + r.blurb + '</p>';
 
   if (r.status === 'live') {
-    var cards = '';
-    BN_FEATURES.forEach(function(f){
-      cards += '<a class="feat" href="' + f.tbb + '"><h3>' + f.name + '</h3><p>' + f.desc + '</p>'
-        + '<span class="go">' + f.go + ' →</span></a>';
+    var tabs = '', cards = '';
+    BN_FEATURES.forEach(function(f, i){
+      var id = 'f' + i;
+      tabs += '<button type="button" class="tab' + (i === 0 ? ' on' : '') + '" onclick="bnTabR(\'' + id + '\',this)">' + f.name + '</button>';
+      cards += '<div class="panel' + (i === 0 ? ' on' : '') + '" id="p-' + id + '"><a class="feat" href="' + f.tbb + '"><h3>' + f.name + '</h3><p>' + f.desc + '</p>'
+        + '<span class="go">' + f.go + ' →</span></a></div>';
     });
     out.innerHTML = head
       + '<p><span class="chip live">● Live now</span></p>'
       + '<div class="note" style="margin-top:12px"><b>This region is open.</b> Tampa Bay is the original Boaters Nation region — '
       + 'fully built and verified on Tampa Bay Boating. Everything below takes you straight to it.</div>'
-      + '<h2>Your Tampa Bay toolkit</h2><div class="feats">' + cards + '</div>'
+      + '<h2>Your Tampa Bay toolkit</h2><div class="tabs">' + tabs + '</div>' + cards
       + '<a class="btn" href="https://tampabayboating.com">Open TampaBayBoating.com →</a>';
   } else {
-    var coming = '';
-    BN_FEATURES.forEach(function(f){
-      coming += '<div class="featdiv"><h3>' + f.name + '</h3><p>' + f.desc + '</p></div>';
+    var ctabs = '', coming = '';
+    BN_FEATURES.forEach(function(f, i){
+      var id = 'c' + i;
+      ctabs += '<button type="button" class="tab' + (i === 0 ? ' on' : '') + '" onclick="bnTabR(\'' + id + '\',this)">' + f.name + '</button>';
+      coming += '<div class="panel' + (i === 0 ? ' on' : '') + '" id="p-' + id + '"><div class="featdiv"><h3>' + f.name + '</h3><p>' + f.desc + '</p></div></div>';
     });
     out.innerHTML = head
       + '<p><span class="chip building">In the works</span></p>'
@@ -111,7 +126,7 @@ function bnWaitlistForm(regionName, zip){
       + 'A Boaters Nation region launches only when its map pins, events and prices are verified the local way. '
       + 'Until then you get a waitlist, not placeholder pages. Join it and we will email you the day ' + r.name + ' goes live — '
       + 'and the regions with the most boaters waiting open first.</div>'
-      + '<h2>What\'s coming</h2><div class="feats">' + coming + '</div>'
+      + '<h2>What\'s coming</h2><div class="tabs">' + ctabs + '</div>' + coming
       + '<h2>Join the waitlist</h2>'
       + '<div class="note">' + bnWaitlistForm(r.name, zip) + '</div>'
       + '<div class="note"><b>Want to see the finished product?</b> Tampa Bay is live now, built to this exact standard. '

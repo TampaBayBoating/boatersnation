@@ -53,6 +53,14 @@
   .wl input{display:block;width:100%;margin-top:3px;padding:11px 12px;border-radius:10px;border:1.5px solid #123c5e;background:#071826;color:#fff;font-size:1rem;font-family:inherit}
   .wl button{padding:12px;border-radius:999px;border:none;background:#B31942;color:#ffffff;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
   @media(min-width:560px){.regions{grid-template-columns:1fr 1fr 1fr}.steps{grid-template-columns:1fr 1fr 1fr}}
+.mtab{flex:1 1 28%;padding:10px 6px;border-radius:999px;border:1.5px solid rgba(232,238,244,.35);background:transparent;color:#e8eef4;font-weight:800;font-size:.85rem;cursor:pointer;font-family:inherit}
+.mtab.on{background:#B31942;color:#ffffff;border-color:#E63946}
+.mpanel{display:none}
+.mpanel.on{display:block}
+.stab{flex:0 1 auto;padding:8px 14px;border-radius:999px;border:1.5px solid rgba(232,238,244,.35);background:transparent;color:#e8eef4;font-weight:800;font-size:.8rem;cursor:pointer;font-family:inherit}
+.stab.on{background:#ffffff;color:#0a2540;border-color:#ffffff}
+.spanel{display:none}
+.spanel.on{display:block}
 .hero{background:linear-gradient(rgba(7,24,38,.68),rgba(7,24,38,.88)),url('assets/bn-hero.jpg') center/cover no-repeat;border-radius:16px;padding:24px 16px 18px;margin:14px 0 6px}
 </style>
 </head>
@@ -75,9 +83,28 @@
   </div>
   </div>
 
+  <div class="tabs">
+    <button type="button" class="mtab on" onclick="bnMainTab('regions',this)">Regions</button>
+    <button type="button" class="mtab" onclick="bnMainTab('inside',this)">What's Inside</button>
+    <button type="button" class="mtab" onclick="bnMainTab('how',this)">How It Works</button>
+  </div>
+
+  <div class="mpanel on" id="m-regions">
   <h2>Pick Your Waters</h2>
   <p class="sub">One region at a time, built the same way Tampa Bay was — every pin and price verified before it goes up. A region opens only when it's ready; until then, join its waitlist and help it move up the list.</p>
-  <div class="regions" id="bn-regions"></div>
+    <div class="tabs">
+      <button type="button" class="stab on" onclick="bnSubTab('fl',this)">Florida</button>
+      <button type="button" class="stab" onclick="bnSubTab('east',this)">East Coast</button>
+      <button type="button" class="stab" onclick="bnSubTab('inland',this)">Lakes &amp; Rivers</button>
+      <button type="button" class="stab" onclick="bnSubTab('west',this)">Gulf &amp; West</button>
+    </div>
+    <div class="spanel on" id="s-fl"><div class="regions" id="bn-reg-fl"></div></div>
+    <div class="spanel" id="s-east"><div class="regions" id="bn-reg-east"></div></div>
+    <div class="spanel" id="s-inland"><div class="regions" id="bn-reg-inland"></div></div>
+    <div class="spanel" id="s-west"><div class="regions" id="bn-reg-west"></div></div>
+  </div>
+
+  <div class="mpanel" id="m-inside">
 
   <h2>What's Inside Every Region</h2>
   <div class="tabs">
@@ -114,6 +141,9 @@
       <p>Checked every morning: the lowest ethanol-free and diesel prices around each region's ramps and marinas — because boaters drive out of their way for fuel, and a wrong price burns trust.</p></div>
   </div>
 
+  </div>
+
+  <div class="mpanel" id="m-how">
   <h2>How It Grows</h2>
   <div class="steps">
     <div class="step"><b>1 · One region at a time.</b><br>No nationwide data dump. Each region launches only when its map, events and prices are verified the local way.</div>
@@ -122,28 +152,53 @@
   </div>
 
   <div class="note" style="margin-top:16px"><b>Own a marine business?</b> When your region opens, your free listing comes first — sponsors get the featured spots. That's the whole model, same as Tampa Bay.</div>
+  </div>
 
   <p class="fine">🇺🇸 <b>Boaters Nation</b> — a nationwide sister site to <a href="https://tampabayboating.com" style="color:#c9d8e4">TampaBayBoating.com</a>.<br>"Bringing the boating community together."</p>
 </div>
 <script src="regions.js"></script>
 <script>
 function bnTab(name, btn){
-  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('on'); });
+  document.querySelectorAll('#m-inside .panel').forEach(function(p){ p.classList.remove('on'); });
   document.getElementById('p-' + name).classList.add('on');
-  document.querySelectorAll('.tab').forEach(function(t){ t.classList.toggle('on', t === btn); });
+  document.querySelectorAll('#m-inside .tab').forEach(function(t){ t.classList.toggle('on', t === btn); });
+}
+function bnMainTab(name, btn){
+  document.querySelectorAll('.mpanel').forEach(function(p){ p.classList.remove('on'); });
+  document.getElementById('m-' + name).classList.add('on');
+  document.querySelectorAll('.mtab').forEach(function(t){ t.classList.toggle('on', t === btn); });
+}
+function bnSubTab(name, btn){
+  document.querySelectorAll('.spanel').forEach(function(p){ p.classList.remove('on'); });
+  document.getElementById('s-' + name).classList.add('on');
+  document.querySelectorAll('.stab').forEach(function(t){ t.classList.toggle('on', t === btn); });
 }
 
 /* Region grid — rendered from regions.js */
+var BN_GROUPS = {
+  fl: ['tampa-bay', 'gulf-coast-fl', 'south-florida-keys'],
+  east: ['new-england', 'mid-atlantic-coast', 'chesapeake-bay', 'carolina-coast'],
+  inland: ['great-lakes', 'lake-country', 'tennessee-river-lakes'],
+  west: ['texas-gulf-coast', 'colorado-river-lakes', 'california-coast', 'pacific-northwest']
+};
+function bnRegionCard(r){
+  var chip = r.status === 'live'
+    ? '<span class="chip live">● Live now</span>'
+    : '<span class="chip building">In the works</span>';
+  return '<a class="region' + (r.status === 'live' ? ' on' : '') + '" href="region.html?r=' + r.slug + '">'
+    + '<b>' + r.name + '</b><span class="bl">' + r.blurb + '</span>' + chip + '</a>';
+}
 (function(){
-  var html = '';
-  BN_REGIONS.forEach(function(r){
-    var chip = r.status === 'live'
-      ? '<span class="chip live">● Live now</span>'
-      : '<span class="chip building">In the works</span>';
-    html += '<a class="region' + (r.status === 'live' ? ' on' : '') + '" href="region.html?r=' + r.slug + '">'
-      + '<b>' + r.name + '</b><span class="bl">' + r.blurb + '</span>' + chip + '</a>';
+  Object.keys(BN_GROUPS).forEach(function(g){
+    var el = document.getElementById('bn-reg-' + g);
+    if (!el) return;
+    var html = '';
+    BN_GROUPS[g].forEach(function(slug){
+      var r = bnRegionBySlug(slug);
+      if (r) html += bnRegionCard(r);
+    });
+    el.innerHTML = html;
   });
-  document.getElementById('bn-regions').innerHTML = html;
 })();
 
 /* Waitlist form (FormSubmit). Fields: email + zip. */
