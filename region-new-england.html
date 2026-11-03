@@ -92,27 +92,24 @@
 iframe.goog-te-banner-frame{display:none !important}
 .goog-te-banner-frame.skiptranslate{display:none !important}
 body{top:0 !important}
-.bn-wxbar{background:#dbe9f4;color:#0b3d62;display:flex;align-items:center;gap:10px;padding:6px 12px;border-bottom:1px solid #b8d4e8}
-.bn-wx-loc{min-width:118px;line-height:1.15;flex:0 0 auto}
-.bn-wx-loc b{display:block;font-size:.82rem;color:#0a2540;white-space:nowrap}
-.bn-wx-loc span{font-size:.68rem;color:#4a6b8a;white-space:nowrap}
-.bn-wx-cards{display:flex;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
-.bn-wx-cards::-webkit-scrollbar{display:none}
-.bn-wx-card{padding:1px 9px;display:flex;flex-direction:column;align-items:center;line-height:1.2;min-width:52px;border-left:1px solid #b8d4e8;flex:0 0 auto}
-.bn-wx-card:first-child{border-left:0}
-.bn-wx-card b{font-size:.78rem;color:#0b3d62;font-weight:800;white-space:nowrap}
-.bn-wx-card i{font-style:normal;font-size:.58rem;letter-spacing:.6px;text-transform:uppercase;color:#4a6b8a;white-space:nowrap}
-.bn-wx-card.cond{min-width:138px;align-items:flex-start}
-.bn-wx-card.score{min-width:118px}
-.bn-score-track{position:relative;width:100%;height:12px;background:linear-gradient(90deg,#e33f2f 0%,#f2a33c 50%,#2fa84f 100%);border-radius:99px;margin:3px auto 2px}
-.bn-scorebar{border-top:1px solid rgba(255,255,255,.16);margin-top:7px;padding:8px 2px 3px}
-.bn-score-line{display:flex;align-items:baseline;gap:10px;margin-bottom:5px}
-.bn-score-line b{font-size:1.4rem;line-height:1}
-.bn-score-line span{font-weight:700;font-size:.98rem}
-.bn-score-dot{position:absolute;top:50%;left:0%;width:13px;height:13px;border-radius:50%;background:#fff;border:2px solid #0a2540;transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.45)}
-.bn-wx-btn{background:#B31942;color:#fff;border:0;border-radius:999px;padding:7px 11px;font-family:inherit;font-size:.75rem;font-weight:800;cursor:pointer;white-space:nowrap;flex:0 0 auto}
+.bn-wxbar{background:#e8f1f8;color:#0a2540;margin:10px 12px 0;padding:10px 14px 12px;border-radius:18px;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.bn-wx-top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.bn-wx-top b{font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bn-wx-top span{font-size:.68rem;color:#4a6b8a;white-space:nowrap}
+.bn-wx-btn{margin-left:auto;background:#B31942;color:#fff;border:0;border-radius:999px;padding:6px 11px;font-family:inherit;font-size:.72rem;font-weight:800;cursor:pointer;white-space:nowrap;flex:0 0 auto}
 .bn-wx-btn:hover{background:#E63946}
-@media(max-width:640px){.topbar b{font-size:.96rem}.tb-lang{font-size:.82rem;padding:6px 8px}.tb-translate{left:8px;right:8px}.lang-list{min-width:0}.bn-wxbar{gap:6px;padding:6px 8px}.bn-wx-loc{min-width:88px}.bn-wx-loc b{font-size:.74rem}.bn-wx-loc span{font-size:.62rem}.bn-wx-btn{font-size:.7rem;padding:6px 8px}}
+.bn-wx-stats{display:flex}
+.bn-stat{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;padding:2px;border-left:1px solid #c3d6e6;line-height:1.15;min-width:0}
+.bn-stat:first-child{border-left:0}
+.bn-stat .bn-ic{font-size:1.05rem;line-height:1.1}
+.bn-stat b{font-size:1.26rem;font-weight:800;color:#0b3d62;white-space:nowrap}
+.bn-stat i{font-style:normal;font-size:.62rem;letter-spacing:1.2px;color:#4a6b8a;font-weight:700}
+.bn-score-row{display:flex;align-items:center;gap:10px;margin-top:10px}
+.bn-score-track{position:relative;flex:1;height:13px;background:linear-gradient(90deg,#2fa84f 0%,#8fce62 30%,#f2d13c 55%,#f2a33c 78%,#e33f2f 100%);border-radius:99px}
+.bn-score-dot{position:absolute;top:50%;left:0%;width:17px;height:17px;border-radius:50%;background:#0a2540;border:3px solid #fff;transform:translate(-50%,-50%);box-shadow:0 1px 5px rgba(0,0,0,.5)}
+.bn-score-row b{font-size:1.05rem;color:#0a2540;min-width:46px;text-align:right}
+.bn-wx-cond{font-size:.72rem;color:#4a6b8a;margin-top:7px}
+@media(max-width:640px){.topbar b{font-size:.96rem}.tb-lang{font-size:.82rem;padding:6px 8px}.tb-translate{left:8px;right:8px}.lang-list{min-width:0}.bn-wxbar{margin:8px 8px 0;padding:9px 10px 10px}.bn-stat b{font-size:1.05rem}.bn-wx-btn{font-size:.7rem;padding:6px 8px}}
 
 main{display:block}
 .wrap{max-width:1120px}
@@ -247,18 +244,15 @@ main{display:block}
 </div></div>
 <div class="tb-gadget-hidden" aria-hidden="true"><div id="google_translate_element"></div></div>
 <div class="bn-wxbar" id="bn-wxbar" aria-live="polite">
-  <div class="bn-wx-loc"><b id="bnWxPlace">📍 Your location</b><span id="bnWxUpdated">Local weather</span></div>
-  <div class="bn-wx-cards" aria-label="Your local weather">
-    <span class="bn-wx-card"><b id="bnWxAir">--°</b><i>Air</i></span>
-    <span class="bn-wx-card"><b id="bnWxFeels">--°</b><i>Feels</i></span>
-    <span class="bn-wx-card"><b id="bnWxWind">--</b><i>Wind mph</i></span>
-    <span class="bn-wx-card"><b id="bnWxGust">--</b><i>Gust mph</i></span>
-    <span class="bn-wx-card"><b id="bnWxHum">--%</b><i>Humidity</i></span>
-    
-    <span class="bn-wx-card cond"><b id="bnWxCond">Finding your weather…</b><i>Conditions</i></span>
+  <div class="bn-wx-top"><b id="bnWxPlace">📍 Your location</b><span id="bnWxUpdated">Local weather</span><button type="button" class="bn-wx-btn" id="bnWxBtn">Use my location</button></div>
+  <div class="bn-wx-stats" aria-label="Your local conditions">
+    <div class="bn-stat"><span class="bn-ic">🌡️</span><b id="bnWxAir">--°</b><i>AIR</i></div>
+    <div class="bn-stat"><span class="bn-ic">🌊</span><b id="bnWxWater">--°</b><i id="bnWxWaterLbl">WATER</i></div>
+    <div class="bn-stat"><span class="bn-ic">💨</span><b id="bnWxWind">--</b><i>WIND</i></div>
+    <div class="bn-stat"><span class="bn-ic" id="bnWxTideIc">⬆️</span><b id="bnWxTide">--</b><i id="bnWxTideLbl">TIDE</i></div>
   </div>
-  <div class="bn-scorebar"><div class="bn-score-line"><b id="bnWxScorePct">--%</b><span id="bnWxVerdict">Boating score</span></div><div class="bn-score-track"><span class="bn-score-dot" id="bnWxScoreDot"></span></div></div>
-  <button type="button" class="bn-wx-btn" id="bnWxBtn">Use my location</button>
+  <div class="bn-score-row"><div class="bn-score-track"><span class="bn-score-dot" id="bnWxScoreDot"></span></div><b id="bnWxScorePct">--%</b></div>
+  <div class="bn-wx-cond" id="bnWxCond">Finding your weather…</div>
 </div>
 </header>
 <div class="wrap">
@@ -350,6 +344,37 @@ initMap();
           }).catch(function(){});
       });
   }
+
+  function bnStations(cb){
+    try { var raw = localStorage.getItem('bnNoaaSt'); if (raw) { var o = JSON.parse(raw); if (o && (Date.now() - o.t) < 86400000) return cb(o.sts); } } catch(e){}
+    fetch('https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations.json?type=waterlevels')
+      .then(function(r){ return r.json(); })
+      .then(function(d){ var sts = (d.stations || []).map(function(s){ return {id: s.id, lat: s.lat, lng: s.lng}; }); try { localStorage.setItem('bnNoaaSt', JSON.stringify({t: Date.now(), sts: sts})); } catch(e){} cb(sts); })
+      .catch(function(){ cb(null); });
+  }
+  function bnTide(lat, lon, gust){
+    var done = false;
+    function gustFallback(){ if (done) return; done = true; set('bnWxTideLbl', 'GUST'); var ic = $('bnWxTideIc'); if (ic) ic.textContent = '💨'; set('bnWxTide', gust != null ? '' + Math.round(gust) : '--'); }
+    bnStations(function(sts){
+      if (!sts) return gustFallback();
+      var best = null, bd = 1e18;
+      sts.forEach(function(s){ var dx = (s.lat - lat) * 69, dy = (s.lng - lon) * 69 * Math.cos(lat * Math.PI / 180); var dd = dx * dx + dy * dy; if (dd < bd) { bd = dd; best = s; } });
+      if (!best || bd > 15625) return gustFallback();
+      fetch('https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=today&station=' + best.id + '&product=water_level&datum=MLLW&time_zone=lst_ldt&units=english&format=json')
+        .then(function(r){ return r.json(); })
+        .then(function(d){
+          var a = (d && d.data) || [];
+          if (a.length < 8) return gustFallback();
+          var last = parseFloat(a[a.length - 1].v), prev = parseFloat(a[a.length - 8].v);
+          if (isNaN(last) || isNaN(prev)) return gustFallback();
+          done = true;
+          var diff = last - prev;
+          set('bnWxTide', diff > 0.03 ? 'Rising' : diff < -0.03 ? 'Falling' : 'Slack');
+          var ic = $('bnWxTideIc'); if (ic) ic.textContent = diff > 0.03 ? '⬆️' : diff < -0.03 ? '⬇️' : '➡️';
+        })
+        .catch(gustFallback);
+    });
+  }
   function loadWeather(lat, lon, defLabel, defNote){
     if (defLabel) { set('bnWxPlace', defLabel); if (defNote) set('bnWxUpdated', defNote); }
     else placeName(lat, lon);
@@ -378,13 +403,20 @@ initMap();
         if (pp != null) score -= pp * 0.35;
         var wc = c.weather_code;
         if (wc >= 95) score -= 55; else if (wc >= 80) score -= 30; else if (wc >= 61) score -= 22; else if (wc >= 51) score -= 10; else if (wc === 45 || wc === 48) score -= 15;
-        function bnSetScore(s){ s = Math.max(5, Math.min(100, Math.round(s))); set('bnWxScorePct', s + '%'); var dot = $('bnWxScoreDot'); if (dot) dot.style.left = s + '%'; var col = s >= 70 ? '#2fd35f' : s >= 45 ? '#ffb02e' : '#ff5a4d'; var pct = $('bnWxScorePct'); if (pct) pct.style.color = col; var v = $('bnWxVerdict'); if (v) { v.textContent = s >= 70 ? 'Good to go out' : s >= 45 ? 'Use caution' : 'Better to stay home'; v.style.color = col; v.style.fontStyle = 'normal'; v.style.fontWeight = '700'; } }
+        function bnSetScore(s){ s = Math.max(5, Math.min(100, Math.round(s))); set('bnWxScorePct', s + '%'); var dot = $('bnWxScoreDot'); if (dot) dot.style.left = (100 - s) + '%'; }
         bnSetScore(score);
         set('bnWxCond', codeLabel(c.weather_code));
-        fetch('https://marine-api.open-meteo.com/v1/marine?latitude=' + lat + '&longitude=' + lon + '&current=wave_height&forecast_days=1')
+        fetch('https://marine-api.open-meteo.com/v1/marine?latitude=' + lat + '&longitude=' + lon + '&current=wave_height,sea_surface_temperature&temperature_unit=fahrenheit&forecast_days=1')
           .then(function(r){ return r.json(); })
-          .then(function(m){ var wh = m && m.current && m.current.wave_height; if (wh == null) return; var ft = wh * 3.281; var wd = ft <= 1 ? 0 : ft <= 2 ? 8 : ft <= 3 ? 18 : ft <= 4 ? 30 : 45; bnSetScore(score - wd); })
-          .catch(function(){});
+          .then(function(m){
+            var sst = m && m.current && m.current.sea_surface_temperature;
+            if (sst != null) set('bnWxWater', Math.round(sst) + '°');
+            else if (c.apparent_temperature != null) { set('bnWxWater', Math.round(c.apparent_temperature) + '°'); set('bnWxWaterLbl', 'FEELS'); }
+            var wh = m && m.current && m.current.wave_height; if (wh == null) return;
+            var ft = wh * 3.281; var wd = ft <= 1 ? 0 : ft <= 2 ? 8 : ft <= 3 ? 18 : ft <= 4 ? 30 : 45; bnSetScore(score - wd);
+          })
+          .catch(function(){ if (c.apparent_temperature != null) { set('bnWxWater', Math.round(c.apparent_temperature) + '°'); set('bnWxWaterLbl', 'FEELS'); } });
+        bnTide(lat, lon, c.wind_gusts_10m);
         if (c.time) {
           var dt = new Date(c.time);
           if (!isNaN(dt)) set('bnWxUpdated', 'Updated ' + dt.toLocaleTimeString([], {hour:'numeric', minute:'2-digit'}));
