@@ -12,9 +12,9 @@
   .topbar a{display:flex;align-items:center;gap:10px;color:#e8eef4;text-decoration:none}
   .anchor{width:38px;height:38px;border-radius:50%;background:#FFB703;color:#0a2540;display:flex;align-items:center;justify-content:center;font-size:1.25rem;font-weight:900}
   .topbar b{font-size:1.05rem;letter-spacing:.2px}
-  .topbar span{color:#FFB703;font-weight:800}
+  .topbar span{color:#8fd0f0;font-weight:800}
   .wrap{max-width:760px;margin:0 auto;padding:18px 14px 30px}
-  .kicker{color:#FFB703;font-weight:800;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;text-align:center}
+  .kicker{color:#8fd0f0;font-weight:800;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;text-align:center}
   h1{font-size:1.75rem;line-height:1.15;text-align:center;margin:6px 0 8px}
   .intro{text-align:center;color:#c9d8e4;font-size:.98rem;max-width:580px;margin:0 auto 16px}
   h2{font-size:1.2rem;margin:20px 0 8px}
@@ -26,10 +26,10 @@
   .chip{display:inline-block;margin-top:6px;font-size:.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:999px}
   .chip.live{background:#14532d;color:#4ade80}
   .chip.building{background:#123c5e;color:#9db4c6}
-  .region.on{border-color:#FFB703}
+  .region.on{border-color:#8fd0f0}
   .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 12px}
   .tab{flex:1 1 30%;padding:10px 6px;border-radius:999px;border:1.5px solid rgba(232,238,244,.35);background:transparent;color:#e8eef4;font-weight:800;font-size:.85rem;cursor:pointer;font-family:inherit}
-  .tab.on{background:#FFB703;color:#0a2540;border-color:#FFB703}
+  .tab.on{background:#8fd0f0;color:#0a2540;border-color:#8fd0f0}
   .panel{display:none}
   .panel.on{display:block}
   .card{background:#eef5fb;color:#0a2540;border-radius:14px;padding:12px 14px;margin-bottom:10px}
@@ -40,18 +40,18 @@
   .note b{color:#fff}
   .steps{display:grid;grid-template-columns:1fr;gap:8px}
   .step{background:#0a2540;border:1px solid #123c5e;border-radius:12px;padding:11px 13px;font-size:.92rem}
-  .step b{color:#FFB703}
+  .step b{color:#8fd0f0}
   .fine{text-align:center;color:#7d97ab;font-size:.8rem;margin-top:18px}
   .fine b{color:#c9d8e4}
   .zipform{margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
   .zipform input{padding:11px 14px;border-radius:999px;border:1.5px solid #123c5e;background:#071826;color:#fff;font-size:1rem;width:210px;text-align:center;font-family:inherit}
-  .zipform button{padding:11px 22px;border-radius:999px;border:none;background:#FFB703;color:#0a2540;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
-  .btn{display:inline-block;margin-top:10px;padding:10px 18px;border-radius:999px;background:#FFB703;color:#0a2540;font-weight:800;font-size:.9rem;text-decoration:none}
-  .btn.ghost{background:transparent;border:1.5px solid #FFB703;color:#FFB703;margin-left:6px}
+  .zipform button{padding:11px 22px;border-radius:999px;border:none;background:#8fd0f0;color:#0a2540;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+  .btn{display:inline-block;margin-top:10px;padding:10px 18px;border-radius:999px;background:#8fd0f0;color:#0a2540;font-weight:800;font-size:.9rem;text-decoration:none}
+  .btn.ghost{background:transparent;border:1.5px solid #8fd0f0;color:#8fd0f0;margin-left:6px}
   .wl{margin-top:12px;display:grid;gap:8px;text-align:left}
   .wl label{font-size:.8rem;font-weight:700;color:#c9d8e4}
   .wl input{display:block;width:100%;margin-top:3px;padding:11px 12px;border-radius:10px;border:1.5px solid #123c5e;background:#071826;color:#fff;font-size:1rem;font-family:inherit}
-  .wl button{padding:12px;border-radius:999px;border:none;background:#FFB703;color:#0a2540;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+  .wl button{padding:12px;border-radius:999px;border:none;background:#8fd0f0;color:#0a2540;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
   @media(min-width:560px){.regions{grid-template-columns:1fr 1fr 1fr}.steps{grid-template-columns:1fr 1fr 1fr}}
 .hero{background:linear-gradient(rgba(7,24,38,.68),rgba(7,24,38,.88)),url('assets/bn-hero.jpg') center/cover no-repeat;border-radius:16px;padding:24px 16px 18px;margin:14px 0 6px}
 </style>
@@ -169,12 +169,12 @@ function bnZip(ev){
       + '<br><a class="btn" href="https://tampabayboating.com">Open Tampa Bay Boating →</a>'
       + '<a class="btn ghost" href="region.html?r=' + r.slug + '">What\'s inside</a>';
   } else if (r) {
-    out.innerHTML = '<b style="color:#FFB703">' + r.name + ' is in the works.</b><br>'
+    out.innerHTML = '<b style="color:#8fd0f0">' + r.name + ' is in the works.</b><br>'
       + 'We open a region only when every pin is verified — no filler, no guesses. '
       + 'Join the waitlist and we will email you the day your water goes live.'
       + bnWaitlistForm(r.name, z);
   } else {
-    out.innerHTML = '<b style="color:#FFB703">Not covered yet.</b><br>'
+    out.innerHTML = '<b style="color:#8fd0f0">Not covered yet.</b><br>'
       + 'Boaters Nation opens region by region — and the ZIPs with the most boaters waiting open first. '
       + 'Joining the waitlist is how your area moves up the list.'
       + bnWaitlistForm('Not covered yet', z);
