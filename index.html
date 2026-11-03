@@ -62,6 +62,13 @@
 .mtab.on{background:#B31942;color:#ffffff;border-color:#E63946}
 .mpanel{display:none}
 .mpanel.on{display:block}
+.pl-row{display:flex;align-items:center;gap:8px;padding:11px 0;border-bottom:1px solid #d3e2ee}
+.pl-row:last-child{border-bottom:none}
+.pl-genre{flex:1;font-weight:800}
+.pl-link{padding:7px 13px;border-radius:99px;font-weight:800;font-size:.85rem;text-decoration:none;white-space:nowrap}
+.pl-link.sp{background:#1DB954;color:#052e12}
+.pl-link.am{background:#0a2540;color:#fff}
+.em-tel{color:#B31942;font-weight:800;text-decoration:none}
 .stab{flex:0 1 auto;padding:8px 14px;border-radius:999px;border:1.5px solid rgba(232,238,244,.35);background:transparent;color:#e8eef4;font-weight:800;font-size:.8rem;cursor:pointer;font-family:inherit}
 .stab.on{background:#ffffff;color:#0a2540;border-color:#ffffff}
 .spanel{display:none}
@@ -223,12 +230,13 @@ body{top:0 !important}
 <div class="bn-wxbar" id="bn-wxbar" aria-live="polite">
   <div class="bn-wx-loc"><b id="bnWxPlace">📍 Your location</b><span id="bnWxUpdated">Local weather</span></div>
   <div class="bn-wx-cards" aria-label="Your local weather">
+    <span class="bn-wx-card score"><span class="bn-score-track"><span class="bn-score-dot" id="bnWxScoreDot"></span></span><b id="bnWxScorePct">--%</b><i>Boating score</i></span>
     <span class="bn-wx-card"><b id="bnWxAir">--°</b><i>Air</i></span>
     <span class="bn-wx-card"><b id="bnWxFeels">--°</b><i>Feels</i></span>
     <span class="bn-wx-card"><b id="bnWxWind">--</b><i>Wind mph</i></span>
     <span class="bn-wx-card"><b id="bnWxGust">--</b><i>Gust mph</i></span>
     <span class="bn-wx-card"><b id="bnWxHum">--%</b><i>Humidity</i></span>
-    <span class="bn-wx-card score"><span class="bn-score-track"><span class="bn-score-dot" id="bnWxScoreDot"></span></span><b id="bnWxScorePct">--%</b><i>Boating score</i></span>
+    
     <span class="bn-wx-card cond"><b id="bnWxCond">Finding your weather…</b><i>Conditions</i></span>
   </div>
   <button type="button" class="bn-wx-btn" id="bnWxBtn">Use my location</button>
@@ -254,6 +262,8 @@ body{top:0 !important}
   <div class="tabs">
     <button type="button" class="mtab on" onclick="bnMainTab('regions',this)">Regions</button>
     <button type="button" class="mtab" onclick="bnMainTab('inside',this)">What's Inside</button>
+    <button type="button" class="mtab" onclick="bnMainTab('safety',this)">Safety &amp; Emergency</button>
+    <button type="button" class="mtab" onclick="bnMainTab('music',this)">Boat Music</button>
     <button type="button" class="mtab" onclick="bnMainTab('how',this)">How It Works</button>
   </div>
 
@@ -309,6 +319,38 @@ body{top:0 !important}
       <p>Checked every morning: the lowest ethanol-free and diesel prices around each region's ramps and marinas — because boaters drive out of their way for fuel, and a wrong price burns trust.</p></div>
   </div>
 
+  </div>
+
+
+  <div class="mpanel" id="m-safety">
+  <h2>Safety &amp; Emergency</h2>
+  <p class="sub">The first-call list every boater in America needs — the same one we run in Tampa Bay, good on any water in the country.</p>
+    <div class="card"><span class="tag">First call</span><h3>Emergency contacts</h3>
+      <p><b>Life-threatening emergency:</b> <a class="em-tel" href="tel:911">911</a></p>
+      <p><b>Distress on the water:</b> VHF <b>Channel 16</b> — say &ldquo;Mayday&rdquo; three times, then your boat name, your position, what&rsquo;s wrong, and how many people are aboard. The Coast Guard monitors Channel 16 around the clock.</p>
+      <p><b>Poison Control:</b> <a class="em-tel" href="tel:8002221222">800-222-1222</a></p>
+      <p><b>Fuel or oil spill:</b> National Response Center <a class="em-tel" href="tel:8004248802">800-424-8802</a></p>
+      <p><b>Towing (not an emergency):</b> TowBoatUS dispatch <a class="em-tel" href="tel:8003914869">800-391-4869</a> &middot; Sea Tow members — dispatch through the Sea Tow app or your local franchise.</p>
+      <p><b>Before you go:</b> file a float plan — tell someone on shore where you&rsquo;re headed and when you&rsquo;ll be back, and make sure someone aboard can run the boat and the radio.</p>
+    </div>
+    <div class="card"><span class="tag">On the radio</span><h3>VHF quick list</h3>
+      <p><b>16</b> distress &amp; hailing &middot; <b>9</b> hailing &amp; bridge tenders &middot; <b>22A</b> Coast Guard working channel &middot; <b>13</b> bridge-to-bridge</p>
+    </div>
+  </div>
+
+  <div class="mpanel" id="m-music">
+  <h2>Boat Music</h2>
+  <p class="sub">Playlists for the water — pick a vibe, tap your service, and it opens in your Spotify or Apple Music app. The same playlists we run in Tampa Bay.</p>
+    <div class="card">
+    <div class="pl-row"><span class="pl-genre">Sandbar Party</span><a class="pl-link sp" href="https://open.spotify.com/playlist/37i9dQZF1DXaXB8fQg7xif" target="_blank" rel="noopener">Spotify</a><a class="pl-link am" href="https://music.apple.com/us/playlist/pl.350f2233e64743f7b0ffb7c9a8d9b2cb" target="_blank" rel="noopener">Apple Music</a></div>
+    <div class="pl-row"><span class="pl-genre">Rap &amp; Hip-Hop</span><a class="pl-link sp" href="https://open.spotify.com/playlist/37i9dQZF1DX0XUsuxWHRQd" target="_blank" rel="noopener">Spotify</a><a class="pl-link am" href="https://music.apple.com/us/playlist/pl.abe8ba42278f4ef490e3a9fc5ec8e8c5" target="_blank" rel="noopener">Apple Music</a></div>
+    <div class="pl-row"><span class="pl-genre">Pop Hits</span><a class="pl-link sp" href="https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M" target="_blank" rel="noopener">Spotify</a><a class="pl-link am" href="https://music.apple.com/us/playlist/pl.f4d106fed2bd41149aaacabb233eb5eb" target="_blank" rel="noopener">Apple Music</a></div>
+    <div class="pl-row"><span class="pl-genre">New Country</span><a class="pl-link sp" href="https://open.spotify.com/playlist/37i9dQZF1DX1lVhptIYRda" target="_blank" rel="noopener">Spotify</a><a class="pl-link am" href="https://music.apple.com/us/playlist/todays-country/pl.87bb5b36a9bd49db8c975607452bfa2b" target="_blank" rel="noopener">Apple Music</a></div>
+    <div class="pl-row"><span class="pl-genre">Rock &amp; Roll</span><a class="pl-link sp" href="https://open.spotify.com/playlist/37i9dQZF1DWXRqgorJj26U" target="_blank" rel="noopener">Spotify</a><a class="pl-link am" href="https://music.apple.com/us/playlist/pl.1a7fd42205674dd282d106f533f4bea6" target="_blank" rel="noopener">Apple Music</a></div>
+    <div class="pl-row"><span class="pl-genre">Latin</span><a class="pl-link sp" href="https://open.spotify.com/playlist/37i9dQZF1DX10zKzsJ2jva" target="_blank" rel="noopener">Spotify</a><a class="pl-link am" href="https://music.apple.com/us/playlist/pl.139df28c68b0465fb57f162799b84699" target="_blank" rel="noopener">Apple Music</a></div>
+    <div class="pl-row"><span class="pl-genre">Reggae</span><a class="pl-link sp" href="https://open.spotify.com/playlist/37i9dQZF1DXbSbnqxMTGx9" target="_blank" rel="noopener">Spotify</a><a class="pl-link am" href="https://music.apple.com/us/playlist/pl.908c599362da43a99f8997886b311a53" target="_blank" rel="noopener">Apple Music</a></div>
+    <div class="pl-row"><span class="pl-genre">Yacht Rock</span><a class="pl-link sp" href="https://open.spotify.com/playlist/37i9dQZF1DXb3m918yXHxA" target="_blank" rel="noopener">Spotify</a><a class="pl-link am" href="https://music.apple.com/us/playlist/pl.1870421bdeb74580831f17505e5d32d9" target="_blank" rel="noopener">Apple Music</a></div>
+    </div>
   </div>
 
   <div class="mpanel" id="m-how">
@@ -443,8 +485,9 @@ function bnZip(ev){
           }).catch(function(){});
       });
   }
-  function loadWeather(lat, lon){
-    placeName(lat, lon);
+  function loadWeather(lat, lon, defLabel, defNote){
+    if (defLabel) { set('bnWxPlace', defLabel); if (defNote) set('bnWxUpdated', defNote); }
+    else placeName(lat, lon);
     var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + encodeURIComponent(lat) + '&longitude=' + encodeURIComponent(lon)
       + '&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m'
       + '&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=auto&forecast_days=1&hourly=precipitation_probability';
@@ -504,8 +547,8 @@ function bnZip(ev){
   var btn = $('bnWxBtn');
   if (btn) btn.addEventListener('click', locate);
   var saved = readPos();
-  if (saved && (Date.now() - (saved.t || 0)) < 1800000) loadWeather(saved.lat, saved.lon);
-  else locate();
+  if (saved) loadWeather(saved.lat, saved.lon);
+  else loadWeather(27.9506, -82.4572, '📍 Tampa Bay, FL', 'Home waters — tap Use my location for yours');
   setInterval(function(){ var p = readPos(); if (p) loadWeather(p.lat, p.lon); }, 900000);
 })();
 </script>
