@@ -239,13 +239,13 @@ body{top:0 !important}
   <div class="hero">
   <div class="kicker">🇺🇸 Boaters Nation 🇺🇸</div>
   <h1>Everything Boating in America</h1>
-  <p class="intro">One free site for boaters on every lake, river and coast: local conditions, a boater's map, events, dock-and-dine, fuel prices and waterfront stays with docks — verified by hand, region by region. Local businesses sponsor it, so boaters never pay.</p>
+  <p class="intro">One free site for boaters on every lake, river and coast: local conditions, a boater's map, events, dock-and-dine, fuel prices and waterfront stays with docks — every listing cross-checked against its sources, region by region — and corrected by the boaters who use it. Local businesses sponsor it, so boaters never pay.</p>
 
   <div class="note" style="text-align:center">
-    <b>Start with your ZIP code</b><br>
-    <span style="font-size:.88rem">Type your ZIP and land on your water — your map, your events, your fuel prices.</span>
+    <b>Find your water</b><br>
+    <span style="font-size:.88rem">Type your ZIP code — or your city, lake or river — and land on your water: your map, your events, your fuel prices.</span>
     <form class="zipform" onsubmit="return bnZip(event)">
-      <input id="bn-zip" inputmode="numeric" maxlength="5" placeholder="ZIP code — try 33602" aria-label="ZIP code">
+      <input id="bn-zip" placeholder="ZIP, city, lake or river — try Lanier" aria-label="ZIP code or place name" autocomplete="off">
       <button type="submit">Find My Water</button>
     </form>
     <div id="bn-zip-out" style="margin-top:10px;font-size:.92rem"></div>
@@ -262,7 +262,7 @@ body{top:0 !important}
 
   <div class="mpanel on" id="m-regions">
   <h2>Pick Your Waters</h2>
-  <p class="sub">One region at a time, built the same way Tampa Bay was — every pin and price verified before it goes up. A region opens only when it's ready; until then, join its waitlist and help it move up the list.</p>
+  <p class="sub">One region at a time, built the same way Tampa Bay was — every pin and price cross-checked before it goes up. A region opens only when it's ready; until then, join its waitlist and help it move up the list.</p>
     <div class="tabs">
       <button type="button" class="stab on" onclick="bnSubTab('fl',this)">Florida</button>
       <button type="button" class="stab" onclick="bnSubTab('east',this)">East Coast</button>
@@ -293,7 +293,7 @@ body{top:0 !important}
   </div>
   <div class="panel" id="p-map">
     <div class="card"><span class="tag">The Map</span><h3>Every ramp, fuel dock &amp; marina — pinned</h3>
-      <p>One map per region: boat ramps, marina fuel, bait, dock-and-dine, storage, services. Every pin carries a phone number or a website, and every popup ends with directions. If it isn't verified, it isn't on the map.</p></div>
+      <p>One map per region: boat ramps, marina fuel, bait, dock-and-dine, storage, services. Every pin carries a phone number or a website, and every popup ends with directions. If it can't be cross-checked, it isn't on the map.</p></div>
   </div>
   <div class="panel" id="p-events">
     <div class="card"><span class="tag">Events</span><h3>Boat parades, tournaments &amp; waterfront festivals</h3>
@@ -349,7 +349,7 @@ body{top:0 !important}
   <div class="mpanel" id="m-how">
   <h2>How It Grows</h2>
   <div class="steps">
-    <div class="step"><b>1 · One region at a time.</b><br>No nationwide data dump. Each region launches only when its map, events and prices are verified the local way.</div>
+    <div class="step"><b>1 · One region at a time.</b><br>No nationwide data dump. Each region launches only when its map, events and prices are cross-checked the local way.</div>
     <div class="step"><b>2 · Free for boaters, always.</b><br>Sponsors and featured local businesses pay. Boaters, event listings and rental listings never do.</div>
     <div class="step"><b>3 · Middleman only.</b><br>We connect boaters to local businesses and take no bookings, no sales, no cut of anyone's money.</div>
   </div>
@@ -414,29 +414,65 @@ function bnWaitlistForm(regionName, zip){
     + '<button type="submit">Tell me when it opens</button></form>';
 }
 
-/* ZIP finder */
-function bnZip(ev){
-  ev.preventDefault();
-  var z = (document.getElementById('bn-zip').value || '').trim();
+/* ZIP + place finder: a 5-digit ZIP routes by prefix; anything else is a
+   place name (city, state, lake, river) geocoded once via OpenStreetMap's
+   Nominatim, then routed by region box, then by state. */
+function bnRegionForPoint(lat, lon){
+  if (typeof BN_BBOX === 'undefined') return null;
+  for (var i = 0; i < BN_REGIONS.length; i++) {
+    var boxes = BN_BBOX[BN_REGIONS[i].slug] || [];
+    for (var j = 0; j < boxes.length; j++) {
+      var b = boxes[j];
+      if (lat >= b[0] && lon >= b[1] && lat <= b[2] && lon <= b[3]) return BN_REGIONS[i];
+    }
+  }
+  return null;
+}
+function bnRegionForState(state){
+  if (!state || typeof BN_STATE_REGION === 'undefined') return null;
+  var slug = BN_STATE_REGION[state];
+  if (!slug) return null;
+  for (var i = 0; i < BN_REGIONS.length; i++) if (BN_REGIONS[i].slug === slug) return BN_REGIONS[i];
+  return null;
+}
+function bnZipResult(r, zip, place){
   var out = document.getElementById('bn-zip-out');
-  if (!/^\d{5}$/.test(z)) { out.innerHTML = 'Type a 5-digit ZIP code.'; return false; }
-  var r = bnRegionForZip(z);
+  var found = place ? '<span style="color:#9db4c6">Found: ' + place.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</span><br>' : '';
   if (r && r.status === 'live') {
     var dest = r.page || ('region.html?r=' + r.slug);
-    out.innerHTML = '<b style="color:#4ade80">' + r.name + ' is LIVE.</b><br>'
-      + 'That ZIP is covered — map, fuel, events and stays, all verified.'
+    out.innerHTML = found + '<b style="color:#4ade80">' + r.name + ' is LIVE.</b><br>'
+      + 'That water is covered — map, fuel, events and stays, every listing cross-checked.'
       + '<br><a class="btn" href="' + dest + '">Open ' + r.name + ' →</a>';
   } else if (r) {
-    out.innerHTML = '<b style="color:#E63946">' + r.name + ' is in the works.</b><br>'
-      + 'We open a region only when every pin is verified — no filler, no guesses. '
+    out.innerHTML = found + '<b style="color:#E63946">' + r.name + ' is in the works.</b><br>'
+      + 'We open a region only when every pin is cross-checked — no filler, no guesses. '
       + 'Join the waitlist and we will email you the day your water goes live.'
-      + bnWaitlistForm(r.name, z);
+      + bnWaitlistForm(r.name, zip);
   } else {
-    out.innerHTML = '<b style="color:#E63946">Not covered yet.</b><br>'
-      + 'Boaters Nation opens region by region — and the ZIPs with the most boaters waiting open first. '
+    out.innerHTML = found + '<b style="color:#E63946">Not covered yet.</b><br>'
+      + 'Boaters Nation opens region by region — and the waters with the most boaters waiting open first. '
       + 'Joining the waitlist is how your area moves up the list.'
-      + bnWaitlistForm('Not covered yet', z);
+      + bnWaitlistForm(place ? ('Not covered: ' + place) : 'Not covered yet', zip);
   }
+}
+function bnZip(ev){
+  ev.preventDefault();
+  var q = (document.getElementById('bn-zip').value || '').trim();
+  var out = document.getElementById('bn-zip-out');
+  if (!q) { out.innerHTML = 'Type a ZIP code, or the name of your city, lake or river.'; return false; }
+  if (/^\d{5}$/.test(q)) { bnZipResult(bnRegionForZip(q), q, null); return false; }
+  if (/^\d+$/.test(q)) { out.innerHTML = 'That looks like part of a ZIP — type all 5 digits, or a place name.'; return false; }
+  out.innerHTML = 'Finding ' + q.replace(/</g, '&lt;') + '…';
+  fetch('https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=us&addressdetails=1&q=' + encodeURIComponent(q), { headers: { 'Accept': 'application/json' } })
+    .then(function(r){ return r.json(); })
+    .then(function(list){
+      if (!list || !list.length) { out.innerHTML = 'Couldn\'t find that name. Check the spelling, or try the ZIP code.'; return; }
+      var it = list[0];
+      var place = (it.display_name || q).split(',').slice(0, 2).join(',');
+      var r = bnRegionForPoint(parseFloat(it.lat), parseFloat(it.lon)) || bnRegionForState((it.address && it.address.state) || '');
+      bnZipResult(r, '', place);
+    })
+    .catch(function(){ out.innerHTML = 'The place finder couldn\'t connect just then — a ZIP code will still work.'; });
   return false;
 }
 </script>

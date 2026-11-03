@@ -9,7 +9,7 @@
 <link rel="shortcut icon" href="assets/app-icon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/app-icon-180.png">
 <link rel="manifest" href="manifest.json">
-<meta name="description" content="Boaters Nation region page — local conditions, boater's map, events, dock-and-dine, fuel prices and waterfront stays, verified region by region.">
+<meta name="description" content="Boaters Nation region page — local conditions, boater's map, events, dock-and-dine, fuel prices and waterfront stays, cross-checked region by region.">
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:#071826;color:#e8eef4;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.45}
@@ -272,7 +272,7 @@ function bnTabR(name, btn){
     out.innerHTML = head
       + '<p><span class="chip live">● Live now</span></p>'
       + '<div class="note" style="margin-top:12px"><b>This region is open.</b> Tampa Bay is the water Boaters Nation started on — '
-      + 'its full map, events, dock-and-dine and fuel coverage is being built out here, verified the local way.</div>'
+      + 'its full map, events, dock-and-dine and fuel coverage is being built out here, cross-checked the local way.</div>'
       + '<h2>Your Tampa Bay toolkit</h2><div class="tabs">' + tabs + '</div>' + cards;
   } else {
     var ctabs = '', coming = '';
@@ -284,7 +284,7 @@ function bnTabR(name, btn){
     out.innerHTML = head
       + '<p><span class="chip building">In the works</span></p>'
       + '<div class="note" style="margin-top:12px"><b>This region isn\'t open yet — on purpose.</b> '
-      + 'A Boaters Nation region launches only when its map pins, events and prices are verified the local way. '
+      + 'A Boaters Nation region launches only when its map pins, events and prices are cross-checked the local way. '
       + 'Until then you get a waitlist, not placeholder pages. Join it and we will email you the day ' + r.name + ' goes live — '
       + 'and the regions with the most boaters waiting open first.</div>'
       + '<h2>What\'s coming</h2><div class="tabs">' + ctabs + '</div>' + coming
