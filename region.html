@@ -86,9 +86,9 @@ body{top:0 !important}
 .bn-wx-card b{font-size:.78rem;color:#0b3d62;font-weight:800;white-space:nowrap}
 .bn-wx-card i{font-style:normal;font-size:.58rem;letter-spacing:.6px;text-transform:uppercase;color:#4a6b8a;white-space:nowrap}
 .bn-wx-card.cond{min-width:138px;align-items:flex-start}
-.bn-wx-card.score{min-width:86px}
-.bn-score-track{position:relative;width:64px;height:8px;background:#b8d4e8;border-radius:99px;margin:3px 0 2px}
-.bn-score-dot{position:absolute;top:50%;left:0%;width:11px;height:11px;border-radius:50%;background:#B31942;border:2px solid #fff;box-shadow:0 1px 3px rgba(10,37,64,.4);transform:translate(-50%,-50%);transition:left .5s ease}
+.bn-wx-card.score{min-width:118px}
+.bn-score-track{position:relative;width:96px;height:10px;background:linear-gradient(90deg,#e33f2f 0%,#f2a33c 50%,#2fa84f 100%);border-radius:99px;margin:3px auto 2px}
+.bn-score-dot{position:absolute;top:50%;left:0%;width:13px;height:13px;border-radius:50%;background:#fff;border:2px solid #0a2540;transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.45)}
 .bn-wx-btn{background:#B31942;color:#fff;border:0;border-radius:999px;padding:7px 11px;font-family:inherit;font-size:.75rem;font-weight:800;cursor:pointer;white-space:nowrap;flex:0 0 auto}
 .bn-wx-btn:hover{background:#E63946}
 @media(max-width:640px){.topbar b{font-size:.96rem}.tb-lang{font-size:.82rem;padding:6px 8px}.tb-translate{left:8px;right:8px}.lang-list{min-width:0}.bn-wxbar{gap:6px;padding:6px 8px}.bn-wx-loc{min-width:88px}.bn-wx-loc b{font-size:.74rem}.bn-wx-loc span{font-size:.62rem}.bn-wx-btn{font-size:.7rem;padding:6px 8px}}
@@ -211,7 +211,7 @@ body{top:0 !important}
     <span class="bn-wx-card"><b id="bnWxWind">--</b><i>Wind mph</i></span>
     <span class="bn-wx-card"><b id="bnWxGust">--</b><i>Gust mph</i></span>
     <span class="bn-wx-card"><b id="bnWxHum">--%</b><i>Humidity</i></span>
-    <span class="bn-wx-card score"><span class="bn-score-track"><span class="bn-score-dot" id="bnWxScoreDot"></span></span><b id="bnWxScorePct">--%</b><i>Boating score</i></span>
+    <span class="bn-wx-card score"><span class="bn-score-track"><span class="bn-score-dot" id="bnWxScoreDot"></span></span><b id="bnWxScorePct">--%</b><i id="bnWxVerdict">Boating score</i></span>
     <span class="bn-wx-card cond"><b id="bnWxCond">Finding your weather…</b><i>Conditions</i></span>
   </div>
   <button type="button" class="bn-wx-btn" id="bnWxBtn">Use my location</button>
@@ -369,7 +369,7 @@ function bnTabR(name, btn){
         if (pp != null) score -= pp * 0.35;
         var wc = c.weather_code;
         if (wc >= 95) score -= 55; else if (wc >= 80) score -= 30; else if (wc >= 61) score -= 22; else if (wc >= 51) score -= 10; else if (wc === 45 || wc === 48) score -= 15;
-        function bnSetScore(s){ s = Math.max(5, Math.min(100, Math.round(s))); set('bnWxScorePct', s + '%'); var dot = $('bnWxScoreDot'); if (dot) dot.style.left = s + '%'; }
+        function bnSetScore(s){ s = Math.max(5, Math.min(100, Math.round(s))); set('bnWxScorePct', s + '%'); var dot = $('bnWxScoreDot'); if (dot) dot.style.left = s + '%'; var col = s >= 70 ? '#2fd35f' : s >= 45 ? '#ffb02e' : '#ff5a4d'; var pct = $('bnWxScorePct'); if (pct) pct.style.color = col; var v = $('bnWxVerdict'); if (v) { v.textContent = s >= 70 ? 'Good to go out' : s >= 45 ? 'Use caution' : 'Better to stay home'; v.style.color = col; v.style.fontStyle = 'normal'; v.style.fontWeight = '700'; } }
         bnSetScore(score);
         set('bnWxCond', codeLabel(c.weather_code));
         fetch('https://marine-api.open-meteo.com/v1/marine?latitude=' + lat + '&longitude=' + lon + '&current=wave_height&forecast_days=1')
