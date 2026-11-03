@@ -111,7 +111,11 @@ body{top:0 !important}
 .bn-wx-card i{font-style:normal;font-size:.58rem;letter-spacing:.6px;text-transform:uppercase;color:#4a6b8a;white-space:nowrap}
 .bn-wx-card.cond{min-width:138px;align-items:flex-start}
 .bn-wx-card.score{min-width:118px}
-.bn-score-track{position:relative;width:96px;height:10px;background:linear-gradient(90deg,#e33f2f 0%,#f2a33c 50%,#2fa84f 100%);border-radius:99px;margin:3px auto 2px}
+.bn-score-track{position:relative;width:100%;height:12px;background:linear-gradient(90deg,#e33f2f 0%,#f2a33c 50%,#2fa84f 100%);border-radius:99px;margin:3px auto 2px}
+.bn-scorebar{border-top:1px solid rgba(255,255,255,.16);margin-top:7px;padding:8px 2px 3px}
+.bn-score-line{display:flex;align-items:baseline;gap:10px;margin-bottom:5px}
+.bn-score-line b{font-size:1.4rem;line-height:1}
+.bn-score-line span{font-weight:700;font-size:.98rem}
 .bn-score-dot{position:absolute;top:50%;left:0%;width:13px;height:13px;border-radius:50%;background:#fff;border:2px solid #0a2540;transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.45)}
 .bn-wx-btn{background:#B31942;color:#fff;border:0;border-radius:999px;padding:7px 11px;font-family:inherit;font-size:.75rem;font-weight:800;cursor:pointer;white-space:nowrap;flex:0 0 auto}
 .bn-wx-btn:hover{background:#E63946}
@@ -230,7 +234,6 @@ body{top:0 !important}
 <div class="bn-wxbar" id="bn-wxbar" aria-live="polite">
   <div class="bn-wx-loc"><b id="bnWxPlace">📍 Your location</b><span id="bnWxUpdated">Local weather</span></div>
   <div class="bn-wx-cards" aria-label="Your local weather">
-    <span class="bn-wx-card score"><span class="bn-score-track"><span class="bn-score-dot" id="bnWxScoreDot"></span></span><b id="bnWxScorePct">--%</b><i id="bnWxVerdict">Boating score</i></span>
     <span class="bn-wx-card"><b id="bnWxAir">--°</b><i>Air</i></span>
     <span class="bn-wx-card"><b id="bnWxFeels">--°</b><i>Feels</i></span>
     <span class="bn-wx-card"><b id="bnWxWind">--</b><i>Wind mph</i></span>
@@ -239,6 +242,7 @@ body{top:0 !important}
     
     <span class="bn-wx-card cond"><b id="bnWxCond">Finding your weather…</b><i>Conditions</i></span>
   </div>
+  <div class="bn-scorebar"><div class="bn-score-line"><b id="bnWxScorePct">--%</b><span id="bnWxVerdict">Boating score</span></div><div class="bn-score-track"><span class="bn-score-dot" id="bnWxScoreDot"></span></div></div>
   <button type="button" class="bn-wx-btn" id="bnWxBtn">Use my location</button>
 </div>
 </header>
