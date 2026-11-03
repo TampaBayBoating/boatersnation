@@ -99,24 +99,24 @@
 iframe.goog-te-banner-frame{display:none !important}
 .goog-te-banner-frame.skiptranslate{display:none !important}
 body{top:0 !important}
-.bn-wxbar{background:#e8f1f8;color:#0a2540;margin:10px 12px 0;padding:10px 14px 12px;border-radius:18px;box-shadow:0 2px 10px rgba(0,0,0,.25)}
-.bn-wx-top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.bn-wx-top b{font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bn-wx-top span{font-size:.68rem;color:#4a6b8a;white-space:nowrap}
-.bn-wx-btn{margin-left:auto;background:#B31942;color:#fff;border:0;border-radius:999px;padding:6px 11px;font-family:inherit;font-size:.72rem;font-weight:800;cursor:pointer;white-space:nowrap;flex:0 0 auto}
+.bn-wxbar{background:#e8f1f8;color:#0a2540;margin:8px 10px 0;padding:7px 12px 8px;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,.22)}
+.bn-wx-top{display:flex;align-items:center;gap:7px;margin-bottom:5px}
+.bn-wx-top b{font-size:.8rem;white-space:nowrap}
+#bnWxCond{font-size:.72rem;color:#33536e;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bn-wx-top span{font-size:.64rem;color:#4a6b8a;white-space:nowrap}
+.bn-wx-btn{margin-left:auto;background:#B31942;color:#fff;border:0;border-radius:999px;padding:5px 10px;font-family:inherit;font-size:.7rem;font-weight:800;cursor:pointer;white-space:nowrap;flex:0 0 auto}
 .bn-wx-btn:hover{background:#E63946}
 .bn-wx-stats{display:flex}
-.bn-stat{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;padding:2px;border-left:1px solid #c3d6e6;line-height:1.15;min-width:0}
+.bn-stat{flex:1;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:4px;padding:1px 2px;border-left:1px solid #c3d6e6;line-height:1.1;min-width:0}
 .bn-stat:first-child{border-left:0}
-.bn-stat .bn-ic{font-size:1.05rem;line-height:1.1}
-.bn-stat b{font-size:1.26rem;font-weight:800;color:#0b3d62;white-space:nowrap}
-.bn-stat i{font-style:normal;font-size:.62rem;letter-spacing:1.2px;color:#4a6b8a;font-weight:700}
-.bn-score-row{display:flex;align-items:center;gap:10px;margin-top:10px}
-.bn-score-track{position:relative;flex:1;height:13px;background:linear-gradient(90deg,#2fa84f 0%,#8fce62 30%,#f2d13c 55%,#f2a33c 78%,#e33f2f 100%);border-radius:99px}
-.bn-score-dot{position:absolute;top:50%;left:0%;width:17px;height:17px;border-radius:50%;background:#0a2540;border:3px solid #fff;transform:translate(-50%,-50%);box-shadow:0 1px 5px rgba(0,0,0,.5)}
-.bn-score-row b{font-size:1.05rem;color:#0a2540;min-width:46px;text-align:right}
-.bn-wx-cond{font-size:.72rem;color:#4a6b8a;margin-top:7px}
-@media(max-width:640px){.topbar b{font-size:.96rem}.tb-lang{font-size:.82rem;padding:6px 8px}.tb-translate{left:8px;right:8px}.lang-list{min-width:0}.bn-wxbar{margin:8px 8px 0;padding:9px 10px 10px}.bn-stat b{font-size:1.05rem}.bn-wx-btn{font-size:.7rem;padding:6px 8px}}
+.bn-stat .bn-ic{font-size:.85rem;line-height:1}
+.bn-stat b{font-size:1.02rem;font-weight:800;color:#0b3d62;white-space:nowrap}
+.bn-stat i{font-style:normal;font-size:.56rem;letter-spacing:.6px;color:#4a6b8a;font-weight:700}
+.bn-score-row{display:flex;align-items:center;gap:9px;margin-top:6px}
+.bn-score-track{position:relative;flex:1;height:9px;background:linear-gradient(90deg,#2fa84f 0%,#8fce62 30%,#f2d13c 55%,#f2a33c 78%,#e33f2f 100%);border-radius:99px}
+.bn-score-dot{position:absolute;top:50%;left:0%;width:13px;height:13px;border-radius:50%;background:#0a2540;border:2px solid #fff;transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.5)}
+.bn-score-row b{font-size:.95rem;color:#0a2540;min-width:42px;text-align:right}
+@media(max-width:640px){.topbar b{font-size:.96rem}.tb-lang{font-size:.82rem;padding:6px 8px}.tb-translate{left:8px;right:8px}.lang-list{min-width:0}.bn-wxbar{margin:6px 8px 0;padding:6px 9px 7px}.bn-stat b{font-size:.92rem}.bn-wx-btn{font-size:.68rem;padding:5px 8px}}
 </style>
 </head>
 <body>
@@ -229,7 +229,7 @@ body{top:0 !important}
 </div></div>
 <div class="tb-gadget-hidden" aria-hidden="true"><div id="google_translate_element"></div></div>
 <div class="bn-wxbar" id="bn-wxbar" aria-live="polite">
-  <div class="bn-wx-top"><b id="bnWxPlace">📍 Your location</b><span id="bnWxUpdated">Local weather</span><button type="button" class="bn-wx-btn" id="bnWxBtn">Use my location</button></div>
+  <div class="bn-wx-top"><b id="bnWxPlace">📍 Your location</b><span id="bnWxCond">Finding your weather…</span><span id="bnWxUpdated">Local weather</span><button type="button" class="bn-wx-btn" id="bnWxBtn">Use my location</button></div>
   <div class="bn-wx-stats" aria-label="Your local conditions">
     <div class="bn-stat"><span class="bn-ic">🌡️</span><b id="bnWxAir">--°</b><i>AIR</i></div>
     <div class="bn-stat"><span class="bn-ic">🌊</span><b id="bnWxWater">--°</b><i id="bnWxWaterLbl">WATER</i></div>
@@ -237,7 +237,6 @@ body{top:0 !important}
     <div class="bn-stat"><span class="bn-ic" id="bnWxTideIc">⬆️</span><b id="bnWxTide">--</b><i id="bnWxTideLbl">TIDE</i></div>
   </div>
   <div class="bn-score-row"><div class="bn-score-track"><span class="bn-score-dot" id="bnWxScoreDot"></span></div><b id="bnWxScorePct">--%</b></div>
-  <div class="bn-wx-cond" id="bnWxCond">Finding your weather…</div>
 </div>
 </header>
 <div class="wrap">
