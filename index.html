@@ -73,7 +73,8 @@
 .stab.on{background:#ffffff;color:#0a2540;border-color:#ffffff}
 .spanel{display:none}
 .spanel.on{display:block}
-.hero{background:linear-gradient(rgba(7,24,38,.68),rgba(7,24,38,.88)),url('assets/bn-hero-sunset.jpg') center/cover no-repeat;border-radius:16px;padding:24px 16px 18px;margin:14px 0 6px}
+body{overflow-x:clip}
+.hero{background:linear-gradient(rgba(7,24,38,.68),rgba(7,24,38,.88)),url('assets/bn-hero-sunset.jpg') center/cover no-repeat;border-radius:0;padding:24px 16px 18px;margin:14px 0 6px;width:100vw;margin-left:calc(50% - 50vw)}
 
 .bn-header{position:relative;background:#0a2540}
 .tb-lang{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:8px;font-size:.95rem;padding:7px 10px;cursor:pointer;line-height:1;margin-left:auto;font-family:inherit;font-weight:700;white-space:nowrap}
@@ -102,7 +103,7 @@ body{top:0 !important}
 .bn-wxbar{background:#e8f1f8;color:#0a2540;margin:8px 0 0;padding:5px 12px;border-radius:0;box-shadow:0 1px 6px rgba(0,0,0,.22);display:flex;align-items:center;gap:7px;flex-wrap:nowrap;overflow:hidden}
 #bnWxPlace{font-size:.74rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:0 1 auto;min-width:0}
 .bn-s{display:flex;align-items:center;gap:3px;flex:0 0 auto}
-.bn-s .bn-ic{font-size:.8rem;line-height:1}
+.bn-s .bn-ic{width:14px;height:14px;color:#0b3d62;flex:0 0 auto}
 .bn-s b{font-size:.84rem;font-weight:800;color:#0b3d62;white-space:nowrap}
 .bn-score-track{position:relative;width:48px;height:8px;flex:0 0 auto;background:linear-gradient(90deg,#2fa84f 0%,#8fce62 30%,#f2d13c 55%,#f2a33c 78%,#e33f2f 100%);border-radius:99px}
 .bn-score-dot{position:absolute;top:50%;left:0%;width:11px;height:11px;border-radius:50%;background:#0a2540;border:2px solid #fff;transform:translate(-50%,-50%);box-shadow:0 1px 3px rgba(0,0,0,.5)}
@@ -221,12 +222,13 @@ body{top:0 !important}
 <button class="lang-row" data-lang="zu"><span class="flag">🇿🇦</span>isiZulu<span class="check">&#10003;</span></button><div id="lang-none" style="display:none;padding:10px;font-size:.9rem;color:#445A6A">No language matches</div>
 </div></div>
 <div class="tb-gadget-hidden" aria-hidden="true"><div id="google_translate_element"></div></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-thermo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></symbol><symbol id="i-waves" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></symbol><symbol id="i-wind" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.8 19.6A2 2 0 1 0 14 16H2"/><path d="M17.5 8a2.5 2.5 0 1 1 2 4H2"/><path d="M9.8 4.4A2 2 0 1 1 11 8H2"/></symbol><symbol id="i-tide-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v8"/><path d="m8 7 4-4 4 4"/><path d="M2 15c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 20c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></symbol><symbol id="i-tide-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v8"/><path d="m8 7 4 4 4-4"/><path d="M2 15c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 20c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></symbol></svg>
 <div class="bn-wxbar" id="bn-wxbar" aria-live="polite">
   <b id="bnWxPlace">📍 Your location</b>
-  <span class="bn-s"><span class="bn-ic">🌡️</span><b id="bnWxAir">--°</b></span>
-  <span class="bn-s"><span class="bn-ic">🌊</span><b id="bnWxWater">--°</b></span>
-  <span class="bn-s"><span class="bn-ic">💨</span><b id="bnWxWind">--</b></span>
-  <span class="bn-s"><span class="bn-ic" id="bnWxTideIc">⬆️</span><b id="bnWxTide">--</b></span>
+  <span class="bn-s"><svg class="bn-ic" aria-hidden="true"><use href="#i-thermo"></use></svg><b id="bnWxAir">--°</b></span>
+  <span class="bn-s"><svg class="bn-ic" aria-hidden="true"><use href="#i-waves"></use></svg><b id="bnWxWater">--°</b></span>
+  <span class="bn-s"><svg class="bn-ic" aria-hidden="true"><use href="#i-wind"></use></svg><b id="bnWxWind">--</b></span>
+  <span class="bn-s"><svg class="bn-ic" aria-hidden="true"><use id="bnWxTideUse" href="#i-tide-up"></use></svg><b id="bnWxTide">--</b></span>
   <span class="bn-score-track"><span class="bn-score-dot" id="bnWxScoreDot"></span></span>
   <b id="bnWxScorePct">--%</b>
   <button type="button" class="bn-wx-btn" id="bnWxBtn" aria-label="Use my location" title="Use my location">↻</button>
@@ -486,7 +488,7 @@ function bnZip(ev){
   }
   function bnTide(lat, lon, gust){
     var done = false;
-    function gustFallback(){ if (done) return; done = true; set('bnWxTideLbl', 'GUST'); var ic = $('bnWxTideIc'); if (ic) ic.textContent = '💨'; set('bnWxTide', gust != null ? '' + Math.round(gust) : '--'); }
+    function gustFallback(){ if (done) return; done = true; set('bnWxTideLbl', 'GUST'); var u = $('bnWxTideUse'); if (u) u.setAttribute('href', '#i-wind'); set('bnWxTide', gust != null ? '' + Math.round(gust) : '--'); }
     bnStations(function(sts){
       if (!sts) return gustFallback();
       var best = null, bd = 1e18;
@@ -502,7 +504,7 @@ function bnZip(ev){
           done = true;
           var diff = last - prev;
           set('bnWxTide', diff > 0.03 ? 'Rising' : diff < -0.03 ? 'Falling' : 'Slack');
-          var ic = $('bnWxTideIc'); if (ic) ic.textContent = diff > 0.03 ? '⬆️' : diff < -0.03 ? '⬇️' : '➡️';
+          var u = $('bnWxTideUse'); if (u) u.setAttribute('href', diff > 0.03 ? '#i-tide-up' : diff < -0.03 ? '#i-tide-down' : '#i-waves');
         })
         .catch(gustFallback);
     });
