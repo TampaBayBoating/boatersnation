@@ -114,7 +114,7 @@ body{top:0 !important}
 </style>
 </head>
 <body>
-<header class="bn-header"><div class="topbar"><a href="index.html"><img class="anchor" src="assets/bn-logo.webp" alt="Boaters Nation logo"><b>Boaters <span>Nation</span></b> 🇺🇸</a><button class="tb-lang" id="lang-btn" aria-label="Translate this page" title="Translate">🌐 Language</button></div>
+<header class="bn-header"><div class="topbar"><a href="index.html"><img class="anchor" src="assets/bn-logo.webp" alt="Boaters Nation logo"><b>Boaters <span>Nation</span></b> 🇺🇸</a><button class="tb-lang" id="lang-btn" aria-label="Translate this page" title="Translate"><span id="bnLangFlag">🇺🇸</span> Language</button></div>
 <div class="tb-translate" id="translate-panel"><div class="lang-search"><input id="lang-q" type="text" placeholder="Search languages\u2026" aria-label="Search languages" autocomplete="off"></div><div class="lang-list" role="menu" aria-label="Choose language">
 <button class="lang-row active" data-lang="en"><span class="flag">🇺🇸</span>English<span class="check">&#10003;</span></button>
 <button class="lang-row" data-lang="af"><span class="flag">🇿🇦</span>Afrikaans<span class="check">&#10003;</span></button>
@@ -603,6 +603,7 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
   var m=document.cookie.match(/googtrans=\/en\/([a-zA-Z-]+)/);
   var cur=m?m[1]:'en';
   rows.forEach(function(r){ r.classList.toggle('active', r.getAttribute('data-lang')===cur); });
+  var bf=document.getElementById('bnLangFlag'); if(bf){ rows.forEach(function(r){ if(r.getAttribute('data-lang')===cur){ var f=r.querySelector('.flag'); if(f) bf.textContent=f.textContent; } }); }
   rows.forEach(function(r){ r.addEventListener('click',function(){ gtSet(r.getAttribute('data-lang')); location.reload(); }); });
 })();
 </script>
