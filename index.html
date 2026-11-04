@@ -447,6 +447,9 @@ body{top:0 !important}
 .bn-cat-card .tic{width:34px;height:34px;color:#8fd0f0}
 .bn-cat-card b{display:block;font-size:.95rem;letter-spacing:1.2px;text-transform:uppercase;font-weight:800}
 .bn-cat-card i{display:block;font-style:normal;font-size:.76rem;color:#9db4c6;margin-top:4px;line-height:1.3}
+.bn-panel-doors{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:2px 0 16px}
+.bn-door{display:inline-flex;align-items:center;height:40px;border-radius:999px;padding:0 18px;background:rgba(10,37,64,.55);border:1px solid rgba(143,208,240,.5);color:#fff;font-weight:700;font-size:.95rem;letter-spacing:.2px;cursor:pointer;font-family:inherit}
+.bn-door:hover{background:#8fd0f0;color:#0a2540}
 .bn-flash{border-color:#E63946 !important;animation:bnFlash 1.3s ease-in-out 2}
 @keyframes bnFlash{0%,100%{box-shadow:0 0 0 0 rgba(230,57,70,0)}50%{box-shadow:0 0 0 5px rgba(230,57,70,.55)}}
 @media(max-width:560px){.bn-cat-grid{gap:8px}.bn-cat-card{padding:12px 5px;border-radius:12px}.bn-cat-card .tic{width:25px;height:25px}.bn-cat-card b{font-size:.72rem;letter-spacing:.5px}.bn-cat-card i{font-size:.64rem;margin-top:3px}}
@@ -455,19 +458,24 @@ body{top:0 !important}
     <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14"/><path d="M15 6v14"/></symbol><symbol id="i-fish" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 12c.9-3.7 4.1-6.5 8.2-6.5 3 0 5.4 1.2 7.2 3.5-1.8 2.3-4.2 3.5-7.2 3.5-4.1 0-7.3-2.8-8.2-6.5Z"/><path d="M6.6 12 3.2 8.6"/><path d="M6.6 12l-3.4 3.4"/><circle cx="17.2" cy="10.2" r=".4" fill="currentColor"/></symbol><symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4"/><path d="M16 2v4"/><path d="M3 9.5h18"/></symbol><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10.5c0 5.8-8 11.5-8 11.5s-8-5.7-8-11.5a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10.5" r="3"/></symbol><symbol id="i-fuel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22h12"/><path d="M4 9h10"/><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 4 0V9.8a2 2 0 0 0-.6-1.4L18 5"/></symbol><symbol id="i-dine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></symbol><symbol id="i-bed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></symbol><symbol id="i-cam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 8.5-5.5 3.5L21 15.5v-7Z"/><rect x="2.5" y="6.5" width="13" height="11" rx="2"/></symbol><symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2.5H6a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14.5 2.5V8H20"/><path d="M8.5 13h7"/><path d="M8.5 17h7"/></symbol><symbol id="i-lifebuoy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><circle cx="12" cy="12" r="3.8"/><path d="m5.6 5.6 3.9 3.9"/><path d="m14.5 14.5 3.9 3.9"/><path d="m18.4 5.6-3.9 3.9"/><path d="m9.5 14.5-3.9 3.9"/></symbol><symbol id="i-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18.2V6l11-2v11.7"/><circle cx="6.2" cy="18.2" r="2.8"/><circle cx="17.2" cy="15.7" r="2.8"/></symbol></svg>
   <h2 class="bn-cat-h">Browse Boating Categories</h2>
     <div class="bn-cat-grid">
-      <a class="bn-cat-card" href="region-new-england.html"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-map"></use></svg></span><b>Boater's Map</b><i>Ramps, marinas, fuel &amp; more</i></a>
-      <a class="bn-cat-card" href="region-new-england.html"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-tide-up"></use></svg></span><b>Tides &amp; Forecast</b><i>Tides, wind &amp; the best hours</i></a>
-      <a class="bn-cat-card" href="region-new-england.html"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-fish"></use></svg></span><b>Fishing</b><i>Bait, tackle &amp; local know-how</i></a>
-      <a class="bn-cat-card" href="region-new-england.html"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-cal"></use></svg></span><b>Events Calendar</b><i>Boat shows, parades &amp; what's on</i></a>
-      <a class="bn-cat-card" href="region-new-england.html"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-pin"></use></svg></span><b>Boat Ramps</b><i>Every public launch, by water</i></a>
-      <a class="bn-cat-card" href="region-new-england.html"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-fuel"></use></svg></span><b>Marinas &amp; Fuel</b><i>Fuel docks &amp; slips</i></a>
-      <a class="bn-cat-card" href="region-new-england.html"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-dine"></use></svg></span><b>Dock &amp; Dine</b><i>Restaurants you can boat to</i></a>
-      <a class="bn-cat-card" href="region-new-england.html"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-bed"></use></svg></span><b>Waterfront Stays</b><i>Houses &amp; hotels with guest docks</i></a>
-      <a class="bn-cat-card" href="region-new-england.html"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-cam"></use></svg></span><b>Live Cams</b><i>See the water before you go</i></a>
-      <a class="bn-cat-card" href="region-new-england.html"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-doc"></use></svg></span><b>State Rules &amp; Agencies</b><i>Registration, laws &amp; launches</i></a>
+      <a class="bn-cat-card" id="bnCatMap" href="region-tampa-bay.html#bay-leaflet-map"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-map"></use></svg></span><b>Boater's Map</b><i>Ramps, marinas, fuel &amp; more</i></a>
+      <a class="bn-cat-card" id="bnCatTides" href="region-tampa-bay.html#bn-tides"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-tide-up"></use></svg></span><b>Tides &amp; Forecast</b><i>Tides, wind &amp; the best hours</i></a>
+      <a class="bn-cat-card" id="bnCatFish" href="region-tampa-bay.html#bn-bite"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-fish"></use></svg></span><b>Fishing</b><i>Bait, tackle &amp; local know-how</i></a>
+      <a class="bn-cat-card" id="bnCatCal" href="region-tampa-bay.html#bn-calendar"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-cal"></use></svg></span><b>Events Calendar</b><i>Boat shows, parades &amp; what's on</i></a>
+      <a class="bn-cat-card" id="bnCatRamps" href="region-tampa-bay.html"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-pin"></use></svg></span><b>Boat Ramps</b><i>Every public launch, by water</i></a>
+      <a class="bn-cat-card" id="bnCatFuel" href="region-tampa-bay.html"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-fuel"></use></svg></span><b>Marinas &amp; Fuel</b><i>Fuel docks &amp; slips</i></a>
+      <a class="bn-cat-card" id="bnCatDine" href="region-tampa-bay.html"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-dine"></use></svg></span><b>Dock &amp; Dine</b><i>Restaurants you can boat to</i></a>
+      <a class="bn-cat-card" id="bnCatStays" href="region-tampa-bay.html"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-bed"></use></svg></span><b>Waterfront Stays</b><i>Houses &amp; hotels with guest docks</i></a>
+      <a class="bn-cat-card" id="bnCatCams" href="region-tampa-bay.html"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-cam"></use></svg></span><b>Live Cams</b><i>See the water before you go</i></a>
+      <a class="bn-cat-card" id="bnCatRules" href="region-tampa-bay.html"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-doc"></use></svg></span><b>State Rules &amp; Agencies</b><i>Registration, laws &amp; launches</i></a>
       <button type="button" class="bn-cat-card" onclick="bnMainTab('safety',document.getElementById('mtab-safety'))"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-lifebuoy"></use></svg></span><b>Safety &amp; Emergency</b><i>What to do when it goes wrong</i></button>
       <button type="button" class="bn-cat-card" onclick="bnMainTab('music',document.getElementById('mtab-music'))"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-music"></use></svg></span><b>Boat Music</b><i>Playlists for the water</i></button>
     </div>
+
+  <div class="bn-panel-doors">
+    <button type="button" class="bn-door" id="bnDoorInside">What's Inside Every Region</button>
+    <button type="button" class="bn-door" id="bnDoorHow">How It Works</button>
+  </div>
 
   <div class="mpanel" id="m-inside">
 
@@ -594,6 +602,7 @@ body{top:0 !important}
 .bzb-note{color:#7d97ab;font-size:.7rem;margin-top:9px;line-height:1.35}
 .bnZNum circle{fill:#0d2c49;stroke:#fff;stroke-width:2.2}
 .bnZNum text{fill:#fff;font-size:19px;font-weight:800;text-anchor:middle;dominant-baseline:central}
+.bnZNum{pointer-events:auto;cursor:pointer}
 .bzb-row{border-radius:8px}
 a.bzb-row{display:block;text-decoration:none;color:inherit;cursor:pointer}
 .bzb-jump{cursor:pointer}
@@ -607,16 +616,16 @@ a.bzb-row{display:block;text-decoration:none;color:inherit;cursor:pointer}
 <a class="bzb-row bzb-live" data-region="gulf-coast-fl" href="region-gulf-coast-fl.html"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">2</b>Gulf Coast, FL</span><span class="bzb-lbl">Live</span></div><span class="bzb-track"><span class="bzb-fill live" style="width:100%"></span></span><span class="bzb-line">625 places · 458 pinned on the map</span></a>
 <a class="bzb-row bzb-live" data-region="south-florida-keys" href="region-south-florida-keys.html"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">3</b>South Florida &amp; the Keys</span><span class="bzb-lbl">Live</span></div><span class="bzb-track"><span class="bzb-fill live" style="width:100%"></span></span><span class="bzb-line">635 places · 550 pinned on the map</span></a>
 <a class="bzb-row bzb-live" data-region="chesapeake-bay" href="region-chesapeake.html"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">4</b>Chesapeake Bay</span><span class="bzb-lbl">Live</span></div><span class="bzb-track"><span class="bzb-fill live" style="width:100%"></span></span><span class="bzb-line">630 places · 506 pinned on the map</span></a>
-<div class="bzb-row bzb-jump" data-region="great-lakes" role="button" tabindex="0" aria-label="Great Lakes — in the works: jump to its region card"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">5</b>Great Lakes</span><span class="bzb-lbl">Skeleton in</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Michigan: 3,332 waters catalogued · 1,195 ramps · 1,605 verified listings</span></div>
-<div class="bzb-row bzb-jump" data-region="lake-country" role="button" tabindex="0" aria-label="Lake Country — in the works: jump to its region card"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">6</b>Lake Country</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
-<div class="bzb-row bzb-jump" data-region="texas-gulf-coast" role="button" tabindex="0" aria-label="Texas Gulf Coast — in the works: jump to its region card"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">7</b>Texas Gulf Coast</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
+<div class="bzb-row bzb-jump" data-region="great-lakes" role="button" tabindex="0" aria-label="Great Lakes — in the works: jump to the area finder"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">5</b>Great Lakes</span><span class="bzb-lbl">Skeleton in</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Michigan: 3,332 waters catalogued · 1,195 ramps · 1,605 verified listings</span></div>
+<div class="bzb-row bzb-jump" data-region="lake-country" role="button" tabindex="0" aria-label="Lake Country — in the works: jump to the area finder"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">6</b>Lake Country</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
+<div class="bzb-row bzb-jump" data-region="texas-gulf-coast" role="button" tabindex="0" aria-label="Texas Gulf Coast — in the works: jump to the area finder"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">7</b>Texas Gulf Coast</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
 <a class="bzb-row bzb-live" data-region="new-england" href="region-new-england.html"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">8</b>New England</span><span class="bzb-lbl">22.4%</span></div><span class="bzb-track"><span class="bzb-fill" style="width:22.4%"></span></span><span class="bzb-line">Waters fully verified · 1,541 places built · 1,022 pinned</span></a>
-<div class="bzb-row bzb-jump" data-region="pacific-northwest" role="button" tabindex="0" aria-label="Pacific Northwest — in the works: jump to its region card"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">9</b>Pacific Northwest</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
+<div class="bzb-row bzb-jump" data-region="pacific-northwest" role="button" tabindex="0" aria-label="Pacific Northwest — in the works: jump to the area finder"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">9</b>Pacific Northwest</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
 <a class="bzb-row bzb-live" data-region="mid-atlantic-coast" href="region-mid-atlantic.html"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">10</b>Mid-Atlantic Coast</span><span class="bzb-lbl">Live</span></div><span class="bzb-track"><span class="bzb-fill live" style="width:100%"></span></span><span class="bzb-line">546 places · 457 pinned on the map</span></a>
-<div class="bzb-row bzb-jump" data-region="carolina-coast" role="button" tabindex="0" aria-label="Carolina Coast — in the works: jump to its region card"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">11</b>Carolina Coast</span><span class="bzb-lbl">Staged</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">380 listings in the build database</span></div>
-<div class="bzb-row bzb-jump" data-region="california-coast" role="button" tabindex="0" aria-label="California Coast — in the works: jump to its region card"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">12</b>California Coast</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
-<div class="bzb-row bzb-jump" data-region="tennessee-river-lakes" role="button" tabindex="0" aria-label="Tennessee River Lakes — in the works: jump to its region card"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">13</b>Tennessee River Lakes</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
-<div class="bzb-row bzb-jump" data-region="colorado-river-lakes" role="button" tabindex="0" aria-label="Colorado River Lakes — in the works: jump to its region card"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">14</b>Colorado River Lakes</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
+<div class="bzb-row bzb-jump" data-region="carolina-coast" role="button" tabindex="0" aria-label="Carolina Coast — in the works: jump to the area finder"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">11</b>Carolina Coast</span><span class="bzb-lbl">Staged</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">380 listings in the build database</span></div>
+<div class="bzb-row bzb-jump" data-region="california-coast" role="button" tabindex="0" aria-label="California Coast — in the works: jump to the area finder"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">12</b>California Coast</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
+<div class="bzb-row bzb-jump" data-region="tennessee-river-lakes" role="button" tabindex="0" aria-label="Tennessee River Lakes — in the works: jump to the area finder"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">13</b>Tennessee River Lakes</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
+<div class="bzb-row bzb-jump" data-region="colorado-river-lakes" role="button" tabindex="0" aria-label="Colorado River Lakes — in the works: jump to the area finder"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">14</b>Colorado River Lakes</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
 <a class="bzb-row bzb-live" data-region="florida-atlantic" href="region-florida-atlantic.html"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">15</b>Florida Atlantic</span><span class="bzb-lbl">Live</span></div><span class="bzb-track"><span class="bzb-fill live" style="width:100%"></span></span><span class="bzb-line">771 places · 661 pinned on the map</span></a>
   </div>
   <p class="bzb-note">Zone numbers match the numbered zones on the map. A zone's percentage is the share of its catalogued waters fully cross-checked (WaterCheck) — measured, never estimated. Zones still being catalogued show their stage instead of a number. Updated <span id="bzbUpdated">Nov 4, 2026</span>.</p>
@@ -818,16 +827,18 @@ function bnZoneRow(slug, s){
     + '<span class="bzb-line">' + bnEsc(s.line) + '</span>';
   /* Clickable bars (David's order, Nov 4): a LIVE zone's bar is a real <a>
      to its region page (target from regions.js, same as the ZIP finder);
-     a building zone's bar is a button that jumps to its region card —
-     the wiring below replays the map-tap path. Decided purely from the
-     JSON state, so a zone that flips live becomes a link on its own. */
+     a building zone's bar is a button that jumps to the area finder —
+     the finder is where a building region's waitlist is produced (the
+     region cards it used to jump to were removed from the page).
+     Decided purely from the JSON state, so a zone that flips live
+     becomes a link on its own. */
   if (s.state === 'live') {
     var r = (typeof bnRegionBySlug === 'function') ? bnRegionBySlug(slug) : null;
     var dest = r ? (r.page || ('region.html?r=' + r.slug)) : ('region.html?r=' + slug);
     return '<a class="bzb-row bzb-live" data-region="' + slug + '" href="' + dest + '">' + inner + '</a>';
   }
   return '<div class="bzb-row bzb-jump" data-region="' + slug + '" role="button" tabindex="0" aria-label="'
-    + bnEsc(s.name) + ' \u2014 in the works: jump to its region card">' + inner + '</div>';
+    + bnEsc(s.name) + ' \u2014 in the works: jump to the area finder">' + inner + '</div>';
 }
 (function(){
   if (!BN_BUILD) return;
@@ -837,14 +848,17 @@ function bnZoneRow(slug, s){
     rows.sort(function(a, b){ return (a[1].num || 99) - (b[1].num || 99); });
     grid.innerHTML = rows.map(function(r){ return bnZoneRow(r[0], r[1]); }).join('');
   }
-  /* Clickable bars: a building zone's bar replays the map-tap path — it
-     dispatches a click on that zone's own map shape, so the Regions tab
-     switch, card scroll and flash all run from the one existing map
-     handler. Live bars are real anchors and need no wiring. */
+  /* Clickable bars: a building zone's bar takes the visitor to the area
+     finder (#find), choosing that region first so the stack and finder
+     agree — the finder produces that region's waitlist. (The old wiring
+     replayed the map-tap path to region cards that no longer exist, so
+     the tap landed nowhere.) Live bars are real anchors, no wiring. */
   if (grid) {
     var bnBandJump = function(slug){
-      var shape = document.querySelector('.bnMRg[data-region="' + slug + '"]');
-      if (shape) shape.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      if (window.bnStackChoose) window.bnStackChoose(slug);
+      var f = document.getElementById('find');
+      if (f) { try { f.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {} }
+      try { location.hash = 'find'; } catch (e) {}
     };
     grid.addEventListener('click', function(ev){
       var row = (ev.target && ev.target.closest) ? ev.target.closest('.bzb-jump') : null;
@@ -1248,6 +1262,7 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
       if (r.status === 'live') {
         var dest = r.page || ('region.html?r=' + r.slug);
         window.__bnMapNav = dest;
+        location.href = dest;
         return;
       }
       var grp = null;
@@ -1284,27 +1299,40 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
    from the saved weather position. Default region: Tampa Bay (the
    flagship). Live region -> its region page sections; building region
    -> back to the finder. The stack's music buttons open the Boat Music
-   panel; the About pill opens the About panel. */
+   panel; the About pill opens the About panel. The Browse Boating
+   Categories cards route through the same apply(), and the pill doors
+   under that grid open the What's Inside / How It Works panels. */
 (function(){
   var chosen = 'tampa-bay';
-  var TF_HASH = { 'tampa-bay': '#bn-tides', 'new-england': '#bn-tides', 'chesapeake-bay': '#bn-tides', 'florida-atlantic': '#bn-tides' };
+  var TF_HASH = { 'tampa-bay': '#bn-tides', 'new-england': '#bn-tides', 'chesapeake-bay': '#bn-tides', 'florida-atlantic': '#bn-tides', 'mid-atlantic-coast': '#bn-tides', 'gulf-coast-fl': '#bn-tides', 'south-florida-keys': '#bn-tides' };
   var BITE_HASH = { 'tampa-bay': '#bn-bite' };
   var CAL_HASH = { 'tampa-bay': '#bn-calendar' };
+  var NEWB_HASH = { 'tampa-bay': '#bn-newb' };
   function reg(){ return (typeof bnRegionBySlug === 'function') ? bnRegionBySlug(chosen) : null; }
   function pageOf(r){ return r.page || ('region.html?r=' + r.slug); }
   function set(id, href){ var el = document.getElementById(id); if (el) el.setAttribute('href', href); }
   function apply(){
     var r = reg(); if (!r) return;
-    set('bnBtnNewb', 'region-tampa-bay.html#bn-newb');
     if (r.status === 'live') {
       var p = pageOf(r);
       set('bnBtnTides', p + (TF_HASH[r.slug] || ''));
       set('bnBtnMap', p + '#bay-leaflet-map');
       set('bnBtnBite', p + (BITE_HASH[r.slug] || ''));
       set('bnBtnCal', p + (CAL_HASH[r.slug] || ''));
+      set('bnBtnNewb', p + (NEWB_HASH[r.slug] || ''));
+      set('bnCatMap', p + '#bay-leaflet-map');
+      set('bnCatTides', p + (TF_HASH[r.slug] || ''));
+      set('bnCatFish', p + (BITE_HASH[r.slug] || ''));
+      set('bnCatCal', p + (CAL_HASH[r.slug] || ''));
+      set('bnCatRamps', p); set('bnCatFuel', p); set('bnCatDine', p);
+      set('bnCatStays', p); set('bnCatCams', p); set('bnCatRules', p);
     } else {
       set('bnBtnTides', '#find'); set('bnBtnMap', '#find');
       set('bnBtnBite', '#find'); set('bnBtnCal', '#find');
+      set('bnBtnNewb', '#find');
+      set('bnCatMap', '#find'); set('bnCatTides', '#find'); set('bnCatFish', '#find'); set('bnCatCal', '#find');
+      set('bnCatRamps', '#find'); set('bnCatFuel', '#find'); set('bnCatDine', '#find');
+      set('bnCatStays', '#find'); set('bnCatCams', '#find'); set('bnCatRules', '#find');
     }
   }
   window.bnStackChoose = function(slug){
@@ -1341,6 +1369,18 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
       if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+  /* Panel doors (Nov 4 nav fix): the What's Inside / How It Works panels
+     lost their tab row in the redesign — these pill buttons under the
+     category grid open them, same pattern as the music buttons above. */
+  [['bnDoorInside','inside'],['bnDoorHow','how']].forEach(function(pair){
+    var b = document.getElementById(pair[0]);
+    if (b) b.addEventListener('click', function(e){
+      e.preventDefault();
+      if (typeof bnMainTab === 'function') bnMainTab(pair[1], b);
+      var t = document.getElementById('m-' + pair[1]);
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
 })();
 </script>
 
@@ -1351,15 +1391,16 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
    Tampa Bay by default; the ZIP finder, zone taps and the saved
    weather position all flow through bnStackChoose, which this wraps.
    Only an area whose Tides & Forecast section exists gets the link
-   — today that is Tampa Bay, New England, Chesapeake Bay and
-   Florida Atlantic (each at its #bn-tides). Everywhere else the strip
+   — today that is Tampa Bay, New England, Chesapeake Bay,
+   Florida Atlantic, Mid-Atlantic, Gulf Coast Florida and South
+   Florida & Keys (each at its #bn-tides). Everywhere else the strip
    stays display-only until that area's weather page exists. The
    ↻ button rides above the link and keeps refreshing. */
 (function(){
   var bar = document.getElementById('bn-wxbar');
   var link = document.getElementById('bnWxLink');
   if (!bar || !link) return;
-  var TF = { 'tampa-bay': 'region-tampa-bay.html#bn-tides', 'new-england': 'region-new-england.html#bn-tides', 'chesapeake-bay': 'region-chesapeake.html#bn-tides', 'florida-atlantic': 'region-florida-atlantic.html#bn-tides' };
+  var TF = { 'tampa-bay': 'region-tampa-bay.html#bn-tides', 'new-england': 'region-new-england.html#bn-tides', 'chesapeake-bay': 'region-chesapeake.html#bn-tides', 'florida-atlantic': 'region-florida-atlantic.html#bn-tides', 'mid-atlantic-coast': 'region-mid-atlantic.html#bn-tides', 'gulf-coast-fl': 'region-gulf-coast-fl.html#bn-tides', 'south-florida-keys': 'region-south-florida-keys.html#bn-tides' };
   function apply(slug){
     var href = TF[slug] || null;
     if (href) {
@@ -1456,6 +1497,26 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
     if (info) info.innerHTML = '<b>' + r.name + '</b> is in the works. ' + '<a href="#find">Join the waitlist</a> and it moves up the list.';
     window.bnMapZoom(slug);
   }, true);
+})();
+</script>
+
+<script>
+/* Zone number badges (Nov 4 nav fix): the numbered circles on the zone
+   map are the most tappable-looking thing on it, but they were dead
+   overlays. Now a tap on a badge runs its zone's own map-tap path — it
+   dispatches a click on the zone's state shapes, so a live region opens
+   its page and a building region pairs the info line, exactly as a tap
+   on the zone itself does (plus the zoom a real shape tap gets). */
+(function(){
+  document.querySelectorAll('.bnZNum').forEach(function(g){
+    g.addEventListener('click', function(){
+      var slug = g.getAttribute('data-region'); if (!slug) return;
+      var shape = document.querySelector('.bnMRg[data-region="' + slug + '"]');
+      if (shape) shape.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      var r = (typeof bnRegionBySlug === 'function') ? bnRegionBySlug(slug) : null;
+      if (r && r.status !== 'live' && typeof window.bnMapZoom === 'function') window.bnMapZoom(slug);
+    });
+  });
 })();
 </script>
 

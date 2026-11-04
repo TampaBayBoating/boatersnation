@@ -147,18 +147,24 @@ function bnRegionBySlug(slug) {
 /* Place-name routing for the finder: rough boxes [south, west, north, east].
    A point lands in the FIRST region (array order above) whose box holds it;
    the state map is only a fallback when no box matches. Routing-grade, not
-   a boundary claim. */
+   a boundary claim.
+   Delmarva split (Nov 4 nav fix): the boxes must agree with the ZIP-prefix
+   and state tables above — Delaware (199xx) pairs to Mid-Atlantic, the
+   Maryland shore (218xx, Ocean City MD included) pairs to Chesapeake. So
+   Chesapeake's box runs east to -75.0 only below Delaware's southern
+   border (38.45) and stops at -75.85 above it, and Mid-Atlantic carries a
+   Delaware box (38.4-39.85, west to -75.85) behind it. */
 var BN_BBOX = {
   "tampa-bay": [[27.3,-82.9,28.5,-81.9]],
   "gulf-coast-fl": [[25.8,-82.3,27.25,-80.9],[29.3,-87.6,31.0,-84.0]],
   "south-florida-keys": [[24.4,-82.0,26.9,-79.9]],
-  "chesapeake-bay": [[36.5,-77.5,39.8,-75.3]],
+  "chesapeake-bay": [[36.5,-77.5,38.45,-75.0],[38.45,-77.5,39.8,-75.85]],
   "great-lakes": [[41.3,-92.7,47.9,-76.1]],
   "lake-country": [[36.4,-93.9,38.7,-91.9],[34.05,-84.25,34.55,-83.75],[36.35,-93.75,36.85,-92.95],[30.25,-98.25,30.65,-97.85]],
   "texas-gulf-coast": [[25.8,-99.5,30.3,-93.7]],
   "new-england": [[40.9,-73.8,47.5,-66.9]],
   "pacific-northwest": [[42.0,-124.8,49.1,-116.9]],
-  "mid-atlantic-coast": [[37.0,-75.3,39.9,-73.9],[38.9,-74.2,41.2,-71.8]],
+  "mid-atlantic-coast": [[37.0,-75.3,39.9,-73.9],[38.9,-74.2,41.2,-71.8],[38.4,-75.85,39.85,-75.0]],
   "carolina-coast": [[32.0,-81.1,36.6,-75.3]],
   "california-coast": [[32.5,-124.4,42.1,-117.0]],
   "tennessee-river-lakes": [[34.5,-88.6,37.2,-84.9]],
