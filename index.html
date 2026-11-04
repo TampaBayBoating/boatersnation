@@ -478,24 +478,29 @@ body{top:0 !important}
 .bzb-note{color:#7d97ab;font-size:.7rem;margin-top:9px;line-height:1.35}
 .bnZNum circle{fill:#0d2c49;stroke:#fff;stroke-width:2.2}
 .bnZNum text{fill:#fff;font-size:19px;font-weight:800;text-anchor:middle;dominant-baseline:central}
+.bzb-row{border-radius:8px}
+a.bzb-row{display:block;text-decoration:none;color:inherit;cursor:pointer}
+.bzb-jump{cursor:pointer}
+.bzb-row:hover{background:rgba(125,211,252,.09)}
+.bzb-row:focus-visible{outline:2px solid #7dd3fc;outline-offset:2px}
 </style>
 <div class="bzb" id="bn-build-zones">
   <h3>Building Boaters Nation — <span id="bzbLiveLbl">3 of 14 zones live</span> · <span id="bzbBuilt">5,372</span> listings built so far</h3>
   <div class="bzb-grid" id="bzbGrid">
-<div class="bzb-row" data-region="tampa-bay"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">1</b>Tampa Bay, FL</span><span class="bzb-lbl">Live</span></div><span class="bzb-track"><span class="bzb-fill live" style="width:100%"></span></span><span class="bzb-line">802 places · 801 pinned on the map</span></div>
-<div class="bzb-row" data-region="gulf-coast-fl"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">2</b>Gulf Coast, FL</span><span class="bzb-lbl">Staged</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">222 listings in the build database</span></div>
-<div class="bzb-row" data-region="south-florida-keys"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">3</b>South Florida &amp; the Keys</span><span class="bzb-lbl">Staged</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">210 listings in the build database</span></div>
-<div class="bzb-row" data-region="chesapeake-bay"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">4</b>Chesapeake Bay</span><span class="bzb-lbl">Staged</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">348 listings in the build database</span></div>
-<div class="bzb-row" data-region="great-lakes"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">5</b>Great Lakes</span><span class="bzb-lbl">Skeleton in</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Michigan: 3,332 waters catalogued · 1,195 ramps · 1,605 verified listings</span></div>
-<div class="bzb-row" data-region="lake-country"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">6</b>Lake Country</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
-<div class="bzb-row" data-region="texas-gulf-coast"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">7</b>Texas Gulf Coast</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
-<div class="bzb-row" data-region="new-england"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">8</b>New England</span><span class="bzb-lbl">22.4%</span></div><span class="bzb-track"><span class="bzb-fill" style="width:22.4%"></span></span><span class="bzb-line">Waters fully verified · 1,541 places built · 1,022 pinned — page update in preview</span></div>
-<div class="bzb-row" data-region="pacific-northwest"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">9</b>Pacific Northwest</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
-<div class="bzb-row" data-region="mid-atlantic-coast"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">10</b>Mid-Atlantic Coast</span><span class="bzb-lbl">Live</span></div><span class="bzb-track"><span class="bzb-fill live" style="width:100%"></span></span><span class="bzb-line">264 places · 177 pinned on the map</span></div>
-<div class="bzb-row" data-region="carolina-coast"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">11</b>Carolina Coast</span><span class="bzb-lbl">Staged</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">380 listings in the build database</span></div>
-<div class="bzb-row" data-region="california-coast"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">12</b>California Coast</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
-<div class="bzb-row" data-region="tennessee-river-lakes"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">13</b>Tennessee River Lakes</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
-<div class="bzb-row" data-region="colorado-river-lakes"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">14</b>Colorado River Lakes</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
+<a class="bzb-row bzb-live" data-region="tampa-bay" href="region-tampa-bay.html"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">1</b>Tampa Bay, FL</span><span class="bzb-lbl">Live</span></div><span class="bzb-track"><span class="bzb-fill live" style="width:100%"></span></span><span class="bzb-line">802 places · 801 pinned on the map</span></a>
+<div class="bzb-row bzb-jump" data-region="gulf-coast-fl" role="button" tabindex="0" aria-label="Gulf Coast, FL — in the works: jump to its region card"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">2</b>Gulf Coast, FL</span><span class="bzb-lbl">Staged</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">222 listings in the build database</span></div>
+<div class="bzb-row bzb-jump" data-region="south-florida-keys" role="button" tabindex="0" aria-label="South Florida &amp; the Keys — in the works: jump to its region card"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">3</b>South Florida &amp; the Keys</span><span class="bzb-lbl">Staged</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">210 listings in the build database</span></div>
+<div class="bzb-row bzb-jump" data-region="chesapeake-bay" role="button" tabindex="0" aria-label="Chesapeake Bay — in the works: jump to its region card"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">4</b>Chesapeake Bay</span><span class="bzb-lbl">Staged</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">348 listings in the build database</span></div>
+<div class="bzb-row bzb-jump" data-region="great-lakes" role="button" tabindex="0" aria-label="Great Lakes — in the works: jump to its region card"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">5</b>Great Lakes</span><span class="bzb-lbl">Skeleton in</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Michigan: 3,332 waters catalogued · 1,195 ramps · 1,605 verified listings</span></div>
+<div class="bzb-row bzb-jump" data-region="lake-country" role="button" tabindex="0" aria-label="Lake Country — in the works: jump to its region card"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">6</b>Lake Country</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
+<div class="bzb-row bzb-jump" data-region="texas-gulf-coast" role="button" tabindex="0" aria-label="Texas Gulf Coast — in the works: jump to its region card"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">7</b>Texas Gulf Coast</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
+<a class="bzb-row bzb-live" data-region="new-england" href="region-new-england.html"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">8</b>New England</span><span class="bzb-lbl">22.4%</span></div><span class="bzb-track"><span class="bzb-fill" style="width:22.4%"></span></span><span class="bzb-line">Waters fully verified · 1,541 places built · 1,022 pinned — page update in preview</span></a>
+<div class="bzb-row bzb-jump" data-region="pacific-northwest" role="button" tabindex="0" aria-label="Pacific Northwest — in the works: jump to its region card"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">9</b>Pacific Northwest</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
+<a class="bzb-row bzb-live" data-region="mid-atlantic-coast" href="region-mid-atlantic.html"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">10</b>Mid-Atlantic Coast</span><span class="bzb-lbl">Live</span></div><span class="bzb-track"><span class="bzb-fill live" style="width:100%"></span></span><span class="bzb-line">264 places · 177 pinned on the map</span></a>
+<div class="bzb-row bzb-jump" data-region="carolina-coast" role="button" tabindex="0" aria-label="Carolina Coast — in the works: jump to its region card"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">11</b>Carolina Coast</span><span class="bzb-lbl">Staged</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">380 listings in the build database</span></div>
+<div class="bzb-row bzb-jump" data-region="california-coast" role="button" tabindex="0" aria-label="California Coast — in the works: jump to its region card"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">12</b>California Coast</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
+<div class="bzb-row bzb-jump" data-region="tennessee-river-lakes" role="button" tabindex="0" aria-label="Tennessee River Lakes — in the works: jump to its region card"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">13</b>Tennessee River Lakes</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
+<div class="bzb-row bzb-jump" data-region="colorado-river-lakes" role="button" tabindex="0" aria-label="Colorado River Lakes — in the works: jump to its region card"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">14</b>Colorado River Lakes</span><span class="bzb-lbl">Inventory</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
   </div>
   <p class="bzb-note">Zone numbers match the numbered zones on the map. A zone's percentage is the share of its catalogued waters fully cross-checked (WaterCheck) — measured, never estimated. Zones still being catalogued show their stage instead of a number. Updated <span id="bzbUpdated">Nov 4, 2026</span>.</p>
 </div>
@@ -662,11 +667,23 @@ function bnZoneRow(slug, s){
   if (typeof s.pct === 'number') { cls = 'bzb-fill'; w = s.pct; }
   else if (s.state === 'live') { cls = 'bzb-fill live'; w = 100; }
   else { cls = 'bzb-fill measuring'; w = 100; }
-  return '<div class="bzb-row" data-region="' + slug + '"><div class="bzb-top">'
+  var inner = '<div class="bzb-top">'
     + '<span class="bzb-name"><b class="bzb-num">' + s.num + '</b>' + bnEsc(s.name) + '</span>'
     + '<span class="bzb-lbl">' + bnEsc(s.stage) + '</span></div>'
     + '<span class="bzb-track"><span class="' + cls + '" style="width:' + w + '%"></span></span>'
-    + '<span class="bzb-line">' + bnEsc(s.line) + '</span></div>';
+    + '<span class="bzb-line">' + bnEsc(s.line) + '</span>';
+  /* Clickable bars (David's order, Nov 4): a LIVE zone's bar is a real <a>
+     to its region page (target from regions.js, same as the ZIP finder);
+     a building zone's bar is a button that jumps to its region card —
+     the wiring below replays the map-tap path. Decided purely from the
+     JSON state, so a zone that flips live becomes a link on its own. */
+  if (s.state === 'live') {
+    var r = (typeof bnRegionBySlug === 'function') ? bnRegionBySlug(slug) : null;
+    var dest = r ? (r.page || ('region.html?r=' + r.slug)) : ('region.html?r=' + slug);
+    return '<a class="bzb-row bzb-live" data-region="' + slug + '" href="' + dest + '">' + inner + '</a>';
+  }
+  return '<div class="bzb-row bzb-jump" data-region="' + slug + '" role="button" tabindex="0" aria-label="'
+    + bnEsc(s.name) + ' \u2014 in the works: jump to its region card">' + inner + '</div>';
 }
 (function(){
   if (!BN_BUILD) return;
@@ -675,6 +692,25 @@ function bnZoneRow(slug, s){
     var rows = Object.keys(BN_BUILD.regions).map(function(k){ return [k, BN_BUILD.regions[k]]; });
     rows.sort(function(a, b){ return (a[1].num || 99) - (b[1].num || 99); });
     grid.innerHTML = rows.map(function(r){ return bnZoneRow(r[0], r[1]); }).join('');
+  }
+  /* Clickable bars: a building zone's bar replays the map-tap path — it
+     dispatches a click on that zone's own map shape, so the Regions tab
+     switch, card scroll and flash all run from the one existing map
+     handler. Live bars are real anchors and need no wiring. */
+  if (grid) {
+    var bnBandJump = function(slug){
+      var shape = document.querySelector('.bnMRg[data-region="' + slug + '"]');
+      if (shape) shape.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    };
+    grid.addEventListener('click', function(ev){
+      var row = (ev.target && ev.target.closest) ? ev.target.closest('.bzb-jump') : null;
+      if (row) bnBandJump(row.getAttribute('data-region'));
+    });
+    grid.addEventListener('keydown', function(ev){
+      if (ev.key !== 'Enter' && ev.key !== ' ') return;
+      var row = (ev.target && ev.target.closest) ? ev.target.closest('.bzb-jump') : null;
+      if (row) { ev.preventDefault(); bnBandJump(row.getAttribute('data-region')); }
+    });
   }
   var n = BN_BUILD.national || {};
   var l = document.getElementById('bzbLiveLbl');
