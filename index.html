@@ -112,6 +112,19 @@ body{top:0 !important}
 #bnWxScorePct{font-size:.84rem;color:#0a2540;flex:0 0 auto}
 .bn-wx-btn{background:#B31942;color:#fff;border:0;border-radius:999px;padding:3px 8px;font-family:inherit;font-size:.72rem;font-weight:800;cursor:pointer;flex:0 0 auto;line-height:1.2}
 .bn-wx-btn:hover{background:#E63946}
+/* WX STRIP DIVIDERS (Nov 4): a vertical line between each section
+   of the weather strip — location | air | water | wind | tide/gust |
+   verdict — drawn in the strip's own navy, subtle on its light ground.
+   The padding mirrors the strip's own flex gap so each line sits
+   centered between its two sections. Nothing else in the strip changes.
+   The tide | verdict line rides the tide cell's RIGHT edge, not the
+   verdict track's left edge: the track is an 8px-tall pill with a 99px
+   radius, so a border drawn on the pill collapses into its rounded end
+   and never renders as a visible line (David, Nov 4: "a line in between
+   the percentage bar and the last icon — the tide"). */
+.bn-wxbar .bn-s{border-left:1px solid rgba(10,37,64,.30);padding-left:7px}
+.bn-wxbar .bn-s:has(#bnWxTide){border-right:1px solid rgba(10,37,64,.30);padding-right:7px}
+@media(max-width:640px){.bn-wxbar .bn-s{padding-left:5px}.bn-wxbar .bn-s:has(#bnWxTide){padding-right:5px}}
 @media(max-width:640px){.topbar b{font-size:.96rem}.tb-lang{font-size:.82rem;padding:6px 8px}.tb-translate{left:8px;right:8px}.lang-list{min-width:0}.bn-wxbar{margin:6px 0 0;padding:4px 10px;gap:5px}.bn-s b{font-size:.78rem}#bnWxPlace{font-size:.68rem}}
 </style>
 
