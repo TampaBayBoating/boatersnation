@@ -402,11 +402,11 @@ body{top:0 !important}
     <div id="bn-zip-out" style="margin-top:10px;font-size:.92rem"></div>
   </div>
   <div class="bn-stack" id="bnStack">
-    <a class="hero2-cta" id="bnBtnTides" href="region-tampa-bay.html#bn-wxbar">Check tides &amp; forecast</a>
+    <a class="hero2-cta" id="bnBtnTides" href="region-tampa-bay.html#bn-tides">Check tides &amp; forecast</a>
     <a class="hero2-map" id="bnBtnMap" href="region-tampa-bay.html#bay-leaflet-map">Open the boater's map</a>
-    <a href="region-tampa-bay.html" class="bite-hero" id="bnBtnBite"><svg class=ic aria-hidden=true><use href=#i-fish></use></svg> Today's bite</a>
-    <a href="region-tampa-bay.html" class="cal-hero" id="bnBtnCal"><svg class=ic aria-hidden=true><use href=#i-cal></use></svg> Calendar</a>
-    <a href="region-tampa-bay.html" class="merch-hero" id="bnBtnNewb"><svg class=ic aria-hidden=true><use href=#i-compass></use></svg> New to Boating?</a>
+    <a href="region-tampa-bay.html#bn-bite" class="bite-hero" id="bnBtnBite"><svg class=ic aria-hidden=true><use href=#i-fish></use></svg> Today's bite</a>
+    <a href="region-tampa-bay.html#bn-calendar" class="cal-hero" id="bnBtnCal"><svg class=ic aria-hidden=true><use href=#i-cal></use></svg> Calendar</a>
+    <a href="region-tampa-bay.html#bn-newb" class="merch-hero" id="bnBtnNewb"><svg class=ic aria-hidden=true><use href=#i-compass></use></svg> New to Boating?</a>
     <div class="hero-music"><span class="hm-label">Music for the boat</span><a class="hm-btn hm-sp" id="bnBtnSpotify" href="#m-music" aria-label="Boat music playlists on Spotify"><svg class="pl-ic" aria-hidden="true"><use href="#i-spotify"></use></svg>Spotify</a><a class="hm-btn hm-am" id="bnBtnApple" href="#m-music" aria-label="Boat music playlists on Apple Music"><svg class="pl-ic" aria-hidden="true"><use href="#i-applemusic"></use></svg>Apple Music</a></div>
 <div class="emg-home"><div class="wrap">
   <div class="emg-card">
@@ -607,22 +607,41 @@ a.bzb-row{display:block;text-decoration:none;color:inherit;cursor:pointer}
   </div>
   <p class="bzb-note">Zone numbers match the numbered zones on the map. A zone's percentage is the share of its catalogued waters fully cross-checked (WaterCheck) — measured, never estimated. Zones still being catalogued show their stage instead of a number. Updated <span id="bzbUpdated">Nov 4, 2026</span>.</p>
 </div>
-<footer class="bn-foot">
-  <div class="bn-foot-top">
-    <img class="bn-qr" src="assets/bn-qr.png" alt="QR code for boatersnation.com" width="86" height="86">
-    <div class="bn-foot-id">
-      <div class="bn-foot-name">Boaters<span>Nation</span></div>
-      <div class="bn-foot-line">Every body of water in America · Est. 2026</div>
-      <div class="bn-foot-line">Everything boating in America — free.</div>
-      <div class="bn-socials">
-        <a href="https://www.instagram.com/boatersnation" target="_blank" rel="noopener" aria-label="Boaters Nation on Instagram"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
-        <a href="https://www.facebook.com/theboatersnation" target="_blank" rel="noopener" aria-label="Boaters Nation on Facebook"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M14 8h2.5V4.5H14A4.5 4.5 0 0 0 9.5 9v2.5H7V15h2.5v6H13v-6h2.5l.5-3.5h-3V9a1 1 0 0 1 1-1z"/></svg></a>
-        <a href="https://www.youtube.com/@boatersnation" target="_blank" rel="noopener" aria-label="Boaters Nation on YouTube"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M22 8.2a2.8 2.8 0 0 0-2-2C18.3 5.8 12 5.8 12 5.8s-6.3 0-8 .4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1.6 12 29 29 0 0 0 2 15.8a2.8 2.8 0 0 0 2 2c1.7.4 8 .4 8 .4s6.3 0 8-.4a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .4-3.8 29 29 0 0 0-.4-3.8zM10 15V9l5.2 3z"/></svg></a>
+<style>
+/* Footer: Tampa Bay Boating footer layout copied per the formula rule, Boaters Nation branding. (Preview change — footer block only.) */
+.tbb-foot .socials{align-items:center}.foot-logo{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:0 0 auto}
+footer.tbb-foot{background:#060d18;color:#8fa8bd;padding:36px 20px 24px;font-size:.88rem}
+footer.tbb-foot .foot-grid{max-width:1180px;margin:0 auto 24px;text-align:center}
+footer.tbb-foot .foot-grid h4{color:#fff;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-weight:800}
+footer.tbb-foot .foot-grid a{color:#8fa8bd;text-decoration:none;display:block;margin-bottom:8px}
+footer.tbb-foot .foot-grid a:hover{color:#a5dcf5}
+footer.tbb-foot .brandline{color:#fff;font-weight:900;font-size:1.15rem;margin-bottom:6px}
+footer.tbb-foot .tagline{margin:0 0 12px;font-size:.85rem}
+footer.tbb-foot .foot-bottom{max-width:1180px;margin:0 auto;padding-top:18px;border-top:1px solid #1e2a3a;display:flex;justify-content:center;text-align:center;flex-wrap:wrap;gap:8px;font-size:.78rem;align-items:center}
+footer.tbb-foot .socials{display:flex;gap:10px;margin-top:12px;justify-content:center}
+footer.tbb-foot a.soc{width:32px!important;height:32px!important;min-width:32px;min-height:32px;border-radius:50%!important;border:2px solid rgba(255,255,255,.25)!important;display:inline-flex!important;align-items:center;justify-content:center;background:transparent!important;overflow:hidden}
+footer.tbb-foot a.soc svg{width:15px!important;height:15px!important;fill:#fff!important;display:block}
+.qr-foot{position:absolute;left:16px;top:30px;width:64px;height:64px;background:#fff;padding:6px;border-radius:10px}
+@media(max-width:700px){.qr-foot{width:54px;height:54px;top:32px}}
+@media(max-width:700px){footer.tbb-foot .foot-grid{grid-template-columns:1fr 1fr;gap:20px}}
+.us-ol{position:absolute;right:20px;top:34px;width:64px;height:auto}@media(max-width:700px){.us-ol{width:44px;top:36px}}
+</style>
+<footer class="tbb-foot" style="position:relative">
+  <div class="foot-grid">
+    <div>
+      <div class="brandline">Boaters <span style="color:#E63946">Nation</span></div>
+      <div class="tagline">Every body of water in America · Est. 2026<br>Everything boating in America — free.</div>
+      <img class="us-ol" src="assets/us-outline.svg" alt="Outline of the United States">
+      <img class="qr-foot" src="assets/qr-boatersnation.png" alt="QR code — scan to open BoatersNation.com">
+      <div class="socials">
+        <a href="https://boatersnation.com" aria-label="Boaters Nation — back to home"><img class="foot-logo" src="assets/bn-logo2.webp" alt="Boaters Nation logo"></a>
+        <a class="soc" href="https://www.instagram.com/boatersnation" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95C23.73 2.7 21.31.27 16.95.07 15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.15A4 4 0 1 1 16 12a4 4 0 0 1-4 3.99zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
+        <a class="soc" href="https://www.facebook.com/theboatersnation" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.49h-2.79V24C19.61 23.09 24 18.1 24 12.07z"/></svg></a>
+        <a class="soc" href="https://www.youtube.com/@boatersnation" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
       </div>
     </div>
-    <img class="bn-foot-logo" src="assets/bn-logo2.webp" alt="Boaters Nation logo" width="46" height="46">
   </div>
-  <p class="bn-copy">© 2026 Boaters Nation · Tampa Bay Boating, LLC. All rights reserved.</p>
+  <div class="foot-bottom"><span>© 2026 Boaters Nation · Tampa Bay Boating, LLC. All rights reserved.</span><span>United States</span></div>
 </footer>
 <div class="bn-gone">
 </div>
@@ -1254,19 +1273,21 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
    panel; the About pill opens the About panel. */
 (function(){
   var chosen = 'tampa-bay';
-  var TF_HASH = { 'tampa-bay': '#bn-wxbar', 'new-england': '#bn-wxbar' };
+  var TF_HASH = { 'tampa-bay': '#bn-tides', 'new-england': '#bn-wxbar' };
+  var BITE_HASH = { 'tampa-bay': '#bn-bite' };
+  var CAL_HASH = { 'tampa-bay': '#bn-calendar' };
   function reg(){ return (typeof bnRegionBySlug === 'function') ? bnRegionBySlug(chosen) : null; }
   function pageOf(r){ return r.page || ('region.html?r=' + r.slug); }
   function set(id, href){ var el = document.getElementById(id); if (el) el.setAttribute('href', href); }
   function apply(){
     var r = reg(); if (!r) return;
-    set('bnBtnNewb', 'region-tampa-bay.html');
+    set('bnBtnNewb', 'region-tampa-bay.html#bn-newb');
     if (r.status === 'live') {
       var p = pageOf(r);
       set('bnBtnTides', p + (TF_HASH[r.slug] || ''));
       set('bnBtnMap', p + '#bay-leaflet-map');
-      set('bnBtnBite', p);
-      set('bnBtnCal', p);
+      set('bnBtnBite', p + (BITE_HASH[r.slug] || ''));
+      set('bnBtnCal', p + (CAL_HASH[r.slug] || ''));
     } else {
       set('bnBtnTides', '#find'); set('bnBtnMap', '#find');
       set('bnBtnBite', '#find'); set('bnBtnCal', '#find');
