@@ -25,14 +25,16 @@ var BN_REGIONS = [
     slug: "gulf-coast-fl",
     name: "Gulf Coast, FL",
     blurb: "Florida's other Gulf shore — Fort Myers, Cape Coral, Naples and the Panhandle.",
-    status: "building",
+    status: "live",
+    page: "region-gulf-coast-fl.html",
     zipPrefixes: ["324", "325", "339", "341"]
   },
   {
     slug: "south-florida-keys",
     name: "South Florida & the Keys",
     blurb: "Miami, Fort Lauderdale, Palm Beach and the island chain of the Keys.",
-    status: "building",
+    status: "live",
+    page: "region-south-florida-keys.html",
     zipPrefixes: ["330", "331", "332", "333", "334"]
   },
   {
@@ -113,6 +115,14 @@ var BN_REGIONS = [
     blurb: "Lake Mead, Lake Havasu, Lake Powell and the desert lakes.",
     status: "building",
     zipPrefixes: ["852", "853", "860", "864", "890", "891"]
+  },
+  {
+    slug: "florida-atlantic",
+    name: "Florida Atlantic",
+    blurb: "Fernandina Beach, Jacksonville, St. Augustine, Daytona, the Space Coast and the Treasure Coast.",
+    status: "live",
+    page: "region-florida-atlantic.html",
+    zipPrefixes: ["320", "321", "322", "327", "328", "329", "349"]
   }
 ];
 
@@ -151,7 +161,8 @@ var BN_BBOX = {
   "carolina-coast": [[32.0,-81.1,36.6,-75.3]],
   "california-coast": [[32.5,-124.4,42.1,-117.0]],
   "tennessee-river-lakes": [[34.5,-88.6,37.2,-84.9]],
-  "colorado-river-lakes": [[34.8,-114.8,37.3,-113.9],[36.85,-111.55,37.95,-110.65]]
+  "colorado-river-lakes": [[34.8,-114.8,37.3,-113.9],[36.85,-111.55,37.95,-110.65]],
+  "florida-atlantic": [[26.95,-81.95,31.05,-79.75]]
 };
 var BN_STATE_REGION = {
   "Maine": "new-england", "New Hampshire": "new-england", "Massachusetts": "new-england",
