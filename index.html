@@ -125,6 +125,19 @@ body{top:0 !important}
 .bn-wxbar .bn-s{border-left:1px solid rgba(10,37,64,.30);padding-left:7px}
 .bn-wxbar .bn-s:has(#bnWxTide){border-right:1px solid rgba(10,37,64,.30);padding-right:7px}
 @media(max-width:640px){.bn-wxbar .bn-s{padding-left:5px}.bn-wxbar .bn-s:has(#bnWxTide){padding-right:5px}}
+/* WX STRIP TAP (Nov 4): the whole strip is a link straight to your
+   area's Tides & Forecast — a stretched overlay anchor inside the
+   strip; the ↻ button rides above it (z-index) and keeps doing
+   exactly what it does today. The strip only carries the link where
+   that area's weather page exists; elsewhere it stays display-only
+   (no pointer, no shading). No layout, content or divider changes. */
+.bn-wx-link{position:absolute;inset:0;z-index:1;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.bn-wx-link:focus-visible{outline:2px solid #B31942;outline-offset:-2px}
+.bn-wxbar.bn-wx-linked{cursor:pointer}
+.bn-wxbar.bn-wx-linked:hover{background:#dce9f2}
+.bn-wxbar.bn-wx-linked:active{background:#cbdeed}
+.bn-wxbar .bn-wx-btn{position:relative;z-index:2}
+
 @media(max-width:640px){.topbar b{font-size:.96rem}.tb-lang{font-size:.82rem;padding:6px 8px}.tb-translate{left:8px;right:8px}.lang-list{min-width:0}.bn-wxbar{margin:6px 0 0;padding:4px 10px;gap:5px}.bn-s b{font-size:.78rem}#bnWxPlace{font-size:.68rem}}
 </style>
 
@@ -368,7 +381,8 @@ body{top:0 !important}
   <path d="M12 2v1" />
   <path d="m4.929 4.929.707.707" />
   <path d="M12 12v6" /></symbol><symbol id="i-thermo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></symbol><symbol id="i-waves" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></symbol><symbol id="i-wind" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.8 19.6A2 2 0 1 0 14 16H2"/><path d="M17.5 8a2.5 2.5 0 1 1 2 4H2"/><path d="M9.8 4.4A2 2 0 1 1 11 8H2"/></symbol><symbol id="i-tide-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v8"/><path d="m8 7 4-4 4 4"/><path d="M2 15c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 20c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></symbol><symbol id="i-tide-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v8"/><path d="m8 7 4 4 4-4"/><path d="M2 15c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 20c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></symbol></svg>
-<div class="bn-wxbar" id="bn-wxbar" aria-live="polite">
+<div class="bn-wxbar bn-wx-linked" id="bn-wxbar" aria-live="polite">
+  <a class="bn-wx-link" id="bnWxLink" href="region-tampa-bay.html#bn-tides" aria-label="Tides and forecast for your area"></a>
   <b id="bnWxPlace">📍 Your location</b>
   <span class="bn-s"><svg class="bn-ic" aria-hidden="true"><use href="#i-thermo"></use></svg><b id="bnWxAir">--°</b></span>
   <span class="bn-s"><svg class="bn-ic" aria-hidden="true"><use href="#i-waves"></use></svg><b id="bnWxWater">--°</b></span>
@@ -1273,7 +1287,7 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
    panel; the About pill opens the About panel. */
 (function(){
   var chosen = 'tampa-bay';
-  var TF_HASH = { 'tampa-bay': '#bn-tides', 'new-england': '#bn-wxbar' };
+  var TF_HASH = { 'tampa-bay': '#bn-tides', 'new-england': '#bn-tides', 'chesapeake-bay': '#bn-tides', 'florida-atlantic': '#bn-tides' };
   var BITE_HASH = { 'tampa-bay': '#bn-bite' };
   var CAL_HASH = { 'tampa-bay': '#bn-calendar' };
   function reg(){ return (typeof bnRegionBySlug === 'function') ? bnRegionBySlug(chosen) : null; }
@@ -1327,6 +1341,50 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
       if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+})();
+</script>
+
+<script>
+/* Weather strip tap (Nov 4): the strip links straight to your area's
+   Tides & Forecast — its weather page — never a page top, never
+   the map. Same chosen-region resolution as the stack router above:
+   Tampa Bay by default; the ZIP finder, zone taps and the saved
+   weather position all flow through bnStackChoose, which this wraps.
+   Only an area whose Tides & Forecast section exists gets the link
+   — today that is Tampa Bay, New England, Chesapeake Bay and
+   Florida Atlantic (each at its #bn-tides). Everywhere else the strip
+   stays display-only until that area's weather page exists. The
+   ↻ button rides above the link and keeps refreshing. */
+(function(){
+  var bar = document.getElementById('bn-wxbar');
+  var link = document.getElementById('bnWxLink');
+  if (!bar || !link) return;
+  var TF = { 'tampa-bay': 'region-tampa-bay.html#bn-tides', 'new-england': 'region-new-england.html#bn-tides', 'chesapeake-bay': 'region-chesapeake.html#bn-tides', 'florida-atlantic': 'region-florida-atlantic.html#bn-tides' };
+  function apply(slug){
+    var href = TF[slug] || null;
+    if (href) {
+      link.setAttribute('href', href);
+      link.removeAttribute('aria-hidden');
+      bar.classList.add('bn-wx-linked');
+    } else {
+      link.removeAttribute('href');
+      link.setAttribute('aria-hidden', 'true');
+      bar.classList.remove('bn-wx-linked');
+    }
+  }
+  var chosen = 'tampa-bay';
+  try {
+    var p = JSON.parse(localStorage.getItem('bnWxPos') || 'null');
+    if (p && isFinite(p.lat) && isFinite(p.lon) && typeof bnRegionForPoint === 'function') {
+      var rr = bnRegionForPoint(p.lat, p.lon);
+      if (rr) chosen = rr.slug;
+    }
+  } catch (e) {}
+  apply(chosen);
+  if (typeof window.bnStackChoose === 'function') {
+    var origChoose = window.bnStackChoose;
+    window.bnStackChoose = function(slug){ origChoose(slug); if (slug) apply(slug); };
+  }
 })();
 </script>
 
