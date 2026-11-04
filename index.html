@@ -112,6 +112,38 @@ body{top:0 !important}
 .bn-wx-btn:hover{background:#E63946}
 @media(max-width:640px){.topbar b{font-size:.96rem}.tb-lang{font-size:.82rem;padding:6px 8px}.tb-translate{left:8px;right:8px}.lang-list{min-width:0}.bn-wxbar{margin:6px 0 0;padding:4px 10px;gap:5px}.bn-s b{font-size:.78rem}#bnWxPlace{font-size:.68rem}}
 </style>
+
+<style>
+.bn-news{background:linear-gradient(180deg,#0d2c49,#0a2540);border-radius:16px;padding:26px 20px;text-align:center;margin:26px auto 0;max-width:1120px}
+.bn-news h2{color:#fff;margin:0 0 8px;font-size:1.45rem}
+.bn-news p{color:#c9d8e4;margin:0 auto 14px;max-width:520px}
+.bn-news form{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.bn-news input{padding:12px 14px;border-radius:10px;border:1px solid #35506b;background:#071826;color:#fff;min-width:240px;font-family:inherit}
+.bn-news button{background:#B31942;color:#fff;border:0;border-radius:10px;padding:12px 20px;font-weight:800;cursor:pointer;font-family:inherit}
+.bn-adv{display:block;background:#0d2c49;border-radius:16px;padding:20px;text-align:center;text-decoration:none;margin:14px auto 0;max-width:1120px}
+.bn-adv b{color:#fff;display:block;letter-spacing:.04em;font-size:1.05rem}
+.bn-adv span{color:#9db4c6;font-size:.9rem}
+.bn-foot{background:#050f1a;margin:14px auto 0;max-width:1120px;border-radius:16px;padding:24px 20px 18px}
+.bn-foot-top{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.bn-qr{background:#fff;border-radius:12px;padding:5px}
+.bn-foot-name{color:#fff;font-weight:900;font-size:1.5rem}
+.bn-foot-name span{color:#E63946}
+.bn-foot-line{color:#9db4c6;font-size:.92rem;margin-top:3px}
+.bn-socials{display:flex;gap:9px;margin-top:12px}
+.bn-socials a{width:40px;height:40px;border:1.5px solid #35506b;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#dbe7f3;text-decoration:none}
+.bn-map-wrap{margin-top:22px;border-top:1px solid #1d405f;padding-top:16px}
+.bn-map-title{color:#9db4c6;font-size:.75rem;font-weight:800;letter-spacing:.14em;margin-bottom:10px}
+.bn-tilemap{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.bn-tile{border:1.5px solid #35506b;background:#0d2c49;color:#dbe7f3;border-radius:8px;min-height:44px;font-weight:800;font-size:.72rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;padding:2px}
+.bn-tile.live{border-color:#E63946;background:#123c63}
+.bn-tile.on{background:#B31942;border-color:#ff5a5a;color:#fff;box-shadow:0 0 0 2px #ff5a5a inset}
+.bn-tilemap-extra{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
+.bn-tilemap-extra .bn-tile{flex:1;min-width:80px}
+.bn-map-info{color:#c9d8e4;font-size:.92rem;margin:12px 2px 0}
+.bn-map-info a{color:#7dd3fc;font-weight:800}
+.bn-copy{color:#5f7a8e;font-size:.82rem;text-align:center;margin:18px 0 0;border-top:1px solid #1d405f;padding-top:14px}
+.bn-gone{display:none}
+</style>
 </head>
 <body>
 <header class="bn-header"><div class="topbar"><a href="index.html"><img class="anchor" src="assets/bn-logo2.webp" alt="Boaters Nation logo"><b>Boaters<span>Nation</span></b></a><button class="tb-lang" id="lang-btn" aria-label="Translate this page" title="Translate"><span id="bnLangFlag">🇺🇸</span> Language</button></div>
@@ -239,9 +271,9 @@ body{top:0 !important}
   <div class="hero">
   <div class="kicker">🇺🇸 Boaters Nation 🇺🇸</div>
   <h1>Everything Boating in America</h1>
-  <p class="intro">Boaters Nation is built to put all your boating information for your location on one free site — every body of water in America: lakes, rivers, bays and coasts. Local conditions, a boater's map, events, dock-and-dine, fuel prices and waterfront stays with docks — every listing cross-checked against its sources, region by region — and corrected by the boaters who use it. Local businesses sponsor it, so boaters never pay.</p>
+  <p class="intro">Every body of water in America — lakes, rivers, bays and coasts — on one free site.</p>
 
-  <div class="note" style="text-align:center">
+  <div class="note" id="find" style="text-align:center">
     <b>Find your water</b><br>
     <span style="font-size:.88rem">Type your ZIP code — or your city, lake or river — and land on your water: your map, your events, your fuel prices.</span>
     <form class="zipform" onsubmit="return bnZip(event)">
@@ -258,6 +290,7 @@ body{top:0 !important}
     <button type="button" class="mtab" onclick="bnMainTab('safety',this)">Safety &amp; Emergency</button>
     <button type="button" class="mtab" onclick="bnMainTab('music',this)">Boat Music</button>
     <button type="button" class="mtab" onclick="bnMainTab('how',this)">How It Works</button>
+    <button type="button" class="mtab" onclick="bnMainTab('about',this)">About</button>
   </div>
 
   <div class="mpanel on" id="m-regions">
@@ -354,10 +387,57 @@ body{top:0 !important}
     <div class="step"><b>3 · Middleman only.</b><br>We connect boaters to local businesses and take no bookings, no sales, no cut of anyone's money.</div>
   </div>
 
-  <div class="note" style="margin-top:16px"><b>Own a marine business?</b> When your region opens, your free listing comes first — sponsors get the featured spots. That's the whole model, same as Tampa Bay.</div>
+  <div class="note" style="margin-top:16px"><b>Own a marine business?</b> When your region opens, your free listing comes first — sponsors get the featured spots. That's the whole model.</div>
   </div>
 
-  <p class="fine">🇺🇸 <b>Boaters Nation</b> — Everything boating in America, free for boaters.</p>
+  <div class="mpanel" id="m-about">
+  <h2>About Boaters Nation</h2>
+  <p class="sub">Boaters Nation is built to put all your boating information for your location on one free site — every body of water in America: lakes, rivers, bays and coasts. Local conditions, a boater's map, events, dock-and-dine, fuel prices and waterfront stays with docks — built region by region.</p>
+  <div class="steps">
+    <div class="step"><b>The standard.</b><br>Every listing is cross-checked against its sources before it goes up — and corrected by the boaters who use it. Every body of water gets the same treatment: all six pin categories (ramps, marinas &amp; fuel, bait &amp; tackle, dock-and-dine, stays, live cams) checked for that water. If a category honestly has none, that's recorded — never skipped. Spot a mistake? Every card has a report link. That's how this stays right.</div>
+    <div class="step"><b>Why it's free.</b><br>Local businesses sponsor Boaters Nation and pay for featured spots. Boaters never pay, event listings are free, and waterfront rental owners list free. We don't sell boats, book charters or take a cut of anything — we connect you to the business, and the rest happens between you and them.</div>
+    <div class="step"><b>Fuel prices.</b><br>Prices appear only where we can check them the careful way. A wrong fuel price sends a boater across the bay for nothing — so if we can't check it, we don't print it.</div>
+  </div>
+</div>
+
+  </div>
+<section class="bn-news">
+  <h2>Sign Up for Our Weekly Newsletter</h2>
+  <p>One short email a week: new regions opening, the best events on America's waters, and local deals. No spam, ever.</p>
+  <form action="https://formsubmit.co/david@tampabayboating.com" method="POST">
+    <input type="hidden" name="_subject" value="Boaters Nation newsletter signup">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="email" name="email" required placeholder="Your email address" aria-label="Email address">
+    <button type="submit">Sign Up</button>
+  </form>
+</section>
+<a class="bn-adv" href="mailto:david@tampabayboating.com?subject=Advertising%20on%20Boaters%20Nation">
+  <b>ADVERTISE WITH BOATERS NATION</b>
+  <span>For businesses — reach boaters nationwide ›</span>
+</a>
+<footer class="bn-foot">
+  <div class="bn-foot-top">
+    <img class="bn-qr" src="assets/bn-qr.png" alt="QR code for boatersnation.com" width="86" height="86">
+    <div class="bn-foot-id">
+      <div class="bn-foot-name">Boaters<span>Nation</span></div>
+      <div class="bn-foot-line">Every body of water in America · Est. 2026</div>
+      <div class="bn-foot-line">Everything boating in America — free.</div>
+      <div class="bn-socials">
+        <a href="https://www.instagram.com/boatersnation" target="_blank" rel="noopener" aria-label="Boaters Nation on Instagram"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.facebook.com/theboatersnation" target="_blank" rel="noopener" aria-label="Boaters Nation on Facebook"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M14 8h2.5V4.5H14A4.5 4.5 0 0 0 9.5 9v2.5H7V15h2.5v6H13v-6h2.5l.5-3.5h-3V9a1 1 0 0 1 1-1z"/></svg></a>
+        <a href="https://www.youtube.com/@boatersnation" target="_blank" rel="noopener" aria-label="Boaters Nation on YouTube"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M22 8.2a2.8 2.8 0 0 0-2-2C18.3 5.8 12 5.8 12 5.8s-6.3 0-8 .4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1.6 12 29 29 0 0 0 2 15.8a2.8 2.8 0 0 0 2 2c1.7.4 8 .4 8 .4s6.3 0 8-.4a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .4-3.8 29 29 0 0 0-.4-3.8zM10 15V9l5.2 3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="bn-map-wrap">
+    <div class="bn-map-title">OUR REGIONS — TAP ONE</div>
+    <div class="bn-tilemap" id="bnTileMap"></div>
+    <div class="bn-tilemap-extra" id="bnTileExtra"></div>
+    <p class="bn-map-info" id="bnTileInfo">Live regions open now. The rest are in the works — tap one to see where it stands.</p>
+  </div>
+  <p class="bn-copy">© 2026 Boaters Nation · Tampa Bay Boating, LLC. All rights reserved.</p>
+</footer>
+<div class="bn-gone">
 </div>
 <script src="regions.js"></script>
 <script>
@@ -707,6 +787,38 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
   new MutationObserver(killBar).observe(document.documentElement,{childList:true,subtree:true});
   setInterval(killBar,2000);
   killBar();
+})();
+</script>
+
+<script>
+(function(){
+  var POS = {'pacific-northwest':[1,1,'PNW'],'great-lakes':[5,1,'GL'],'new-england':[7,1,'NE'],
+    'lake-country':[4,2,'LC'],'chesapeake-bay':[6,2,'CB'],'mid-atlantic-coast':[7,2,'MA'],
+    'california-coast':[1,3,'CA'],'colorado-river-lakes':[2,3,'CR'],'tennessee-river-lakes':[4,3,'TN'],
+    'carolina-coast':[6,3,'CC'],'texas-gulf-coast':[3,4,'TX'],'gulf-coast-fl':[5,4,'GC'],
+    'tampa-bay':[5,5,'TB'],'south-florida-keys':[6,5,'SF']};
+  var map = document.getElementById('bnTileMap'), extra = document.getElementById('bnTileExtra'), info = document.getElementById('bnTileInfo');
+  if (!map || typeof BN_REGIONS === 'undefined') return;
+  function pick(r, btn){
+    document.querySelectorAll('.bn-tile').forEach(function(t){ t.classList.remove('on'); });
+    btn.classList.add('on');
+    if (r.status === 'live') {
+      var dest = r.page || ('region.html?r=' + r.slug);
+      info.innerHTML = '<b>' + r.name + '</b> is LIVE. <a href="' + dest + '">Open ' + r.name + ' →</a>';
+    } else {
+      info.innerHTML = '<b>' + r.name + '</b> is in the works. <a href="#find">Join the waitlist</a> and it moves up the list.';
+    }
+  }
+  BN_REGIONS.forEach(function(r){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'bn-tile' + (r.status === 'live' ? ' live' : '');
+    var pos = POS[r.slug];
+    if (pos) { b.style.gridColumnStart = pos[0]; b.style.gridRowStart = pos[1]; b.textContent = pos[2]; map.appendChild(b); }
+    else { b.textContent = r.name; extra.appendChild(b); }
+    b.setAttribute('aria-label', r.name);
+    b.onclick = function(){ pick(r, b); };
+  });
 })();
 </script>
 </body>
