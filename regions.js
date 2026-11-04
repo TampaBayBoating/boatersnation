@@ -18,6 +18,7 @@ var BN_REGIONS = [
     name: "Tampa Bay, FL",
     blurb: "Tampa, St. Pete, Clearwater, Bradenton and Sarasota — the bay where Boaters Nation started.",
     status: "live",
+    page: "region-tampa-bay.html",
     zipPrefixes: ["335", "336", "337", "342", "346"]
   },
   {
