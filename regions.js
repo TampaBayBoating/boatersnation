@@ -41,7 +41,8 @@ var BN_REGIONS = [
     slug: "chesapeake-bay",
     name: "Chesapeake Bay",
     blurb: "Maryland and Virginia's big bay — Annapolis, Baltimore, the Eastern Shore and Hampton Roads.",
-    status: "building",
+    status: "live",
+    page: "region-chesapeake.html",
     zipPrefixes: ["210", "212", "214", "216", "218", "224", "230", "231", "233", "234", "235", "236", "237", "238"]
   },
   {
