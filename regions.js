@@ -82,7 +82,8 @@ var BN_REGIONS = [
     slug: "mid-atlantic-coast",
     name: "Mid-Atlantic Coast",
     blurb: "Long Island, the Jersey Shore, the Delaware beaches and Ocean City.",
-    status: "building",
+    status: "live",
+    page: "region-mid-atlantic.html",
     zipPrefixes: ["077", "080", "082", "117", "119", "199"]
   },
   {
