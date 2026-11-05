@@ -1262,7 +1262,13 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
       if (r.status === 'live') {
         var dest = r.page || ('region.html?r=' + r.slug);
         window.__bnMapNav = dest;
-        location.href = dest;
+        /* Location landing (David's order, Nov 4): recognizing your
+           area lands you on your area's function stack (below the
+           finder), not on the region page's map. The stack buttons are
+           set to this region by the router's own tap listener; the
+           explicit "Open <region>" link in the info line above stays
+           as the deliberate door into the region page. */
+        if (window.bnLandOnStack) window.bnLandOnStack(s);
         return;
       }
       var grp = null;
@@ -1305,7 +1311,7 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
 (function(){
   var chosen = 'tampa-bay';
   var TF_HASH = { 'tampa-bay': '#bn-tides', 'new-england': '#bn-tides', 'chesapeake-bay': '#bn-tides', 'florida-atlantic': '#bn-tides', 'mid-atlantic-coast': '#bn-tides', 'gulf-coast-fl': '#bn-tides', 'south-florida-keys': '#bn-tides' };
-  var BITE_HASH = { 'tampa-bay': '#bn-bite' };
+  var BITE_HASH = { 'tampa-bay': '#bn-bite', 'new-england': '#bn-bite', 'chesapeake-bay': '#bn-bite', 'florida-atlantic': '#bn-bite', 'mid-atlantic-coast': '#bn-bite', 'gulf-coast-fl': '#bn-bite', 'south-florida-keys': '#bn-bite' };
   var CAL_HASH = { 'tampa-bay': '#bn-calendar' };
   var NEWB_HASH = { 'tampa-bay': '#bn-newb' };
   function reg(){ return (typeof bnRegionBySlug === 'function') ? bnRegionBySlug(chosen) : null; }
@@ -1575,6 +1581,95 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
       }
     } else if (tries >= 30) clearInterval(iv);
   }, 500);
+})();
+</script>
+
+<script>
+/* Area-home landing (David's order, Nov 4): once the site recognizes
+   your area — the ZIP/place finder, a tap on a live zone of the map,
+   GPS, or the saved area on a return visit — you land on your area's
+   function stack (#bnStack: tides, the boater's map, today's bite,
+   calendar, new to boating), NOT on the boater's map and not on a
+   region page. The stack buttons are set to the recognized area by the
+   router above; the map opens only on the explicit "Open the boater's
+   map" tap. Live areas only: a building area's home stays the finder —
+   its stack buttons point there too, and its waitlist lives there.
+   The stack element already carries the stable id "bnStack"; landing
+   scrolls to it and sets the page anchor to #bnStack. */
+(function(){
+  var stack = document.getElementById('bnStack');
+  if (!stack) return;
+  function isLive(slug){
+    var r = (typeof bnRegionBySlug === 'function') ? bnRegionBySlug(slug) : null;
+    return !!(r && r.status === 'live');
+  }
+  function land(){
+    try { stack.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    catch (e) { try { stack.scrollIntoView(); } catch (e2) {} }
+    try {
+      if (window.history && history.replaceState) history.replaceState(null, '', '#bnStack');
+      else location.hash = 'bnStack';
+    } catch (e) { try { location.hash = 'bnStack'; } catch (e2) {} }
+  }
+  window.bnLandOnStack = function(slug){
+    if (slug && window.bnStackChoose) window.bnStackChoose(slug);
+    land();
+  };
+  /* Recognition that already flows through the stack router — the
+     finder (ZIP and place-name) and zone taps call bnStackChoose:
+     after it applies the area, a live area lands on the stack. */
+  if (typeof window.bnStackChoose === 'function') {
+    var origChoose = window.bnStackChoose;
+    window.bnStackChoose = function(slug){
+      origChoose(slug);
+      if (slug && isLive(slug)) land();
+    };
+  }
+  /* GPS: the weather button's locate() saves the position without
+     calling the stack router, so watch for the position to land (the
+     same poll the first-open script uses). A weather refresh that
+     doesn't move the saved position never scrolls the page. The
+     first-open auto-ask clicks this same button, so it is covered by
+     the same watch. */
+  function savedT(){
+    try { var p = JSON.parse(localStorage.getItem('bnWxPos') || 'null'); return p ? (p.t || 0) : null; }
+    catch (e) { return null; }
+  }
+  function watchPos(before){
+    var tries = 0;
+    var iv = setInterval(function(){
+      tries++;
+      var p = null;
+      try { p = JSON.parse(localStorage.getItem('bnWxPos') || 'null'); } catch (e) {}
+      if (p && isFinite(p.lat) && isFinite(p.lon) && (p.t || 0) !== before) {
+        clearInterval(iv);
+        var r = (typeof bnRegionForPoint === 'function') ? bnRegionForPoint(p.lat, p.lon) : null;
+        if (r && r.status === 'live') window.bnLandOnStack(r.slug);
+      } else if (tries >= 30) clearInterval(iv);
+    }, 500);
+  }
+  var wxBtn = document.getElementById('bnWxBtn');
+  if (wxBtn) wxBtn.addEventListener('click', function(){ watchPos(savedT()); });
+  /* The first-open auto-ask clicks that button from an earlier script
+     than this one, so the click can precede the listener above: if the
+     auto-ask already fired (bnAutoLoc set) and no position is saved
+     yet, arm the same watch now for the answer still on its way. */
+  try {
+    if (localStorage.getItem('bnAutoLoc') && !JSON.parse(localStorage.getItem('bnWxPos') || 'null')) watchPos(savedT());
+  } catch (e) {}
+  /* Return visit: a saved area is recognized the moment the page
+     loads, so land on its stack. A deep link aimed at a specific
+     panel (anything beyond #find / #bnStack) is left alone. */
+  try {
+    var h = location.hash || '';
+    if (!h || h === '#find' || h === '#bnStack') {
+      var saved = JSON.parse(localStorage.getItem('bnWxPos') || 'null');
+      if (saved && isFinite(saved.lat) && isFinite(saved.lon) && typeof bnRegionForPoint === 'function') {
+        var rr = bnRegionForPoint(saved.lat, saved.lon);
+        if (rr && rr.status === 'live') window.bnLandOnStack(rr.slug);
+      }
+    }
+  } catch (e) {}
 })();
 </script>
 </body>
