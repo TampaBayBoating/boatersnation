@@ -662,7 +662,7 @@ main{display:block}
     <div class="sec-head">
       <span class="sec-kicker">Coming Soon</span>
       <h2>Still building for Carolina Coast</h2>
-      <p>The Events Calendar and the New to Boating guides are live for Tampa Bay today, and they are being built for Carolina Coast next. We open a section only when it is checked to the same standard as the rest of this page — no filler, no guesses.</p>
+      <p>Today's Bite, the Events Calendar, the New to Boating guides and the State Rules &amp; Agencies pages are live for Tampa Bay today, and they are being built for Carolina Coast next. We open a section only when it is checked to the same standard as the rest of this page — no filler, no guesses.</p>
       <p>Already live here today: the boater's map and Tides &amp; Forecast — use the tabs above.</p>
     </div>
     <p>Want to know the day they open here? Join the waitlist:</p>
@@ -670,7 +670,7 @@ main{display:block}
   </div>
 </div></section>
 </main>
-<p class="fine">Preview built from the staged Boaters Nation database (Nov 3, 2026). Nothing here is published until David approves it.</p>
+<p class="fine">&#127482;&#127480; <b>Boaters Nation</b> &mdash; Everything boating in America, free for boaters.</p>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 function show(i){
@@ -1642,7 +1642,7 @@ function tfChopRead(mph){
 </script>
 <script>
 (function(){
-  var H = {'#bn-tides':22,'#bn-soon':23};
+  var H = {'#bn-tides':22,'#bn-soon':23,'#bn-bite':23,'#bn-calendar':23,'#bn-newb':23};
   function go(){
     var h = location.hash;
     if (Object.prototype.hasOwnProperty.call(H, h)) { show(H[h]); var el = document.getElementById(h.slice(1)); if (el) el.scrollIntoView(); }
@@ -1671,7 +1671,7 @@ function tfChopRead(mph){
    zone pair + go-out % bars + 0-20 ft wave-height bars + swell line +
    advisory-aware plain-English rating + Your Spot. Data: live NWS zone
    forecasts (api.weather.gov), same as Tampa. */
-const BNWV_CFG = {"regionName": "Carolina Coast", "inZone": "AMZ135", "outZone": "AMZ156", "inName": "Inside · Pamlico Sound", "outName": "Outside · Atlantic", "inStat": "Inside Pamlico Sound", "outStat": "Atlantic seas · outside the inlets", "outWater": "the Atlantic", "outShort": "the open water", "passNoun": "the inlets", "passCap": "The inlets", "flatLine": "Make it a sound day.", "stayLine": "Stay in protected water.", "inPrep": "Inside the sounds", "scopeBoth": "for the sounds and the Atlantic", "scopeOut": "for the Atlantic", "scopeIn": "for the sounds", "jumpNote": "Where the air is: Atlantic swell rolling into Oregon Inlet, Beaufort Inlet, Masonboro Inlet and the Cape Fear River entrance, and across the shoals at Bogue and Lockwoods Folly inlets.", "rulesNote": "PWC rules are set by state — wake-jumping distances and riding cutoffs differ. Check the State Rules &amp; Agencies section before you ride. Lanyard on, always.", "insideNumeric": true, "tampaPlain": false, "tideStation": null, "notFound": "That is outside the Carolina Coast waters we cover — try Pamlico Sound, the Outer Banks, Wilmington, Charleston…", "spotSub": "That report is the big picture. Pick your water — or type its name — for its own bars.", "spotPlaceholder": "Your water — e.g. Albemarle Sound", "zips": null, "spots": [{"key": "albemarle", "name": "Albemarle Sound", "zone": "AMZ230", "src": "NWS \"Albemarle Sound\" zone forecast"}, {"key": "pamlico", "name": "Pamlico Sound", "zone": "AMZ135", "src": "NWS \"Pamlico Sound\" zone forecast"}, {"key": "oregon", "name": "Oregon Inlet / Outer Banks", "zone": "AMZ152", "src": "NWS \"S of Oregon Inlet NC to Cape Hatteras NC out to 20 NM\" zone forecast"}, {"key": "beaufort", "name": "Beaufort Inlet / Crystal Coast", "zone": "AMZ156", "src": "NWS \"S of Ocracoke Inlet NC to Cape Lookout NC out to 20 NM\" zone forecast"}, {"key": "capefear", "name": "Cape Fear / Wilmington", "zone": "AMZ250", "src": "NWS \"Coastal waters from Surf City to Cape Fear NC out 20 nm\" zone forecast"}, {"key": "charleston", "name": "Charleston Harbor", "zone": "AMZ340", "src": "NWS \"Charleston Harbor\" zone forecast"}, {"key": "myrtle", "name": "Myrtle Beach", "zone": "AMZ254", "src": "NWS \"Coastal waters from Little River Inlet to Murrells Inlet SC out 20 nm\" zone forecast"}]};
+const BNWV_CFG = {"regionName": "Carolina Coast", "inZone": "AMZ135", "outZone": "AMZ156", "inName": "Inside · Pamlico Sound", "outName": "Outside · Atlantic", "inStat": "Inside Pamlico Sound", "outStat": "Atlantic seas · outside the inlets", "outWater": "the Atlantic", "outShort": "the open water", "passNoun": "the inlets", "passCap": "The inlets", "flatLine": "Make it a sound day.", "stayLine": "Stay in protected water.", "inPrep": "Inside the sounds", "scopeBoth": "for the sounds and the Atlantic", "scopeOut": "for the Atlantic", "scopeIn": "for the sounds", "jumpNote": "Where the air is: Atlantic swell rolling into Oregon Inlet, Beaufort Inlet, Masonboro Inlet and the Cape Fear River entrance, and across the shoals at Bogue and Lockwoods Folly inlets.", "rulesNote": "PWC rules are set by state — wake-jumping distances and riding cutoffs differ. Check the NC Wildlife Resources Commission and SC DNR boating rules before you ride. Lanyard on, always.", "insideNumeric": true, "tampaPlain": false, "tideStation": null, "notFound": "That is outside the Carolina Coast waters we cover — try Pamlico Sound, the Outer Banks, Wilmington, Charleston…", "spotSub": "That report is the big picture. Pick your water — or type its name — for its own bars.", "spotPlaceholder": "Your water — e.g. Albemarle Sound", "zips": null, "spots": [{"key": "albemarle", "name": "Albemarle Sound", "zone": "AMZ230", "src": "NWS \"Albemarle Sound\" zone forecast"}, {"key": "pamlico", "name": "Pamlico Sound", "zone": "AMZ135", "src": "NWS \"Pamlico Sound\" zone forecast"}, {"key": "oregon", "name": "Oregon Inlet / Outer Banks", "zone": "AMZ152", "src": "NWS \"S of Oregon Inlet NC to Cape Hatteras NC out to 20 NM\" zone forecast"}, {"key": "beaufort", "name": "Beaufort Inlet / Crystal Coast", "zone": "AMZ156", "src": "NWS \"S of Ocracoke Inlet NC to Cape Lookout NC out to 20 NM\" zone forecast"}, {"key": "capefear", "name": "Cape Fear / Wilmington", "zone": "AMZ250", "src": "NWS \"Coastal waters from Surf City to Cape Fear NC out 20 nm\" zone forecast"}, {"key": "charleston", "name": "Charleston Harbor", "zone": "AMZ340", "src": "NWS \"Charleston Harbor\" zone forecast"}, {"key": "myrtle", "name": "Myrtle Beach", "zone": "AMZ254", "src": "NWS \"Coastal waters from Little River Inlet to Murrells Inlet SC out 20 nm\" zone forecast"}]};
 const bnwvMarineCache = {};
 let bnwvMarineIssued = null;
 async function bnwvGetPeriods(zone){
@@ -1891,7 +1891,7 @@ async function tfLoadWaves(){
     if(wvInp && !wvInp._wvBound){ wvInp._wvBound = 1; wvInp.addEventListener("keydown", function(ev){ if(ev.key === "Enter") wvGo(); }); }
     try{
       const w1 = (typeof wxLoc === "function") ? wxLoc() : null;
-      if(w1 && w1.name){ const hit = CFG.spots.filter(function(s){ return s.name.toLowerCase() === String(w1.name).toLowerCase(); })[0]; if(hit) wvShowArea(hit.key); }
+      if(w1 && w1.name){ const hit = CFG.spots.filter(function(s){ return s.name.toLowerCase() === String(w1.name).toLowerCase(); })[0]; if(hit) wvShowArea(hit.key); else if(CFG.spots && CFG.spots.length) wvShowArea(CFG.spots[0].key); }
     }catch(e){}
     body.innerHTML = barsHTML +
       '<div class="wave-grid">' +

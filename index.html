@@ -604,7 +604,7 @@ body{top:0 !important}
     <thead><tr><th>Region</th><th>Boater&rsquo;s map</th><th>Tides &amp; forecast</th><th>Wave report</th><th>Today&rsquo;s bite</th><th>Events calendar</th><th>New to Boating</th><th>State rules</th></tr></thead>
     <tbody>
       <tr><th>Tampa Bay, FL</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Daily</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-      <tr><th>New England</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&mdash;</td><td>&mdash;</td><td>&#10003;</td></tr>
+      <tr><th>New England</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
       <tr><th>Chesapeake Bay</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&mdash;</td><td>&mdash;</td><td>&#10003;</td></tr>
       <tr><th>Florida Atlantic</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&mdash;</td><td>&mdash;</td><td>&#10003;</td></tr>
       <tr><th>Mid-Atlantic Coast</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&mdash;</td><td>&mdash;</td><td>&#10003;</td></tr>
@@ -1361,16 +1361,16 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
       var p = pageOf(r);
       set('bnBtnTides', p + (TF_HASH[r.slug] || ''));
       set('bnBtnMap', p + '#bay-leaflet-map');
-      set('bnBtnBite', p + (BITE_HASH[r.slug] || ''));
+      set('bnBtnBite', p + (BITE_HASH[r.slug] || '#bn-soon'));
       set('bnBtnCal', p + (CAL_HASH[r.slug] || '#bn-soon'));
       set('bnBtnNewb', p + (NEWB_HASH[r.slug] || '#bn-soon'));
       set('bnCatMap', p + '#bay-leaflet-map');
       set('bnCatTides', p + (TF_HASH[r.slug] || ''));
-      set('bnCatFish', p + (BITE_HASH[r.slug] || ''));
+      set('bnCatFish', p + (BITE_HASH[r.slug] || '#bn-soon'));
       set('bnCatCal', p + (CAL_HASH[r.slug] || '#bn-soon'));
       set('bnCatRamps', p + '#bn-dir-ramp'); set('bnCatFuel', p + '#bn-dir-fuel'); set('bnCatDine', p + '#bn-dir-dine');
       set('bnCatStays', p + '#bn-dir-stay'); set('bnCatCams', p + '#bn-dir-cam');
-      set('bnCatRules', (r.slug === 'gulf-coast-fl' || r.slug === 'south-florida-keys') ? 'state-rules.html#fl' : p + '#bn-dir-agencies');
+      set('bnCatRules', (r.slug === 'gulf-coast-fl' || r.slug === 'south-florida-keys') ? 'state-rules.html#fl' : (r.slug === 'carolina-coast' ? p + '#bn-soon' : p + '#bn-dir-agencies'));
     } else {
       set('bnBtnTides', '#find'); set('bnBtnMap', '#find');
       set('bnBtnBite', '#find'); set('bnBtnCal', '#find');
