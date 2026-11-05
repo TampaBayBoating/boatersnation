@@ -553,7 +553,9 @@ body{top:0 !important}
     <div class="step"><b>The standard.</b><br>Every listing is cross-checked against its sources before it goes up — and corrected by the boaters who use it. Every body of water gets the same treatment: all six pin categories (ramps, marinas &amp; fuel, bait &amp; tackle, dock-and-dine, stays, live cams) checked for that water. If a category honestly has none, that's recorded — never skipped. Spot a mistake? Every card has a report link. That's how this stays right.</div>
     <div class="step"><b>Why it's free.</b><br>Local businesses sponsor Boaters Nation and pay for featured spots. Boaters never pay, event listings are free, and waterfront rental owners list free. We don't sell boats, book charters or take a cut of anything — we connect you to the business, and the rest happens between you and them.</div>
     <div class="step"><b>Fuel prices.</b><br>Prices appear only where we can check them the careful way. A wrong fuel price sends a boater across the bay for nothing — so if we can't check it, we don't print it.</div>
+    <div class="step"><b>Who's behind it.</b><br>Boaters Nation is built by David and Nancy MacDonald of Tampa Bay Boating LLC, in Riverview, Florida \u2014 boaters first. Every listing here is checked, then rechecked by a second pass, before it reaches the map.</div>
   </div>
+  <p class="sub" style="margin-top:14px">See exactly how every pin, price and rule gets checked: <a href="how-we-check.html" style="color:#7dd3fc;font-weight:700">How we check \u2192</a></p>
 </div>
 <div class="mpanel" id="m-music">
   <h2>Boat Music</h2>
@@ -593,6 +595,7 @@ body{top:0 !important}
   </div>
   <p class="bzb-note">Zone numbers match the numbered zones on the map. A zone's percentage is the share of its catalogued waters fully cross-checked (WaterCheck) — measured, never estimated. Zones that aren't open yet are marked Coming soon. Updated <span id="bzbUpdated">Nov 5, 2026</span>.</p>
 </div>
+<p style="max-width:1120px;margin:8px auto 0;color:#9db4c6;font-size:.8rem;text-align:center">Tap your zone to join its waitlist \u2014 waitlists decide what opens next.</p>
 <section class="bnf" id="bn-features" aria-label="What each open region has today">
   <h3>What each open region has today</h3>
   <p class="bnf-intro">Free for boaters, always &middot; No verified source, no pin &mdash; every feature below is checked the same way.</p>
@@ -606,6 +609,7 @@ body{top:0 !important}
       <tr><th>Mid-Atlantic Coast</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&mdash;</td><td>&mdash;</td><td>&#10003;</td></tr>
       <tr><th>Gulf Coast, FL</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&mdash;</td><td>&mdash;</td><td>&#10003;</td></tr>
       <tr><th>South Florida &amp; the Keys</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&mdash;</td><td>&mdash;</td><td>&#10003;</td></tr>
+      <tr><th>Carolina Coast</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
     </tbody>
   </table></div>
   <p class="bnf-note">Today&rsquo;s bite: Tampa Bay&rsquo;s report is written daily; the other regions&rsquo; reports are weekly &mdash; each card says which. Fuel: every open region maps its fuel docks. Prices are printed only where they&rsquo;re re-checked on a schedule &mdash; today that&rsquo;s Tampa Bay, where prices are verified daily with same-day rechecks on Tampa Bay Boating. Other regions show fuel docks without prices until they get the same treatment &mdash; a wrong price sends a boater across the bay for nothing.</p>
@@ -695,7 +699,7 @@ footer.tbb-foot a.soc svg{width:15px!important;height:15px!important;fill:#fff!i
       </div>
     </div>
   </div>
-  <div class="foot-bottom"><span>© 2026 Boaters Nation · Tampa Bay Boating, LLC. All rights reserved.</span><span>United States</span></div>
+  <div class="foot-bottom"><span>© 2026 Boaters Nation · Tampa Bay Boating, LLC. All rights reserved. · <a href="how-we-check.html" style="color:#7dd3fc">How we check</a></span><span>United States</span></div>
 </footer>
 <div class="bn-gone">
 </div>
@@ -955,10 +959,12 @@ function bnRegionCard(r){
 })();
 
 /* Waitlist form (FormSubmit). Fields: email + zip. */
-function bnWaitlistForm(regionName, zip){
+function bnWaitlistForm(regionName, zip, state){
+  var subj = state ? ('Boaters Nation waitlist \u2014 ' + state) : ('Boaters Nation waitlist \u2014 ' + regionName);
   return '<form class="wl" method="POST" action="https://formsubmit.co/david@tampabayboating.com">'
-    + '<input type="hidden" name="_subject" value="Boaters Nation waitlist">'
+    + '<input type="hidden" name="_subject" value="' + subj + '">'
     + '<input type="hidden" name="region" value="' + regionName + '">'
+    + '<input type="hidden" name="state" value="' + (state || '') + '">'
     + '<label>Email<input type="email" name="email" required placeholder="you@example.com"></label>'
     + '<label>ZIP code<input type="text" name="zip" inputmode="numeric" maxlength="5" value="' + (zip || '') + '"></label>'
     + '<button type="submit">Tell me when it opens</button></form>';
@@ -985,7 +991,7 @@ function bnRegionForState(state){
   for (var i = 0; i < BN_REGIONS.length; i++) if (BN_REGIONS[i].slug === slug) return BN_REGIONS[i];
   return null;
 }
-function bnZipResult(r, zip, place){
+function bnZipResult(r, zip, place, state){
   var out = document.getElementById('bn-zip-out');
   var found = place ? '<span style="color:#9db4c6">Found: ' + place.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</span><br>' : '';
   if (r && r.status === 'live') {
@@ -998,12 +1004,12 @@ function bnZipResult(r, zip, place){
     out.innerHTML = found + '<b style="color:#E63946">' + r.name + ' is in the works.</b><br>'
       + 'We open a region only when every pin is cross-checked — no filler, no guesses. '
       + 'Join the waitlist and we will email you the day your water goes live.'
-      + bnWaitlistForm(r.name, zip);
+      + bnWaitlistForm(r.name, zip, state);
   } else {
     out.innerHTML = found + '<b style="color:#E63946">Not covered yet.</b><br>'
       + 'Boaters Nation opens region by region — and the waters with the most boaters waiting open first. '
       + 'Joining the waitlist is how your area moves up the list.'
-      + bnWaitlistForm(place ? ('Not covered: ' + place) : 'Not covered yet', zip);
+      + bnWaitlistForm(place ? ('Not covered: ' + place) : 'Not covered yet', zip, state);
   }
 }
 function bnZip(ev){
@@ -1041,7 +1047,7 @@ function bnZip(ev){
       window.__bnNearLabel = place.split(',')[0];
       if (window.bnWxUse) bnWxUse(parseFloat(it.lat), parseFloat(it.lon), place);
       var r = bnRegionForPoint(parseFloat(it.lat), parseFloat(it.lon)) || bnRegionForState((it.address && it.address.state) || '');
-      bnZipResult(r, '', place);
+      bnZipResult(r, '', place, (it.address && it.address.state) || '');
     })
     .catch(function(){ out.innerHTML = 'The place finder couldn\'t connect just then — a ZIP code will still work.'; });
   return false;

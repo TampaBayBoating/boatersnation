@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How We Check | Boaters Nation</title>
+<meta name="description" content="How Boaters Nation checks every pin, price and rule before it reaches the map: two independent passes, official sources first, and no verified source, no pin.">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#071826;color:#e8eef4;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.45;overflow-x:clip}
+  .topbar{background:#0a2540;padding:10px 16px;display:flex;align-items:center;gap:10px;border-bottom:3px solid #B31942}
+  .topbar a{display:flex;align-items:center;gap:10px;color:#e8eef4;text-decoration:none}
+  .anchor{width:38px;height:38px;border-radius:50%;object-fit:cover;display:block}
+  .topbar b{font-size:1.05rem;letter-spacing:.2px}
+  .topbar span{color:#E63946;font-weight:800}
+  .wrap{max-width:760px;margin:0 auto;padding:18px 14px 30px}
+  .back{color:#9db4c6;font-size:.88rem;text-decoration:none;font-weight:700}
+  .kicker{color:#E63946;font-weight:800;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;text-align:center;margin-top:10px}
+  h1{font-size:1.75rem;line-height:1.15;text-align:center;margin:6px 0 8px;color:#fff}
+  .intro{text-align:center;color:#c9d8e4;font-size:.98rem;max-width:580px;margin:0 auto 6px}
+  .promise{text-align:center;font-size:1.25rem;font-weight:900;color:#fff;margin:12px auto 4px}
+  .promise span{color:#E63946}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 12px}
+  .mtab{flex:1 1 28%;padding:10px 6px;border-radius:999px;border:1.5px solid rgba(232,238,244,.35);background:transparent;color:#e8eef4;font-weight:800;font-size:.85rem;cursor:pointer;font-family:inherit}
+  .mtab.on{background:#B31942;color:#ffffff;border-color:#E63946}
+  .mpanel{display:none}
+  .mpanel.on{display:block}
+  .subtabs{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 12px}
+  .stab{flex:0 1 auto;padding:8px 14px;border-radius:999px;border:1.5px solid rgba(232,238,244,.35);background:transparent;color:#e8eef4;font-weight:800;font-size:.8rem;cursor:pointer;font-family:inherit}
+  .stab.on{background:#ffffff;color:#0a2540;border-color:#ffffff}
+  .spanel{display:none}
+  .spanel.on{display:block}
+  .card{background:#eef5fb;color:#0a2540;border-radius:14px;padding:12px 14px;margin-bottom:10px}
+  .card h3{font-size:1rem;margin-bottom:2px}
+  .card p{font-size:.88rem;color:#33536e;line-height:1.4}
+  .card p+p{margin-top:6px}
+  .note{background:#0a2540;border:1px solid #123c5e;border-radius:14px;padding:13px 15px;color:#c9d8e4;font-size:.9rem;margin-bottom:12px;line-height:1.5}
+  .note b{color:#fff}
+  .note a{color:#9fd8f0;font-weight:700}
+  .steps{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:10px}
+  .step{background:#0a2540;border:1px solid #123c5e;border-radius:12px;padding:11px 13px;font-size:.92rem;color:#c9d8e4;line-height:1.45}
+  .step b{color:#fff}
+  .step .n{color:#E63946;font-weight:900}
+  .btn{display:inline-block;margin-top:4px;padding:10px 18px;border-radius:999px;background:#B31942;color:#ffffff;font-weight:800;font-size:.9rem;text-decoration:none}
+  .fine{text-align:center;color:#7d97ab;font-size:.8rem;margin-top:18px}
+  @media(min-width:560px){.steps{grid-template-columns:1fr 1fr}}
+  /* footer (same as Boaters Nation homepage) */
+  .tbb-foot{background:#060d18;color:#8fa8bd;padding:36px 20px 24px;font-size:.88rem;margin-top:26px}
+  .tbb-foot .foot-grid{max-width:1180px;margin:0 auto 24px;text-align:center}
+  .tbb-foot .brandline{color:#fff;font-weight:900;font-size:1.15rem;margin-bottom:6px}
+  .tbb-foot .tagline{margin:0 0 12px;font-size:.85rem}
+  .tbb-foot .foot-bottom{max-width:1180px;margin:0 auto;padding-top:18px;border-top:1px solid #1e2a3a;display:flex;justify-content:center;text-align:center;flex-wrap:wrap;gap:8px;font-size:.78rem;align-items:center}
+  .tbb-foot .socials{display:flex;gap:10px;margin-top:12px;justify-content:center;align-items:center}
+  .tbb-foot a.soc{width:32px;height:32px;min-width:32px;min-height:32px;border-radius:50%;border:2px solid rgba(255,255,255,.25);display:inline-flex;align-items:center;justify-content:center;background:transparent;overflow:hidden}
+  .tbb-foot a.soc svg{width:15px;height:15px;fill:#fff;display:block}
+  .foot-logo{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:0 0 auto}
+  .qr-foot{position:absolute;left:16px;top:32px;width:54px;height:54px;background:#fff;padding:6px;border-radius:10px}
+  .us-ol{position:absolute;right:20px;top:36px;width:44px;height:auto}
+</style></head><body>
+<div class="topbar"><a href="index.html"><img class="anchor" src="assets/bn-logo.webp" alt="Boaters Nation logo"><b>Boaters <span>Nation</span></b></a></div>
+<div class="wrap">
+<a class="back" href="index.html">&larr; Boaters Nation home</a>
+<p class="kicker">Sources &amp; Methodology</p>
+<h1>How We Check</h1>
+<p class="intro">Everything on Boaters Nation — every ramp, fuel dock, hazard and rule — is there because a source backs it. This page is the standard every listing has to clear, in plain English.</p>
+<p class="promise">No verified source, <span>no pin.</span></p>
+
+<div class="tabs">
+  <button class="mtab on" onclick="mainShow(this,'p-promise')">The Promise</button>
+  <button class="mtab" onclick="mainShow(this,'p-how')">How Checking Works</button>
+  <button class="mtab" onclick="mainShow(this,'p-numbers')">The Numbers</button>
+  <button class="mtab" onclick="mainShow(this,'p-fix')">Corrections &amp; Who</button>
+</div>
+
+<section class="mpanel on" id="p-promise">
+  <div class="subtabs">
+    <button class="stab on" onclick="subShow(this,'s-promise')">The promise</button>
+    <button class="stab" onclick="subShow(this,'s-safety')">Safety first</button>
+  </div>
+  <div class="spanel on" id="s-promise">
+    <div class="note"><b>A pin is a claim.</b> When a ramp, fuel dock or restaurant appears on the map, we're claiming it exists, it's where the pin sits, and the details on its card are true. If we can't back a claim with a source we can point to, the pin doesn't go up — and if a claim stops checking out, it comes down.</div>
+    <div class="card"><h3>Details are claims too</h3><p>Lane counts, fees, hours, fuel types — a detail prints only when a source states it. "Probably" and "usually" don't make it onto a card.</p></div>
+    <div class="card"><h3>An honest zero beats a padded map</h3><p>If a water truly has no ramp, no fuel or no hazard worth marking, we record that as verified — we never fill a category with guesses so the map looks fuller.</p></div>
+  </div>
+  <div class="spanel" id="s-safety">
+    <div class="note"><b>People's lives can depend on this map</b>, so safety information is always checked before everything else, in this order:</div>
+    <div class="steps">
+      <div class="step"><span class="n">1.</span> <b>Tricky Water &amp; hazards</b> — inlets, shoals, bridges and other dangers, with the warning wording checked against the source. A missing real hazard is the worst mistake we can make.</div>
+      <div class="step"><span class="n">2.</span> <b>Fuel</b> — the dock is where the pin says, and it actually sells the fuel the card states.</div>
+      <div class="step"><span class="n">3.</span> <b>Boat ramps</b> — open or closed, and every detail (lanes, fees, hours) backed by a source.</div>
+      <div class="step"><span class="n">4.</span> <b>Emergency information</b> — the numbers and channels a boater reaches for first.</div>
+    </div>
+    <div class="card"><h3>Then everything else</h3><p>Bait shops, dock-and-dine, stays, cams and the rest are checked to the same standard — they just wait their turn behind the safety list.</p></div>
+  </div>
+</section>
+
+<section class="mpanel" id="p-how">
+  <div class="subtabs">
+    <button class="stab on" onclick="subShow(this,'s-check')">Check + recheck</button>
+    <button class="stab" onclick="subShow(this,'s-sources')">Where facts come from</button>
+    <button class="stab" onclick="subShow(this,'s-fuel')">Fuel prices</button>
+  </div>
+  <div class="spanel on" id="s-check">
+    <div class="note"><b>Every listing is checked twice, by two independent passes.</b> The second pass doesn't read the first pass's conclusions — it goes back to the sources and derives the answer again. If the two passes disagree, the listing isn't done.</div>
+    <div class="card"><h3>Nobody signs off their own work</h3><p>The pass that built a listing is never the pass that certifies it. And a "verified" label from an older sweep counts for nothing until the facts are re-derived — labels age, sources are re-read.</p></div>
+    <div class="card"><h3>The whole list, not a sample</h3><p>When we say a region was checked, we mean every pin in it — placement, category, name, phone, closures. Sampling is never dressed up as a full check.</p></div>
+  </div>
+  <div class="spanel" id="s-sources">
+    <div class="note"><b>Official sources first.</b> Facts come from a hierarchy, and the higher source wins:</div>
+    <div class="steps">
+      <div class="step"><span class="n">1.</span> <b>Official agencies</b> — state boating and wildlife agencies, NOAA for tides and weather, the U.S. Coast Guard for hazards and rules.</div>
+      <div class="step"><span class="n">2.</span> <b>The place itself</b> — the business's own listing, site or posted information, for things like hours and phone numbers.</div>
+    </div>
+    <div class="card"><h3>When sources conflict, the claim comes out</h3><p>If two sources state different lane counts, fees or hours, we don't pick the one we like — the detail comes off the card until one source settles it. What's left is only what a source clearly states.</p></div>
+    <div class="card"><h3>State rules work the same way</h3><p>Registration fees, safety-card rules and license prices on the <a href="state-rules.html">State Rules</a> pages are taken from each state's own official pages, with the checked date printed on the page. If this site ever disagrees with the official source, the official source wins.</p></div>
+  </div>
+  <div class="spanel" id="s-fuel">
+    <div class="note"><b>A fuel price is only printed where it's re-checked on a set schedule.</b> Prices go stale fast, and a stale price is worse than none — so a price appears only where a standing re-check keeps it current.</div>
+    <div class="card"><h3>Today, that's Tampa Bay</h3><p>Tampa Bay's fuel prices are swept and re-checked on a daily rhythm, and the date travels with the price. Everywhere else in Boaters Nation, fuel pins tell you the dock sells fuel — and say to call ahead for the price.</p></div>
+    <div class="card"><h3>Pins never carry prices</h3><p>The text on a map pin never states a price, in any region. Prices live only in the dated price tables where the re-check rhythm exists.</p></div>
+  </div>
+</section>
+
+<section class="mpanel" id="p-numbers">
+  <div class="note"><b>A region's percentage is the share of its catalogued waters that have been fully cross-checked</b> — counted water by water: every lake, river, bay and harbor in the region, checked and rechecked, or proven to have no boating to list.</div>
+  <div class="card"><h3>An example</h3><p>New England shows 95.2% — meaning 95.2% of its 586 catalogued waters are fully cross-checked. The rest are named in our working lists as still to close; they are not hidden inside the number.</p></div>
+  <div class="card"><h3>No denominator, no percentage</h3><p>A percentage only appears where a complete count of the region's waters exists. Regions still being counted show plain counts instead — places built and pins on the map — never an invented percent.</p></div>
+  <div class="card"><h3>We don't round up to "done"</h3><p>95.2% is reported as 95.2%, not as "complete." A region is finished when the count says so, not when it feels close.</p></div>
+</section>
+
+<section class="mpanel" id="p-fix">
+  <div class="subtabs">
+    <button class="stab on" onclick="subShow(this,'s-corrections')">Corrections</button>
+    <button class="stab" onclick="subShow(this,'s-who')">Who's behind it</button>
+  </div>
+  <div class="spanel on" id="s-corrections">
+    <div class="note"><b>Found something wrong? Tell us — every listing card carries a "Report a mistake" link</b> next to its Directions button. The report reaches us with the place's name attached, so we know exactly which pin you mean.</div>
+    <div class="card"><h3>What happens after a report</h3><p>The listing goes back through the same standard: re-checked against the sources, by a fresh pass. If the fact is wrong, it's fixed. If it can't be re-verified, it comes off the map. A closure gets marked as a closure, not quietly left looking open.</p></div>
+    <div class="card"><h3>Boaters are the third check</h3><p>Sources can be wrong, and water changes faster than websites. The people who launch at a ramp every week see what no listing shows — reports from boaters are part of how this map stays honest.</p></div>
+    <a class="btn" href="mailto:david@tampabayboating.com?subject=Boaters%20Nation%20mistake%20report">Report a mistake</a>
+  </div>
+  <div class="spanel" id="s-who">
+    <div class="note"><b>Boaters Nation is built and run by David &amp; Nancy MacDonald</b> — Tampa Bay Boating LLC, Riverview, Florida. The same family behind Tampa Bay Boating, on the water in Florida since 2020.</div>
+    <div class="card"><h3>A small operation, a written standard</h3><p>There's no newsroom and no call center — there's a family, a written checking standard (this page), and a map that has to earn its keep every day. That's exactly why the standard is published: you can hold us to it.</p></div>
+  </div>
+</section>
+</div>
+<footer class="tbb-foot" style="position:relative">
+  <div class="foot-grid">
+    <div>
+      <div class="brandline">Boaters <span style="color:#E63946">Nation</span></div>
+      <div class="tagline">Every body of water in America · Est. 2026<br>Everything boating in America — free.</div>
+      <img class="us-ol" src="assets/us-outline.svg" alt="Outline of the United States">
+      <img class="qr-foot" src="assets/qr-boatersnation.png" alt="QR code — scan to open BoatersNation.com">
+      <div class="socials">
+        <a href="https://boatersnation.com" aria-label="Boaters Nation — back to home"><img class="foot-logo" src="assets/bn-logo2.webp" alt="Boaters Nation logo"></a>
+        <a class="soc" href="https://www.instagram.com/boatersnation" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95C23.73 2.7 21.31.27 16.95.07 15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.15A4 4 0 1 1 16 12a4 4 0 0 1-4 3.99zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
+        <a class="soc" href="https://www.facebook.com/theboatersnation" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.49h-2.79V24C19.61 23.09 24 18.1 24 12.07z"/></svg></a>
+        <a class="soc" href="https://www.youtube.com/@boatersnation" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Boaters Nation · Tampa Bay Boating, LLC. All rights reserved.</span><span>United States</span></div>
+</footer>
+<script>
+function mainShow(btn, id){
+  document.querySelectorAll('.mpanel').forEach(function(p){ p.classList.remove('on'); });
+  document.querySelectorAll('.mtab').forEach(function(t){ t.classList.remove('on'); });
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+}
+function subShow(btn, id){
+  var panel = btn.closest('.mpanel');
+  panel.querySelectorAll('.spanel').forEach(function(p){ p.classList.remove('on'); });
+  panel.querySelectorAll('.stab').forEach(function(t){ t.classList.remove('on'); });
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+}
+</script>
+</body></html>
