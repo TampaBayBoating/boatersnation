@@ -93,7 +93,8 @@ var BN_REGIONS = [
     slug: "carolina-coast",
     name: "Carolina Coast",
     blurb: "The Outer Banks, Wilmington, Myrtle Beach and Charleston.",
-    status: "building",
+    status: "live",
+    page: "region-carolinas.html",
     zipPrefixes: ["279", "284", "285", "294", "295", "299"]
   },
   {

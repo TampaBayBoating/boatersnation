@@ -573,7 +573,7 @@ body{top:0 !important}
 
   </div>
 <div class="bzb" id="bn-build-zones">
-  <h3>Building Boaters Nation — <span id="bzbLiveLbl">7 of 15 zones live</span> · <span id="bzbBuilt">7,959</span> listings built so far</h3>
+  <h3>Building Boaters Nation — <span id="bzbLiveLbl">8 of 15 zones live</span> · <span id="bzbBuilt">7,962</span> listings built so far</h3>
   <div class="bzb-grid" id="bzbGrid">
 <a class="bzb-row bzb-live" data-region="tampa-bay" href="region-tampa-bay.html"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">1</b>Tampa Bay, FL</span><span class="bzb-lbl">Live</span></div><span class="bzb-track"><span class="bzb-fill live" style="width:100%"></span></span><span class="bzb-line">802 places · 801 pinned on the map</span></a>
 <a class="bzb-row bzb-live" data-region="gulf-coast-fl" href="region-gulf-coast-fl.html"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">2</b>Gulf Coast, FL</span><span class="bzb-lbl">Live</span></div><span class="bzb-track"><span class="bzb-fill live" style="width:100%"></span></span><span class="bzb-line">625 places · 458 pinned on the map</span></a>
@@ -585,7 +585,7 @@ body{top:0 !important}
 <a class="bzb-row bzb-live" data-region="new-england" href="region-new-england.html"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">8</b>New England</span><span class="bzb-lbl">Live</span></div><span class="bzb-track"><span class="bzb-fill" style="width:95.2%"></span></span><span class="bzb-line">95.2% of waters verified · 1,965 places built · 1,561 pinned</span></a>
 <div class="bzb-row bzb-jump" data-region="pacific-northwest" role="button" tabindex="0" aria-label="Pacific Northwest — in the works: jump to the area finder"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">9</b>Pacific Northwest</span><span class="bzb-lbl">Coming soon</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
 <a class="bzb-row bzb-live" data-region="mid-atlantic-coast" href="region-mid-atlantic.html"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">10</b>Mid-Atlantic Coast</span><span class="bzb-lbl">Live</span></div><span class="bzb-track"><span class="bzb-fill live" style="width:100%"></span></span><span class="bzb-line">546 places · 457 pinned on the map</span></a>
-<div class="bzb-row bzb-jump" data-region="carolina-coast" role="button" tabindex="0" aria-label="Carolina Coast — in the works: jump to the area finder"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">11</b>Carolina Coast</span><span class="bzb-lbl">Coming soon</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">380 listings in the build database</span></div>
+<a class="bzb-row bzb-live" data-region="carolina-coast" href="region-carolinas.html"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">11</b>Carolina Coast</span><span class="bzb-lbl">Live</span></div><span class="bzb-track"><span class="bzb-fill live" style="width:100%"></span></span><span class="bzb-line">383 places · 380 pinned on the map</span></a>
 <div class="bzb-row bzb-jump" data-region="california-coast" role="button" tabindex="0" aria-label="California Coast — in the works: jump to the area finder"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">12</b>California Coast</span><span class="bzb-lbl">Coming soon</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
 <div class="bzb-row bzb-jump" data-region="tennessee-river-lakes" role="button" tabindex="0" aria-label="Tennessee River Lakes — in the works: jump to the area finder"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">13</b>Tennessee River Lakes</span><span class="bzb-lbl">Coming soon</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
 <div class="bzb-row bzb-jump" data-region="colorado-river-lakes" role="button" tabindex="0" aria-label="Colorado River Lakes — in the works: jump to the area finder"><div class="bzb-top"><span class="bzb-name"><b class="bzb-num">14</b>Colorado River Lakes</span><span class="bzb-lbl">Coming soon</span></div><span class="bzb-track"><span class="bzb-fill measuring" style="width:100%"></span></span><span class="bzb-line">Waters being catalogued</span></div>
@@ -703,9 +703,9 @@ footer.tbb-foot a.soc svg{width:15px!important;height:15px!important;fill:#fff!i
 {
   "updated": "2026-11-05",
   "national": {
-    "regionsLive": 7,
+    "regionsLive": 8,
     "regionsTotal": 15,
-    "listingsBuilt": 7959,
+    "listingsBuilt": 7962,
     "firstMeasured": {
       "region": "New England",
       "pct": 95.2,
@@ -796,10 +796,10 @@ footer.tbb-foot a.soc svg{width:15px!important;height:15px!important;fill:#fff!i
     "carolina-coast": {
       "num": 11,
       "name": "Carolina Coast",
-      "state": "building",
+      "state": "live",
       "pct": null,
-      "stage": "Coming soon",
-      "line": "380 listings in the build database"
+      "stage": "Live",
+      "line": "383 places · 380 pinned on the map"
     },
     "california-coast": {
       "num": 12,
@@ -1341,7 +1341,7 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
    under that grid open the What's Inside / How It Works panels. */
 (function(){
   var chosen = 'tampa-bay';
-  var TF_HASH = { 'tampa-bay': '#bn-tides', 'new-england': '#bn-tides', 'chesapeake-bay': '#bn-tides', 'florida-atlantic': '#bn-tides', 'mid-atlantic-coast': '#bn-tides', 'gulf-coast-fl': '#bn-tides', 'south-florida-keys': '#bn-tides' };
+  var TF_HASH = { 'tampa-bay': '#bn-tides', 'new-england': '#bn-tides', 'chesapeake-bay': '#bn-tides', 'florida-atlantic': '#bn-tides', 'mid-atlantic-coast': '#bn-tides', 'gulf-coast-fl': '#bn-tides', 'south-florida-keys': '#bn-tides', 'carolina-coast': '#bn-tides' };
   var BITE_HASH = { 'tampa-bay': '#bn-bite', 'new-england': '#bn-bite', 'chesapeake-bay': '#bn-bite', 'florida-atlantic': '#bn-bite', 'mid-atlantic-coast': '#bn-bite', 'gulf-coast-fl': '#bn-bite', 'south-florida-keys': '#bn-bite' };
   var CAL_HASH = { 'tampa-bay': '#bn-calendar' };
   var NEWB_HASH = { 'tampa-bay': '#bn-newb' };
@@ -1444,7 +1444,7 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
   var bar = document.getElementById('bn-wxbar');
   var link = document.getElementById('bnWxLink');
   if (!bar || !link) return;
-  var TF = { 'tampa-bay': 'region-tampa-bay.html#bn-tides', 'new-england': 'region-new-england.html#bn-tides', 'chesapeake-bay': 'region-chesapeake.html#bn-tides', 'florida-atlantic': 'region-florida-atlantic.html#bn-tides', 'mid-atlantic-coast': 'region-mid-atlantic.html#bn-tides', 'gulf-coast-fl': 'region-gulf-coast-fl.html#bn-tides', 'south-florida-keys': 'region-south-florida-keys.html#bn-tides' };
+  var TF = { 'tampa-bay': 'region-tampa-bay.html#bn-tides', 'new-england': 'region-new-england.html#bn-tides', 'chesapeake-bay': 'region-chesapeake.html#bn-tides', 'florida-atlantic': 'region-florida-atlantic.html#bn-tides', 'mid-atlantic-coast': 'region-mid-atlantic.html#bn-tides', 'gulf-coast-fl': 'region-gulf-coast-fl.html#bn-tides', 'south-florida-keys': 'region-south-florida-keys.html#bn-tides', 'carolina-coast': 'region-carolinas.html#bn-tides' };
   function apply(slug){
     var href = TF[slug] || null;
     if (href) {
