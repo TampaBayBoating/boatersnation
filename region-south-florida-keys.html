@@ -1554,6 +1554,17 @@ function tfChopRead(mph){
       var el = document.getElementById(h.slice(1));
       if (el) el.scrollIntoView();
     } else if (h === '#bay-leaflet-map') { show(0); }
+    else if (h.indexOf('#bn-dir-') === 0) {
+      var cat = h.slice(8);
+      show(0);
+      try { if (window.bnShowDir) bnShowDir(cat); } catch (e) {}
+      try {
+        var f = document.querySelector('.map-filter[data-cat="' + cat + '"]');
+        if (f && typeof mapFilter === 'function') mapFilter(cat, f);
+      } catch (e) {}
+      var d = document.getElementById('bn-directory');
+      if (d) d.scrollIntoView();
+    }
   }
   window.addEventListener('hashchange', go);
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go);
