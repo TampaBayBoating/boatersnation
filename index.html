@@ -605,12 +605,12 @@ body{top:0 !important}
     <tbody>
       <tr><th>Tampa Bay, FL</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Daily</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
       <tr><th>New England</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-      <tr><th>Chesapeake Bay</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&mdash;</td><td>&mdash;</td><td>&#10003;</td></tr>
-      <tr><th>Florida Atlantic</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&mdash;</td><td>&mdash;</td><td>&#10003;</td></tr>
-      <tr><th>Mid-Atlantic Coast</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&mdash;</td><td>&mdash;</td><td>&#10003;</td></tr>
-      <tr><th>Gulf Coast, FL</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&mdash;</td><td>&mdash;</td><td>&#10003;</td></tr>
-      <tr><th>South Florida &amp; the Keys</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&mdash;</td><td>&mdash;</td><td>&#10003;</td></tr>
-      <tr><th>Carolina Coast</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr><th>Chesapeake Bay</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><th>Florida Atlantic</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><th>Mid-Atlantic Coast</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><th>Gulf Coast, FL</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><th>South Florida &amp; the Keys</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><th>Carolina Coast</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&mdash;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
     </tbody>
   </table></div>
   <p class="bnf-note">Today&rsquo;s bite: Tampa Bay&rsquo;s report is written daily; the other regions&rsquo; reports are weekly &mdash; each card says which. Fuel: every open region maps its fuel docks. Prices are printed only where they&rsquo;re re-checked on a schedule &mdash; today that&rsquo;s Tampa Bay, where prices are verified daily with same-day rechecks on Tampa Bay Boating. Other regions show fuel docks without prices until they get the same treatment &mdash; a wrong price sends a boater across the bay for nothing.</p>
@@ -1350,8 +1350,8 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
   var chosen = 'tampa-bay';
   var TF_HASH = { 'tampa-bay': '#bn-tides', 'new-england': '#bn-tides', 'chesapeake-bay': '#bn-tides', 'florida-atlantic': '#bn-tides', 'mid-atlantic-coast': '#bn-tides', 'gulf-coast-fl': '#bn-tides', 'south-florida-keys': '#bn-tides', 'carolina-coast': '#bn-tides' };
   var BITE_HASH = { 'tampa-bay': '#bn-bite', 'new-england': '#bn-bite', 'chesapeake-bay': '#bn-bite', 'florida-atlantic': '#bn-bite', 'mid-atlantic-coast': '#bn-bite', 'gulf-coast-fl': '#bn-bite', 'south-florida-keys': '#bn-bite' };
-  var CAL_HASH = { 'tampa-bay': '#bn-calendar', 'new-england': '#bn-calendar' };
-  var NEWB_HASH = { 'tampa-bay': '#bn-newb', 'new-england': '#bn-newb' };
+  var CAL_HASH = { 'tampa-bay': '#bn-calendar', 'new-england': '#bn-calendar', 'chesapeake-bay': '#bn-calendar', 'florida-atlantic': '#bn-calendar', 'mid-atlantic-coast': '#bn-calendar', 'gulf-coast-fl': '#bn-calendar', 'south-florida-keys': '#bn-calendar', 'carolina-coast': '#bn-calendar' };
+  var NEWB_HASH = { 'tampa-bay': '#bn-newb', 'new-england': '#bn-newb', 'chesapeake-bay': '#bn-newb', 'florida-atlantic': '#bn-newb', 'mid-atlantic-coast': '#bn-newb', 'gulf-coast-fl': '#bn-newb', 'south-florida-keys': '#bn-newb', 'carolina-coast': '#bn-newb' };
   function reg(){ return (typeof bnRegionBySlug === 'function') ? bnRegionBySlug(chosen) : null; }
   function pageOf(r){ return r.page || ('region.html?r=' + r.slug); }
   function set(id, href){ var el = document.getElementById(id); if (el) el.setAttribute('href', href); }
@@ -1370,7 +1370,7 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
       set('bnCatCal', p + (CAL_HASH[r.slug] || '#bn-soon'));
       set('bnCatRamps', p + '#bn-dir-ramp'); set('bnCatFuel', p + '#bn-dir-fuel'); set('bnCatDine', p + '#bn-dir-dine');
       set('bnCatStays', p + '#bn-dir-stay'); set('bnCatCams', p + '#bn-dir-cam');
-      set('bnCatRules', (r.slug === 'gulf-coast-fl' || r.slug === 'south-florida-keys') ? 'state-rules.html#fl' : (r.slug === 'carolina-coast' ? p + '#bn-soon' : p + '#bn-dir-agencies'));
+      set('bnCatRules', (r.slug === 'gulf-coast-fl' || r.slug === 'south-florida-keys') ? 'state-rules.html#fl' : (r.slug === 'carolina-coast' ? 'state-rules.html#nc' : p + '#bn-dir-agencies'));
     } else {
       set('bnBtnTides', '#find'); set('bnBtnMap', '#find');
       set('bnBtnBite', '#find'); set('bnBtnCal', '#find');

@@ -444,11 +444,68 @@ main{display:block}
 #wave-card .wv-plain h4{margin:0 0 6px;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:#a5dcf5}
 #wave-card .wv-plain p{margin:0;font-size:.95rem;line-height:1.55;color:#eaf3fa}
 </style>
+<style>
+/* ===== Calendar + New to Boating — Tampa Bay Boating's sections, ported per
+   TEMPLATE-SPEC.md. Scoped to #bn-calendar / #bn-newb; values copied from
+   Tampa's .bnport rules (the six region pages don't carry that block). ===== */
+#bn-calendar,#bn-newb{--navy:#0a2540;--navy2:#103a5f;--teal:#0072B2;--sun:#a5dcf5;--sand:#ffffff;--white:#ffffff;--ink:#1c2b3a;--muted:#445A6A;--line:#e6ded1;--gold:#8fd0f0}
+#bn-calendar .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+#bn-calendar .sec-head{text-align:center;margin-bottom:30px}
+#bn-calendar .sec-head h2{font-size:2rem;color:#fff;margin:0}
+#bn-calendar .sec-head p{color:#9db4c6;max-width:640px;margin:8px auto 0}
+#bn-calendar .sec-kicker{display:inline-block;background:#0a2540;color:#E63946;font-size:.75rem;letter-spacing:2.5px;text-transform:uppercase;padding:6px 16px;border-radius:999px;margin-bottom:12px}
+#bn-calendar .cal-wrap{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:18px}
+@media(max-width:820px){#bn-calendar .cal-wrap{grid-template-columns:1fr}}
+#bn-calendar .cal-box{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 2px 10px rgba(10,37,64,.06)}
+#bn-calendar .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+#bn-calendar .cal-head b{font-size:1.15rem;color:var(--navy)}
+#bn-calendar .cal-head button{background:var(--navy);color:#fff;border:none;border-radius:8px;width:36px;height:36px;font-size:1.2rem;cursor:pointer;line-height:1}
+#bn-calendar .cal-head button:hover{background:var(--navy2)}
+#bn-calendar .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+#bn-calendar .cal-dow{margin-bottom:6px}
+#bn-calendar .cal-dow span{text-align:center;font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;padding:4px 0}
+#bn-calendar .cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:.9rem;border-radius:8px;color:var(--ink);position:relative;background:transparent;border:none;padding:0}
+#bn-calendar .cal-day.empty{background:transparent}
+#bn-calendar .cal-day.has-ev{cursor:pointer;font-weight:700;color:var(--navy)}
+#bn-calendar .cal-day.has-ev:hover{background:var(--sand)}
+#bn-calendar .cal-day.has-ev .dot{position:absolute;bottom:5px;left:50%;transform:translateX(-50%);width:6px;height:6px;border-radius:50%;background:var(--teal)}
+#bn-calendar .cal-day.today{background:var(--navy);color:#fff;font-weight:700}
+#bn-calendar .cal-day.today.has-ev .dot{background:var(--sun)}
+#bn-calendar .day-events{margin-top:14px;display:flex;flex-direction:column;gap:12px}
+#bn-calendar #upcoming-events{max-height:560px;overflow-y:auto;padding-right:4px}
+#bn-calendar .ev-card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:0 1px 6px rgba(10,37,64,.05)}
+#bn-calendar .ev-card.featured{border:2px solid var(--gold);background:linear-gradient(180deg,#fffdf5,var(--white))}
+#bn-calendar .ev-card .ev-photo{width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:10px}
+#bn-calendar .ev-card .when{font-size:.8rem;color:var(--teal);font-weight:700;margin-bottom:4px}
+#bn-calendar .ev-card h4{font-size:1.02rem;color:var(--navy);margin:0 0 4px}
+#bn-calendar .ev-card .where{font-size:.85rem;color:var(--muted);margin-bottom:6px}
+#bn-calendar .ev-card p{font-size:.88rem;color:var(--ink);margin:0 0 8px}
+#bn-calendar .ev-card a{font-size:.88rem;font-weight:700}
+#bn-calendar .ev-share{display:inline-flex;align-items:center;gap:6px;margin-left:14px;background:#eef5fb;border:1px solid #bcd8ee;color:#0a2540;font-weight:700;font-size:.85rem;border-radius:999px;padding:5px 13px;cursor:pointer;vertical-align:middle}
+#bn-calendar .ev-share:active{background:#8fd0f0}
+.share-toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:rgba(6,38,59,.94);color:#fff;font-size:.9rem;font-weight:600;padding:11px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:all .3s ease;z-index:9999;max-width:88vw;text-align:center}
+.share-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#bn-calendar .ev-details-btn{display:inline-block;margin:2px 0 8px;background:none;border:none;color:var(--teal,#0e7c86);font-weight:800;font-size:.88rem;cursor:pointer;padding:2px 0}
+#bn-calendar .ev-details{background:#eef5fb;border:1px solid #d7e6f2;border-radius:10px;padding:10px 14px;font-size:.9rem;line-height:1.65;color:#33536e;margin:0 0 10px}
+#bn-calendar .ev-details b{color:#0a2540}
+#bn-newb .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+#bn-newb .hub-head{max-width:1180px;margin:0 auto;padding:34px 20px 6px}
+#bn-newb .hub-head h2{font-family:Georgia,serif;color:#fff;font-size:2rem}
+#bn-newb .hub-head p{color:#9db4c6}
+#bn-newb .nb-steps{display:grid;gap:12px;max-width:860px;margin:22px auto 0;padding:0 20px}
+#bn-newb .nb-step{display:flex;gap:14px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;text-decoration:none;color:var(--ink);box-shadow:0 4px 14px rgba(10,37,64,.06);align-items:flex-start}
+#bn-newb .nb-num{flex:0 0 auto;width:32px;height:32px;border-radius:50%;background:#0a2540;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+#bn-newb .nb-step b.t{color:#0a2540;font-size:1rem}
+#bn-newb .nb-step p{margin:4px 0 0;color:#5b6b7c;font-size:.88rem}
+#bn-newb .nb-step .go{margin-left:auto;flex:0 0 auto;color:#0e7c7b;font-weight:800;align-self:center}
+#bn-newb .nb-note{max-width:860px;margin:18px auto 0;padding:16px 18px;background:#fff8e6;border:1px solid #f0dfae;border-radius:14px}
+#bn-newb .nb-note b.t{color:#0a2540}
+</style>
 </head><body>
 <div class="pv-head"><div class="kicker">🇺🇸 Boaters Nation 🇺🇸</div><h1>Mid-Atlantic Coast</h1>
 <p class="intro">615 places, built from published sources and cross-checked. Every category opens into counties — one tap, no endless scroll. See a mistake? Every card has a report link.</p></div>
 <main>
-<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button><button class="tab" data-sec="bite" onclick="show(24)">Today's Bite</button><button class="tab" data-sec="soon" onclick="show(25)">Coming Soon</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-groups"><div class="map-group">
+<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button><button class="tab" data-sec="bite" onclick="show(24)">Today's Bite</button><button class="tab" data-sec="calendar" onclick="show(25)">Calendar</button><button class="tab" data-sec="newb" onclick="show(26)">New to Boating</button><button class="tab" data-sec="soon" onclick="show(27)">Coming Soon</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-groups"><div class="map-group">
         <button class="map-filter active" data-cat="all" onclick="mapFilter('all',this)">All</button>
       </div><div class="map-group">
         <div class="map-group-label">On the Water</div>
@@ -576,15 +633,50 @@ main{display:block}
     </div>
   </div>
 </div></section>
+<section class="panel" id="bn-calendar"><div class="bnport">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">On The Water</span>
+      <h2>Boating Events Calendar</h2>
+      <p>Boat shows, concerts on the water, tournaments &amp; anything boating-related around the Mid-Atlantic Coast. Every event is listed free — our sponsors keep it that way.</p>
+    </div>
+    <div class="cal-wrap">
+      <div class="cal-box">
+        <div id="calendar"></div>
+        <div class="day-events" id="day-events"></div>
+      </div>
+      <div>
+        <h3 style="color:#fff; margin-bottom:10px">Upcoming Events</h3>
+        <div class="day-events" id="upcoming-events"></div>
+        <h3 style="color:#fff; margin:20px 0 6px">Are We Missing Your Event?</h3>
+        <p style="color:#9db4c6; font-size:.93rem">List your event here for free. Boat shows, tournaments, concerts on the water — if it's boating around the Mid-Atlantic Coast, it belongs on this calendar. This site is free for everyone and backed by local sponsors, so there's never a listing fee. <a href="mailto:david@tampabayboating.com?subject=Boaters%20Nation%20event%20listing%20%E2%80%94%20Mid-Atlantic%20Coast" style="color:#8fd0f0; font-weight:700">Email us your event &rarr;</a></p>
+      </div>
+    </div>
+  </div>
+</div></section>
+<section class="panel" id="bn-newb"><div class="bnport"><div class="hub-head"><h2>New to Boating</h2><p>New to boating? The 8 steps below, in the right order. No experience assumed.</p></div><div class="nb-steps">
+<a class="nb-step" href="#bn-newb" onclick="show(22);document.querySelector('.tabs').scrollIntoView();return false;"><span class="nb-num">1</span><span><b class="t">Get legal first</b><p>All four states on this coast have their own rule, and they genuinely differ. <b>New York</b> (Brianna&rsquo;s Law): since Jan. 1, 2025, every operator of a motorized vessel &mdash; any age, PWC included &mdash; must hold a boating safety certificate; the course can be taken from age 10 and the certificate is good for life. <b>New Jersey:</b> a Boating Safety Certificate from a State Police&ndash;approved course is required to operate a power vessel &mdash; and on non-tidal waters you ALSO need an MVC boat license ($18, age 16+), which does not replace the certificate. <b>Delaware:</b> operators born on or after Jan. 1, 1978 must complete a boating safety course before operating a motorized boat or PWC, and PWC operators must be 14 or older with course proof. <b>Pennsylvania:</b> a PFBC Boating Safety Education Certificate is required for every PWC operator and for anyone born on or after Jan. 1, 1982 running a boat over 25 hp &mdash; good for a lifetime. Tap through to State Rules &amp; Agencies for each state&rsquo;s official links.</p></span><span class="go">&rarr;</span></a>
+<a class="nb-step" href="#bn-newb" onclick="show(22);document.querySelector('.tabs').scrollIntoView();return false;"><span class="nb-num">2</span><span><b class="t">Gear up: the safety checklist</b><p>Life jackets for everyone, throwable cushion, fire extinguisher, flares, horn, kill-switch lanyard. See exactly what the Coast Guard requires.</p></span><span class="go">&rarr;</span></a>
+<a class="nb-step" href="#bn-newb" onclick="show(10);document.querySelector('.tabs').scrollIntoView();return false;"><span class="nb-num">3</span><span><b class="t">Rent before you buy</b><p>Try different boats through rentals or a boat club before spending a dollar. Learn what you actually like on the water first.</p></span><span class="go">&rarr;</span></a>
+<a class="nb-step"><span class="nb-num">4</span><span><b class="t">Learn the markers</b><p>&ldquo;Red, right, returning&rdquo; &mdash; channel markers, no-wake signs, and who has the right of way. The rules that keep everyone safe.</p></span><span class="go">&rarr;</span></a>
+<a class="nb-step"><span class="nb-num">5</span><span><b class="t">Launch, dock &amp; anchor</b><p>Ramp etiquette, docking without the drama, knots that hold, and anchoring that actually sticks.</p></span><span class="go">&rarr;</span></a>
+<a class="nb-step"><span class="nb-num">6</span><span><b class="t">Respect Mid-Atlantic waters</b><p>Cold water first: the Coast Guard counts water at 70&deg;F or below as cold water that can cause hypothermia, and puts the average mid-Atlantic winter water temperature at about 53&deg;F &mdash; cold enough to cause unconsciousness in about an hour &mdash; so dress for the water, not the air, and wear the life jacket. This is working water: New York Harbor is the busiest port on the East Coast, and the big ships in the channels cannot stop or turn for you &mdash; stay out of their way. And the inlets bite back: currents in the ocean inlets can reach 3 knots (NOAA), channels shoal and shift &mdash; the Coast Guard has reported hazardous shoaling at Barnegat Inlet&rsquo;s entrance and the Army Corps dredges it &mdash; so check the latest Local Notice to Mariners and never trust last month&rsquo;s track through an inlet. Local knowledge that saves props &mdash; and lives.</p></span><span class="go">&rarr;</span></a>
+<a class="nb-step" href="#bn-tides" onclick="show(23);document.querySelector('.tabs').scrollIntoView();return false;"><span class="nb-num">7</span><span><b class="t">Before every trip</b><p>Check the marine forecast, tell someone your float plan, and monitor VHF channel 16. If the bay looks angry, stay at the dock.</p></span><span class="go">&rarr;</span></a>
+<a class="nb-step"><span class="nb-num">8</span><span><b class="t">Act like you&#x27;ve been here before</b><p>Boating etiquette — the ramp rules, guest rules, and sandbar manners that keep the regulars friendly and get you invited back.</p></span><span class="go">&rarr;</span></a>
+</div>
+<div class="wrap"><div class="nb-note"><b class="t">New to fishing, too?</b><p style="color:#5b6b7c;font-size:.88rem;margin:6px 0 0">Start with <a href="#bn-bite" onclick="show(24);document.querySelector('.tabs').scrollIntoView();return false;">Today&rsquo;s Bite</a> &mdash; this page&rsquo;s weekly fishing report, with the Licenses &amp; Seasons card at the bottom: New Jersey&rsquo;s and New York&rsquo;s saltwater registries are free, and a Delaware fishing license issues your FIN number automatically.</p></div></div>
+<div class="wrap"><div class="nb-note"><b class="t">Beginner mistakes that cost money</b><p style="color:#5b6b7c;font-size:.88rem;margin:6px 0 0">Running aground in a shoaled inlet &middot; getting caught out when a summer thunderstorm builds over the bay &middot; boating with no tow coverage &middot; buying the wrong boat before ever renting one.</p></div></div>
+</div></section>
+
 <section class="panel" id="bn-soon"><div class="bnport">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-kicker">Coming Soon</span>
       <h2>Still building for Mid-Atlantic Coast</h2>
-      <p>The Events Calendar and the New to Boating guides are live for Tampa Bay today, and they are being built for Mid-Atlantic Coast next. We open a section only when it is checked to the same standard as the rest of this page — no filler, no guesses.</p>
-      <p>Already live here today: the boater's map, Tides &amp; Forecast, Today's Bite and the state rules &amp; agency links — use the tabs above.</p>
+      <p>The Events Calendar and New to Boating are live for Mid-Atlantic Coast now &mdash; use the tabs above. Two things are still missing here, and we would rather say so than fake them: Freshwater Springs listings (none on these coastal waters have passed our cross-checks yet) and verified fuel prices &mdash; today only Tampa Bay&rsquo;s prices are re-checked on a schedule, so this page maps fuel docks without prices until the Mid-Atlantic gets the same treatment.</p>
+      <p>Already live here today: the boater's map, Tides &amp; Forecast, Today's Bite, the Events Calendar, New to Boating and the state rules &amp; agency links.</p>
     </div>
-    <p>Want to know the day they open here? Join the waitlist:</p>
+    <p>Want to know the day these open here? Join the waitlist:</p>
     <form class="wl" method="POST" action="https://formsubmit.co/david@tampabayboating.com"><input type="hidden" name="_subject" value="Boaters Nation waitlist — Mid-Atlantic Coast"><input type="hidden" name="region" value="Mid-Atlantic Coast"><input type="hidden" name="state" value=""><label>Email<input type="email" name="email" required placeholder="you@example.com"></label><label>ZIP code<input type="text" name="zip" inputmode="numeric" maxlength="5" value=""></label><button type="submit">Tell me when it opens</button></form>
   </div>
 </div></section>
@@ -803,7 +895,7 @@ window.tbbMapInit();
     });
   }
   function hideSections(){
-    ["p0", "bn-tides", "bn-bite", "bn-soon"].forEach(function(id){
+    ["p0", "bn-tides", "bn-bite", "bn-calendar", "bn-newb", "bn-soon"].forEach(function(id){
       var el = document.getElementById(id); if (el) el.classList.remove('on');
     });
   }
@@ -837,6 +929,9 @@ window.tbbMapInit();
     document.getElementById(id).classList.add('on');
     setSecnav(sec);
     if (sec === 'tides' && window.tfInit) window.tfInit();
+    if (sec === 'calendar' && window.renderCalendar && !window._bnCalDone) {
+      window._bnCalDone = 1; window.renderCalendar();
+    }
   }
   window.show = function(i){
     if (i === 0) {
@@ -863,7 +958,9 @@ window.tbbMapInit();
     }
     if (i === 23) { goSection('tides', 'bn-tides'); return; }
     if (i === 24) { goSection('bite', 'bn-bite'); return; }
-    if (i === 25) { goSection('soon', 'bn-soon'); return; }
+    if (i === 25) { goSection('calendar', 'bn-calendar'); return; }
+    if (i === 26) { goSection('newb', 'bn-newb'); return; }
+    if (i === 27) { goSection('soon', 'bn-soon'); return; }
   };
   if (window.mapFilter) {
     var origFilter = window.mapFilter;
@@ -1560,7 +1657,7 @@ function tfChopRead(mph){
    Tides & Forecast tab directly — this is what the homepage stack button
    and the weather-strip tap will target once shipped. */
 (function(){
-  var H = {'#bn-tides':23,'#bn-bite':24,'#bn-soon':25,'#bn-calendar':25,'#bn-newb':25};
+  var H = {'#bn-tides':23,'#bn-bite':24,'#bn-calendar':25,'#bn-newb':26,'#bn-soon':27};
   function go(){
     var h = location.hash;
     if (Object.prototype.hasOwnProperty.call(H, h)) {
@@ -1829,4 +1926,105 @@ async function tfLoadWaves(){
 }
 </script>
 
+<script>
+/* ================= EVENTS CALENDAR ================= */
+/* EVENTS-START (auto-updated weekly) */
+const EVENTS = [
+{start:"2026-12-12", end:"2026-12-12", title:"Montauk Holiday Boat Parade & Party", when:"Sat, Dec 12, 2026 \u00b7 5pm", where:"Inlet Seafood Restaurant, 541 E Lake Dr, Montauk, NY", desc:"Decorated boats light up Lake Montauk in a holiday parade past Inlet Seafood, then the party moves dockside \u2014 the organizers put up $5,000 for the best-decorated boat.", url:"https://mommypoppins.com/long-island-kids/event/events/inlet-seafood-presents-holiday-party-boat-parade", featured:true,
+details:"<b>Parade:</b> starts at 5pm on Lake Montauk.\n<b>Party:</b> at Inlet Seafood Restaurant after the parade \u2014 party tickets ran $50\u2013$120 on Eventbrite.\n<b>Prizes:</b> $5,000 for the best-decorated boat (organizer).\n<b>Good to know:</b> the parade itself is free to watch from the shore; the party is the ticketed part."},
+{start:"2027-01-08", end:"2027-01-10", title:"Wildwood Fishing & Boating Expo", when:"Fri\u2013Sun, Jan 8\u201310, 2027", where:"Wildwoods Convention Center, 4501 Boardwalk, Wildwood, NJ", desc:"South Jersey's winter fishing-and-boating expo fills 80,000 square feet at the Wildwoods Convention Center \u2014 boats, tackle and gear, timed for the spring season.", url:"https://www.fishingexpowildwood.com/", featured:false,
+details:"<b>Hours:</b> Fri 1\u20137pm \u00b7 Sat 9:30am\u20136pm \u00b7 Sun 9:30am\u20132pm.\n<b>Cost:</b> adults $12 \u00b7 kids 6\u201313 $5 \u00b7 under 5 free (organizer)."},
+{start:"2027-01-08", end:"2027-01-10", title:"Philadelphia Fishing Show", when:"Fri\u2013Sun, Jan 8\u201310, 2027", where:"Greater Philadelphia Expo Center, 100 Station Ave, Oaks, PA", desc:"Three days of fishing tackle, boats, seminars and charter captains at the Expo Center in Oaks \u2014 the Philadelphia area's winter fishing show.", url:"https://www.phillyfishingshow.com/", featured:false,
+details:"<b>Hours:</b> Fri noon\u20137pm \u00b7 Sat 10am\u20136pm \u00b7 Sun 10am\u20135pm.\n<b>Cost:</b> adults $12 \u00b7 kids 6\u201312 $6 \u00b7 5 & under free; cash only at the door.\n<b>Parking:</b> free."},
+{start:"2027-01-20", end:"2027-01-24", title:"Discover Boating New York Boat Show", when:"Wed\u2013Sun, Jan 20\u201324, 2027", where:"Javits Center, 655 W 34th St, New York, NY", desc:"The Discover Boating New York Boat Show fills the Javits Center with hundreds of boats \u2014 the region's biggest winter boat show and the traditional kickoff to boat-shopping season.", url:"https://www.nyboatshow.com/about", featured:true,
+details:"<b>Cost:</b> adult admission $20 (organizer); check the show site for online deals and kids' pricing.\n<b>Good to know:</b> buy tickets on the show site before you go \u2014 January weekend lines are real."},
+{start:"2027-02-04", end:"2027-02-07", title:"New Jersey Boat Sale & Expo", when:"Thu\u2013Sun, Feb 4\u20137, 2027", where:"New Jersey Convention & Exposition Center, 97 Sunfield Ave, Edison, NJ", desc:"The Marine Trades Association of New Jersey's winter sale-and-expo packs the Edison expo center with dealer boats and gear, timed for spring delivery.", url:"https://www.jerseyboatexpo.com/new-jersey-boat-sale-and-expo/", featured:false,
+details:"<b>Organizer:</b> Marine Trades Association of New Jersey.\n<b>Good to know:</b> this is the buying show \u2014 dealers bring inventory priced to move before spring."},
+{start:"2027-02-24", end:"2027-02-28", title:"Discover Boating Atlantic City Boat Show", when:"Wed\u2013Sun, Feb 24\u201328, 2027", where:"Atlantic City Convention Center, 1 Convention Blvd, Atlantic City, NJ", desc:"The Discover Boating Atlantic City Boat Show takes over the convention center for five days \u2014 hundreds of boats from center consoles to cruisers, plus fishing and gear exhibitors.", url:"http://www.acboatshow.com/about", featured:true,
+details:"<b>Venue:</b> Atlantic City Convention Center.\n<b>Good to know:</b> check the show site for the seminar and demo schedule before you go."},
+{start:"2027-03-12", end:"2027-03-14", title:"Greater Philadelphia Boat Show", when:"Fri\u2013Sun, Mar 12\u201314, 2027", where:"Greater Philadelphia Expo Center, 100 Station Ave, Oaks, PA", desc:"The 28th annual Greater Philadelphia Boat Show \u2014 three days of boats and boating gear at the Oaks expo center, the Delaware River crowd's spring kickoff.", url:"https://www.phillyboatshow.com/", featured:false,
+details:"<b>Hours:</b> Fri noon\u20137pm \u00b7 Sat 10am\u20137pm \u00b7 Sun 11am\u20135pm.\n<b>Cost:</b> adults $12 (cash only) \u00b7 ages 16 & under free.\n<b>Parking:</b> free."},
+{start:"2027-07-09", end:"2027-07-17", title:"Montauk Canyon Challenge", when:"Fri\u2013Sat, Jul 9\u201317, 2027", where:"Montauk, NY", desc:"Montauk's Captain's Choice offshore tournament: a nine-day window, pick your days, fish up to 150 miles out for tuna, marlin, mahi and wahoo. The 2025 edition paid out over $1 million.", url:"https://www.montaukcanyonchallenge.com/", featured:true,
+details:"<b>Format:</b> Captain's Choice \u2014 fish your chosen days inside the Jul 9\u201317 window.\n<b>Times:</b> starts Fri Jul 9 at 7pm, ends Sat Jul 17 at 3pm (2027 rules package).\n<b>Grounds:</b> up to 150 nautical miles from the Montauk Inlet buoy.\n<b>Early entry:</b> discounted entry fees before May 1, 2027."},
+{start:"2027-07-11", end:"2027-07-17", title:"Jimmy Johnson's Quest for the Ring \u2014 Atlantic City", when:"Sun\u2013Sat, Jul 11\u201317, 2027 \u00b7 fishing days Jul 12\u201316", where:"Frank S. Farley State Marina, Golden Nugget, Atlantic City, NJ", desc:"Jimmy Johnson's championship fishing week returns to Atlantic City for its 6th year \u2014 80+ boats fish any 3 of 5 competition days, with the week's only weigh station at Farley State Marina.", url:"https://questfortheringac.com/", featured:true,
+details:"<b>Fishing:</b> pick any 3 of the 5 competition days, Mon Jul 12 \u2013 Fri Jul 16.\n<b>Weigh station:</b> Frank S. Farley State Marina at the Golden Nugget, 600 Huron & Brigantine Blvd; scales open 5\u20139pm on competition days.\n<b>Finale:</b> the week wraps at the Hard Rock Hotel & Casino Atlantic City."},
+{start:"2027-08-08", end:"2027-08-13", title:"Hamptons Shootout", when:"Sun\u2013Fri, Aug 8\u201313, 2027", where:"Hampton Bays, NY \u00b7 weigh-in at Shinnecock Inlet", desc:"A six-day Captain's Choice offshore window out of Hampton Bays \u2014 boats leave from the Montauk, Shinnecock, Moriches or Fire Island inlets, and everything weighs in at Shinnecock.", url:"https://hamptonsshootout.com/", featured:true,
+details:"<b>Captains meeting:</b> Sat Aug 7, 4\u20138pm.\n<b>Fishing window:</b> Sun Aug 8 \u2013 Fri Aug 13; awards dinner Fri Aug 13, 6\u20139pm.\n<b>Grounds:</b> up to 145 nautical miles from the Shinnecock Inlet buoy.\n<b>Sister event:</b> fish this and the Montauk Canyon Challenge and you're also fishing for the New York Offshore Championship."},
+];
+/* EVENTS-END */
+let calY, calM;
+function evOn(ds){ return EVENTS.filter(e=>ds>=e.start && ds<=e.end); }
+function renderCalendar(){
+  const now = new Date();
+  if(calY===undefined){ calY=now.getFullYear(); calM=now.getMonth(); }
+  const first = new Date(calY, calM, 1);
+  const days = new Date(calY, calM+1, 0).getDate();
+  const monthName = first.toLocaleString("en-US",{month:"long", year:"numeric"});
+  const todayStr = now.getFullYear()+"-"+String(now.getMonth()+1).padStart(2,"0")+"-"+String(now.getDate()).padStart(2,"0");
+  let h = `<div class="cal-head"><button onclick="calNav(-1)" aria-label="Previous month">‹</button><b>${monthName}</b><button onclick="calNav(1)" aria-label="Next month">›</button></div>`;
+  h += '<div class="cal-grid cal-dow"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div><div class="cal-grid">';
+  for(let i=0;i<first.getDay();i++) h += '<span class="cal-day empty"></span>';
+  for(let d=1; d<=days; d++){
+    const ds = calY+"-"+String(calM+1).padStart(2,"0")+"-"+String(d).padStart(2,"0");
+    const evs = evOn(ds);
+    let cls = "cal-day";
+    if(ds===todayStr) cls += " today";
+    if(evs.length) cls += " has-ev";
+    h += `<span class="${cls}"${evs.length?` onclick="showDay('${ds}')"`:""}>${d}${evs.length?'<i class="dot"></i>':""}</span>`;
+  }
+  h += "</div>";
+  document.getElementById("calendar").innerHTML = h;
+  renderUpcoming();
+}
+function calNav(d){ calM+=d; if(calM<0){calM=11;calY--;} if(calM>11){calM=0;calY++;} renderCalendar(); }
+function evCard(e){
+  const qt = String(e.title||"").replace(/"/g,"&quot;"), qw = String(e.when||"").replace(/"/g,"&quot;"), qp = String(e.where||"").replace(/"/g,"&quot;");
+  return `<div class="ev-card${e.featured?" featured":""}">
+    ${e.img?`<img class="ev-photo" src="${e.img}" alt="${e.title}" loading="lazy">`:""}
+    <div class="when">${e.when}${e.featured?' · <span style="color:var(--gold)">★ Featured</span>':""}</div>
+    <h4>${e.title}</h4><div class="where">${e.where}</div><p>${e.desc}</p>
+    ${e.details?`<button type="button" class="ev-details-btn" onclick="toggleEvDetails(this)">Full details ▾</button><div class="ev-details" hidden>${e.details.replace(/\n/g,"<br>")}</div>`:""}
+    <a href="${e.url}" target="_blank" rel="noopener">Event website →</a><button type="button" class="ev-share" onclick="shareEvent(this)" data-t="${qt}" data-w="${qw}" data-p="${qp}"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11A2.99 2.99 0 1 0 15 5c0 .24.04.47.09.7L8.04 9.81a2.99 2.99 0 1 0 0 4.38l7.12 4.16c-.05.21-.08.43-.08.65a2.92 2.92 0 1 0 2.92-2.92z"/></svg>Share</button></div>`;
+}
+window.shareToast = function(msg){
+  let t = document.getElementById("share-toast");
+  if(!t){ t = document.createElement("div"); t.id = "share-toast"; t.className = "share-toast"; document.body.appendChild(t); }
+  t.textContent = msg; t.classList.add("show");
+  clearTimeout(window._shareToastTimer);
+  window._shareToastTimer = setTimeout(function(){ t.classList.remove("show"); }, 2600);
+};
+window.shareEvent = async function(btn){
+  const title = btn.getAttribute("data-t") || "Boaters Nation event";
+  const when = btn.getAttribute("data-w") || "";
+  const where = btn.getAttribute("data-p") || "";
+  const url = "https://boatersnation.com/region-mid-atlantic.html#bn-calendar";
+  const text = title + (when ? " \u2014 " + when : "") + (where ? " \u00b7 " + where : "");
+  if(navigator.share){
+    try{ await navigator.share({title: title, text: text, url: url}); }catch(_){}
+  } else if(navigator.clipboard && navigator.clipboard.writeText){
+    try{ await navigator.clipboard.writeText(text + " " + url); shareToast("Event link copied \u2014 paste it anywhere"); }
+    catch(_){ shareToast("Copy this link: " + url); }
+  } else { shareToast("Copy this link: " + url); }
+};
+window.toggleEvDetails = function(btn){
+  const d = btn.nextElementSibling;
+  if(!d) return;
+  const opening = d.hidden;
+  d.hidden = !opening;
+  btn.textContent = opening ? "Hide details \u25b4" : "Full details \u25be";
+};
+function showDay(ds){
+  const evs = evOn(ds);
+  document.getElementById("day-events").innerHTML =
+    `<b style="color:var(--navy)">${ds}:</b>` + (evs.length ? evs.map(evCard).join("") : "<p style='color:var(--muted)'>No events this day — <a href='mailto:david@tampabayboating.com?subject=Event%20Listing'>list yours</a>.</p>");
+}
+function renderUpcoming(){
+  const now = new Date();
+  const todayStr = now.getFullYear()+"-"+String(now.getMonth()+1).padStart(2,"0")+"-"+String(now.getDate()).padStart(2,"0");
+  const up = EVENTS.filter(e=>e.end>=todayStr).sort((a,b)=>a.start<b.start?-1:1);
+  document.getElementById("upcoming-events").innerHTML =
+    up.length ? up.slice(0,10).map(evCard).join("") + (up.length>10 ? "<p style='color:var(--muted);font-size:.9rem;margin-top:10px'>Everything else is on the calendar above — tap a day to see what's on.</p>" : "") : "<p style='color:var(--muted)'>No upcoming events yet — check back soon.</p>";
+}
+
+</script>
 </body></html>
