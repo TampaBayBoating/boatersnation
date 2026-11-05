@@ -384,11 +384,28 @@ main{display:block}
 }
 
 </style>
+<style>
+/* ===== Today's Bite — Tampa Bay Boating's report card, ported per
+   TEMPLATE-SPEC.md. Scoped to #bn-bite; values copied from Tampa's
+   .bnport rules (the six region pages don't carry that block). ===== */
+#bn-bite .dir-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:16px}
+#bn-bite .dir-card{background:#fff;border:1px solid #e6ded1;border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(10,37,64,.07)}
+#bn-bite .daily-report{grid-column:1/-1}
+#bn-bite .dir-card h4{color:#0a2540;margin:0 0 4px;font-size:1.05rem}
+#bn-bite .city{font-size:.8rem;text-transform:uppercase;letter-spacing:1px;color:#0072B2;font-weight:700;margin-bottom:2px}
+#bn-bite .type{font-size:.92rem;color:#445A6A;margin:6px 0;line-height:1.55}
+#bn-bite .type a{color:#0072B2}
+#bn-bite .contact{font-size:.9rem;color:#445A6A;margin-top:8px}
+#bn-bite .sec-head{text-align:center;margin-bottom:30px}
+#bn-bite .sec-head h2{font-size:2rem;color:#fff;margin:0}
+#bn-bite .sec-head p{color:#c9d8e4;max-width:640px;margin:8px auto 0}
+#bn-bite .sec-kicker{display:inline-block;background:#0a2540;color:#E63946;font-size:.75rem;letter-spacing:2.5px;text-transform:uppercase;padding:6px 16px;border-radius:999px;margin-bottom:12px}
+</style>
 </head><body>
 <div class="pv-head"><div class="kicker">🇺🇸 Boaters Nation 🇺🇸</div><h1>South Florida &amp; the Keys</h1>
 <p class="intro">635 places, built from published sources and cross-checked. Every category opens into counties — one tap, no endless scroll. See a mistake? Every card has a report link.</p></div>
 <main>
-<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(22)">Tides &amp; Forecast</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-groups"><div class="map-group">
+<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(22)">Tides &amp; Forecast</button><button class="tab" data-sec="bite" onclick="show(23)">Today's Bite</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-groups"><div class="map-group">
         <button class="map-filter active" data-cat="all" onclick="mapFilter('all',this)">All</button>
       </div><div class="map-group">
         <div class="map-group-label">On the Water</div>
@@ -457,6 +474,52 @@ main{display:block}
 </div></div>
 </div>
 </section>
+<section class="panel" id="bn-bite"><div class="bnport">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">Tight Lines</span>
+      <h2>South Florida &amp; the Keys Fishing</h2>
+      <p>Sailfish season is switching on along the reef edge, Spanish mackerel are under the birds in Biscayne Bay, and the fall bonefish are back on the flats.</p>
+    </div>
+    <div class="dir-grid">
+    <div class="dir-card daily-report" style="border:2px solid var(--teal)">
+      <div class="city">Weekly Report &mdash; Wednesday, November 4, 2026</div><h4>Today&apos;s Best Bets</h4>
+      <div class="type">
+        <b>1. Sailfish (season starting)</b> &mdash; The season is just turning on &mdash; treat this as the front edge of the run, not the peak. Florida Sportsman&apos;s Nov. 4 South Florida forecast has sailfish being caught just outside the outer reef out to 200 feet of water, from Pompano Beach and Port Everglades/Haulover/Government Cut down to Ocean Reef, mixed with kingfish, bonito, barracudas, wahoo and small blackfin tuna. Troll blue-and-white Sea Witches tipped with bonito strips, drift fresh dead ballyhoo and Spanish sardines, or chum with live pilchards in those depths. Keys season calendars independently headline November as &ldquo;sailfish season begins&rdquo; from Key Largo to Key West.<br>
+        <b>2. King &amp; Spanish mackerel</b> &mdash; Kingfish are on the same reef-edge grounds off Miami (same Sea Witch, drift-bait and pilchard-chum tactics), and Keys kings and cobia are on the wrecks and the reef edge as the water cools. Inshore, Spanish mackerel, bluefish and jack crevalle are feeding under diving birds in open water in North Biscayne Bay, and the South Bay finger channels should produce a mixed bag &mdash; Spanish mackerel, bluefish, pompano, snappers and jacks &mdash; eager for a live shrimp or live pilchard. Pier and jetty anglers at the inlets are taking Spanish on live shrimp, live pilchards and shiny baitfish artificials.<br>
+        <b>3. Bonefish</b> &mdash; November is prime fall bonefish time when the weather allows. A week of big wind and rain dirtied South Bay, but as conditions settle this week the fish should be back up and feeding on the ocean-side flats and the inside flats of South Bay in Biscayne Bay. Keys calendars call November&apos;s oceanside tides the best bonefish tides of the year, Key Largo to Key West; after a front, bones (and permit) slide to deeper channels and oceanside edges, then the flats refill after a couple of warm days.<br>
+        <i>Note:</i> Also: permit on the same Biscayne flats as the bonefish; yellowtail snapper steady day and night on reefs outside 60 ft off Miami &mdash; anchor, chum, then fish small chunks of ballyhoo; mutton snapper over the artificial reefs on live ballyhoo, pilchards, pinfish and big bonito strips; nighttime snook excellent around the North Biscayne bay bridges as mullet schools move through; at Flamingo, trout over the First National Bank flats and around Sandy Key on live shrimp or a ladyfish strip under a Cajun Thunder float. Florida Sportsman&apos;s Keys forecast has no November entry yet (latest Oct. 23), so the Keys notes lean on its October pattern plus season calendars &mdash; flagged, not dressed up.<br><br>
+        <b>Tide windows:</b> Virginia Key (Miami): high 5:01 PM (2.6 ft), low 10:52 AM (second high 4:38 AM). Drift the reef edge into the afternoon high; the finger channels fish best with water moving.<br>
+        <b>Bait:</b> Live pilchards for the reef-edge chum line, ballyhoo dead or alive, and live shrimp for the inshore mixed bag. <a href="#bn-bite" onclick="show(3);document.querySelector('.tabs').scrollIntoView();return false;">Find a bait shop near the ramp</a> &middot; <a href="#bn-tides" onclick="show(22);document.querySelector('.tabs').scrollIntoView();return false;">Check today&apos;s tides &amp; forecast</a>.
+      </div>
+      <div class="contact">Compiled from Florida Sportsman&apos;s Nov. 4 South Florida forecast and Keys forecasts, a Keys season calendar (seasonal patterns, flagged), and FWC rules pages (full source list in the preview folder) &mdash; general areas only, no secret spots burned. Curated roundup from public sources and seasonal patterns.</div>
+    </div>
+    </div>
+    <div class="dir-grid">
+      <div class="dir-card">
+        <div class="city">November</div><h4>What's Biting Now</h4>
+        <div class="type">
+&bull; <b>Sailfish</b> &mdash; season beginning on the reef edge off Miami to Ocean Reef and down the Keys chain.<br>
+&bull; <b>King mackerel</b> &mdash; just outside the outer reef to 200 ft off Miami; on Keys wrecks and the reef edge as water cools.<br>
+&bull; <b>Spanish mackerel</b> &mdash; under the birds in North Biscayne Bay and in South Bay&apos;s finger channels on live shrimp and pilchards.<br>
+&bull; <b>Bonefish</b> &mdash; peak fall fish; oceanside flats in Biscayne Bay and the Keys on the year&apos;s best tides, between fronts.<br>
+&bull; <b>Yellowtail snapper</b> &mdash; steady on reefs outside 60 ft off Miami and on Lower Keys reefs; anchor, chum, small ballyhoo chunks.
+        </div>
+      </div>
+      <div class="dir-card">
+        <div class="city">Don't forget</div><h4>Licenses &amp; Seasons</h4>
+        <div class="type">
+&bull; <b>Snook &mdash; two rule sets in this one region:</b> Atlantic side (Miami/Biscayne ocean side): slot 28&Prime;&ndash;32&Prime;, open through Dec. 14. Keys, Flamingo &amp; Everglades (Monroe): slot 28&Prime;&ndash;33&Prime;, open through Nov. 30 only &mdash; closes Dec. 1. Bag 1 per person/day either way; snook permit required. Special snook regulations also apply in Biscayne National Park.<br>
+&bull; <b>Bonefish:</b> catch-and-release only (since 2011); hook-and-line gear only.<br>
+&bull; <b>Spotted seatrout (Biscayne &amp; Florida Bay):</b> open year-round, bag 3, slot 15&Prime;&ndash;19&Prime;, one over-slot fish per vessel.<br>
+&bull; <b>Flounder:</b> CLOSED Oct. 15&ndash;Nov. 30 statewide.<br>
+&bull; <b>Permit, sailfish, mackerels:</b> check <a href="https://myfwc.com/fishing/saltwater/recreational/" target="_blank" rel="noopener">FWC saltwater fishing</a> before keeping &mdash; and federal HMS rules for sailfish offshore. A Florida saltwater license is required.
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
 </main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
@@ -671,7 +734,7 @@ window.tbbMapInit();
     });
   }
   function hideSections(){
-    ["p0", "bn-tides"].forEach(function(id){
+    ["p0", "bn-tides", "bn-bite"].forEach(function(id){
       var el = document.getElementById(id); if (el) el.classList.remove('on');
     });
   }
@@ -730,6 +793,7 @@ window.tbbMapInit();
       return;
     }
     if (i === 22) { goSection('tides', 'bn-tides'); return; }
+    if (i === 23) { goSection('bite', 'bn-bite'); return; }
   };
   if (window.mapFilter) {
     var origFilter = window.mapFilter;
@@ -1473,7 +1537,7 @@ function wvTab(name, btn){
    Tides & Forecast tab directly — this is what the homepage stack button
    and the weather-strip tap will target once shipped. */
 (function(){
-  var H = {'#bn-tides':22};
+  var H = {'#bn-tides':22,'#bn-bite':23};
   function go(){
     var h = location.hash;
     if (Object.prototype.hasOwnProperty.call(H, h)) {

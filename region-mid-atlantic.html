@@ -384,11 +384,28 @@ main{display:block}
 }
 
 </style>
+<style>
+/* ===== Today's Bite — Tampa Bay Boating's report card, ported per
+   TEMPLATE-SPEC.md. Scoped to #bn-bite; values copied from Tampa's
+   .bnport rules (the six region pages don't carry that block). ===== */
+#bn-bite .dir-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:16px}
+#bn-bite .dir-card{background:#fff;border:1px solid #e6ded1;border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(10,37,64,.07)}
+#bn-bite .daily-report{grid-column:1/-1}
+#bn-bite .dir-card h4{color:#0a2540;margin:0 0 4px;font-size:1.05rem}
+#bn-bite .city{font-size:.8rem;text-transform:uppercase;letter-spacing:1px;color:#0072B2;font-weight:700;margin-bottom:2px}
+#bn-bite .type{font-size:.92rem;color:#445A6A;margin:6px 0;line-height:1.55}
+#bn-bite .type a{color:#0072B2}
+#bn-bite .contact{font-size:.9rem;color:#445A6A;margin-top:8px}
+#bn-bite .sec-head{text-align:center;margin-bottom:30px}
+#bn-bite .sec-head h2{font-size:2rem;color:#fff;margin:0}
+#bn-bite .sec-head p{color:#c9d8e4;max-width:640px;margin:8px auto 0}
+#bn-bite .sec-kicker{display:inline-block;background:#0a2540;color:#E63946;font-size:.75rem;letter-spacing:2.5px;text-transform:uppercase;padding:6px 16px;border-radius:999px;margin-bottom:12px}
+</style>
 </head><body>
 <div class="pv-head"><div class="kicker">🇺🇸 Boaters Nation 🇺🇸</div><h1>Mid-Atlantic Coast</h1>
 <p class="intro">546 places, built from published sources and cross-checked. Every category opens into counties — one tap, no endless scroll. See a mistake? Every card has a report link.</p></div>
 <main>
-<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-groups"><div class="map-group">
+<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button><button class="tab" data-sec="bite" onclick="show(24)">Today's Bite</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-groups"><div class="map-group">
         <button class="map-filter active" data-cat="all" onclick="mapFilter('all',this)">All</button>
       </div><div class="map-group">
         <div class="map-group-label">On the Water</div>
@@ -457,6 +474,53 @@ main{display:block}
 </div></div>
 </div>
 </section>
+<section class="panel" id="bn-bite"><div class="bnport">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">Tight Lines</span>
+      <h2>Mid-Atlantic Fishing</h2>
+      <p>The fall striper run is building from Montauk to Delaware, tautog are chewing on the wrecks and inlets, and black sea bass have moved offshore.</p>
+    </div>
+    <div class="dir-grid">
+    <div class="dir-card daily-report" style="border:2px solid var(--teal)">
+      <div class="city">Weekly Report &mdash; Wednesday, November 4, 2026</div><h4>Today&apos;s Best Bets</h4>
+      <div class="type">
+        <b>1. Striped bass</b> &mdash; The fall run is building, and livelined bunker (menhaden) is the No. 1 boat method &mdash; Raritan Bay down to Bay Head, with a surface blitz at Sandy Hook and Manasquan boats raising 50-inch-class fish by Nov. 3 (Asbury Park Press). Night surf fishing is producing in northern New Jersey; southern New Jersey back bays hold bass on spot by day and eels at night, with the Mullica River fishing plugs. In Delaware, work Indian River Inlet at night on eels, plugs and bucktails, and the Leipsic-area creeks for 24&ndash;27 inch bass on bloodworms and shrimp. Montauk&apos;s bite has been best on the ebb.<br>
+        <b>2. Tautog</b> &mdash; &ldquo;Excellent&rdquo; on New Jersey wrecks, reefs and inlets &mdash; the Point Pleasant Canal and Barnegat jetties are the shore hotspots &mdash; and on western Long Island Sound rock piles from Port Washington and Northport to Brooklyn, with fish to 7 pounds. Green crab is the bait everywhere; sand fleas are the Delaware play at Indian River Inlet and Massey&apos;s Landing. One warning from this week&apos;s reports: green crabs are in short supply at a lot of shops &mdash; call ahead. And note the New Jersey limit jumps from 1 fish to 5 on Nov. 16 (rules card below).<br>
+        <b>3. Black sea bass</b> &mdash; The fish have moved offshore. New Jersey&apos;s Resor Wreck produced limits, the Big Jamaica found them chewing all trip on mid-range wrecks over the Nov. 1 weekend (the 10-fish limit then; porgies mixed in), and Wildwood/Cape May boats are working wrecks in 120&ndash;170 feet. Delaware boats have been wind-limited &mdash; the Judy V got out once in DNREC&apos;s Oct. 29 report &mdash; so pick your weather window.<br>
+        <i>Note:</i> Also: bluefin tuna are inshore and mid-shore on the bunker pods (few landed so far); porgies on the offshore wreck trips; white perch in the Mullica River and Delaware&apos;s tidal creeks around Augustine Beach and Woodland Beach. New York&apos;s Hudson River striper rules differ from the marine district &mdash; this card covers the marine/coastal fishery only.<br><br>
+        <b>Tide windows:</b> New York Harbor (The Battery): high 4:18 PM (4.8 ft), low 10:19 AM. Montauk bass have been best on the ebb, so time the run for the dropping tide; inlet tog chew hardest with the current running.<br>
+        <b>Bait:</b> Live bunker for the bass fleet; green crabs for tog (scarce this week &mdash; call the shop first); clam and squid offshore for sea bass. <a href="#bn-bite" onclick="show(3);document.querySelector('.tabs').scrollIntoView();return false;">Find a bait shop near the ramp</a> &middot; <a href="#bn-tides" onclick="show(23);document.querySelector('.tabs').scrollIntoView();return false;">Check today&apos;s tides &amp; forecast</a>.
+      </div>
+      <div class="contact">Compiled from On The Water&apos;s Oct. 29 reports (North New Jersey, South New Jersey, Long Island), the Asbury Park Press (Nov. 3), DNREC&apos;s Oct. 29 fishing report, and NJ/NY/DE agency rules pages (full source list in the preview folder) &mdash; general areas only, no secret spots burned. Curated roundup from public sources and seasonal patterns.</div>
+    </div>
+    </div>
+    <div class="dir-grid">
+      <div class="dir-card">
+        <div class="city">November</div><h4>What's Biting Now</h4>
+        <div class="type">
+&bull; <b>Striped bass</b> &mdash; Raritan Bay to Bay Head on livelined bunker; Sandy Hook blitzes; back bays at night on spot and eels.<br>
+&bull; <b>Tautog</b> &mdash; New Jersey wrecks, reefs and inlets and western Sound rock piles, on green crab.<br>
+&bull; <b>Black sea bass</b> &mdash; offshore wrecks: the Resor, mid-range New Jersey wrecks, Cape May in 120&ndash;170 ft.<br>
+&bull; <b>Porgies</b> &mdash; mixed in on the offshore wreck trips.<br>
+&bull; <b>White perch</b> &mdash; Mullica River and Delaware tidal creeks.
+        </div>
+      </div>
+      <div class="dir-card">
+        <div class="city">Don't forget</div><h4>Licenses &amp; Seasons</h4>
+        <div class="type">
+&bull; <b>Striped bass, NJ:</b> 1 fish, 28&Prime;&ndash;31&Prime; slot; non-offset circle hooks required with bait; no gaffing. A bonus permit adds one 24&Prime; to under 28&Prime; fish (May 15&ndash;Dec. 31; 2026 applications closed Oct. 31).<br>
+&bull; <b>Striped bass, NY marine:</b> 28&Prime;&ndash;31&Prime; slot, season Apr. 15&ndash;Dec. 15; circle hooks required with bait. Hudson River rules differ.<br>
+&bull; <b>Striped bass, DE:</b> 28&Prime;&ndash;31&Prime;, 1 fish, open year-round.<br>
+&bull; <b>Tautog:</b> NJ 15&Prime; min &mdash; 1 fish through Nov. 15, then 5 fish Nov. 16&ndash;Dec. 31. NY Long Island Sound 16&Prime;, 3 fish (Oct. 11&ndash;Dec. 9); NY Bight 16&Prime;, 4 fish (Oct. 15&ndash;Dec. 22). DE 16&Prime;, 4 fish (season July 1&ndash;Dec. 31).<br>
+&bull; <b>Black sea bass:</b> NJ Nov. 1&ndash;Dec. 31: 12.5&Prime; min, 15 fish. NY: 16&Prime; min, 6 fish (Sept. 1&ndash;Dec. 31). DE: May 1&ndash;Dec. 31, 12.5&Prime;, 15 fish.<br>
+&bull; <b>Registries:</b> NJ&apos;s saltwater registry is free (age 16+), NY&apos;s marine registry is free (16+), and Delaware requires a fishing license (FIN number issued automatically). <a href="https://dep.nj.gov/njfw/licenses-and-permits/" target="_blank" rel="noopener">NJ Fish &amp; Wildlife</a> &middot; <a href="https://dec.ny.gov/things-to-do/saltwater-fishing/marine-permits-licenses" target="_blank" rel="noopener">NY DEC</a> &middot; <a href="https://dnrec.delaware.gov/fish-wildlife/fishing/regulations/" target="_blank" rel="noopener">DNREC regulations</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
 </main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
@@ -671,7 +735,7 @@ window.tbbMapInit();
     });
   }
   function hideSections(){
-    ["p0", "bn-tides"].forEach(function(id){
+    ["p0", "bn-tides", "bn-bite"].forEach(function(id){
       var el = document.getElementById(id); if (el) el.classList.remove('on');
     });
   }
@@ -730,6 +794,7 @@ window.tbbMapInit();
       return;
     }
     if (i === 23) { goSection('tides', 'bn-tides'); return; }
+    if (i === 24) { goSection('bite', 'bn-bite'); return; }
   };
   if (window.mapFilter) {
     var origFilter = window.mapFilter;
@@ -1473,7 +1538,7 @@ function wvTab(name, btn){
    Tides & Forecast tab directly — this is what the homepage stack button
    and the weather-strip tap will target once shipped. */
 (function(){
-  var H = {'#bn-tides':23};
+  var H = {'#bn-tides':23,'#bn-bite':24};
   function go(){
     var h = location.hash;
     if (Object.prototype.hasOwnProperty.call(H, h)) {

@@ -398,6 +398,23 @@ main{display:block}
 }
 
 </style>
+<style>
+/* ===== Today's Bite — Tampa Bay Boating's report card, ported per
+   TEMPLATE-SPEC.md. Scoped to #bn-bite; values copied from Tampa's
+   .bnport rules (the six region pages don't carry that block). ===== */
+#bn-bite .dir-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:16px}
+#bn-bite .dir-card{background:#fff;border:1px solid #e6ded1;border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(10,37,64,.07)}
+#bn-bite .daily-report{grid-column:1/-1}
+#bn-bite .dir-card h4{color:#0a2540;margin:0 0 4px;font-size:1.05rem}
+#bn-bite .city{font-size:.8rem;text-transform:uppercase;letter-spacing:1px;color:#0072B2;font-weight:700;margin-bottom:2px}
+#bn-bite .type{font-size:.92rem;color:#445A6A;margin:6px 0;line-height:1.55}
+#bn-bite .type a{color:#0072B2}
+#bn-bite .contact{font-size:.9rem;color:#445A6A;margin-top:8px}
+#bn-bite .sec-head{text-align:center;margin-bottom:30px}
+#bn-bite .sec-head h2{font-size:2rem;color:#fff;margin:0}
+#bn-bite .sec-head p{color:#c9d8e4;max-width:640px;margin:8px auto 0}
+#bn-bite .sec-kicker{display:inline-block;background:#0a2540;color:#E63946;font-size:.75rem;letter-spacing:2.5px;text-transform:uppercase;padding:6px 16px;border-radius:999px;margin-bottom:12px}
+</style>
 </head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-fuel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 4 0v-6.998a2 2 0 0 0-.59-1.42L18 5" />
   <path d="M14 21V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v16" />
@@ -442,7 +459,7 @@ main{display:block}
 <div class="pv-head"><div class="kicker">🇺🇸 Boaters Nation 🇺🇸</div><h1>Florida Atlantic</h1>
 <p class="intro">771 places, built from published sources and cross-checked. Every category opens into counties — one tap, no endless scroll. See a mistake? Every card has a report link.</p></div>
 <main>
-<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-filters" id="ramp-fee-filters" style="text-align:center; margin-bottom:10px; display:none">
+<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button><button class="tab" data-sec="bite" onclick="show(24)">Today's Bite</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-filters" id="ramp-fee-filters" style="text-align:center; margin-bottom:10px; display:none">
       <button class="map-filter" id="fee-btn-free" onclick="rampFeeFilter('free')">Free Launches</button>
       <button class="map-filter" id="fee-btn-paid" onclick="rampFeeFilter('paid')">Paid Launches</button>
     </div>
@@ -535,6 +552,54 @@ main{display:block}
 </div></div>
 </div>
 </section>
+<section class="panel" id="bn-bite"><div class="bnport">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">Tight Lines</span>
+      <h2>Florida Atlantic Fishing</h2>
+      <p>Snook on the dock lights, the first pompano of the fall run, and Spanish mackerel building with every cold front. The Stuart-to-Sebastian stretch is the hot water right now.</p>
+    </div>
+    <div class="dir-grid">
+    <div class="dir-card daily-report" style="border:2px solid var(--teal)">
+      <div class="city">Weekly Report &mdash; Wednesday, November 4, 2026</div><h4>Today&apos;s Best Bets</h4>
+      <div class="type">
+        <b>1. Snook</b> &mdash; November is a pretty good snook month around Stuart and Jensen Beach &mdash; best mornings, evenings and at night. Dock lights are producing steady numbers on live shrimp, artificial shrimp and small paddletails, and Jensen Causeway anglers are scoring on jigs and swimbaits even in rough water. Most fish have moved away from the inlet and spread through the Indian and St. Lucie rivers around docks, bridges, seawalls and mangroves. At Sebastian, fish the inlet shorelines on the incoming tide &mdash; live pinfish and pigfish by day, bucktails and heavy paddletails after dark. Heads-up: Sebastian&apos;s north jetty is closed for a repair project.<br>
+        <b>2. Pompano</b> &mdash; The fall/winter run is just arriving. The first inshore fish are jigging on the east side of the Mosquito Bridge at the Jensen Causeway &mdash; moving tide is the key, the bite shuts down at slack &mdash; on chartreuse-and-orange jigs with a pink or gold teaser, worked all the way to your feet. In the surf, mornings and high tide have been best, 50&ndash;80 yards off the beach, on sand fleas tipped with Fishbites (clams work too). Expect fish to push through to the inlet, the Crossroads, Sailfish Flats and the flats by the power plant in the coming weeks.<br>
+        <b>3. Spanish mackerel</b> &mdash; Spanish have begun showing up around the Jensen Causeway on small pilchards, shrimp and spoons, and more arrive with each cold front &mdash; around the bridges, in the inlet, and just off the beach on minnow jigs with flat seas. At Sebastian Inlet&apos;s T-Dock they&apos;re hitting small white jigs and live greenies. The better numbers usually build late November into December, when anglers work the schools at Pecks Lake.<br>
+        <i>Note:</i> Also: sailfish, mahi and kingfish (kingfish in 60&ndash;90 ft on the wrecks and reefs) when a weather window opens out of Stuart; tarpon slowing down at the Roosevelt Bridge, the North Fork and Little Mud on live mullet; sheepshead and black drum numbers building on causeway structure &mdash; fiddler crabs are the top sheepshead bait. Fresh November reports were thin for the Fernandina&ndash;Jacksonville end, so this card doesn&apos;t pretend to cover it.<br><br>
+        <b>Tide windows:</b> Fort Pierce: high 4:35 PM (2.2 ft), low 10:04 AM. The incoming tide is the snook tide at Sebastian, and causeway pompano only bite on moving water &mdash; plan around the afternoon flood.<br>
+        <b>Bait:</b> Live shrimp and pinfish/pigfish for snook; sand fleas for surf pompano; fiddler crabs for sheepshead. <a href="#bn-bite" onclick="show(3);document.querySelector('.tabs').scrollIntoView();return false;">Find a bait shop near the ramp</a> &middot; <a href="#bn-tides" onclick="show(23);document.querySelector('.tabs').scrollIntoView();return false;">Check today&apos;s tides &amp; forecast</a>.
+      </div>
+      <div class="contact">Compiled from Snook Nook&apos;s November 2026 Stuart report, the Sebastian Inlet District&apos;s week-of-Nov.-4 report, Coastal Angler&apos;s November forecasts, and FWC rules pages (full source list in the preview folder) &mdash; general areas only, no secret spots burned. Curated roundup from public sources and seasonal patterns.</div>
+    </div>
+    </div>
+    <div class="dir-grid">
+      <div class="dir-card">
+        <div class="city">November</div><h4>What's Biting Now</h4>
+        <div class="type">
+&bull; <b>Snook</b> &mdash; dock lights, bridges and river structure in the Indian &amp; St. Lucie rivers and at Sebastian Inlet.<br>
+&bull; <b>Pompano</b> &mdash; first of the fall/winter run; causeway jigs on a moving tide, sand-flea rigs in the surf.<br>
+&bull; <b>Spanish mackerel</b> &mdash; building with each cold front; causeways, inlets and just off the beach.<br>
+&bull; <b>Sailfish / mahi / kingfish</b> &mdash; Stuart offshore when weather windows open; sails mixed in with the mahi.<br>
+&bull; <b>Sheepshead &amp; black drum</b> &mdash; numbers building on causeway and dock structure.
+        </div>
+      </div>
+      <div class="dir-card">
+        <div class="city">Don't forget</div><h4>Licenses &amp; Seasons</h4>
+        <div class="type">
+&bull; <b>Snook (Atlantic coast):</b> OPEN now &mdash; harvest closes Dec. 15. Slot 28&Prime;&ndash;32&Prime; total length, 1 per person/day, hook-and-line only. A snook permit plus a saltwater license is required.<br>
+&bull; <b>Florida pompano:</b> 11&Prime; min fork length, 6 per person/day, open year-round.<br>
+&bull; <b>Spanish mackerel:</b> 12&Prime; min fork length, 15 per person/day, open year-round.<br>
+&bull; <b>Spotted seatrout &mdash; Indian River Lagoon region:</b> harvest CLOSED Nov. 1&ndash;Dec. 31 (when open: 15&Prime;&ndash;19&Prime; slot, 2/day). Other regions differ &mdash; check FWC.<br>
+&bull; <b>Redfish &mdash; Indian River Lagoon region:</b> catch-and-release only.<br>
+&bull; <b>Flounder:</b> closed Oct. 15&ndash;Nov. 30 statewide.<br>
+&bull; <b>Full rules:</b> <a href="https://myfwc.com/license/recreational/faqs/" target="_blank" rel="noopener">FWC licenses &amp; rules</a> &middot; <a href="https://myfwc.com/fishing/saltwater/recreational/" target="_blank" rel="noopener">FWC saltwater fishing</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
 </main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
@@ -1465,7 +1530,7 @@ function wvTab(name, btn){
    Tides & Forecast tab directly — this is what the homepage stack button
    and the weather-strip tap will target once shipped. */
 (function(){
-  var H = {'#bn-tides':23};
+  var H = {'#bn-tides':23,'#bn-bite':24};
   function go(){
     var h = location.hash;
     if (Object.prototype.hasOwnProperty.call(H, h)) {
@@ -1497,7 +1562,7 @@ function wvTab(name, btn){
     });
   }
   function hideSections(){
-    ["p0", "bn-tides"].forEach(function(id){
+    ["p0", "bn-tides", "bn-bite"].forEach(function(id){
       var el = document.getElementById(id); if (el) el.classList.remove('on');
     });
   }
@@ -1556,6 +1621,7 @@ function wvTab(name, btn){
       return;
     }
     if (i === 23) { goSection('tides', 'bn-tides'); return; }
+    if (i === 24) { goSection('bite', 'bn-bite'); return; }
   };
   if (window.mapFilter) {
     var origFilter = window.mapFilter;

@@ -384,11 +384,28 @@ main{display:block}
 }
 
 </style>
+<style>
+/* ===== Today's Bite — Tampa Bay Boating's report card, ported per
+   TEMPLATE-SPEC.md. Scoped to #bn-bite; values copied from Tampa's
+   .bnport rules (the six region pages don't carry that block). ===== */
+#bn-bite .dir-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:16px}
+#bn-bite .dir-card{background:#fff;border:1px solid #e6ded1;border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(10,37,64,.07)}
+#bn-bite .daily-report{grid-column:1/-1}
+#bn-bite .dir-card h4{color:#0a2540;margin:0 0 4px;font-size:1.05rem}
+#bn-bite .city{font-size:.8rem;text-transform:uppercase;letter-spacing:1px;color:#0072B2;font-weight:700;margin-bottom:2px}
+#bn-bite .type{font-size:.92rem;color:#445A6A;margin:6px 0;line-height:1.55}
+#bn-bite .type a{color:#0072B2}
+#bn-bite .contact{font-size:.9rem;color:#445A6A;margin-top:8px}
+#bn-bite .sec-head{text-align:center;margin-bottom:30px}
+#bn-bite .sec-head h2{font-size:2rem;color:#fff;margin:0}
+#bn-bite .sec-head p{color:#c9d8e4;max-width:640px;margin:8px auto 0}
+#bn-bite .sec-kicker{display:inline-block;background:#0a2540;color:#E63946;font-size:.75rem;letter-spacing:2.5px;text-transform:uppercase;padding:6px 16px;border-radius:999px;margin-bottom:12px}
+</style>
 </head><body>
 <div class="pv-head"><div class="kicker">🇺🇸 Boaters Nation 🇺🇸</div><h1>Chesapeake Bay</h1>
 <p class="intro">630 places, built from published sources and cross-checked. Every category opens into counties — one tap, no endless scroll. See a mistake? Every card has a report link.</p></div>
 <main>
-<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-groups"><div class="map-group">
+<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button><button class="tab" data-sec="bite" onclick="show(24)">Today's Bite</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-groups"><div class="map-group">
         <button class="map-filter active" data-cat="all" onclick="mapFilter('all',this)">All</button>
       </div><div class="map-group">
         <div class="map-group-label">On the Water</div>
@@ -457,6 +474,53 @@ main{display:block}
 </div></div>
 </div>
 </section>
+<section class="panel" id="bn-bite"><div class="bnport">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">Tight Lines</span>
+      <h2>Chesapeake Bay Fishing</h2>
+      <p>It&apos;s rockfish season &mdash; the fall striped bass bite is peaking from the Susquehanna Flats to Hampton Roads, with speckled trout in the Virginia rivers and tautog building on the Bridge-Tunnel.</p>
+    </div>
+    <div class="dir-grid">
+    <div class="dir-card daily-report" style="border:2px solid var(--teal)">
+      <div class="city">Weekly Report &mdash; Wednesday, November 4, 2026</div><h4>Today&apos;s Best Bets</h4>
+      <div class="type">
+        <b>1. Striped bass (rockfish)</b> &mdash; The Bay-wide headline. Maryland DNR&apos;s Nov. 4 report calls the middle Bay &ldquo;all about striped bass&rdquo; and the lower Bay fishing &ldquo;excellent,&rdquo; with main-Bay and river-mouth water in the low 60s. Juvenile menhaden pouring out of the Patapsco, Chester and Gunpowder rivers, plus anchovy and menhaden schools at the Eastern Bay and Choptank mouths, have breaking fish under diving gulls. Also named: Susquehanna Flats edges, Kent Narrows, the Bay Bridge piers, Pooles Island and Love Point (live eels), and the lower Potomac from Ragged Point to Piney Point. Cast paddletails, topwater and jerkbaits shallow at dawn and dusk; jig soft plastics or troll umbrella rigs deep by day. Virginia&apos;s rivers &mdash; James, Elizabeth, Rappahannock, Piankatank &mdash; are picking up too, much of it at night and around bridge-tunnel structure.<br>
+        <b>2. Speckled trout</b> &mdash; November is usually prime time for big &ldquo;gator&rdquo; trout in the Virginia tributaries &mdash; honestly, this year Virginia has seen mostly small ones so far. The water to try: the Elizabeth River (getting the most attention), Lynnhaven Inlet, Rudee Inlet, Mobjack Bay and the Rappahannock. Fish grass beds close to deeper water, slow the retrieve way down, and throw 3&ndash;4 inch paddletails and sinking jerkbaits on light jig heads. Maryland&apos;s last specks are fading out from Hoopers Island through Tangier Sound.<br>
+        <b>3. Tautog</b> &mdash; The tog bite at the Chesapeake Bay Bridge-Tunnel and other deepwater structure should pick up serious steam this month, and November is prime time for shoreline anglers tossing flea or crab baits tight to structure. Virginia reports confirm tog are available now and stay that way through fall and winter.<br>
+        <i>Note:</i> Also: white perch are heading deep in the tidal rivers &mdash; dropper rigs with 2-inch Gulps or bloodworm bottom rigs over oyster bars; blue catfish are feeding hard in the lower tidal rivers on cut bait or live perch; red drum are tail-end inside the Bay, with the better action in the Virginia Beach surf on fresh cut mullet. Virginia-side intel is thinner than Maryland&apos;s (no state weekly report exists for VA) &mdash; it rests on tackle-shop reports and a monthly outlook, and the sources list says so.<br><br>
+        <b>Tide windows:</b> Annapolis: high 1:15 PM, lows 7:11 AM and 7:26 PM. DNR&apos;s advice: a running tide helps, and a flood tide is always an advantage up-Bay &mdash; cast the shallows at first and last light, jig the channel edges in between.<br>
+        <b>Bait:</b> Live eels for the bridge piers and the Love Point rocks; bloodworms for the perch; sand fleas and crab for tog. <a href="#bn-bite" onclick="show(3);document.querySelector('.tabs').scrollIntoView();return false;">Find a bait shop near the ramp</a> &middot; <a href="#bn-tides" onclick="show(23);document.querySelector('.tabs').scrollIntoView();return false;">Check today&apos;s tides &amp; forecast</a>.
+      </div>
+      <div class="contact">Compiled from Maryland DNR&apos;s Nov. 4 fishing report and 2026 striper rules, FishTalk&apos;s November forecast, Green Top&apos;s Virginia reports, and VMRC&apos;s regulation pages (full source list in the preview folder) &mdash; general areas only, no secret spots burned. Curated roundup from public sources and seasonal patterns.</div>
+    </div>
+    </div>
+    <div class="dir-grid">
+      <div class="dir-card">
+        <div class="city">November</div><h4>What's Biting Now</h4>
+        <div class="type">
+&bull; <b>Striped bass</b> &mdash; Bay-wide fall peak; bait schools at river mouths and channel edges, shallow casting at dawn/dusk, deep jigging and trolling by day.<br>
+&bull; <b>Speckled trout</b> &mdash; Virginia rivers and inlets (Elizabeth, Lynnhaven, Rudee, Mobjack, Rappahannock); slow paddletails near grass-to-deep edges.<br>
+&bull; <b>Tautog</b> &mdash; building on the Bridge-Tunnel and deepwater structure on flea and crab baits.<br>
+&bull; <b>White perch</b> &mdash; schooling deep in the lower tidal rivers over oyster bars and structure.<br>
+&bull; <b>Blue catfish</b> &mdash; aggressive in the lower tidal rivers on cut and live bait.
+        </div>
+      </div>
+      <div class="dir-card">
+        <div class="city">Don't forget</div><h4>Licenses &amp; Seasons</h4>
+        <div class="type">
+&bull; <b>Striped bass, Maryland Bay:</b> Sept. 1&ndash;Dec. 5 &mdash; 1 fish per day, 19&Prime;&ndash;24&Prime; slot, circle hooks required. Dec. 6&ndash;31 is catch-and-release only. <a href="https://dnr.maryland.gov/Documents/dnrf3.pdf" target="_blank" rel="noopener">MD DNR licenses &amp; rules</a>.<br>
+&bull; <b>Striped bass, Virginia Bay:</b> fall season Oct. 4&ndash;Dec. 31 &mdash; 19&Prime;&ndash;24&Prime;, 1 per person. Virginia&apos;s ocean (coastal) rules are different &mdash; check <a href="https://mrc.virginia.gov/" target="_blank" rel="noopener">VMRC</a> before fishing outside the Bay.<br>
+&bull; <b>Speckled trout, VA:</b> 14&Prime; min, 5 per person, only 1 over 24&Prime;.<br>
+&bull; <b>Red drum, VA:</b> 18&Prime;&ndash;26&Prime; slot, 3 per person.<br>
+&bull; <b>Tautog, VA:</b> 16&Prime; min, 4 per person (per VMRC&apos;s 2026 regulations card).<br>
+&bull; <b>Licenses:</b> Virginia requires a saltwater license in the Bay and its tributaries unless you&apos;re on a licensed pier, charter or private boat, or exempt. Maryland anglers: check MD DNR for license details.
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
 </main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
@@ -1385,7 +1449,7 @@ function wvTab(name, btn){
    Tides & Forecast tab directly — this is what the homepage stack button
    and the weather-strip tap will target once shipped. */
 (function(){
-  var H = {'#bn-tides':23};
+  var H = {'#bn-tides':23,'#bn-bite':24};
   function go(){
     var h = location.hash;
     if (Object.prototype.hasOwnProperty.call(H, h)) {
@@ -1417,7 +1481,7 @@ function wvTab(name, btn){
     });
   }
   function hideSections(){
-    ["p0", "bn-tides"].forEach(function(id){
+    ["p0", "bn-tides", "bn-bite"].forEach(function(id){
       var el = document.getElementById(id); if (el) el.classList.remove('on');
     });
   }
@@ -1476,6 +1540,7 @@ function wvTab(name, btn){
       return;
     }
     if (i === 23) { goSection('tides', 'bn-tides'); return; }
+    if (i === 24) { goSection('bite', 'bn-bite'); return; }
   };
   if (window.mapFilter) {
     var origFilter = window.mapFilter;

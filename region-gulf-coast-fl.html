@@ -398,6 +398,23 @@ main{display:block}
 }
 
 </style>
+<style>
+/* ===== Today's Bite — Tampa Bay Boating's report card, ported per
+   TEMPLATE-SPEC.md. Scoped to #bn-bite; values copied from Tampa's
+   .bnport rules (the six region pages don't carry that block). ===== */
+#bn-bite .dir-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:16px}
+#bn-bite .dir-card{background:#fff;border:1px solid #e6ded1;border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(10,37,64,.07)}
+#bn-bite .daily-report{grid-column:1/-1}
+#bn-bite .dir-card h4{color:#0a2540;margin:0 0 4px;font-size:1.05rem}
+#bn-bite .city{font-size:.8rem;text-transform:uppercase;letter-spacing:1px;color:#0072B2;font-weight:700;margin-bottom:2px}
+#bn-bite .type{font-size:.92rem;color:#445A6A;margin:6px 0;line-height:1.55}
+#bn-bite .type a{color:#0072B2}
+#bn-bite .contact{font-size:.9rem;color:#445A6A;margin-top:8px}
+#bn-bite .sec-head{text-align:center;margin-bottom:30px}
+#bn-bite .sec-head h2{font-size:2rem;color:#fff;margin:0}
+#bn-bite .sec-head p{color:#c9d8e4;max-width:640px;margin:8px auto 0}
+#bn-bite .sec-kicker{display:inline-block;background:#0a2540;color:#E63946;font-size:.75rem;letter-spacing:2.5px;text-transform:uppercase;padding:6px 16px;border-radius:999px;margin-bottom:12px}
+</style>
 </head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-fuel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 4 0v-6.998a2 2 0 0 0-.59-1.42L18 5" />
   <path d="M14 21V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v16" />
@@ -442,7 +459,7 @@ main{display:block}
 <div class="pv-head"><div class="kicker">🇺🇸 Boaters Nation 🇺🇸</div><h1>Gulf Coast Florida</h1>
 <p class="intro">625 places, built from published sources and cross-checked. Every category opens into counties — one tap, no endless scroll. See a mistake? Every card has a report link.</p></div>
 <main>
-<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(22)">Tides &amp; Forecast</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-filters" id="ramp-fee-filters" style="text-align:center; margin-bottom:10px; display:none">
+<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(22)">Tides &amp; Forecast</button><button class="tab" data-sec="bite" onclick="show(23)">Today's Bite</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-filters" id="ramp-fee-filters" style="text-align:center; margin-bottom:10px; display:none">
       <button class="map-filter" id="fee-btn-free" onclick="rampFeeFilter('free')">Free Launches</button>
       <button class="map-filter" id="fee-btn-paid" onclick="rampFeeFilter('paid')">Paid Launches</button>
     </div>
@@ -535,6 +552,53 @@ main{display:block}
 </div></div>
 </div>
 </section>
+<section class="panel" id="bn-bite"><div class="bnport">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">Tight Lines</span>
+      <h2>Gulf Coast Florida Fishing</h2>
+      <p>Fall redfish from Destin to Naples, trout on the bait schools, and king mackerel offshore &mdash; plus two closures to know before you keep anything.</p>
+    </div>
+    <div class="dir-grid">
+    <div class="dir-card daily-report" style="border:2px solid var(--teal)">
+      <div class="city">Weekly Report &mdash; Wednesday, November 4, 2026</div><h4>Today&apos;s Best Bets</h4>
+      <div class="type">
+        <b>1. Redfish</b> &mdash; The consensus No. 1 across the whole region. In the Panhandle, Destin&apos;s bridges and passes have an excellent redfish bite going into November; Pensacola fish are scattered, so hunt clean water and active bait instead of memory spots &mdash; cut pogies on a Carolina rig, switch to a single-drop rig when the current drags the bait. In the Southwest, reds are concentrated in deeper pockets off wind-blown flats, the west side of Pine Island is a top inshore bet, Estero Bay fish are chewing shrimp-tipped jig heads around mangroves and oyster bars on high tides, and Naples reds of all sizes are eating live pilchards around the mangroves.<br>
+        <b>2. Speckled trout</b> &mdash; Trout are feeding around bait schools near Destin, and Pensacola anglers are finding them by locating clean water, active bait and surface activity &mdash; suspending lures and soft plastics do the searching. In the Southwest they&apos;re in deeper pockets off the flats and on Marco Island&apos;s mixed grass-and-sand flats with moving water, keyed on small 1&ndash;3 inch pilchards. The basic popping-cork-and-shrimp rig still produces, best in the last hour of the tide.<br>
+        <b>3. King mackerel</b> &mdash; The offshore through-line for November. Half Hitch&apos;s Nov. 2 Destin report puts it plainly: king mackerel should bite throughout November and possibly into December &mdash; and tuna stay good into December, with excellent triggerfish and mingo (vermilion) snapper. Off Fort Myers to Marco Island, kings are over offshore bait concentrations on live bait and trolling lures, with Spanish mackerel on spoons and small jigs over nearshore bait schools.<br>
+        <i>Note:</i> Also: pompano on goofy jigs in deeper Destin-area holes and in the surf along 30A; sheepshead just starting at Pensacola bridge pilings &mdash; local guides say in a couple of weeks they should be thick; Gulf red snapper open Fridays, Saturdays and Sundays in November in the state-managed season (verify the exact days at FWC before keeping). Closures in the rules card below: flounder and Gulf gag grouper are both release-only right now.<br><br>
+        <b>Tide windows:</b> Pensacola: high 6:51 AM, then one long outgoing tide to a 3:20 PM low (second high 9:27 PM). The falling tide has been the productive tide for bull reds around Destin&apos;s bridges; in the Southwest, hit the Estero Bay mangroves on the early high.<br>
+        <b>Bait:</b> Cut pogies and live shrimp in the Panhandle; live pilchards and live shrimp in the Southwest; crab imitations fished tight to bridge pilings for the first sheepshead. <a href="#bn-bite" onclick="show(3);document.querySelector('.tabs').scrollIntoView();return false;">Find a bait shop near the ramp</a> &middot; <a href="#bn-tides" onclick="show(22);document.querySelector('.tabs').scrollIntoView();return false;">Check today&apos;s tides &amp; forecast</a>.
+      </div>
+      <div class="contact">Compiled from Half Hitch&apos;s Nov. 2 Destin report, the Northwest Florida Fishing Report (Oct. 28), the Gulf Coast Fishing Report (Oct. 31&ndash;Nov. 6), Florida Sportsman&apos;s Southwest forecasts, and FWC rules pages (full source list in the preview folder) &mdash; general areas only, no secret spots burned. Curated roundup from public sources and seasonal patterns.</div>
+    </div>
+    </div>
+    <div class="dir-grid">
+      <div class="dir-card">
+        <div class="city">November</div><h4>What's Biting Now</h4>
+        <div class="type">
+&bull; <b>Redfish</b> &mdash; schooled up from Destin&apos;s bridges and passes and Pensacola&apos;s clean water to Pine Island, Estero Bay and the Naples mangroves.<br>
+&bull; <b>Speckled trout</b> &mdash; around Panhandle bait schools; deeper pockets and grass flats in the Southwest on pilchards, shrimp and popping corks.<br>
+&bull; <b>King mackerel</b> &mdash; expected to bite all November out of Destin; on offshore bait from Fort Myers to Marco.<br>
+&bull; <b>Pompano</b> &mdash; goofy jigs in deeper Destin-area holes; surf fish along 30A and the Pensacola beaches.<br>
+&bull; <b>Sheepshead</b> &mdash; just starting at bridge pilings and nearshore wrecks; numbers build over the next couple of weeks.
+        </div>
+      </div>
+      <div class="dir-card">
+        <div class="city">Don't forget</div><h4>Licenses &amp; Seasons</h4>
+        <div class="type">
+&bull; <b>Flounder:</b> CLOSED Oct. 15&ndash;Nov. 30 (all Florida waters). When open (Dec. 1): 14&Prime; min, 5 per person. Release any flounder you catch now.<br>
+&bull; <b>Gag grouper (Gulf):</b> CLOSED &mdash; the 2026 recreational season in Gulf state waters ran Sept. 1&ndash;30 only. Catch-and-release until FWC sets the next season.<br>
+&bull; <b>Snook:</b> OPEN in early November at both ends of this region, closing Dec. 1. Panhandle region: Sept. 1&ndash;Nov. 30. Charlotte Harbor &amp; Southwest: Oct. 1&ndash;Nov. 30. Slot 28&Prime;&ndash;33&Prime;, 1 per person/day, snook permit required.<br>
+&bull; <b>Spotted seatrout (new regional rules, Apr. 1, 2026):</b> Panhandle &mdash; bag 3, slot 15&Prime;&ndash;19&Prime;, one over-slot fish per vessel, closed in February only. Tampa Bay&ndash;Southwest combined region &mdash; open year-round, bag 3, same slot.<br>
+&bull; <b>Reef fish:</b> fishing for gag or other reef fish from a private boat? You must sign up for the free State Reef Fish Angler Designation.<br>
+&bull; <b>Redfish, red grouper, mackerels:</b> limits vary by area &mdash; check <a href="https://myfwc.com/fishing/saltwater/recreational/" target="_blank" rel="noopener">FWC saltwater fishing</a> before you keep one. A Florida saltwater license is required.
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
 </main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
@@ -751,7 +815,7 @@ window.tbbMapInit();
     });
   }
   function hideSections(){
-    ["p0", "bn-tides"].forEach(function(id){
+    ["p0", "bn-tides", "bn-bite"].forEach(function(id){
       var el = document.getElementById(id); if (el) el.classList.remove('on');
     });
   }
@@ -810,6 +874,7 @@ window.tbbMapInit();
       return;
     }
     if (i === 22) { goSection('tides', 'bn-tides'); return; }
+    if (i === 23) { goSection('bite', 'bn-bite'); return; }
   };
   if (window.mapFilter) {
     var origFilter = window.mapFilter;
@@ -1553,7 +1618,7 @@ function wvTab(name, btn){
    Tides & Forecast tab directly — this is what the homepage stack button
    and the weather-strip tap will target once shipped. */
 (function(){
-  var H = {'#bn-tides':22};
+  var H = {'#bn-tides':22,'#bn-bite':23};
   function go(){
     var h = location.hash;
     if (Object.prototype.hasOwnProperty.call(H, h)) {
