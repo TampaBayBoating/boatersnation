@@ -576,7 +576,7 @@ main{display:block}
 <div class="pv-head"><div class="kicker">🇺🇸 Boaters Nation 🇺🇸</div><h1>The Carolinas</h1>
 <p class="intro">383 places, built from published sources and cross-checked. Every category opens into counties — one tap, no endless scroll. See a mistake? Every card has a report link.</p></div>
 <main>
-<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(22)">Tides &amp; Forecast</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-groups"><div class="map-group">
+<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(22)">Tides &amp; Forecast</button><button class="tab" data-sec="soon" onclick="show(23)">Coming Soon</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-groups"><div class="map-group">
         <button class="map-filter active" data-cat="all" onclick="mapFilter('all',this)">All</button>
       </div><div class="map-group">
         <div class="map-group-label">On the Water</div>
@@ -656,8 +656,19 @@ main{display:block}
 <div class="skill-box" id="skill-hourly"></div>
 <div id="hourly-stamp"></div>
 </div></div>
-</div>
-</section>
+</div></section>
+<section class="panel" id="bn-soon"><div class="bnport">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">Coming Soon</span>
+      <h2>Still building for Carolina Coast</h2>
+      <p>The Events Calendar and the New to Boating guides are live for Tampa Bay today, and they are being built for Carolina Coast next. We open a section only when it is checked to the same standard as the rest of this page — no filler, no guesses.</p>
+      <p>Already live here today: the boater's map and Tides &amp; Forecast — use the tabs above.</p>
+    </div>
+    <p>Want to know the day they open here? Join the waitlist:</p>
+    <form class="wl" method="POST" action="https://formsubmit.co/david@tampabayboating.com"><input type="hidden" name="_subject" value="Boaters Nation waitlist — Carolina Coast"><input type="hidden" name="region" value="Carolina Coast"><input type="hidden" name="state" value=""><label>Email<input type="email" name="email" required placeholder="you@example.com"></label><label>ZIP code<input type="text" name="zip" inputmode="numeric" maxlength="5" value=""></label><button type="submit">Tell me when it opens</button></form>
+  </div>
+</div></section>
 </main>
 <p class="fine">Preview built from the staged Boaters Nation database (Nov 3, 2026). Nothing here is published until David approves it.</p>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -878,7 +889,7 @@ window.tbbMapInit();
     });
   }
   function hideSections(){
-    ["p0", "bn-tides"].forEach(function(id){
+    ["p0", "bn-tides", "bn-soon"].forEach(function(id){
       var el = document.getElementById(id); if (el) el.classList.remove('on');
     });
   }
@@ -937,6 +948,7 @@ window.tbbMapInit();
       return;
     }
     if (i === 22) { goSection('tides', 'bn-tides'); return; }
+    if (i === 23) { goSection('soon', 'bn-soon'); return; }
   };
   if (window.mapFilter) {
     var origFilter = window.mapFilter;
@@ -1630,7 +1642,7 @@ function tfChopRead(mph){
 </script>
 <script>
 (function(){
-  var H = {'#bn-tides':22};
+  var H = {'#bn-tides':22,'#bn-soon':23};
   function go(){
     var h = location.hash;
     if (Object.prototype.hasOwnProperty.call(H, h)) { show(H[h]); var el = document.getElementById(h.slice(1)); if (el) el.scrollIntoView(); }

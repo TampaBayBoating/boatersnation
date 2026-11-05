@@ -304,6 +304,64 @@ main{display:block}
 #bn-bite .sec-head p{color:#c9d8e4;max-width:640px;margin:8px auto 0}
 #bn-bite .sec-kicker{display:inline-block;background:#0a2540;color:#E63946;font-size:.75rem;letter-spacing:2.5px;text-transform:uppercase;padding:6px 16px;border-radius:999px;margin-bottom:12px}
 </style>
+<style>
+/* ===== Calendar + New to Boating — Tampa Bay Boating's sections, ported per
+   TEMPLATE-SPEC.md. Scoped to #bn-calendar / #bn-newb; values copied from
+   Tampa's .bnport rules (the six region pages don't carry that block). ===== */
+#bn-calendar,#bn-newb{--navy:#0a2540;--navy2:#103a5f;--teal:#0072B2;--sun:#a5dcf5;--sand:#ffffff;--white:#ffffff;--ink:#1c2b3a;--muted:#445A6A;--line:#e6ded1;--gold:#8fd0f0}
+#bn-calendar .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+#bn-calendar .sec-head{text-align:center;margin-bottom:30px}
+#bn-calendar .sec-head h2{font-size:2rem;color:#fff;margin:0}
+#bn-calendar .sec-head p{color:#9db4c6;max-width:640px;margin:8px auto 0}
+#bn-calendar .sec-kicker{display:inline-block;background:#0a2540;color:#E63946;font-size:.75rem;letter-spacing:2.5px;text-transform:uppercase;padding:6px 16px;border-radius:999px;margin-bottom:12px}
+#bn-calendar .cal-wrap{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:18px}
+@media(max-width:820px){#bn-calendar .cal-wrap{grid-template-columns:1fr}}
+#bn-calendar .cal-box{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 2px 10px rgba(10,37,64,.06)}
+#bn-calendar .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+#bn-calendar .cal-head b{font-size:1.15rem;color:var(--navy)}
+#bn-calendar .cal-head button{background:var(--navy);color:#fff;border:none;border-radius:8px;width:36px;height:36px;font-size:1.2rem;cursor:pointer;line-height:1}
+#bn-calendar .cal-head button:hover{background:var(--navy2)}
+#bn-calendar .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+#bn-calendar .cal-dow{margin-bottom:6px}
+#bn-calendar .cal-dow span{text-align:center;font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;padding:4px 0}
+#bn-calendar .cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:.9rem;border-radius:8px;color:var(--ink);position:relative;background:transparent;border:none;padding:0}
+#bn-calendar .cal-day.empty{background:transparent}
+#bn-calendar .cal-day.has-ev{cursor:pointer;font-weight:700;color:var(--navy)}
+#bn-calendar .cal-day.has-ev:hover{background:var(--sand)}
+#bn-calendar .cal-day.has-ev .dot{position:absolute;bottom:5px;left:50%;transform:translateX(-50%);width:6px;height:6px;border-radius:50%;background:var(--teal)}
+#bn-calendar .cal-day.today{background:var(--navy);color:#fff;font-weight:700}
+#bn-calendar .cal-day.today.has-ev .dot{background:var(--sun)}
+#bn-calendar .day-events{margin-top:14px;display:flex;flex-direction:column;gap:12px}
+#bn-calendar #upcoming-events{max-height:560px;overflow-y:auto;padding-right:4px}
+#bn-calendar .ev-card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:0 1px 6px rgba(10,37,64,.05)}
+#bn-calendar .ev-card.featured{border:2px solid var(--gold);background:linear-gradient(180deg,#fffdf5,var(--white))}
+#bn-calendar .ev-card .ev-photo{width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:10px}
+#bn-calendar .ev-card .when{font-size:.8rem;color:var(--teal);font-weight:700;margin-bottom:4px}
+#bn-calendar .ev-card h4{font-size:1.02rem;color:var(--navy);margin:0 0 4px}
+#bn-calendar .ev-card .where{font-size:.85rem;color:var(--muted);margin-bottom:6px}
+#bn-calendar .ev-card p{font-size:.88rem;color:var(--ink);margin:0 0 8px}
+#bn-calendar .ev-card a{font-size:.88rem;font-weight:700}
+#bn-calendar .ev-share{display:inline-flex;align-items:center;gap:6px;margin-left:14px;background:#eef5fb;border:1px solid #bcd8ee;color:#0a2540;font-weight:700;font-size:.85rem;border-radius:999px;padding:5px 13px;cursor:pointer;vertical-align:middle}
+#bn-calendar .ev-share:active{background:#8fd0f0}
+.share-toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:rgba(6,38,59,.94);color:#fff;font-size:.9rem;font-weight:600;padding:11px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:all .3s ease;z-index:9999;max-width:88vw;text-align:center}
+.share-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#bn-calendar .ev-details-btn{display:inline-block;margin:2px 0 8px;background:none;border:none;color:var(--teal,#0e7c86);font-weight:800;font-size:.88rem;cursor:pointer;padding:2px 0}
+#bn-calendar .ev-details{background:#eef5fb;border:1px solid #d7e6f2;border-radius:10px;padding:10px 14px;font-size:.9rem;line-height:1.65;color:#33536e;margin:0 0 10px}
+#bn-calendar .ev-details b{color:#0a2540}
+#bn-newb .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+#bn-newb .hub-head{max-width:1180px;margin:0 auto;padding:34px 20px 6px}
+#bn-newb .hub-head h2{font-family:Georgia,serif;color:#fff;font-size:2rem}
+#bn-newb .hub-head p{color:#9db4c6}
+#bn-newb .nb-steps{display:grid;gap:12px;max-width:860px;margin:22px auto 0;padding:0 20px}
+#bn-newb .nb-step{display:flex;gap:14px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;text-decoration:none;color:var(--ink);box-shadow:0 4px 14px rgba(10,37,64,.06);align-items:flex-start}
+#bn-newb .nb-num{flex:0 0 auto;width:32px;height:32px;border-radius:50%;background:#0a2540;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+#bn-newb .nb-step b.t{color:#0a2540;font-size:1rem}
+#bn-newb .nb-step p{margin:4px 0 0;color:#5b6b7c;font-size:.88rem}
+#bn-newb .nb-step .go{margin-left:auto;flex:0 0 auto;color:#0e7c7b;font-weight:800;align-self:center}
+#bn-newb .nb-note{max-width:860px;margin:18px auto 0;padding:16px 18px;background:#fff8e6;border:1px solid #f0dfae;border-radius:14px}
+#bn-newb .nb-note b.t{color:#0a2540}
+</style>
+
 <style id="bnwv-css">
 /* BNWV-PORT wave CSS — Tampa Bay Boating values (TBB index.html lines 539-587, 547-554), scoped to the wave card. */
 #wave-card .wave-grid{display:flex;gap:14px;flex-wrap:wrap;margin:8px 0 10px}
@@ -517,7 +575,7 @@ main{display:block}
   <h1 style="text-align:left">New England</h1>
   <p class="intro" style="text-align:left;margin:0 0 6px">Maine to Connecticut &mdash; rocky coasts, working harbors and summer islands. <b>1,965 places, cross-checked one by one</b>: every card below was checked against a source that states it, and anything we couldn't prove stayed off. Spot a mistake? Every card has a report link &mdash; that's how this stays right.</p>
 <main>
-<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button><button class="tab" data-sec="bite" onclick="show(24)">Today's Bite</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-filters" id="ramp-fee-filters" style="text-align:center; margin-bottom:10px; display:none">
+<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button><button class="tab" data-sec="bite" onclick="show(24)">Today's Bite</button><button class="tab" data-sec="calendar" onclick="show(25)">Calendar</button><button class="tab" data-sec="newb" onclick="show(26)">New to Boating</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-filters" id="ramp-fee-filters" style="text-align:center; margin-bottom:10px; display:none">
       <button class="map-filter" id="fee-btn-free" onclick="rampFeeFilter('free')">Free Launches</button>
       <button class="map-filter" id="fee-btn-paid" onclick="rampFeeFilter('paid')">Paid Launches</button>
     </div>
@@ -666,6 +724,39 @@ main{display:block}
       </div>
     </div>
   </div>
+</div></section>
+<section class="panel" id="bn-calendar"><div class="bnport">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">On The Water</span>
+      <h2>Boating Events Calendar</h2>
+      <p>Boat shows, concerts on the water, tournaments &amp; anything boating-related around New England. Every event is listed free — our sponsors keep it that way.</p>
+    </div>
+    <div class="cal-wrap">
+      <div class="cal-box">
+        <div id="calendar"></div>
+        <div class="day-events" id="day-events"></div>
+      </div>
+      <div>
+        <h3 style="color:#fff; margin-bottom:10px">Upcoming Events</h3>
+        <div class="day-events" id="upcoming-events"></div>
+        <h3 style="color:#fff; margin:20px 0 6px">Are We Missing Your Event?</h3>
+        <p style="color:#9db4c6; font-size:.93rem">List your event here for free. Boat shows, tournaments, concerts on the water — if it's boating around New England, it belongs on this calendar. This site is free for everyone and backed by local sponsors, so there's never a listing fee. <a href="mailto:david@tampabayboating.com?subject=Boaters%20Nation%20event%20listing%20%E2%80%94%20New%20England" style="color:#8fd0f0; font-weight:700">Email us your event &rarr;</a></p>
+      </div>
+    </div>
+  </div>
+</div></section>
+<section class="panel" id="bn-newb"><div class="bnport"><div class="hub-head"><h2>New to Boating</h2><p>New to boating? The 8 steps below, in the right order. No experience assumed.</p></div><div class="nb-steps">
+<a class="nb-step" href="#bn-newb" onclick="show(22);document.querySelector('.tabs').scrollIntoView();return false;"><span class="nb-num">1</span><span><b class="t">Get legal first</b><p>Every New England state has its own boater-education rule, and they genuinely differ: Maine and New Hampshire tie the course/certificate to boats over 25 hp, Vermont requires a card for operators born after Jan. 1, 1974, Rhode Island requires a certificate for boats over 10 hp and for every PWC operator, Connecticut requires its Safe Boating Certificate, and Massachusetts is phasing a certificate in for everyone by April 1, 2028. Check your state's exact rule first — tap through to State Rules &amp; Agencies for each state's official links.</p></span><span class="go">&rarr;</span></a>
+<a class="nb-step" href="#bn-newb" onclick="show(22);document.querySelector('.tabs').scrollIntoView();return false;"><span class="nb-num">2</span><span><b class="t">Gear up: the safety checklist</b><p>Life jackets for everyone, throwable cushion, fire extinguisher, flares, horn, kill-switch lanyard. See exactly what the Coast Guard requires.</p></span><span class="go">&rarr;</span></a>
+<a class="nb-step" href="#bn-newb" onclick="show(10);document.querySelector('.tabs').scrollIntoView();return false;"><span class="nb-num">3</span><span><b class="t">Rent before you buy</b><p>Try different boats through rentals or a boat club before spending a dollar. Learn what you actually like on the water first.</p></span><span class="go">&rarr;</span></a>
+<a class="nb-step"><span class="nb-num">4</span><span><b class="t">Learn the markers</b><p>&ldquo;Red, right, returning&rdquo; &mdash; channel markers, no-wake signs, and who has the right of way. The rules that keep everyone safe.</p></span><span class="go">&rarr;</span></a>
+<a class="nb-step"><span class="nb-num">5</span><span><b class="t">Launch, dock &amp; anchor</b><p>Ramp etiquette, docking without the drama, knots that hold, and anchoring that actually sticks.</p></span><span class="go">&rarr;</span></a>
+<a class="nb-step"><span class="nb-num">6</span><span><b class="t">Respect New England waters</b><p>Cold water is the big one: the Coast Guard counts any water at 70&deg;F or below as cold water, and New England water stays cold well into summer — dress for the water, not the air, and wear the life jacket. Add some of the biggest tides on the East Coast, growing toward the Bay of Fundy, where NOAA puts the rise and fall at as much as 53 feet; fog that can roll in and cut visibility to almost nothing; and lobster-pot buoys whose lines can foul a prop or rudder. Local knowledge that saves props — and lives.</p></span><span class="go">&rarr;</span></a>
+<a class="nb-step" href="#bn-tides" onclick="show(23);document.querySelector('.tabs').scrollIntoView();return false;"><span class="nb-num">7</span><span><b class="t">Before every trip</b><p>Check the marine forecast, tell someone your float plan, and monitor VHF channel 16. If the bay looks angry, stay at the dock.</p></span><span class="go">&rarr;</span></a>
+<a class="nb-step"><span class="nb-num">8</span><span><b class="t">Act like you&#x27;ve been here before</b><p>Boating etiquette — the ramp rules, guest rules, and sandbar manners that keep the regulars friendly and get you invited back.</p></span><span class="go">&rarr;</span></a>
+</div>
+<div class="wrap"><div class="nb-note"><b class="t">Beginner mistakes that cost money</b><p style="color:#5b6b7c;font-size:.88rem;margin:6px 0 0">Running aground on a falling tide &middot; getting caught out when the fog rolls in &middot; boating with no tow coverage &middot; buying the wrong boat before ever renting one.</p></div></div>
 </div></section>
 
 </main>
@@ -1117,7 +1208,7 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
   window.bnShowDir = showDir;
   window.bnCurrentDir = null;
   function hideSections(){
-    ['p0','bn-tides','bn-bite'].forEach(function(id){
+    ['p0','bn-tides','bn-bite','bn-calendar','bn-newb'].forEach(function(id){
       var el = document.getElementById(id); if (el) el.classList.remove('on');
     });
   }
@@ -1133,6 +1224,9 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
     document.getElementById(id).classList.add('on');
     setSecnav(sec);
     if (sec === 'tides' && window.tfInit) window.tfInit();
+    if (sec === 'calendar' && window.renderCalendar && !window._bnCalDone) {
+      window._bnCalDone = 1; window.renderCalendar();
+    }
   }
   window.show = function(i){
     if (i === 0) {
@@ -1159,6 +1253,8 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
     }
     if (i === 23) { goSection('tides', 'bn-tides'); return; }
     if (i === 24) { goSection('bite', 'bn-bite'); return; }
+    if (i === 25) { goSection('calendar', 'bn-calendar'); return; }
+    if (i === 26) { goSection('newb', 'bn-newb'); return; }
   };
   if (window.mapFilter) {
     var origFilter = window.mapFilter;
@@ -1849,11 +1945,130 @@ function tfChopRead(mph){
 
 </script>
 <script>
+/* ================= EVENTS CALENDAR ================= */
+/* EVENTS-START (auto-updated weekly) */
+const EVENTS = [
+{start:"2026-11-27", end:"2026-11-27", title:"Newport Illuminated Boat Parade", when:"Fri, Nov 27, 2026 \u00b7 6pm", where:"Newport Harbor, Newport, RI", desc:"Decorated, light-covered boats parade around Newport Harbor the night after Thanksgiving, a Christmas in Newport tradition hosted by Newport Yacht Club volunteers.", url:"https://www.discovernewport.org/", featured:true,
+details:"<b>When:</b> Friday, November 27, 2026 \u00b7 6:00pm.\n<b>Where:</b> Newport Harbor \u2014 watch from the downtown Newport waterfront and wharves.\n<b>Cost:</b> Free.\n<b>The event:</b> Local boats dress up in lights and parade the harbor to open Newport\u2019s Christmas season.\n<b>Good to know:</b> Get downtown early \u2014 the wharves fill up fast on parade night."},
+{start:"2026-11-28", end:"2026-11-28", title:"Mystic Holiday Lighted Boat Parade", when:"Sat, Nov 28, 2026 \u00b7 about 6:15pm", where:"Mystic River, Mystic, CT", desc:"Santa arrives in Mystic by tugboat in the afternoon, the tree is lit at 6pm in Mystic River Park, and lighted boats parade down the Mystic River right after.", url:"https://www.ctvisit.com/", featured:false,
+details:"<b>When:</b> Saturday, November 28, 2026 \u2014 Santa arrives by tugboat about 2pm, tree lighting 6pm, boat parade right after (about 6:15pm).\n<b>Where:</b> Mystic River and Mystic River Park, downtown Mystic, CT.\n<b>Cost:</b> Free.\n<b>The event:</b> One of Connecticut\u2019s favorite holiday traditions \u2014 dozens of decorated boats light up the river through downtown Mystic.\n<b>Good to know:</b> The drawbridge area and the park lawn are the prime viewing spots."},
+{start:"2026-11-29", end:"2026-11-29", title:"Trees in the Rigging", when:"Sun, Nov 29, 2026 \u00b7 festivities from 4:30pm", where:"Connecticut River Museum, Essex, CT", desc:"The Connecticut River Museum\u2019s holiday festival: a lantern-lit boat parade on the river at dusk, carol singing and a decorated model train layout inside.", url:"https://www.ctrivermuseum.org/", featured:false,
+details:"<b>When:</b> Sunday, November 29, 2026 \u2014 museum open 10am\u20135pm; evening festivities and the boat parade start about 4:30pm.\n<b>Where:</b> Connecticut River Museum, 67 Main St, Essex, CT, and the Essex waterfront.\n<b>Cost:</b> Free.\n<b>The event:</b> Essex\u2019s \u201cTrees in the Rigging\u201d pairs a traditional lantern-lit boat parade with caroling and holiday exhibits at the museum.\n<b>Good to know:</b> Watch the parade from the museum grounds and the town dock at the foot of Main Street."},
+{start:"2026-12-03", end:"2026-12-13", title:"Christmas Prelude", when:"Dec 3\u201313, 2026", where:"Dock Square & The Nonantum Resort, Kennebunkport, ME", desc:"Kennebunkport\u2019s 11-day Christmas festival: the Dock Square tree lighting, the Cape Porpoise lobster trap tree, fireworks over the cove \u2014 and Santa arriving by lobster boat at The Nonantum Resort on Sunday, Dec 6 at 1pm.", url:"https://christmasprelude.com/schedule/", featured:false,
+details:"<b>When:</b> Thursday, December 3 \u2013 Sunday, December 13, 2026. Dock Square tree lighting Fri, Dec 4 at 6pm; Santa arrives by lobster boat Sun, Dec 6 at 1pm.\n<b>Where:</b> All over Kennebunkport, ME \u2014 Dock Square, Cape Porpoise and The Nonantum Resort, 95 Ocean Ave.\n<b>Cost:</b> Most events are free; a few activities sell tickets.\n<b>The event:</b> One of America\u2019s best-known Christmas festivals, built around this working harbor town \u2014 the waterfront moments (lobster boat Santa, the trap tree, cove fireworks) are the heart of it.\n<b>Good to know:</b> Prelude parking is tight \u2014 use the shuttle lots listed on the official schedule page."},
+{start:"2026-12-04", end:"2026-12-06", title:"Christmas by the Sea", when:"Dec 4\u20136, 2026", where:"Camden Harbor, Camden, ME", desc:"Camden\u2019s 40th annual holiday weekend on the harbor \u2014 Santa arrives by lobster boat, plus a parade, tree lighting and fireworks over Camden Harbor.", url:"https://www.gotravelmaine.com/", featured:false},
+{start:"2026-12-05", end:"2026-12-05", title:"Boothbay Harbor Lighted Boat Parade & Fireworks", when:"Sat, Dec 5, 2026", where:"Inner Harbor, Boothbay Harbor, ME", desc:"Santa and friends arrive by boat, the community tree is lit, and decorated boats parade around Boothbay\u2019s inner harbor, ending with fireworks \u2014 the signature night of the Boothbay Lights season.", url:"https://www.boothbaylights.com/", featured:false,
+details:"<b>When:</b> Saturday, December 5, 2026 (rain date Sunday, December 6).\n<b>Where:</b> Boothbay Harbor\u2019s inner harbor \u2014 good viewing from Whale Park, the footbridge and the waterfront restaurants.\n<b>The event:</b> Working boats, tour boats and pleasure boats light up and circle the harbor, with prizes for the best-dressed boats and a fireworks finale.\n<b>Good to know:</b> 2026 start times had not been published at research time \u2014 check boothbaylights.com before you go."},
+{start:"2027-01-28", end:"2027-01-31", title:"Hartford Boat Show at Mohegan Sun", when:"Jan 28\u201331, 2027", where:"Earth Expo Center, Mohegan Sun, Uncasville, CT", desc:"Connecticut\u2019s big winter boat show, run by the Connecticut Marine Trades Association \u2014 new boats, gear and dealers filling the Earth Expo Center at Mohegan Sun.", url:"https://www.hartfordboatshow.com/", featured:false,
+details:"<b>When:</b> Thursday, January 28 \u2013 Sunday, January 31, 2027.\n<b>Where:</b> Earth Expo Center at Mohegan Sun, Uncasville, CT.\n<b>The event:</b> The state\u2019s main winter boat show \u2014 powerboats, fishing boats, gear and services from dealers across the region.\n<b>Good to know:</b> Tickets were not yet on sale at research time; check the show site for hours and prices."},
+{start:"2027-02-10", end:"2027-02-14", title:"Discover Boating New England Boat Show", when:"Feb 10\u201314, 2027", where:"Boston Convention & Exhibition Center, Boston, MA", desc:"New England\u2019s biggest indoor boat show \u2014 hundreds of boats, gear, seminars and hands-on features over five days in Boston\u2019s Seaport.", url:"https://www.newenglandboatshow.com/", featured:true,
+details:"<b>When:</b> Wednesday, February 10 \u2013 Sunday, February 14, 2027.\n<b>Where:</b> Thomas Michael Menino Convention & Exhibition Center (Boston Convention & Exhibition Center), 415 Summer St, Boston, MA.\n<b>The event:</b> The region\u2019s flagship winter show \u2014 powerboats, sailboats, fishing boats, gear and boating education under one very large roof.\n<b>Good to know:</b> The organizer said tickets go on sale in December; prices were not published at research time."},
+{start:"2027-03-04", end:"2027-03-06", title:"Maine Fishermen\u2019s Forum", when:"Mar 4\u20136, 2027", where:"Samoset Resort, Rockport, ME", desc:"The 52nd annual forum for Maine\u2019s working waterfront \u2014 a trade show of boats, gear and services, free daytime seminars, and the famous Saturday night auction.", url:"https://mainefishermensforum.org/", featured:false,
+details:"<b>When:</b> Thursday, March 4 \u2013 Saturday, March 6, 2027.\n<b>Where:</b> Samoset Resort, Rockport, ME.\n<b>Cost:</b> Daytime trade show and seminars are free; evening events are ticketed (tickets on sale January 2027).\n<b>The event:</b> Part trade show, part town meeting for Maine\u2019s commercial fishing industry \u2014 if you work on the water in Maine, this is your weekend.\n<b>Good to know:</b> Book Samoset rooms early \u2014 the resort sells out for forum weekend."},
+{start:"2027-03-05", end:"2027-03-07", title:"New England Saltwater Fishing Show", when:"Mar 5\u20137, 2027", where:"Rhode Island Convention Center, Providence, RI", desc:"The largest saltwater fishing show in the Northeast \u2014 roughly 300 booths of tackle, boats and charters plus seminars, run by the Rhode Island Saltwater Anglers Association.", url:"https://www.nesaltwatershow.com/", featured:false,
+details:"<b>When:</b> Friday, March 5 \u2013 Sunday, March 7, 2027.\n<b>Where:</b> Rhode Island Convention Center, Providence, RI.\n<b>The event:</b> Three days of saltwater tackle, boats, seminars and demos \u2014 the unofficial start of the region\u2019s fishing season.\n<b>Good to know:</b> Seminar seats go fast on Saturday; get there when doors open."},
+{start:"2027-03-19", end:"2027-03-21", title:"Great Northeast Boat Show", when:"Mar 19\u201321, 2027", where:"NH Sportsplex, Bedford, NH", desc:"Billed as the largest spring boat show in the Northeast \u2014 15 dealers, 75-plus brands and more than 200 boats under cover at the NH Sportsplex.", url:"https://www.greatnortheastboatshow.com/", featured:false,
+details:"<b>When:</b> Friday, March 19 \u2013 Sunday, March 21, 2027.\n<b>Where:</b> NH Sportsplex, 68 Technology Dr, Bedford, NH.\n<b>The event:</b> New Hampshire\u2019s boat show \u2014 powerboats, pontoons, fishing boats, PWC, docks and gear, all indoors.\n<b>Good to know:</b> The organizer had not yet posted the 2027 edition on its site at research time; the dates are confirmed by multiple independent event and ticket listings."},
+{start:"2027-06-18", end:"2027-06-18", title:"Marion Bermuda Race Start", when:"Fri, Jun 18, 2027 \u00b7 first warning 12:00pm", where:"Beverly Yacht Club, Marion, MA", desc:"The 50th anniversary Marion Bermuda Race gets underway off Marion \u2014 a 645-nautical-mile offshore race to Bermuda hosted by the Beverly Yacht Club, Blue Water Sailing Club and the Royal Hamilton Amateur Dinghy Club.", url:"https://www.marionbermuda.com/", featured:false,
+details:"<b>When:</b> Friday, June 18, 2027 \u2014 first warning signal 12:00pm. Skippers\u2019 meeting Thu, Jun 17.\n<b>Where:</b> Start off the Beverly Yacht Club, Marion, MA; finish in Bermuda.\n<b>The event:</b> One of the classic East Coast ocean races, sailed since 1977 \u2014 this edition marks 50 years since the first race.\n<b>Good to know:</b> The full shoreside program runs Jun 15\u201326 per the Notice of Race, with awards in Bermuda; the Marion start is the New England moment."},
+{start:"2027-06-21", end:"2027-06-25", title:"Block Island Race Week", when:"Jun 21\u201325, 2027", where:"Champlin\u2019s Marina & Resort, Block Island, RI", desc:"The 32nd Block Island Race Week \u2014 five days of buoy and around-the-island racing run by the Storm Trysail Club, with the whole fleet rafted up in Great Salt Pond.", url:"https://www.stormtrysail.org/", featured:true,
+details:"<b>When:</b> Monday, June 21 \u2013 Friday, June 25, 2027.\n<b>Where:</b> Great Salt Pond, Block Island, RI \u2014 regatta base at Champlin\u2019s Marina & Resort.\n<b>The event:</b> One of the biggest race weeks on the East Coast, held every other year \u2014 days of buoy racing plus the famous around-Block-Island race.\n<b>Good to know:</b> Ferries and island lodging book out months ahead for race week."},
+{start:"2027-06-27", end:"2027-07-03", title:"Boothbay Harbor Windjammer Days", when:"Jun 27\u2013Jul 3, 2027", where:"Boothbay Harbor, Boothbay Harbor, ME", desc:"The 65th annual Windjammer Days \u2014 a full week of windjammer arrivals and departures, boat parades, harbor tours, live music and fireworks celebrating Boothbay\u2019s working waterfront.", url:"https://www.boothbayharborwindjammerdays.org/", featured:false,
+details:"<b>When:</b> Sunday, June 27 \u2013 Saturday, July 3, 2027.\n<b>Where:</b> Boothbay Harbor waterfront, Boothbay Harbor, ME.\n<b>The event:</b> The region\u2019s tall-ship week \u2014 the Maine windjammer fleet gathers in Boothbay Harbor for a week of sails, tours and shoreside events.\n<b>Good to know:</b> Events run all week across the harbor \u2014 the full daily schedule posts on the festival site closer to June."},
+{start:"2027-07-10", end:"2027-07-11", title:"Newport Regatta", when:"Jul 10\u201311, 2027 \u00b7 11am\u20135pm", where:"Sail Newport, Fort Adams State Park, Newport, RI", desc:"Sail Newport\u2019s annual summer regatta on Narragansett Bay \u2014 one-design and handicap fleets racing out of Fort Adams, with the fleet and shore base at Sail Newport.", url:"https://www.sailnewport.org/", featured:false},
+{start:"2027-07-29", end:"2027-07-31", title:"Camden Classics Cup", when:"Jul 29\u201331, 2027", where:"Lyman-Morse, Camden, ME", desc:"The 11th annual Camden Classics Cup \u2014 classic yachts race on Penobscot Bay over three days, with a parade of sail through Camden Harbor and shoreside events at Lyman-Morse.", url:"https://www.camdenclassicscup.com/", featured:false,
+details:"<b>When:</b> Thursday, July 29 \u2013 Saturday, July 31, 2027.\n<b>Where:</b> Camden Harbor and Penobscot Bay \u2014 hosted at Lyman-Morse, Camden, ME.\n<b>The event:</b> Part of the Classic Yacht Challenge Series \u2014 some of the prettiest wooden and classic yachts in America racing in one of Maine\u2019s prettiest harbors.\n<b>Good to know:</b> Saturday\u2019s parade of sail in the harbor is the best free show for spectators."},
+{start:"2027-08-04", end:"2027-08-08", title:"Maine Lobster Festival", when:"Aug 4\u20138, 2027", where:"Harbor Park, Rockland, ME", desc:"The 80th Maine Lobster Festival \u2014 five days on Rockland Harbor with tons of lobster, a big parade, harbor cruises, sea goddess crowning and the famous lobster crate races. Admission is free.", url:"https://www.mainelobsterfestival.com/", featured:true,
+details:"<b>When:</b> Wednesday, August 4 \u2013 Sunday, August 8, 2027.\n<b>Where:</b> Harbor Park, Rockland, ME \u2014 right on Rockland Harbor.\n<b>Cost:</b> Free admission.\n<b>The event:</b> Maine\u2019s signature summer festival, run by volunteers since 1947 \u2014 eat lobster overlooking the harbor, watch the crate races, and tour the fleet.\n<b>Good to know:</b> Come hungry and come by mid-morning \u2014 the lobster lines build by lunch."},
+{start:"2027-09-03", end:"2027-09-04", title:"Camden Windjammer Festival", when:"Sep 3\u20134, 2027", where:"Camden Harbor, Camden, ME", desc:"The Maine windjammer fleet sails into Camden Harbor on Friday for a parade of sail, with schooner tours, live music, the crew talent show and fireworks carrying the festival through Saturday.", url:"https://camdenparksandrec.com/camden-windjammer-festival/", featured:false,
+details:"<b>When:</b> Friday, September 3 \u2013 Saturday, September 4, 2027 (Labor Day weekend).\n<b>Where:</b> Camden Harbor and the Public Landing, Camden, ME.\n<b>The event:</b> Camden\u2019s end-of-summer schooner gathering, run by Camden Parks & Recreation \u2014 the fleet\u2019s Friday arrival is the picture-postcard moment.\n<b>Good to know:</b> Some windjammers open for dockside tours on Saturday afternoon."},
+{start:"2027-09-12", end:"2027-10-16", title:"Martha\u2019s Vineyard Striped Bass & Bluefish Derby", when:"Sep 12\u2013Oct 16, 2027", where:"Weigh Station, Edgartown, Martha\u2019s Vineyard, MA", desc:"The 82nd Derby \u2014 five weeks of boat and shore fishing around Martha\u2019s Vineyard for bluefish, bonito and false albacore, with twice-daily weigh-ins in Edgartown and big prizes at the Oct 16 finale.", url:"http://www.mvderby.com/", featured:true,
+details:"<b>When:</b> Sunday, September 12 \u2013 Saturday, October 16, 2027.\n<b>Where:</b> All around Martha\u2019s Vineyard, MA \u2014 weigh station on the Edgartown waterfront.\n<b>The event:</b> One of the East Coast\u2019s oldest and biggest fishing tournaments (since 1946), drawing thousands of anglers each fall. Striped bass stay off the weigh-in board for conservation; the chase is for blues, bonito and albies.\n<b>Good to know:</b> Even if you don\u2019t fish it, the evening weigh-ins are free waterfront theater. Registration and rules at mvderby.com."},
+{start:"2027-09-16", end:"2027-09-19", title:"Newport International Boat Show", when:"Sep 16\u201319, 2027 \u00b7 Thu\u2013Sat 10am\u20136pm, Sun 10am\u20135pm", where:"Newport Yachting Center & Downtown Wharves, Newport, RI", desc:"One of the largest in-water boat shows in the country \u2014 17-plus acres of new powerboats and sailboats, gear and services spread across Newport\u2019s downtown waterfront.", url:"https://www.newportboatshow.com/", featured:true,
+details:"<b>When:</b> Thursday, September 16 \u2013 Sunday, September 19, 2027 \u00b7 Thu\u2013Sat 10am\u20136pm, Sun 10am\u20135pm.\n<b>Where:</b> Newport Yachting Center and the downtown wharves, Newport, RI.\n<b>The event:</b> The fall show that anchors the boat-show season \u2014 walk the docks, board the new models, and catch debut boats from the big builders.\n<b>Good to know:</b> The show spreads across several downtown sites \u2014 wear walking shoes and plan a full day."}
+];
+/* EVENTS-END */
+let calY, calM;
+function evOn(ds){ return EVENTS.filter(e=>ds>=e.start && ds<=e.end); }
+function renderCalendar(){
+  const now = new Date();
+  if(calY===undefined){ calY=now.getFullYear(); calM=now.getMonth(); }
+  const first = new Date(calY, calM, 1);
+  const days = new Date(calY, calM+1, 0).getDate();
+  const monthName = first.toLocaleString("en-US",{month:"long", year:"numeric"});
+  const todayStr = now.getFullYear()+"-"+String(now.getMonth()+1).padStart(2,"0")+"-"+String(now.getDate()).padStart(2,"0");
+  let h = `<div class="cal-head"><button onclick="calNav(-1)" aria-label="Previous month">‹</button><b>${monthName}</b><button onclick="calNav(1)" aria-label="Next month">›</button></div>`;
+  h += '<div class="cal-grid cal-dow"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div><div class="cal-grid">';
+  for(let i=0;i<first.getDay();i++) h += '<span class="cal-day empty"></span>';
+  for(let d=1; d<=days; d++){
+    const ds = calY+"-"+String(calM+1).padStart(2,"0")+"-"+String(d).padStart(2,"0");
+    const evs = evOn(ds);
+    let cls = "cal-day";
+    if(ds===todayStr) cls += " today";
+    if(evs.length) cls += " has-ev";
+    h += `<span class="${cls}"${evs.length?` onclick="showDay('${ds}')"`:""}>${d}${evs.length?'<i class="dot"></i>':""}</span>`;
+  }
+  h += "</div>";
+  document.getElementById("calendar").innerHTML = h;
+  renderUpcoming();
+}
+function calNav(d){ calM+=d; if(calM<0){calM=11;calY--;} if(calM>11){calM=0;calY++;} renderCalendar(); }
+function evCard(e){
+  const qt = String(e.title||"").replace(/"/g,"&quot;"), qw = String(e.when||"").replace(/"/g,"&quot;"), qp = String(e.where||"").replace(/"/g,"&quot;");
+  return `<div class="ev-card${e.featured?" featured":""}">
+    ${e.img?`<img class="ev-photo" src="${e.img}" alt="${e.title}" loading="lazy">`:""}
+    <div class="when">${e.when}${e.featured?' · <span style="color:var(--gold)">★ Featured</span>':""}</div>
+    <h4>${e.title}</h4><div class="where">${e.where}</div><p>${e.desc}</p>
+    ${e.details?`<button type="button" class="ev-details-btn" onclick="toggleEvDetails(this)">Full details ▾</button><div class="ev-details" hidden>${e.details.replace(/\n/g,"<br>")}</div>`:""}
+    <a href="${e.url}" target="_blank" rel="noopener">Event website →</a><button type="button" class="ev-share" onclick="shareEvent(this)" data-t="${qt}" data-w="${qw}" data-p="${qp}"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11A2.99 2.99 0 1 0 15 5c0 .24.04.47.09.7L8.04 9.81a2.99 2.99 0 1 0 0 4.38l7.12 4.16c-.05.21-.08.43-.08.65a2.92 2.92 0 1 0 2.92-2.92z"/></svg>Share</button></div>`;
+}
+window.shareToast = function(msg){
+  let t = document.getElementById("share-toast");
+  if(!t){ t = document.createElement("div"); t.id = "share-toast"; t.className = "share-toast"; document.body.appendChild(t); }
+  t.textContent = msg; t.classList.add("show");
+  clearTimeout(window._shareToastTimer);
+  window._shareToastTimer = setTimeout(function(){ t.classList.remove("show"); }, 2600);
+};
+window.shareEvent = async function(btn){
+  const title = btn.getAttribute("data-t") || "Boaters Nation event";
+  const when = btn.getAttribute("data-w") || "";
+  const where = btn.getAttribute("data-p") || "";
+  const url = "https://boatersnation.com/region-new-england.html#bn-calendar";
+  const text = title + (when ? " \u2014 " + when : "") + (where ? " \u00b7 " + where : "");
+  if(navigator.share){
+    try{ await navigator.share({title: title, text: text, url: url}); }catch(_){}
+  } else if(navigator.clipboard && navigator.clipboard.writeText){
+    try{ await navigator.clipboard.writeText(text + " " + url); shareToast("Event link copied \u2014 paste it anywhere"); }
+    catch(_){ shareToast("Copy this link: " + url); }
+  } else { shareToast("Copy this link: " + url); }
+};
+window.toggleEvDetails = function(btn){
+  const d = btn.nextElementSibling;
+  if(!d) return;
+  const opening = d.hidden;
+  d.hidden = !opening;
+  btn.textContent = opening ? "Hide details \u25b4" : "Full details \u25be";
+};
+function showDay(ds){
+  const evs = evOn(ds);
+  document.getElementById("day-events").innerHTML =
+    `<b style="color:var(--navy)">${ds}:</b>` + (evs.length ? evs.map(evCard).join("") : "<p style='color:var(--muted)'>No events this day — <a href='mailto:david@tampabayboating.com?subject=Event%20Listing'>list yours</a>.</p>");
+}
+function renderUpcoming(){
+  const now = new Date();
+  const todayStr = now.getFullYear()+"-"+String(now.getMonth()+1).padStart(2,"0")+"-"+String(now.getDate()).padStart(2,"0");
+  const up = EVENTS.filter(e=>e.end>=todayStr).sort((a,b)=>a.start<b.start?-1:1);
+  document.getElementById("upcoming-events").innerHTML =
+    up.length ? up.slice(0,10).map(evCard).join("") + (up.length>10 ? "<p style='color:var(--muted);font-size:.9rem;margin-top:10px'>Everything else is on the calendar above — tap a day to see what's on.</p>" : "") : "<p style='color:var(--muted)'>No upcoming events yet — check back soon.</p>";
+}
+
+</script>
+<script>
 /* Hash router (preview): landing on this page with #bn-tides opens the
    Tides & Forecast tab directly — this is what the homepage stack button
    and the weather-strip tap will target once shipped. */
 (function(){
-  var H = {'#bn-tides':23,'#bn-bite':24};
+  var H = {'#bn-tides':23,'#bn-bite':24,'#bn-calendar':25,'#bn-newb':26};
   function go(){
     var h = location.hash;
     if (Object.prototype.hasOwnProperty.call(H, h)) {

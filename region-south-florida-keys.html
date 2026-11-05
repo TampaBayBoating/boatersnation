@@ -448,7 +448,7 @@ main{display:block}
 <div class="pv-head"><div class="kicker">🇺🇸 Boaters Nation 🇺🇸</div><h1>South Florida &amp; the Keys</h1>
 <p class="intro">704 places, built from published sources and cross-checked. Every category opens into counties — one tap, no endless scroll. See a mistake? Every card has a report link.</p></div>
 <main>
-<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button><button class="tab" data-sec="bite" onclick="show(24)">Today's Bite</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-groups"><div class="map-group">
+<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button><button class="tab" data-sec="bite" onclick="show(24)">Today's Bite</button><button class="tab" data-sec="soon" onclick="show(25)">Coming Soon</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-groups"><div class="map-group">
         <button class="map-filter active" data-cat="all" onclick="mapFilter('all',this)">All</button>
       </div><div class="map-group">
         <div class="map-group-label">On the Water</div>
@@ -573,6 +573,18 @@ main{display:block}
         </div>
       </div>
     </div>
+  </div>
+</div></section>
+<section class="panel" id="bn-soon"><div class="bnport">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">Coming Soon</span>
+      <h2>Still building for South Florida &amp; the Keys</h2>
+      <p>The Events Calendar and the New to Boating guides are live for Tampa Bay today, and they are being built for South Florida &amp; the Keys next. We open a section only when it is checked to the same standard as the rest of this page — no filler, no guesses.</p>
+      <p>Already live here today: the boater's map, Tides &amp; Forecast, Today's Bite and the state rules &amp; agency links — use the tabs above.</p>
+    </div>
+    <p>Want to know the day they open here? Join the waitlist:</p>
+    <form class="wl" method="POST" action="https://formsubmit.co/david@tampabayboating.com"><input type="hidden" name="_subject" value="Boaters Nation waitlist — South Florida &amp; the Keys"><input type="hidden" name="region" value="South Florida &amp; the Keys"><input type="hidden" name="state" value=""><label>Email<input type="email" name="email" required placeholder="you@example.com"></label><label>ZIP code<input type="text" name="zip" inputmode="numeric" maxlength="5" value=""></label><button type="submit">Tell me when it opens</button></form>
   </div>
 </div></section>
 
@@ -790,7 +802,7 @@ window.tbbMapInit();
     });
   }
   function hideSections(){
-    ["p0", "bn-tides", "bn-bite"].forEach(function(id){
+    ["p0", "bn-tides", "bn-bite", "bn-soon"].forEach(function(id){
       var el = document.getElementById(id); if (el) el.classList.remove('on');
     });
   }
@@ -850,6 +862,7 @@ window.tbbMapInit();
     }
     if (i === 23) { goSection('tides', 'bn-tides'); return; }
     if (i === 24) { goSection('bite', 'bn-bite'); return; }
+    if (i === 25) { goSection('soon', 'bn-soon'); return; }
   };
   if (window.mapFilter) {
     var origFilter = window.mapFilter;
@@ -1546,7 +1559,7 @@ function tfChopRead(mph){
    Tides & Forecast tab directly — this is what the homepage stack button
    and the weather-strip tap will target once shipped. */
 (function(){
-  var H = {'#bn-tides':23,'#bn-bite':24};
+  var H = {'#bn-tides':23,'#bn-bite':24,'#bn-soon':25};
   function go(){
     var h = location.hash;
     if (Object.prototype.hasOwnProperty.call(H, h)) {

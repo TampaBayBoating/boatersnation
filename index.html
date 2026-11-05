@@ -1350,8 +1350,8 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
   var chosen = 'tampa-bay';
   var TF_HASH = { 'tampa-bay': '#bn-tides', 'new-england': '#bn-tides', 'chesapeake-bay': '#bn-tides', 'florida-atlantic': '#bn-tides', 'mid-atlantic-coast': '#bn-tides', 'gulf-coast-fl': '#bn-tides', 'south-florida-keys': '#bn-tides', 'carolina-coast': '#bn-tides' };
   var BITE_HASH = { 'tampa-bay': '#bn-bite', 'new-england': '#bn-bite', 'chesapeake-bay': '#bn-bite', 'florida-atlantic': '#bn-bite', 'mid-atlantic-coast': '#bn-bite', 'gulf-coast-fl': '#bn-bite', 'south-florida-keys': '#bn-bite' };
-  var CAL_HASH = { 'tampa-bay': '#bn-calendar' };
-  var NEWB_HASH = { 'tampa-bay': '#bn-newb' };
+  var CAL_HASH = { 'tampa-bay': '#bn-calendar', 'new-england': '#bn-calendar' };
+  var NEWB_HASH = { 'tampa-bay': '#bn-newb', 'new-england': '#bn-newb' };
   function reg(){ return (typeof bnRegionBySlug === 'function') ? bnRegionBySlug(chosen) : null; }
   function pageOf(r){ return r.page || ('region.html?r=' + r.slug); }
   function set(id, href){ var el = document.getElementById(id); if (el) el.setAttribute('href', href); }
@@ -1362,12 +1362,12 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
       set('bnBtnTides', p + (TF_HASH[r.slug] || ''));
       set('bnBtnMap', p + '#bay-leaflet-map');
       set('bnBtnBite', p + (BITE_HASH[r.slug] || ''));
-      set('bnBtnCal', p + (CAL_HASH[r.slug] || ''));
-      set('bnBtnNewb', p + (NEWB_HASH[r.slug] || ''));
+      set('bnBtnCal', p + (CAL_HASH[r.slug] || '#bn-soon'));
+      set('bnBtnNewb', p + (NEWB_HASH[r.slug] || '#bn-soon'));
       set('bnCatMap', p + '#bay-leaflet-map');
       set('bnCatTides', p + (TF_HASH[r.slug] || ''));
       set('bnCatFish', p + (BITE_HASH[r.slug] || ''));
-      set('bnCatCal', p + (CAL_HASH[r.slug] || ''));
+      set('bnCatCal', p + (CAL_HASH[r.slug] || '#bn-soon'));
       set('bnCatRamps', p + '#bn-dir-ramp'); set('bnCatFuel', p + '#bn-dir-fuel'); set('bnCatDine', p + '#bn-dir-dine');
       set('bnCatStays', p + '#bn-dir-stay'); set('bnCatCams', p + '#bn-dir-cam');
       set('bnCatRules', (r.slug === 'gulf-coast-fl' || r.slug === 'south-florida-keys') ? 'state-rules.html#fl' : p + '#bn-dir-agencies');
