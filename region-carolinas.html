@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
 <style>:root{color-scheme:light}</style>
-<title>Boaters Nation — The Carolinas (Preview)</title>
+<title>Boaters Nation — The Carolinas</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><style>:root{color-scheme:light}</style><style>
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:#071826;color:#e8eef4;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.45}
@@ -654,7 +654,7 @@ main{display:block}
 </div>
 <div class="subtabs"><button class="stab2 on" onclick="subShow(this,'tf-0')">Today</button><button class="stab2" onclick="subShow(this,'tf-1')">Tides</button><button class="stab2" onclick="subShow(this,'tf-2')">Waves &amp; Forecast</button><button class="stab2" onclick="subShow(this,'tf-3')">Hour by Hour</button></div>
 <div class="subpanel on" id="tf-0">
-<div class="verdict-card" id="verdict-card"><div class="v-row" id="v-panel-today"><div class="verdict-dot" id="verdict-dot"><span id="verdict-score">–</span></div><div class="verdict-main"><h3 id="verdict-title">Checking today's conditions…</h3><div class="score-track"><div class="score-marker" id="score-marker" style="left:50%"></div></div><div class="score-ends"><span>Perfect day</span><span>Stay home</span></div><div class="skill-box" id="skill-today"></div><div class="cond-stamp" id="verdict-stamp"></div></div></div><div id="week-block">
+<div class="verdict-card" id="verdict-card"><div class="v-row" id="v-panel-today"><div class="verdict-dot" id="verdict-dot"><span id="verdict-score">–</span></div><div class="verdict-main"><h3 id="verdict-title">Checking today's conditions…</h3><div class="score-track"><div class="score-marker" id="score-marker" style="left:50%"></div></div><div class="score-ends"><span>Perfect day</span><span>Stay home</span></div><div class="skill-box" id="skill-today"></div><div class="cond-stamp" id="verdict-stamp"></div><div class="cond-stamp" id="verdict-source"></div><div class="cond-stamp" id="verdict-outside"></div></div></div><div id="week-block">
 <div class="week-strip" id="week-strip"><p class="cond-fallback">Loading the week…</p></div>
 <div id="week-detail"></div>
 </div></div>
@@ -1568,19 +1568,29 @@ function tbbVerdict(ps){
   else if(level===1) score = Math.min(score, 69);
   return { level: level, score: score, why: why.join(" \u00B7 ") };
 }
-function renderVerdict(ps, label, isToday){
+/* QA-3 FIX (preview, Nov 6, 2026): ONE verdict pipeline. This renderer no
+   longer computes a score from forecast text at all — the old version scored
+   tfMarineOne()'s SYNTHETIC text (point weather + modeled waves), which is
+   why Today disagreed with the Waves tab. It now renders a verdict object
+   produced by bnwvVerdictFor() (Waves module): the SAME live NWS marine-zone
+   periods, the SAME bucket, the SAME tbbVerdict() formula as the Waves
+   in-zone bar. Same water, same day -> same number, by construction. */
+function renderVerdict(v, sourceLabel, outsideV, outsideLabel){
   const card = document.getElementById("verdict-card");
   const title = document.getElementById("verdict-title");
   if(!card || !title) return;
-  if(!ps || !ps.length){
+  const srcEl = document.getElementById("verdict-source");
+  const outEl = document.getElementById("verdict-outside");
+  if(!v || v.score == null){
     card.classList.remove("v-go","v-good","v-caution","v-rough","v-stay");
     title.textContent = "Beyond the marine forecast range";
     const sEl0 = document.getElementById("verdict-score"); if(sEl0) sEl0.textContent = "\u2013";
     const mk0 = document.getElementById("score-marker"); if(mk0) mk0.style.left = "50%";
     skillRows(document.getElementById("skill-today"), null);
+    if(srcEl) srcEl.textContent = sourceLabel ? ("Source: " + sourceLabel) : "";
+    if(outEl) outEl.textContent = "";
     return;
   }
-  const v = tbbVerdict(ps);
   const s = v.score;
   card.classList.remove("v-go","v-good","v-caution","v-rough","v-stay");
   let band, cls;
@@ -1597,7 +1607,32 @@ function renderVerdict(ps, label, isToday){
   if(marker) marker.style.left = Math.max(2, Math.min(98, 100 - s)) + "%";
   skillRows(document.getElementById("skill-today"), s);
   const vstamp = document.getElementById("verdict-stamp");
-  if(vstamp) vstamp.textContent = (v.why ? v.why + " \u00B7 " : "") + tbbStamp(marineIssuedISO);
+  if(vstamp) vstamp.textContent = (v.why ? v.why + " \u00B7 " : "") + tbbStamp(bnwvMarineIssued || marineIssuedISO);
+  if(srcEl) srcEl.textContent = sourceLabel ? ("Source: " + sourceLabel + " \u2014 the same NWS zone forecast scored on the Waves tab below.") : "";
+  if(outEl) outEl.textContent = (outsideV && outsideV.score != null && outsideLabel) ? ("Outside \u00B7 " + outsideLabel + ": " + outsideV.score + "%" + (outsideV.why ? " \u00B7 " + outsideV.why : "")) : "";
+}
+let verdictSeq = 0;
+async function loadTodayVerdict(idx){
+  const mySeq = ++verdictSeq;
+  try{
+    const loc = wxLoc();
+    if(loc && loc.type === "inland"){
+      renderVerdict(null, "", null, "");
+      const t0 = document.getElementById("verdict-title");
+      if(t0) t0.textContent = "No marine verdict for inland lakes";
+      const srcEl0 = document.getElementById("verdict-source");
+      if(srcEl0) srcEl0.textContent = loc.name + " is inland \u2014 there is no NWS marine-zone forecast for it, so this card no longer invents a score from point weather. Judge the day by the wind in the Lake Forecast; the Wave Report covers this region's coastal waters.";
+      return;
+    }
+    if(typeof bnwvVerdictFor !== "function" || typeof bnwvZoneLabel !== "function") throw 0;
+    const pair = await Promise.all([bnwvVerdictFor(BNWV_CFG.inZone, idx || 0), bnwvVerdictFor(BNWV_CFG.outZone, idx || 0)]);
+    if(mySeq !== verdictSeq) return;
+    renderVerdict(pair[0], bnwvZoneLabel(BNWV_CFG.inZone), pair[1], bnwvZoneLabel(BNWV_CFG.outZone));
+  }catch(e){
+    if(mySeq !== verdictSeq) return;
+    const t1 = document.getElementById("verdict-title");
+    if(t1) t1.textContent = "Verdict unavailable right now";
+  }
 }
 function tfMarineBuckets(raw, loc){
   const buckets = [];
@@ -1642,7 +1677,7 @@ async function loadMarine(){
     renderMarine();
   }catch(e){
     box.innerHTML = '<p class="cond-fallback">Forecast unavailable right now.</p>';
-    try{ const vt = document.getElementById("verdict-title"); if(vt) vt.textContent = "Verdict unavailable right now"; }catch(_){}
+    loadTodayVerdict(openDay < 0 ? 0 : openDay); /* QA-3: the verdict runs on the NWS zone pipeline, so it still renders even if the point-weather feed fails */
   }
 }
 function renderMarine(){
@@ -1656,11 +1691,11 @@ function renderMarine(){
     p.className = "cond-fallback";
     p.textContent = "The marine forecast doesn't reach this day yet \u2014 it updates a few times a day, so check back.";
     box.appendChild(p);
-    renderVerdict(null, marineNow.loc.label, false);
+    loadTodayVerdict(idx);
     return;
   }
   const ps = [b.day, b.night].filter(Boolean);
-  renderVerdict(ps, marineNow.loc.label, idx === 0);
+  loadTodayVerdict(idx);
   ps.forEach(p=>{
     const period = document.createElement("div");
     period.className = "marine-p";
@@ -1917,6 +1952,30 @@ function bnwvGroup(periods){
   });
   return buckets;
 }
+/* QA-3 FIX (preview, Nov 6, 2026): the ONE shared verdict engine for this
+   page. Every go-out % — the Today card, the Waves in/out bars, Your Spot —
+   is computed HERE: bnwvGetPeriods(zone) -> bnwvGroup -> one bucket ->
+   tbbVerdict(). One data path (live NWS zone text), one formula, so two
+   surfaces for the same water/day cannot print different percentages. */
+async function bnwvVerdictFor(zone, bucketIdx){
+  const per = await bnwvGetPeriods(zone);
+  const bk = bnwvGroup(per)[bucketIdx || 0];
+  const ps = bk ? [bk.day, bk.night].filter(Boolean) : [];
+  if(!ps.length) return null;
+  const v = tbbVerdict(ps);
+  return { score: v.score, level: v.level, why: v.why, periods: ps };
+}
+function bnwvZoneLabel(zone){
+  const spot = (BNWV_CFG.spots || []).filter(function(s){ return s.zone === zone; })[0];
+  if(spot){
+    const m = String(spot.src || "").match(/"([^"]+)"/);
+    const inner = m ? m[1] : spot.name;
+    if(zone === BNWV_CFG.inZone) return inner + " \u2014 NWS " + zone;
+    if(zone === BNWV_CFG.outZone) return "Atlantic (" + inner + ") \u2014 NWS " + zone;
+    return spot.name + " \u2014 NWS " + zone;
+  }
+  return "NWS zone " + zone;
+}
 function bnwvBandFor(s){
   if(s>=85) return {label:"Perfect day on the bay", cls:"ds-go"};
   if(s>=70) return {label:"Good day to be out", cls:"ds-good"};
@@ -1957,9 +2016,9 @@ async function wvShowArea(key){
   try{
     let d = (window._bnwvData || {})[a.zone];
     if(!d){
-      const per = await bnwvGetPeriods(a.zone);
-      const bk = bnwvGroup(per)[0]; const ps = bk ? [bk.day, bk.night].filter(Boolean) : [];
-      const sc = ps.length ? tbbVerdict(ps).score : null;
+      const vv = await bnwvVerdictFor(a.zone, 0);
+      const ps = vv ? vv.periods : [];
+      const sc = vv ? vv.score : null;
       const t0 = String((ps[0]||{}).detailedForecast||"").toLowerCase();
       const info = bnwvSeasInfo(t0);
       let lo = info.lo, hi = info.hi;
@@ -2042,9 +2101,8 @@ async function tfLoadWaves(){
     const inLabel = (CFG.insideNumeric && bNumInfo) ? bNumInfo.label : ((bayLabel !== "\u2014") ? bayLabel : (bNumInfo ? bNumInfo.label : "\u2014"));
     let barsHTML = "";
     try{
-      const perPair = await Promise.all([bnwvGetPeriods(CFG.inZone), bnwvGetPeriods(CFG.outZone)]);
-      function scoreOf(per){ const bk = bnwvGroup(per)[0]; const ps = bk ? [bk.day, bk.night].filter(Boolean) : []; return ps.length ? tbbVerdict(ps).score : null; }
-      const bScore = scoreOf(perPair[0]), gScore = scoreOf(perPair[1]);
+      const vPair = await Promise.all([bnwvVerdictFor(CFG.inZone, 0), bnwvVerdictFor(CFG.outZone, 0)]);
+      const bScore = vPair[0] ? vPair[0].score : null, gScore = vPair[1] ? vPair[1].score : null;
       barsHTML = bnwvZoneBlock(CFG.inName, bScore, inRange ? inRange[0] : null, inRange ? inRange[1] : null)
                + bnwvZoneBlock(CFG.outName, gScore, oi.lo, oi.hi);
       window._bnwvData = {};
