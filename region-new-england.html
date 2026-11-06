@@ -758,6 +758,36 @@ main{display:block}
 </div>
 <div class="wrap"><div class="nb-note"><b class="t">Beginner mistakes that cost money</b><p style="color:#5b6b7c;font-size:.88rem;margin:6px 0 0">Running aground on a falling tide &middot; getting caught out when the fog rolls in &middot; boating with no tow coverage &middot; buying the wrong boat before ever renting one.</p></div></div>
 </div></section>
+<section class="panel" id="bn-water"><div class="bnport">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">Your Water</span>
+      <h2 id="bnw-title">Your water</h2>
+      <p id="bnw-sub">Conditions, bite, calendar and rules for the water you picked — not the whole region.</p>
+    </div>
+    <div class="dir-card" id="bn-water-cond" style="margin-bottom:14px">
+      <div class="city" id="bnw-cond-city">Conditions</div>
+      <h4 id="bnw-cond-h">On the water</h4>
+      <div class="type" id="bnw-cond-body">Pick your water on the homepage and its own conditions land here.</div>
+    </div>
+    <div class="dir-card" id="bn-water-bite" style="margin-bottom:14px">
+      <div class="city" id="bnw-bite-city">Today's Bite</div>
+      <h4 id="bnw-bite-h">What's biting</h4>
+      <div class="type" id="bnw-bite-body">Pick your water on the homepage and its own bite lands here.</div>
+    </div>
+    <div class="dir-card" id="bn-water-cal" style="margin-bottom:14px">
+      <div class="city">Calendar — within 25 miles</div>
+      <h4 id="bnw-cal-h">Events near your water</h4>
+      <div class="type" id="bnw-cal-body">Pick your water on the homepage and the events within 25 miles of it land here.</div>
+    </div>
+    <div class="dir-card" id="bn-water-rules">
+      <div class="city" id="bnw-rules-city">Rules</div>
+      <h4 id="bnw-rules-h">Rules for your water</h4>
+      <div class="type" id="bnw-rules-body">Pick your water on the homepage and its state rules land here.</div>
+    </div>
+  </div>
+</div></section>
+
 
 </main>
   <p class="fine">&#127482;&#127480; <b>Boaters Nation</b> &mdash; Everything boating in America, free for boaters.</p>
@@ -2335,6 +2365,175 @@ async function tfLoadWaves(){
     body.innerHTML = '<p class="cond-fallback">Wave report unavailable right now \u2014 see the marine forecast above.</p>';
   }
 }
+</script>
+
+
+<script src="bn-water-data.js"></script>
+<script>
+/* Your-water panel (PREVIEW, Nov 5 2026): renders the picked spot's own
+   conditions / bite / 25-mile calendar / state rules. The pick arrives
+   via localStorage 'bnWaterPick' (set by the homepage finder) or a
+   ?bnw= JSON param. Panel index is 27 — appended last, after bn-newb,
+   so no existing show(i) index moves. */
+(function(){
+  var IDX = 27;
+  var HASHES = { '#bn-water': 1, '#bn-water-cond': 1, '#bn-water-bite': 1, '#bn-water-cal': 1, '#bn-water-rules': 1 };
+  function hav(a, b, c, d){ var p = Math.PI / 180; var x = Math.sin((c - a) * p / 2) ** 2 + Math.cos(a * p) * Math.cos(c * p) * Math.sin((d - b) * p / 2) ** 2; return 3958.8 * 2 * Math.asin(Math.sqrt(x)); }
+  function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function getPick(){
+    try {
+      var q = /[?&]bnw=([^&]+)/.exec(location.search || '');
+      if (q) { var p = JSON.parse(decodeURIComponent(q[1])); if (p && p.lat != null) return p; }
+    } catch (e) {}
+    try { var s = JSON.parse(localStorage.getItem('bnWaterPick') || 'null'); if (s && s.lat != null) return s; } catch (e) {}
+    return null;
+  }
+  var FW_BITE = {
+    'ME': { h: 'Maine freshwater — Belgrade Lakes Region report', d: 'Nov 2, 2026',
+      src: 'Maine Dept. of Inland Fisheries & Wildlife — Fishing Report, Belgrade Lakes Region (Fisheries Resource Supervisor Jason Seiders)',
+      url: 'http://www.mefishwildlife.com/ifw/fishing-boating/fishing/fishing-report.html',
+      body: 'This lake sits in Maine IF&W\u2019s Belgrade Lakes Region, and the region\u2019s biologist report is the bite for its waters: fall-stocked brook and brown trout are the play in the St. George, Medomak, Megunticook, Pemaquid and Nezinscot rivers; Long Pond in Belgrade is heavily stocked each fall with rainbow trout of 14 inches and up, with big brown trout dropping down from Great Pond; Lake St. George in Liberty is producing landlocked salmon around 20 inches plus brook trout (fall rules there: artificial lures only, trout and salmon released until Jan. 1). November pattern statewide: cooling water pulls trout and salmon back into the shallows. Check this lake\u2019s own special rules in the 2026 Maine fishing law book before keeping fish.' },
+    'CT': { h: 'Connecticut freshwater — DEEP fall stocking report', d: 'Updated Nov 4, 2026',
+      src: 'CT DEEP Fisheries Division — Fall Trout & Salmon Stocking report (\u201cThe Daily Cast\u201d)',
+      url: 'https://portal.ct.gov/-/media/deep/fishing/weekly_reports/currentstockingreport.pdf?rev=ec79cfe1537d4f759f3ae7e378b9af94&hash=7C1C83EC7C10AAA84D81558770BD7F15',
+      body: 'Connecticut\u2019s current official freshwater word is its stocking report: fall stocking is in full swing, with 60,000+ trout and 2,000+ Atlantic salmon planned across 38 lakes and ponds and 37 river and stream sections. The Nov. 4 update put another round of two-year-old Atlantic salmon into the Naugatuck River, with three-year-old broodstock salmon to follow after spawning. DEEP notes river levels are low with rain on the way. The report lists every stocked water and the date it was stocked.' },
+    'MA': { h: 'Massachusetts freshwater — MassWildlife trout stocking report', d: 'Fall 2026 — stocking complete',
+      src: 'MassWildlife — Trout Stocking Report (mass.gov)',
+      url: 'https://www.mass.gov/info-details/trout-stocking-report',
+      body: 'Massachusetts\u2019 official freshwater word is the MassWildlife stocking report: fall stocking is complete, with more than 70,000 trout stocked statewide — 43,500 rainbow trout over 14 inches, 16,300 rainbows of 12\u201313 inches and 10,750 brown trout over 12 inches — across 450+ lakes, ponds, rivers and streams in 264 towns. The report is searchable by town and waterbody, so you can check whether your water was stocked and when.' },
+    'RI': { h: 'Rhode Island freshwater — DEM fall stocking (latest official update)', d: 'Sep 30, 2026',
+      src: 'RI DEM — \u201cHooked on Autumn\u201d fall trout stocking release; Freshwater Fisheries Updates at dem.ri.gov/fishing',
+      url: 'https://dem.ri.gov/press-releases/hooked-autumn-25-waterways-be-stocked-trout',
+      body: 'Rhode Island DEM does not publish a weekly fishing report — its latest official freshwater update, as of Nov. 5, 2026, is the fall stocking release: brook and rainbow trout stocked in 25 waterways Oct. 2\u20138. DEM posts further stocking updates on its trout waters page and the Division of Fish & Wildlife Facebook page.' },
+    'NH': { empty: true, d: 'Checked Nov. 5, 2026', h: 'New Hampshire freshwater — no current state report',
+      body: 'NH Fish & Game publishes its fishing report seasonally, and no current report was posted as of Nov. 5, 2026 — so there is no official New Hampshire freshwater bite to show today, and we won\u2019t dress up another state\u2019s report as local. Lake and river conditions for your water are in the Conditions card above; the official rules links are in the Rules card below.' },
+    'VT': { empty: true, d: 'Checked Nov. 5, 2026', h: 'Vermont freshwater — no state fishing report',
+      body: 'Vermont Fish & Wildlife does not publish a weekly fishing report, and none was available as of Nov. 5, 2026 — so there is no official Vermont freshwater bite to show today. Conditions for your water are in the Conditions card above; official rules links are in the Rules card below.' }
+  };
+  var STATE_AGENCY = { 'ME': 'Maine Dept. of Inland Fisheries & Wildlife', 'NH': 'NH Fish & Game', 'VT': 'Vermont Fish & Wildlife', 'MA': 'MassWildlife', 'CT': 'CT DEEP', 'RI': 'RI DEM', 'NY': 'NY DEC' };
+  var STATE_ED = {
+    'ME': 'Maine ties its boater course/certificate to boats over 25 hp.',
+    'NH': 'New Hampshire ties its boater course/certificate to boats over 25 hp.',
+    'VT': 'Vermont requires a boater card for operators born after Jan. 1, 1974.',
+    'MA': 'Massachusetts is phasing a boater certificate in for everyone by April 1, 2028.',
+    'CT': 'Connecticut requires its Safe Boating Certificate.',
+    'RI': 'Rhode Island requires a certificate for boats over 10 hp and for every PWC operator.',
+    'NY': 'New York requires a boater card for motorized vessels (Brianna\u2019s Law).'
+  };
+  var SPOT = {
+    'Cobbosseecontee Lake': { gauge: '<b>Lake level:</b> the lake\u2019s own USGS gauge (01049400, Cobbosseecontee Lake at East Winthrop) is <b>not currently reporting</b> — checked Nov. 5, 2026, and we won\u2019t invent a number for it.<br><b>Outlet flow:</b> Cobbosseecontee Stream at Gardiner (USGS 01049500, the lake\u2019s outlet) read <b>122 ft\u00B3/s</b>, gage height 3.38 ft, on Nov. 5, 2026 at 11:45 AM EST (provisional USGS data).',
+      wx: '<b>Forecast for this lake</b> (National Weather Service point forecast for the lake, nearest grid point Winthrop, ME — issued Nov. 5, 2026): This afternoon 70\u00B0F, south wind 10 mph, rain showers likely. Tonight 56\u00B0F, southwest wind 0\u201310 mph, mostly cloudy, then a chance of rain showers. Friday 69\u00B0F, patchy fog, then a chance of rain showers. Friday night 46\u00B0F, northeast wind 0\u201310 mph, rain showers.' },
+    'Kennebec River': { gauge: '<b>River flow:</b> USGS 01049265, Kennebec River at North Sidney, read <b>1,570 ft\u00B3/s</b>, gage height 4.88 ft, on Nov. 5, 2026 at 12:15 PM EST (provisional USGS data).<br><b>Tidal reach:</b> below North Sidney the Kennebec runs with the tide — the USGS gauges at Augusta (01049320) and Gardiner (01049505) are tidal stations. For tide times on the lower river, use the Tides &amp; Forecast tab.',
+      wx: '<b>Forecast for this river</b> (National Weather Service point forecast for the Gardiner\u2013Augusta reach — issued Nov. 5, 2026): showers likely today with highs near 70\u00B0F and south winds around 10 mph; rain showers Friday night with lows in the mid-40s.' }
+  };
+  function render(){
+    var p = getPick(); if (!p) return;
+    var fresh = (p.cls === 'lake' || p.cls === 'river');
+    var nm = p.name || 'Your water';
+    document.getElementById('bnw-title').textContent = nm;
+    document.getElementById('bnw-sub').textContent = (p.kind === 'zip')
+      ? 'Resolved from ZIP ' + esc(p.zip) + ' — nearest covered water: ' + esc(p.nearest || '') + (p.dist ? ' (' + p.dist + ' mi)' : '') + '. Everything below is scoped to this spot (25-mile rule).'
+      : 'Everything below is scoped to this water (25-mile rule) — not the whole New England region.';
+    /* conditions */
+    var spot = SPOT[nm];
+    var cond = '';
+    if (fresh) {
+      cond += spot && spot.gauge ? spot.gauge + '<br>' : '<b>Level/flow:</b> no USGS gauge is assigned to this water in this pilot — no number is shown rather than a borrowed one.<br>';
+      cond += spot && spot.wx ? spot.wx : '<b>Forecast:</b> the National Weather Service point forecast for this water\u2019s exact location is the forecast that applies — <a href="https://forecast.weather.gov/MapClick.php?lat=' + p.la + '&lon=' + p.lo + '" target="_blank" rel="noopener">open it at weather.gov \u2192</a>';
+      cond += '<br><b>Wind:</b> see the point forecast above — on an inland water, wind is the condition that matters; there are no tides here, so this water gets no tide table.';
+    } else {
+      cond = '<b>This is tidal water.</b> Its tides, marine forecast and wave report live in this area\u2019s Tides &amp; Forecast — <a href="#bn-tides">open Tides &amp; Forecast \u2192</a> (the water picker there selects the nearest covered water).';
+    }
+    document.getElementById('bnw-cond-city').textContent = fresh ? (p.cls === 'lake' ? 'Lake Conditions' : 'River Conditions') : 'Conditions';
+    document.getElementById('bnw-cond-h').textContent = 'Conditions on ' + nm;
+    document.getElementById('bnw-cond-body').innerHTML = cond;
+    /* bite */
+    var bb = '';
+    if (fresh) {
+      var fw = FW_BITE[p.state];
+      if (fw) { document.getElementById('bnw-bite-h').textContent = fw.h; bb = esc(fw.body) + '<br><span style="color:#9db4c6">Source: ' + esc(fw.src) + ' \u00B7 ' + esc(fw.d) + (fw.url ? ' \u00B7 <a href="' + fw.url + '" target="_blank" rel="noopener">Read it at the source \u2192</a>' : '') + '</span>'; }
+      else bb = 'No freshwater bite source is wired for ' + esc(p.state || 'this state') + ' in this pilot.';
+      if (p.ctx === 'mixed') bb += '<br><b>Marine too:</b> salt water is also within 25 miles of this spot — the marine report is in <a href="#bn-bite">Today\u2019s Bite (marine) \u2192</a>';
+      if (p.tidal) bb += '<br><b>Tidal note:</b> this river\u2019s lower reach is tidal — saltwater species move in downriver. The marine report for the coast is in <a href="#bn-bite">Today\u2019s Bite (marine) \u2192</a>';
+    } else if (p.ctx === 'mixed') {
+      var fw2 = FW_BITE[p.state];
+      bb = '<b>Both kinds of water are within 25 miles of this spot.</b><br>';
+      if (fw2) bb += '<b>Freshwater:</b> ' + esc(fw2.body) + '<br>';
+      bb += '<b>Marine:</b> the New England marine report is in <a href="#bn-bite">Today\u2019s Bite \u2192</a>';
+      document.getElementById('bnw-bite-h').textContent = 'Freshwater + marine — both within 25 miles';
+    } else {
+      bb = 'This is salt water — its bite is the New England marine report, compiled from this week\u2019s coastal reports: <a href="#bn-bite">open Today\u2019s Bite \u2192</a>';
+    }
+    document.getElementById('bnw-bite-body').innerHTML = bb;
+    /* calendar — 25-mile rule, honest empty */
+    var evs = [];
+    if (typeof BN_EVENTS_GEO !== 'undefined') BN_EVENTS_GEO.forEach(function(e){
+      var d = hav(p.lat, p.lon, e.la, e.lo);
+      if (d <= 25) evs.push({ t: e.t, d: e.d, w: e.w, dist: d });
+    });
+    evs.sort(function(a, b){ return a.d < b.d ? -1 : 1; });
+    var cal = '';
+    if (evs.length) {
+      cal = evs.map(function(e){ return '<b>' + esc(e.t) + '</b> \u00B7 ' + esc(e.d) + ' \u00B7 ' + esc(e.w) + ' (' + e.dist.toFixed(0) + ' mi away)'; }).join('<br>');
+    } else {
+      var near = null, nd = 1e9;
+      if (typeof BN_EVENTS_GEO !== 'undefined') BN_EVENTS_GEO.forEach(function(e){ var d = hav(p.lat, p.lon, e.la, e.lo); if (d < nd) { nd = d; near = e; } });
+      cal = '<b>No events within 25 miles of ' + esc(nm) + ' right now.</b>';
+      if (near) cal += ' The nearest event on the calendar is ' + esc(near.t) + ' (' + esc(near.w) + ', ' + nd.toFixed(0) + ' mi away).';
+      cal += '<br>Want the wider area? <a href="#bn-calendar">See the full New England calendar \u2192</a> \u2014 that list is the whole region, not this water.';
+    }
+    document.getElementById('bnw-cal-h').textContent = 'Events within 25 miles of ' + nm;
+    document.getElementById('bnw-cal-body').innerHTML = cal;
+    /* rules */
+    var st = p.state || '';
+    var rules = '<b>' + esc(st) + ' rules apply on this water.</b> ';
+    rules += fresh ? 'It is ' + (p.cls === 'lake' ? 'a freshwater lake' : 'a freshwater river') + ', so ' + esc(st) + ' freshwater fishing rules govern — licenses, seasons and limits come from ' + esc(STATE_AGENCY[st] || 'the state agency') + '. ' : 'It is tidal/salt water, so ' + esc(st) + ' marine rules govern the fishing side. ';
+    if (STATE_ED[st]) rules += esc(STATE_ED[st]) + ' ';
+    rules += '<br><a href="state-rules.html#st-' + esc(st.toLowerCase()) + '">Open the ' + esc(st) + ' section of State Rules &amp; Agencies \u2192</a> \u00B7 <a href="#bn-newb">New to Boating steps \u2192</a>';
+    document.getElementById('bnw-rules-city').textContent = 'Rules — ' + st + (fresh ? ' \u00B7 freshwater' : ' \u00B7 marine');
+    document.getElementById('bnw-rules-h').textContent = 'Rules for ' + nm;
+    document.getElementById('bnw-rules-body').innerHTML = rules;
+    /* map centering — the door defect fix: honor the picked water */
+    var tries = 0;
+    var iv = setInterval(function(){
+      tries++;
+      if (window.tbbMap && typeof L !== 'undefined') {
+        clearInterval(iv);
+        try { window.tbbMap.setView([p.la, p.lo], 11); L.marker([p.la, p.lo]).addTo(window.tbbMap).bindPopup('<b>' + esc(nm) + '</b><br>The water you picked'); } catch (e) {}
+      } else if (tries > 40) clearInterval(iv);
+    }, 250);
+    /* tides preselect for coastal picks */
+    if (!fresh && typeof TF_WATERS !== 'undefined') {
+      var bi = 0, bd = 1e9;
+      TF_WATERS.forEach(function(w, i){ var d = hav(p.la, p.lo, w.lat, w.lng); if (d < bd) { bd = d; bi = i; } });
+      var t2 = 0;
+      var iv2 = setInterval(function(){
+        t2++;
+        if (typeof tfSetWater === 'function' && typeof tfCur !== 'undefined') {
+          clearInterval(iv2);
+          if (tfCur !== bi) { try { tfSetWater(bi, document.querySelectorAll('#tf-chips .area-chip')[bi]); } catch (e) {} }
+          var sub = document.getElementById('tides-sub');
+          if (sub && bd > 2) sub.textContent += ' \u00B7 Showing the nearest covered water to ' + nm + ' (' + bd.toFixed(0) + ' mi).';
+        }
+        else if (t2 > 40) clearInterval(iv2);
+      }, 250);
+    }
+  }
+  function go(){
+    var h = location.hash || '';
+    if (HASHES[h]) {
+      if (typeof show === 'function') show(IDX);
+      document.querySelectorAll('.panel').forEach(function (pp) { pp.classList.toggle('on', pp.id === 'bn-water'); });
+      render();
+      var el = document.getElementById(h.slice(1));
+      if (el) setTimeout(function(){ el.scrollIntoView(); }, 60);
+    } else if (h === '#bn-tides' || h === '#bay-leaflet-map') {
+      render();
+    }
+  }
+  window.addEventListener('hashchange', go);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
+})();
 </script>
 
 </body>
