@@ -617,7 +617,7 @@ main{display:block}
   <h1 style="text-align:left">Tampa Bay, FL</h1>
   <p class="intro" style="text-align:left;margin:0 0 6px">Tampa, St. Pete, Clearwater, Bradenton and Sarasota &mdash; the bay where Boaters Nation started. <b>406 places, cross-checked one by one</b>: every card below was checked against a source that states it, and anything we couldn't prove stayed off. Spot a mistake? Every card has a report link &mdash; that's how this stays right.</p>
 <main>
-<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button><button class="tab" data-sec="bite" onclick="show(24)">Today's Bite</button><button class="tab" data-sec="calendar" onclick="show(25)">Calendar</button><button class="tab" data-sec="newb" onclick="show(26)">New to Boating</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-filters" id="ramp-fee-filters" style="text-align:center; margin-bottom:10px; display:none">
+<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button><button class="tab" data-sec="bite" onclick="show(24)">Today's Bite</button><button class="tab" data-sec="calendar" onclick="show(25)">Calendar</button><button class="tab" data-sec="newb" onclick="show(26)">New to Boating</button><button class="tab" data-sec="emergency" onclick="show(27)">Emergency</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-filters" id="ramp-fee-filters" style="text-align:center; margin-bottom:10px; display:none">
       <button class="map-filter" id="fee-btn-free" onclick="rampFeeFilter('free')">Free Launches</button>
       <button class="map-filter" id="fee-btn-paid" onclick="rampFeeFilter('paid')">Paid Launches</button>
     </div>
@@ -914,6 +914,7 @@ main{display:block}
 </div>
 <div class="wrap"><div class="nb-note"><b class="t">Beginner mistakes that cost money</b><p style="color:#5b6b7c;font-size:.88rem;margin:6px 0 0">Running aground on a falling tide &middot; getting caught in an afternoon storm &middot; boating with no tow coverage &middot; buying the wrong boat before ever renting one.</p></div></div>
 </div></section>
+<section class="panel notranslate" id="bn-emergency" translate="no"><div class="bnport"><h2>Emergency &mdash; Trouble on the water? Start here.</h2><div class="card" style="border:2px solid #b3001b"><p><strong>Life-threatening emergency:</strong> <a href="tel:911">Call 911</a></p><p><strong>Distress on the water:</strong> VHF <strong>Channel 16</strong> &mdash; say &ldquo;Mayday&rdquo; three times, then your boat name, your position, what&rsquo;s wrong, and how many people are aboard. The Coast Guard monitors Channel 16 around the clock.</p><p><strong>U.S. Coast Guard &mdash; Sector St. Petersburg</strong>, 24-hour command center: <a href="tel:8668811392">866-881-1392</a>. The sector covers Florida&rsquo;s west coast, including all of Tampa Bay.</p><p><strong>Florida Fish &amp; Wildlife Conservation Commission (FWC)</strong> &mdash; boating accidents, dangerous boating and wildlife violations, 24 hours a day: <a href="tel:8884043922">888-404-3922</a> (or *FWC / #FWC from a cell phone).</p><p><strong>County sheriff marine patrols:</strong> the Hillsborough, Pinellas, Pasco, Hernando, Manatee and Sarasota county sheriffs all run marine units on these waters &mdash; in an emergency, call 911 and the nearest marine unit is dispatched.</p><p><strong>Poison Control:</strong> <a href="tel:8002221222">800-222-1222</a></p><p><strong>Fuel or oil spill:</strong> National Response Center <a href="tel:8004248802">800-424-8802</a></p><p><strong>VHF quick list:</strong> <strong>16</strong> distress &amp; hailing &middot; <strong>9</strong> hailing &amp; bridge tenders &middot; <strong>22A</strong> Coast Guard working channel &middot; <strong>13</strong> bridge-to-bridge</p><p>Sources: U.S. Coast Guard Sector St. Petersburg Command Center page and USCG news releases (atlanticarea.uscg.mil / news.uscg.mil); FWC Wildlife Alert page (myfwc.com). Verified Nov 6, 2026.</p></div></div></section>
 </main>
   <p class="fine">&#127482;&#127480; <b>Boaters Nation</b> &mdash; Everything boating in America, free for boaters.</p>
 </div>
@@ -2482,7 +2483,7 @@ function fishGo(side,slug){fwDoor(side);var chartBtn=document.querySelectorAll('
    tab directly — this is what makes the homepage stack buttons land ON their
    source section instead of the page top. */
 (function(){
-  var H = {'#bn-tides':23,'#bn-bite':24,'#bn-calendar':25,'#bn-newb':26};
+  var H = {'#bn-tides':23,'#bn-bite':24,'#bn-calendar':25,'#bn-newb':26,'#bn-emergency':27};
   function go(){
     var h = location.hash;
     if (Object.prototype.hasOwnProperty.call(H, h)) {
@@ -2539,7 +2540,7 @@ function fishGo(side,slug){fwDoor(side);var chartBtn=document.querySelectorAll('
     });
   }
   function hideSections(){
-    ['p0','bn-tides','bn-bite','bn-calendar','bn-newb'].forEach(function(id){
+    ['p0','bn-tides','bn-bite','bn-calendar','bn-newb','bn-emergency'].forEach(function(id){
       var el = document.getElementById(id); if (el) el.classList.remove('on');
     });
   }
@@ -2604,6 +2605,7 @@ function fishGo(side,slug){fwDoor(side);var chartBtn=document.querySelectorAll('
     if (i === 24) { goSection('bite', 'bn-bite'); return; }
     if (i === 25) { goSection('calendar', 'bn-calendar'); return; }
     if (i === 26) { goSection('newb', 'bn-newb'); return; }
+    if (i === 27) { goSection('emergency', 'bn-emergency'); return; }
   };
   if (window.mapFilter) {
     var origFilter = window.mapFilter;

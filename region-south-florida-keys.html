@@ -505,7 +505,7 @@ main{display:block}
 <div class="pv-head"><div class="kicker">🇺🇸 Boaters Nation 🇺🇸</div><h1>South Florida &amp; the Keys</h1>
 <p class="intro">704 places, built from published sources and cross-checked. Every category opens into counties — one tap, no endless scroll. See a mistake? Every card has a report link.</p></div>
 <main>
-<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button><button class="tab" data-sec="bite" onclick="show(24)">Today's Bite</button><button class="tab" data-sec="calendar" onclick="show(25)">Calendar</button><button class="tab" data-sec="newb" onclick="show(26)">New to Boating</button><button class="tab" data-sec="soon" onclick="show(27)">Coming Soon</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-groups"><div class="map-group">
+<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button><button class="tab" data-sec="bite" onclick="show(24)">Today's Bite</button><button class="tab" data-sec="calendar" onclick="show(25)">Calendar</button><button class="tab" data-sec="newb" onclick="show(26)">New to Boating</button><button class="tab" data-sec="emergency" onclick="show(28)">Emergency</button><button class="tab" data-sec="soon" onclick="show(27)">Coming Soon</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-groups"><div class="map-group">
         <button class="map-filter active" data-cat="all" onclick="mapFilter('all',this)">All</button>
       </div><div class="map-group">
         <div class="map-group-label">On the Water</div>
@@ -678,6 +678,7 @@ main{display:block}
   </div>
 </div></section>
 
+<section class="panel notranslate" id="bn-emergency" translate="no"><div class="bnport"><h2>Emergency &mdash; Trouble on the water? Start here.</h2><div class="card" style="border:2px solid #b3001b"><p><strong>Life-threatening emergency:</strong> <a href="tel:911">Call 911</a></p><p><strong>Distress on the water:</strong> VHF <strong>Channel 16</strong> &mdash; say &ldquo;Mayday&rdquo; three times, then your boat name, your position, what&rsquo;s wrong, and how many people are aboard. The Coast Guard monitors Channel 16 around the clock.</p><p><strong>U.S. Coast Guard sectors for this coast</strong> &mdash; command centers, staffed around the clock:</p><p><strong>Palm Beach, Broward &amp; Miami-Dade &mdash; Sector Miami</strong>, 24-hour command center: <a href="tel:8336427271">(833) 642-7271</a></p><p><strong>The Florida Keys &mdash; Sector Key West</strong>, 24-hour command center: <a href="tel:8882459727">888-245-9727</a></p><p><strong>Florida Fish &amp; Wildlife Conservation Commission (FWC)</strong> &mdash; boating accidents, dangerous boating and wildlife violations, 24 hours a day: <a href="tel:8884043922">888-404-3922</a> (or *FWC / #FWC from a cell phone).</p><p><strong>County sheriff marine patrols:</strong> the Palm Beach, Broward, Miami-Dade and Monroe county sheriffs run marine units on these waters &mdash; in an emergency, call 911 and the nearest marine unit is dispatched.</p><p><strong>Poison Control:</strong> <a href="tel:8002221222">800-222-1222</a></p><p><strong>Fuel or oil spill:</strong> National Response Center <a href="tel:8004248802">800-424-8802</a></p><p><strong>VHF quick list:</strong> <strong>16</strong> distress &amp; hailing &middot; <strong>9</strong> hailing &amp; bridge tenders &middot; <strong>22A</strong> Coast Guard working channel &middot; <strong>13</strong> bridge-to-bridge</p><p>Sources: U.S. Coast Guard Sector Miami and Sector Key West pages (atlanticarea.uscg.mil); FWC Wildlife Alert page (myfwc.com). Verified Nov 6, 2026.</p></div></div></section>
 </main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
@@ -892,7 +893,7 @@ window.tbbMapInit();
     });
   }
   function hideSections(){
-    ["p0", "bn-tides", "bn-bite", "bn-calendar", "bn-newb", "bn-soon"].forEach(function(id){
+    ["p0", "bn-tides", "bn-bite", "bn-calendar", "bn-newb", "bn-soon", "bn-emergency"].forEach(function(id){
       var el = document.getElementById(id); if (el) el.classList.remove('on');
     });
   }
@@ -956,6 +957,7 @@ window.tbbMapInit();
     if (i === 25) { goSection('calendar', 'bn-calendar'); return; }
     if (i === 26) { goSection('newb', 'bn-newb'); return; }
     if (i === 27) { goSection('soon', 'bn-soon'); return; }
+    if (i === 28) { goSection('emergency', 'bn-emergency'); return; }
   };
   if (window.mapFilter) {
     var origFilter = window.mapFilter;
@@ -1767,7 +1769,7 @@ function renderUpcoming(){
    Tides & Forecast tab directly — this is what the homepage stack button
    and the weather-strip tap will target once shipped. */
 (function(){
-  var H = {'#bn-tides':23,'#bn-bite':24,'#bn-calendar':25,'#bn-newb':26};
+  var H = {'#bn-tides':23,'#bn-bite':24,'#bn-calendar':25,'#bn-newb':26,'#bn-emergency':28};
   function go(){
     var h = location.hash;
     if (Object.prototype.hasOwnProperty.call(H, h)) {

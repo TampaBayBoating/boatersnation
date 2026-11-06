@@ -505,7 +505,7 @@ main{display:block}
 <div class="pv-head"><div class="kicker">🇺🇸 Boaters Nation 🇺🇸</div><h1>Chesapeake Bay</h1>
 <p class="intro">648 places, built from published sources and cross-checked. Every category opens into counties — one tap, no endless scroll. See a mistake? Every card has a report link.</p></div>
 <main>
-<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button><button class="tab" data-sec="bite" onclick="show(24)">Today's Bite</button><button class="tab" data-sec="calendar" onclick="show(25)">Calendar</button><button class="tab" data-sec="newb" onclick="show(26)">New to Boating</button><button class="tab" data-sec="soon" onclick="show(27)">Coming Soon</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-groups"><div class="map-group">
+<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button><button class="tab" data-sec="bite" onclick="show(24)">Today's Bite</button><button class="tab" data-sec="calendar" onclick="show(25)">Calendar</button><button class="tab" data-sec="newb" onclick="show(26)">New to Boating</button><button class="tab" data-sec="emergency" onclick="show(28)">Emergency</button><button class="tab" data-sec="soon" onclick="show(27)">Coming Soon</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-groups"><div class="map-group">
         <button class="map-filter active" data-cat="all" onclick="mapFilter('all',this)">All</button>
       </div><div class="map-group">
         <div class="map-group-label">On the Water</div>
@@ -679,6 +679,7 @@ main{display:block}
   </div>
 </div></section>
 
+<section class="panel notranslate" id="bn-emergency" translate="no"><div class="bnport"><h2>Emergency &mdash; Trouble on the water? Start here.</h2><div class="card" style="border:2px solid #b3001b"><p><strong>Life-threatening emergency:</strong> <a href="tel:911">Call 911</a></p><p><strong>Distress on the water:</strong> VHF <strong>Channel 16</strong> &mdash; say &ldquo;Mayday&rdquo; three times, then your boat name, your position, what&rsquo;s wrong, and how many people are aboard. The Coast Guard monitors Channel 16 around the clock.</p><p><strong>U.S. Coast Guard sectors for this bay</strong> &mdash; command centers, staffed around the clock:</p><p><strong>Maryland waters &amp; the Potomac &mdash; Sector Maryland&ndash;National Capital Region</strong> command center: <a href="tel:4105762525">410-576-2525</a></p><p><strong>Virginia waters &mdash; Hampton Roads, the Virginia bay and rivers, the Eastern Shore &mdash; Sector Virginia</strong>, 24/7 contact: <a href="tel:8777225727">877-722-5727</a></p><p><strong>Maryland Natural Resources Police</strong> &mdash; call center, 24 hours a day: <a href="tel:8006289944">800-628-9944</a></p><p><strong>Virginia Marine Police</strong> &mdash; emergency line, 24/7: <a href="tel:8005414646">800-541-4646</a></p><p><strong>Virginia&rsquo;s inland lakes:</strong> conservation police (DWR) take reports of impaired and reckless boat operators at <a href="tel:8002375712">800-237-5712</a>.</p><p><strong>County sheriff marine patrols:</strong> Maryland and Virginia county sheriffs run marine units across the bay and its rivers &mdash; in an emergency, call 911 and the nearest marine unit is dispatched.</p><p><strong>Poison Control:</strong> <a href="tel:8002221222">800-222-1222</a></p><p><strong>Fuel or oil spill:</strong> National Response Center <a href="tel:8004248802">800-424-8802</a></p><p><strong>VHF quick list:</strong> <strong>16</strong> distress &amp; hailing &middot; <strong>9</strong> hailing &amp; bridge tenders &middot; <strong>22A</strong> Coast Guard working channel &middot; <strong>13</strong> bridge-to-bridge</p><p>Sources: U.S. Coast Guard sector pages (atlanticarea.uscg.mil) and the East District Local Notice to Mariners, Feb 25, 2026 (navcen.uscg.gov); Maryland DNR and Virginia Marine Resources Commission / DWR official pages. Verified Nov 6, 2026.</p></div></div></section>
 </main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
@@ -1673,7 +1674,7 @@ function renderUpcoming(){
    Tides & Forecast tab directly — this is what the homepage stack button
    and the weather-strip tap will target once shipped. */
 (function(){
-  var H = {'#bn-tides':23,'#bn-bite':24,'#bn-calendar':25,'#bn-newb':26,'#bn-soon':27};
+  var H = {'#bn-tides':23,'#bn-bite':24,'#bn-calendar':25,'#bn-newb':26,'#bn-soon':27,'#bn-emergency':28};
   function go(){
     var h = location.hash;
     if (Object.prototype.hasOwnProperty.call(H, h)) {
@@ -1716,7 +1717,7 @@ function renderUpcoming(){
     });
   }
   function hideSections(){
-    ["p0", "bn-tides", "bn-bite", "bn-calendar", "bn-newb", "bn-soon"].forEach(function(id){
+    ["p0", "bn-tides", "bn-bite", "bn-calendar", "bn-newb", "bn-soon", "bn-emergency"].forEach(function(id){
       var el = document.getElementById(id); if (el) el.classList.remove('on');
     });
   }
@@ -1782,6 +1783,7 @@ function renderUpcoming(){
     if (i === 25) { goSection('calendar', 'bn-calendar'); return; }
     if (i === 26) { goSection('newb', 'bn-newb'); return; }
     if (i === 27) { goSection('soon', 'bn-soon'); return; }
+    if (i === 28) { goSection('emergency', 'bn-emergency'); return; }
   };
   if (window.mapFilter) {
     var origFilter = window.mapFilter;
