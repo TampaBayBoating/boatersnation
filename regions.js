@@ -108,7 +108,8 @@ var BN_REGIONS = [
     slug: "tennessee-river-lakes",
     name: "Tennessee River Lakes",
     blurb: "Kentucky Lake, Guntersville, Norris and the Tennessee River chain.",
-    status: "building",
+    status: "live",
+    page: "region-tennessee-river-lakes.html",
     zipPrefixes: ["356", "358", "359", "374", "379", "382"]
   },
   {
