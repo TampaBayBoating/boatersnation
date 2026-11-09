@@ -306,7 +306,7 @@ html.bn-gate-on button.bn-gate-only { display: inline-block !important; }
 .bn-sugg .sg-tag.build { background: #4a2c12; color: #f5b04c; }
 .bn-sugg .sg-tag.none { background: #4a1620; color: #ff8f9b; }
 </style>
-<header class="bn-header"><div class="topbar"><a href="index.html"><img class="anchor" src="assets/bn-logo2.webp" alt="Boaters Nation logo"><b>Boaters<span>Nation</span></b></a><button class="tb-lang" id="lang-btn" aria-label="Translate this page" title="Translate"><span id="bnLangFlag">🇺🇸</span> Language</button></div>
+<header class="bn-header"><div class="topbar"><a href="index.html"><img class="anchor" src="assets/bn-logo2.webp" alt="Boaters Nation logo"><b>Boaters<span>Nation</span></b></a><a class="tb-biz" href="mailto:david@tampabayboating.com?subject=Advertising%20on%20Boaters%20Nation">For businesses</a><button class="tb-lang" id="lang-btn" aria-label="Translate this page" title="Translate"><span id="bnLangFlag">🇺🇸</span> Language</button></div>
 <div class="tb-translate" id="translate-panel"><div class="lang-search"><input id="lang-q" type="text" placeholder="Search languages\u2026" aria-label="Search languages" autocomplete="off"></div><div class="lang-list" role="menu" aria-label="Choose language">
 <button class="lang-row active" data-lang="en"><span class="flag">🇺🇸</span>English<span class="check">&#10003;</span></button>
 <button class="lang-row" data-lang="af"><span class="flag">🇿🇦</span>Afrikaans<span class="check">&#10003;</span></button>
@@ -461,18 +461,141 @@ html.bn-gate-on button.bn-gate-only { display: inline-block !important; }
     <p class="bn-gate-only" id="bnGateNote" style="font-size:.82rem;color:#9db4c6;margin:8px auto 0;max-width:430px">Your phone will ask to share your location once &mdash; tap <b>Allow</b> and you&rsquo;re in. We remember it on this phone, so next time it just opens. Rather type? Enter your water, city or ZIP above, or tap your state on the map.</p>
     <div id="bn-zip-out" style="margin-top:10px;font-size:.92rem"></div>
   </div>
+  <style>
+/* Homepage reorder (PREVIEW, Nov 9): post-entry front door pieces.
+   Accessibility floor for everything new: tap targets >= 48px,
+   no text under .85rem (~13.6px), light-on-navy / navy-on-white
+   high-contrast pairs for sunlight. */
+.tb-biz{margin-left:auto;color:#fff;font-weight:800;font-size:.95rem;text-decoration:none;border:1.5px solid rgba(255,255,255,.5);padding:11px 16px;border-radius:999px;min-height:44px;display:inline-flex;align-items:center;white-space:nowrap}
+.tb-biz:hover{background:#123c5e}
+#bnStack{max-width:640px}
+.bn-cond{background:#fff;color:#0a2540;border:2px solid #123c5e;border-radius:16px;padding:16px;text-align:left;margin:0 0 14px}
+.bn-cond-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.bn-cond-place{font-weight:800;font-size:1.05rem;padding-top:4px}
+.bn-cond-score{text-align:right;flex:0 0 auto}
+.bn-cond-score b{display:block;font-size:2rem;line-height:1;color:#0a2540}
+.bn-cond-score i{display:block;font-style:normal;font-size:.85rem;font-weight:700;color:#33536e;letter-spacing:.4px;text-transform:uppercase;margin-top:3px}
+.bn-cond-verdict{font-size:1.3rem;font-weight:900;line-height:1.25;margin:10px 0 4px}
+.bn-cond-line{font-size:1rem;color:#33536e;margin:0 0 12px;line-height:1.4}
+.bn-cond-toggle{min-height:48px;padding:12px 24px;border-radius:999px;background:#0a2540;color:#fff;font-weight:800;font-size:1rem;border:0;cursor:pointer;font-family:inherit}
+.bn-cond-toggle:hover{background:#123c5e}
+.bn-cond-details{margin-top:14px;border-top:1.5px solid #d7e3ee;padding-top:12px}
+.bn-cond-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+.bn-cond-grid b{display:block;font-size:.85rem;font-weight:800;letter-spacing:.4px;text-transform:uppercase;color:#33536e}
+.bn-cond-grid span{font-size:1.1rem;font-weight:800;color:#0a2540}
+.bn-cond-note{font-size:.9rem;color:#33536e;margin:12px 0 8px}
+.bn-cond-link{display:inline-flex;align-items:center;min-height:48px;font-size:1rem;font-weight:800;color:#0a5a86}
+.bn-paths{text-align:left;margin:0 0 6px}
+.bn-paths-h{color:#fff;font-size:1.25rem;font-weight:900;text-align:center;margin:6px 0 12px}
+.bn-path{background:#0d2c49;border:2px solid #2a5a86;border-radius:16px;margin:0 0 10px;overflow:hidden}
+.bn-path-btn{display:flex;width:100%;align-items:center;gap:10px;background:none;border:0;color:#fff;font-family:inherit;cursor:pointer;text-align:left;min-height:68px;padding:13px 16px}
+.bn-path-t{display:block;font-size:1.18rem;font-weight:900;line-height:1.2}
+.bn-path-s{display:block;font-size:.98rem;color:#b9d2e4;font-weight:600;margin-top:2px}
+.bn-path-btn .bn-path-s{flex:0 1 auto}
+.bn-path-t-wrap{flex:1 1 auto;min-width:0}
+.bn-path-arrow{margin-left:auto;font-size:1.3rem;color:#8fd0f0;flex:0 0 auto}
+.bn-path-doors{padding:2px 12px 12px;display:grid;grid-template-columns:1fr;gap:8px}
+.bn-path-doors[hidden]{display:none}
+.bn-path-doors a,.bn-path-doorbtn{display:flex;align-items:center;min-height:48px;padding:10px 14px;border-radius:12px;background:#123c5e;color:#fff;font-weight:700;font-size:1rem;text-decoration:none;border:1px solid rgba(143,208,240,.45);cursor:pointer;font-family:inherit;text-align:left;width:100%;box-sizing:border-box}
+.bn-path-doors a:hover,.bn-path-doorbtn:hover{background:#8fd0f0;color:#0a2540}
+.bn-path-safetybtn{background:#4a1620;border-radius:14px}
+.bn-path-all{display:block;background:#123c5e;border:2px solid #8fd0f0;border-radius:16px;padding:14px 16px;text-decoration:none;min-height:48px}
+.bn-path-all-t{display:block;color:#fff;font-size:1.08rem;font-weight:900}
+.bn-path-all-s{display:block;color:#b9d2e4;font-size:.92rem;margin-top:4px;line-height:1.4}
+#bnHomeEmgLocal:empty{display:none}
+@media(max-width:560px){.bn-cond-score b{font-size:1.7rem}.bn-cond-verdict{font-size:1.18rem}}
+</style>
   <div class="bn-stack" id="bnStack">
-    <a class="hero2-cta" id="bnBtnTides" href="region-tampa-bay.html#bn-tides">Check tides &amp; forecast</a>
-    <a class="hero2-map" id="bnBtnMap" href="region-tampa-bay.html#bay-leaflet-map">Open the boater's map</a>
-    <a href="region-tampa-bay.html#bn-bite" class="bite-hero" id="bnBtnBite"><svg class=ic aria-hidden=true><use href=#i-fish></use></svg> Today's bite</a>
-    <a href="region-tampa-bay.html#bn-calendar" class="cal-hero" id="bnBtnCal"><svg class=ic aria-hidden=true><use href=#i-cal></use></svg> Calendar</a>
-    <a href="region-tampa-bay.html#bn-newb" class="merch-hero" id="bnBtnNewb"><svg class=ic aria-hidden=true><use href=#i-compass></use></svg> New to Boating?</a>
+    <div class="bn-cond" id="bnHomeCond">
+      <div class="bn-cond-top">
+        <span class="bn-cond-place" id="bnHomePlace">&#128205; Your location</span>
+        <span class="bn-cond-score"><b id="bnHomeScorePct">--%</b><i>Boating score</i></span>
+      </div>
+      <p class="bn-cond-verdict" id="bnHomeVerdict">Checking today&rsquo;s conditions&hellip;</p>
+      <p class="bn-cond-line" id="bnHomeLine">One plain-English score for the day, from the official forecast for your water.</p>
+      <button type="button" class="bn-cond-toggle" id="bnHomeDetailsBtn" aria-expanded="false" aria-controls="bnHomeDetails">Show details</button>
+      <div class="bn-cond-details" id="bnHomeDetails" hidden>
+        <div class="bn-cond-grid">
+          <div><b>Wind</b><span id="bnHomeWind">--</span></div>
+          <div><b>Gusts (mph)</b><span id="bnWxGust">--</span></div>
+          <div><b>Tide now</b><span id="bnHomeTide">--</span></div>
+          <div><b>Waves</b><span id="bnHomeWave">--</span></div>
+          <div><b>Water temp</b><span id="bnHomeWater">--</span></div>
+          <div><b>Air temp</b><span id="bnHomeAir">--</span></div>
+          <div><b>Feels like</b><span id="bnWxFeels">--</span></div>
+          <div><b>Humidity</b><span id="bnWxHum">--</span></div>
+        </div>
+        <p class="bn-cond-note" id="bnHomeUpdated"></p>
+        <a class="bn-cond-link" id="bnHomeTidesLink" href="region-tampa-bay.html#bn-tides">Full tides &amp; forecast &mdash; tide times, tables &amp; the week ahead &rsaquo;</a>
+      </div>
+    </div>
+
+    <div class="bn-paths" id="bnPaths">
+      <h2 class="bn-paths-h">What are you here for?</h2>
+      <div class="bn-path">
+        <button type="button" class="bn-path-btn" data-path-btn aria-expanded="false"><span class="bn-path-t-wrap"><span class="bn-path-t">&#128676; Go out today</span><span class="bn-path-s">Conditions, ramps &amp; fuel</span></span><span class="bn-path-arrow" aria-hidden="true">&#9662;</span></button>
+        <div class="bn-path-doors" hidden>
+          <a id="bnPathCond" href="region-tampa-bay.html#bn-tides">Tides &amp; forecast</a>
+          <a id="bnPathMap" href="region-tampa-bay.html#bay-leaflet-map">Boater&rsquo;s map</a>
+          <a id="bnPathRamps" href="region-tampa-bay.html#bn-dir-ramp">Boat ramps</a>
+          <a id="bnPathFuel" href="region-tampa-bay.html#bn-dir-fuel">Marinas &amp; fuel</a>
+          <a id="bnPathCams" href="region-tampa-bay.html#bn-dir-cam">Live cams &mdash; see the water first</a>
+          <a id="bnPathRent" href="region-tampa-bay.html#bn-dir-rent">Boat rentals</a>
+          <a id="bnPathPlay" href="region-tampa-bay.html#bn-dir-play">Sandbar &amp; play spots</a>
+        </div>
+      </div>
+      <div class="bn-path">
+        <button type="button" class="bn-path-btn" data-path-btn aria-expanded="false"><span class="bn-path-t-wrap"><span class="bn-path-t">&#127907; Fish</span><span class="bn-path-s">Today&rsquo;s bite, bait &amp; tackle</span></span><span class="bn-path-arrow" aria-hidden="true">&#9662;</span></button>
+        <div class="bn-path-doors" hidden>
+          <a id="bnPathBite" href="region-tampa-bay.html#bn-bite">Today&rsquo;s bite</a>
+          <a id="bnPathBait" href="region-tampa-bay.html#bn-dir-bait">Bait &amp; tackle shops</a>
+          <a id="bnPathIce" href="region-tampa-bay.html#bn-dir-ice">Ice</a>
+        </div>
+      </div>
+      <div class="bn-path">
+        <button type="button" class="bn-path-btn" data-path-btn aria-expanded="false"><span class="bn-path-t-wrap"><span class="bn-path-t">&#127869; Eat, stay, or dock somewhere</span><span class="bn-path-s">Dock &amp; dine, waterfront stays</span></span><span class="bn-path-arrow" aria-hidden="true">&#9662;</span></button>
+        <div class="bn-path-doors" hidden>
+          <a id="bnPathDine" href="region-tampa-bay.html#bn-dir-dine">Dock &amp; dine</a>
+          <a id="bnPathStays" href="region-tampa-bay.html#bn-dir-stay">Waterfront stays</a>
+          <a id="bnPathRentV" href="region-tampa-bay.html#bn-dir-rentv">Vacation rentals with docks</a>
+          <a id="bnPathRentL" href="region-tampa-bay.html#bn-dir-rentl">Monthly &amp; yearly rentals</a>
+          <a id="bnPathDockFuel" href="region-tampa-bay.html#bn-dir-fuel">Marinas &amp; slips</a>
+        </div>
+      </div>
+      <div class="bn-path">
+        <button type="button" class="bn-path-btn" data-path-btn aria-expanded="false"><span class="bn-path-t-wrap"><span class="bn-path-t">&#129517; New to boating</span><span class="bn-path-s">Rules, safety &amp; the basics</span></span><span class="bn-path-arrow" aria-hidden="true">&#9662;</span></button>
+        <div class="bn-path-doors" hidden>
+          <a id="bnPathNewb" href="region-tampa-bay.html#bn-newb">New to Boating &mdash; start here</a>
+          <a id="bnPathRules" href="region-tampa-bay.html#bn-dir-agencies">State rules &amp; agencies</a>
+          <a id="bnPathClub" href="region-tampa-bay.html#bn-dir-club">Boating clubs</a>
+          <button type="button" class="bn-path-doorbtn" id="bnPathSafetyBasics">Safety basics &amp; first-call numbers</button>
+        </div>
+      </div>
+      <div class="bn-path">
+        <button type="button" class="bn-path-btn" data-path-btn aria-expanded="false"><span class="bn-path-t-wrap"><span class="bn-path-t">&#128197; Events</span><span class="bn-path-s">What&rsquo;s happening on your water</span></span><span class="bn-path-arrow" aria-hidden="true">&#9662;</span></button>
+        <div class="bn-path-doors" hidden>
+          <a id="bnPathCal" href="region-tampa-bay.html#bn-calendar">Events calendar</a>
+          <a id="bnPathSights" href="region-tampa-bay.html#bn-dir-sights">Sights &amp; attractions</a>
+          <a id="bnPathSprings" href="region-tampa-bay.html#bn-dir-springs">Springs</a>
+        </div>
+      </div>
+      <div class="bn-path">
+        <button type="button" class="bn-path-btn bn-path-safetybtn" data-path-btn aria-expanded="false"><span class="bn-path-t-wrap"><span class="bn-path-t">&#128680; Safety &amp; emergency</span><span class="bn-path-s">Always here &mdash; your area&rsquo;s numbers</span></span><span class="bn-path-arrow" aria-hidden="true">&#9662;</span></button>
+        <div class="bn-path-doors" hidden>
+          <a id="bnPathEmg" href="region-tampa-bay.html#bn-emergency">Emergency numbers for your area</a>
+          <a id="bnPathTricky" href="region-tampa-bay.html#bn-dir-tricky">Tricky waters &amp; local hazards</a>
+          <button type="button" class="bn-path-doorbtn" id="bnPathSafetyPanel">The first-call list (911, VHF 16, towing)</button>
+        </div>
+      </div>
+      <a class="bn-path-all" id="bnPathAll" href="region-tampa-bay.html#bn-directory"><span class="bn-path-all-t">Everything in <span id="bnPathAllName">your area</span> &mdash; all categories A&ndash;Z &rsaquo;</span><span class="bn-path-all-s">Boat dealers &middot; service &amp; repair &middot; parts &middot; detailing &middot; storage &middot; trailer services &mdash; plus every category above</span></a>
+    </div>
+
     <div class="emg-home"><div class="wrap">
   <div class="emg-card notranslate">
     <div class="emg-head"><span class="emg-badge"><svg class=ic aria-hidden=true><use href=#i-siren></use></svg> Emergency</span><span class="emg-sub">Trouble on the water? Start here.</span></div>
     <div class="emg-row">
       <a class="emg-btn emg-red" href="tel:911">Call 911</a>
-      <a class="emg-btn" href="tel:8668811392">Coast Guard (St. Petersburg, FL) &middot; 866-881-1392</a>
+      <span id="bnHomeEmgLocal"></span>
       <div class="emg-vhf"><b>VHF Channel 16</b> &mdash; MAYDAY distress channel, monitored around the clock.</div>
     </div>
     <a class="emg-more" href="#m-safety" onclick="bnMainTab('safety',document.getElementById('mtab-safety'));return false;">All emergency numbers &rsaquo;</a>
@@ -501,23 +624,6 @@ html.bn-gate-on button.bn-gate-only { display: inline-block !important; }
 </style>
 
     <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14"/><path d="M15 6v14"/></symbol><symbol id="i-fish" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 12c.9-3.7 4.1-6.5 8.2-6.5 3 0 5.4 1.2 7.2 3.5-1.8 2.3-4.2 3.5-7.2 3.5-4.1 0-7.3-2.8-8.2-6.5Z"/><path d="M6.6 12 3.2 8.6"/><path d="M6.6 12l-3.4 3.4"/><circle cx="17.2" cy="10.2" r=".4" fill="currentColor"/></symbol><symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4"/><path d="M16 2v4"/><path d="M3 9.5h18"/></symbol><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10.5c0 5.8-8 11.5-8 11.5s-8-5.7-8-11.5a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10.5" r="3"/></symbol><symbol id="i-fuel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22h12"/><path d="M4 9h10"/><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 4 0V9.8a2 2 0 0 0-.6-1.4L18 5"/></symbol><symbol id="i-dine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></symbol><symbol id="i-bed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></symbol><symbol id="i-cam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 8.5-5.5 3.5L21 15.5v-7Z"/><rect x="2.5" y="6.5" width="13" height="11" rx="2"/></symbol><symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2.5H6a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14.5 2.5V8H20"/><path d="M8.5 13h7"/><path d="M8.5 17h7"/></symbol><symbol id="i-lifebuoy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><circle cx="12" cy="12" r="3.8"/><path d="m5.6 5.6 3.9 3.9"/><path d="m14.5 14.5 3.9 3.9"/><path d="m18.4 5.6-3.9 3.9"/><path d="m9.5 14.5-3.9 3.9"/></symbol><symbol id="i-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18.2V6l11-2v11.7"/><circle cx="6.2" cy="18.2" r="2.8"/><circle cx="17.2" cy="15.7" r="2.8"/></symbol></svg>
-  <h2 class="bn-cat-h">Browse Boating Categories</h2>
-    <div class="bn-cat-grid">
-      <a class="bn-cat-card" id="bnCatMap" href="region-tampa-bay.html#bay-leaflet-map"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-map"></use></svg></span><b>Boater's Map</b><i>Ramps, marinas, fuel &amp; more</i></a>
-      <a class="bn-cat-card" id="bnCatTides" href="region-tampa-bay.html#bn-tides"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-tide-up"></use></svg></span><b>Tides &amp; Forecast</b><i>Tides, wind &amp; the best hours</i></a>
-      <a class="bn-cat-card" id="bnCatFish" href="region-tampa-bay.html#bn-bite"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-fish"></use></svg></span><b>Fishing</b><i>Bait, tackle &amp; local know-how</i></a>
-      <a class="bn-cat-card" id="bnCatCal" href="region-tampa-bay.html#bn-calendar"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-cal"></use></svg></span><b>Events Calendar</b><i>Boat shows, parades &amp; what's on</i></a>
-      <a class="bn-cat-card" id="bnCatRamps" href="region-tampa-bay.html#bn-dir-ramp"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-pin"></use></svg></span><b>Boat Ramps</b><i>Every public launch, by water</i></a>
-      <a class="bn-cat-card" id="bnCatFuel" href="region-tampa-bay.html#bn-dir-fuel"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-fuel"></use></svg></span><b>Marinas &amp; Fuel</b><i>Fuel docks &amp; slips</i></a>
-      <a class="bn-cat-card" id="bnCatDine" href="region-tampa-bay.html#bn-dir-dine"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-dine"></use></svg></span><b>Dock &amp; Dine</b><i>Restaurants you can boat to</i></a>
-      <a class="bn-cat-card" id="bnCatStays" href="region-tampa-bay.html#bn-dir-stay"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-bed"></use></svg></span><b>Waterfront Stays</b><i>Houses &amp; hotels with guest docks</i></a>
-      <a class="bn-cat-card" id="bnCatCams" href="region-tampa-bay.html#bn-dir-cam"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-cam"></use></svg></span><b>Live Cams</b><i>See the water before you go</i></a>
-      <a class="bn-cat-card" id="bnCatRules" href="region-tampa-bay.html#bn-dir-agencies"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-doc"></use></svg></span><b>State Rules &amp; Agencies</b><i>Registration, laws &amp; launches</i></a>
-      <button type="button" class="bn-cat-card" onclick="bnMainTab('safety',document.getElementById('mtab-safety'))"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-lifebuoy"></use></svg></span><b>Safety &amp; Emergency</b><i>What to do when it goes wrong</i></button>
-      <button type="button" class="bn-cat-card" onclick="bnMainTab('music',document.getElementById('mtab-music'))"><span class="c-ico"><svg class="tic" aria-hidden="true"><use href="#i-music"></use></svg></span><b>Boat Music</b><i>Playlists for the water</i></button>
-    </div>
-    <div class="hero-music"><span class="hm-label">Music for the boat</span><a class="hm-btn hm-sp" id="bnBtnSpotify" href="#m-music" aria-label="Boat music playlists on Spotify"><svg class="pl-ic" aria-hidden="true"><use href="#i-spotify"></use></svg>Spotify</a><a class="hm-btn hm-am" id="bnBtnApple" href="#m-music" aria-label="Boat music playlists on Apple Music"><svg class="pl-ic" aria-hidden="true"><use href="#i-applemusic"></use></svg>Apple Music</a></div>
-
   <div class="bn-panel-doors">
     <button type="button" class="bn-door" id="bnDoorInside">What's Inside Every Region</button>
     <button type="button" class="bn-door" id="bnDoorHow">How It Works</button>
@@ -589,7 +695,6 @@ html.bn-gate-on button.bn-gate-only { display: inline-block !important; }
     <div class="step"><b>3 · Middleman only.</b><br>We connect boaters to local businesses and take no bookings, no sales, no cut of anyone's money.</div>
   </div>
 
-  <div class="note" style="margin-top:16px"><b>Own a marine business?</b> When your region opens, your free listing comes first — sponsors get the featured spots. That's the whole model.</div>
   </div>
 
   <div class="mpanel" id="m-about">
@@ -642,37 +747,8 @@ html.bn-gate-on button.bn-gate-only { display: inline-block !important; }
   <p class="bzb-note">Zone numbers match the numbered zones on the map. A zone's percentage is the share of its catalogued waters fully cross-checked (WaterCheck) — measured, never estimated. Zones that aren't open yet are marked Coming soon. Updated <span id="bzbUpdated">Nov 6, 2026</span>.</p>
 </div>
 <p style="max-width:1120px;margin:8px auto 0;color:#9db4c6;font-size:.8rem;text-align:center">Tap your zone to join its waitlist — waitlists decide what opens next.</p>
-<section class="bnf" id="bn-features" aria-label="What each open region has today">
-  <h3>What each open region has today</h3>
-  <p class="bnf-intro">Free for boaters, always &middot; No verified source, no pin &mdash; every feature below is checked the same way.</p>
-  <div class="bnf-scroll"><table class="bnf-t">
-    <thead><tr><th>Region</th><th>Boater&rsquo;s map</th><th>Tides &amp; forecast</th><th>Wave report</th><th>Today&rsquo;s bite</th><th>Events calendar</th><th>New to Boating</th><th>State rules</th><th>Emergency</th></tr></thead>
-    <tbody>
-      <tr><th>Tampa Bay, FL</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Daily</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-      <tr><th>New England</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-      <tr><th>Chesapeake Bay</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-      <tr><th>Florida Atlantic</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-      <tr><th>Mid-Atlantic Coast</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-      <tr><th>Gulf Coast, FL</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-      <tr><th>South Florida &amp; the Keys</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Weekly</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-      <tr><th>Carolina Coast</th><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&mdash;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-<tr><th>Great Lakes</th><td>&#10003;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&#10003;</td></tr>
-<tr><th>Tennessee River Lakes</th><td>&#10003;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&#10003;</td><td>&#10003;</td></tr>
-    </tbody>
-  </table></div>
-  <p class="bnf-note">Today&rsquo;s bite: Tampa Bay&rsquo;s report is written daily; the other regions&rsquo; reports are weekly &mdash; each card says which. Fuel: every open region maps its fuel docks. Prices are printed only where they&rsquo;re re-checked on a schedule &mdash; today that&rsquo;s Tampa Bay, where prices are verified daily with same-day rechecks on Tampa Bay Boating. Other regions show fuel docks without prices until they get the same treatment &mdash; a wrong price sends a boater across the bay for nothing.</p>
-</section>
-<style>
-.bnf{max-width:1120px;margin:14px auto 0;background:#0d2c49;border:1.5px solid #123c5e;border-radius:16px;padding:13px 16px 11px}
-.bnf h3{color:#fff;font-size:.92rem;margin-bottom:6px}
-.bnf-intro{color:#c9d8e4;font-size:.78rem;margin:0 0 9px}
-.bnf-scroll{overflow-x:auto}
-.bnf-t{border-collapse:collapse;width:100%;min-width:640px;font-size:.74rem;color:#c9d8e4}
-.bnf-t th,.bnf-t td{padding:5px 7px;text-align:center;border-bottom:1px solid #1d405f;white-space:nowrap}
-.bnf-t thead th{color:#7dd3fc;font-weight:800}
-.bnf-t tbody th{text-align:left;color:#fff;font-weight:700}
-.bnf-note{color:#7d97ab;font-size:.7rem;margin-top:9px;line-height:1.35}
-</style>
+
+
 <section class="bn-news">
   <h2>Sign Up for Our Weekly Newsletter</h2>
   <p>One short email a week: new regions opening, the best events on America's waters, and local deals. No spam, ever.</p>
@@ -683,10 +759,6 @@ html.bn-gate-on button.bn-gate-only { display: inline-block !important; }
     <button type="submit">Sign Up</button>
   </form>
 </section>
-<a class="bn-adv" href="mailto:david@tampabayboating.com?subject=Advertising%20on%20Boaters%20Nation">
-  <b>ADVERTISE WITH BOATERS NATION</b>
-  <span>For businesses — reach boaters nationwide ›</span>
-</a>
 <style>
 .bzb{max-width:1120px;margin:14px auto 0;background:#0d2c49;border:1.5px solid #123c5e;border-radius:16px;padding:13px 16px 11px}
 .bzb h3{color:#fff;font-size:.92rem;margin-bottom:9px}
@@ -747,7 +819,7 @@ footer.tbb-foot a.soc svg{width:15px!important;height:15px!important;fill:#fff!i
       </div>
     </div>
   </div>
-  <div class="foot-bottom"><span>© 2026 Boaters Nation · Tampa Bay Boating, LLC. All rights reserved. · <a href="how-we-check.html" style="color:#7dd3fc">How we check</a></span><span>United States</span></div>
+  <div class="foot-bottom"><span><a href="#m-about" onclick="bnMainTab('about',null);document.getElementById('m-about').scrollIntoView();return false;" style="color:#7dd3fc">About</a> · <a href="#m-music" onclick="bnMainTab('music',null);document.getElementById('m-music').scrollIntoView();return false;" style="color:#7dd3fc">Boat Music</a> · <a href="mailto:david@tampabayboating.com?subject=Advertising%20on%20Boaters%20Nation" style="color:#7dd3fc">Advertise</a> · <a href="how-we-check.html" style="color:#7dd3fc">How we check</a></span><span>© 2026 Boaters Nation · Tampa Bay Boating, LLC. All rights reserved.</span><span>United States</span></div>
 </footer>
 <div class="bn-gone">
 </div>
@@ -1209,7 +1281,7 @@ function bnZip(ev){
             if (sst != null) set('bnWxWater', Math.round(sst) + '°');
             else if (c.apparent_temperature != null) { set('bnWxWater', Math.round(c.apparent_temperature) + '°'); set('bnWxWaterLbl', 'FEELS'); }
             var wh = m && m.current && m.current.wave_height; if (wh == null) return;
-            var ft = wh * 3.281; var wd = ft <= 1 ? 0 : ft <= 2 ? 8 : ft <= 3 ? 18 : ft <= 4 ? 30 : 45; bnSetScore(score - wd);
+            var ft = wh * 3.281; set('bnHomeWave', ft < 0.15 ? 'Calm' : ft.toFixed(1) + ' ft'); var wd = ft <= 1 ? 0 : ft <= 2 ? 8 : ft <= 3 ? 18 : ft <= 4 ? 30 : 45; bnSetScore(score - wd);
           })
           .catch(function(){ if (c.apparent_temperature != null) { set('bnWxWater', Math.round(c.apparent_temperature) + '°'); set('bnWxWaterLbl', 'FEELS'); } });
         bnTide(lat, lon, c.wind_gusts_10m);
@@ -1478,6 +1550,150 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
       var t = document.getElementById('m-' + pair[1]);
       if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+  });
+})();
+</script>
+
+<script>
+/* Homepage reorder (PREVIEW, Nov 9) — the post-entry front door.
+   1) The conditions card mirrors the weather strip's own numbers
+      (same fetch, same score — nothing recomputed, nothing invented).
+      Gusts / feels-like / humidity land in this card's spans directly:
+      the strip script has always set #bnWxGust / #bnWxFeels /
+      #bnWxHum, it just never had elements with those ids until now.
+   2) The six "What are you here for" paths and the all-categories
+      door resolve to the visitor's chosen region, resolved from the
+      same sources the stack router uses — bnChosenRegion, else the
+      saved weather position's region, else Tampa Bay — and re-resolve
+      on every bnStackChoose. A building region sends every door back
+      to the finder (#find), exactly like the stack buttons replaced.
+   3) The emergency card's local slot: Tampa Bay shows its own Coast
+      Guard sector number (verified, and already on Tampa's region
+      page); every other live region links to its own Emergency
+      section; no region ever shows another region's number. */
+(function(){
+  function $(id){ return document.getElementById(id); }
+  function setH(id, href){ var el = $(id); if (el) el.setAttribute('href', href); }
+  function regOf(slug){ return (typeof bnRegionBySlug === 'function') ? bnRegionBySlug(slug) : null; }
+  var TF = { 'tampa-bay': '#bn-tides', 'new-england': '#bn-tides', 'chesapeake-bay': '#bn-tides', 'florida-atlantic': '#bn-tides', 'mid-atlantic-coast': '#bn-tides', 'gulf-coast-fl': '#bn-tides', 'south-florida-keys': '#bn-tides', 'carolina-coast': '#bn-tides' };
+  var BITE = { 'tampa-bay': '#bn-bite', 'new-england': '#bn-bite', 'chesapeake-bay': '#bn-bite', 'florida-atlantic': '#bn-bite', 'mid-atlantic-coast': '#bn-bite', 'gulf-coast-fl': '#bn-bite', 'south-florida-keys': '#bn-bite' };
+  var CAL = { 'tampa-bay': '#bn-calendar', 'new-england': '#bn-calendar', 'chesapeake-bay': '#bn-calendar', 'florida-atlantic': '#bn-calendar', 'mid-atlantic-coast': '#bn-calendar', 'gulf-coast-fl': '#bn-calendar', 'south-florida-keys': '#bn-calendar', 'carolina-coast': '#bn-calendar' };
+  var NEWB = { 'tampa-bay': '#bn-newb', 'new-england': '#bn-newb', 'chesapeake-bay': '#bn-newb', 'florida-atlantic': '#bn-newb', 'mid-atlantic-coast': '#bn-newb', 'gulf-coast-fl': '#bn-newb', 'south-florida-keys': '#bn-newb', 'carolina-coast': '#bn-newb' };
+  var DIRS = { bnPathRamps: '#bn-dir-ramp', bnPathFuel: '#bn-dir-fuel', bnPathCams: '#bn-dir-cam', bnPathRent: '#bn-dir-rent', bnPathPlay: '#bn-dir-play', bnPathBait: '#bn-dir-bait', bnPathIce: '#bn-dir-ice', bnPathDine: '#bn-dir-dine', bnPathStays: '#bn-dir-stay', bnPathRentV: '#bn-dir-rentv', bnPathRentL: '#bn-dir-rentl', bnPathDockFuel: '#bn-dir-fuel', bnPathClub: '#bn-dir-club', bnPathSights: '#bn-dir-sights', bnPathSprings: '#bn-dir-springs', bnPathTricky: '#bn-dir-tricky' };
+  var DOORS = ['bnPathCond','bnPathMap','bnPathBite','bnPathCal','bnPathNewb','bnPathRules','bnPathEmg','bnPathAll','bnHomeTidesLink'].concat(Object.keys(DIRS));
+  function rulesHref(r, p){
+    if (r.slug === 'gulf-coast-fl' || r.slug === 'south-florida-keys') return 'state-rules.html#fl';
+    if (r.slug === 'carolina-coast') return 'state-rules.html#nc';
+    return p + '#bn-dir-agencies';
+  }
+  function applyPaths(slug){
+    var r = regOf(slug); if (!r) return;
+    var nameEl = $('bnPathAllName'); if (nameEl) nameEl.textContent = r.name;
+    var local = $('bnHomeEmgLocal');
+    if (r.status !== 'live') {
+      DOORS.forEach(function(id){ setH(id, '#find'); });
+      if (local) local.innerHTML = '';
+      return;
+    }
+    var p = r.page || ('region.html?r=' + r.slug);
+    setH('bnPathCond', p + (TF[r.slug] || ''));
+    setH('bnHomeTidesLink', p + (TF[r.slug] || ''));
+    setH('bnPathMap', p + '#bay-leaflet-map');
+    setH('bnPathBite', p + (BITE[r.slug] || '#bn-soon'));
+    setH('bnPathCal', p + (CAL[r.slug] || '#bn-soon'));
+    setH('bnPathNewb', p + (NEWB[r.slug] || '#bn-soon'));
+    setH('bnPathRules', rulesHref(r, p));
+    Object.keys(DIRS).forEach(function(id){ setH(id, p + DIRS[id]); });
+    setH('bnPathEmg', p + '#bn-emergency');
+    setH('bnPathAll', p + '#bn-directory');
+    if (local) {
+      if (r.slug === 'tampa-bay') local.innerHTML = '<a class="emg-btn" href="tel:8668811392">Coast Guard \u2014 Sector St. Petersburg \u00b7 866-881-1392</a>';
+      else local.innerHTML = '<a class="emg-btn" href="' + p + '#bn-emergency">Emergency numbers for ' + r.name + ' \u203a</a>';
+    }
+  }
+  var initial = null;
+  try { initial = localStorage.getItem('bnChosenRegion'); } catch (e) {}
+  if (!initial || !regOf(initial)) {
+    initial = null;
+    try {
+      var pp = JSON.parse(localStorage.getItem('bnWxPos') || 'null');
+      if (pp && isFinite(pp.lat) && isFinite(pp.lon) && typeof bnRegionForPoint === 'function') {
+        var rr = bnRegionForPoint(pp.lat, pp.lon);
+        if (rr) initial = rr.slug;
+      }
+    } catch (e) {}
+  }
+  applyPaths(initial || 'tampa-bay');
+  if (typeof window.bnStackChoose === 'function') {
+    var prevChoose = window.bnStackChoose;
+    window.bnStackChoose = function(slug){ prevChoose(slug); applyPaths(slug); };
+  }
+  /* Path accordions: one open at a time. */
+  var btns = Array.prototype.slice.call(document.querySelectorAll('[data-path-btn]'));
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var doors = btn.parentElement.querySelector('.bn-path-doors');
+      var open = doors && !doors.hidden;
+      btns.forEach(function(b){
+        var d = b.parentElement.querySelector('.bn-path-doors');
+        if (d) d.hidden = true;
+        b.setAttribute('aria-expanded', 'false');
+      });
+      if (doors && !open) { doors.hidden = false; btn.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+  function openSafety(){
+    if (typeof bnMainTab === 'function') bnMainTab('safety', document.getElementById('mtab-safety'));
+    var panel = document.getElementById('m-safety');
+    if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  var sb = $('bnPathSafetyBasics'); if (sb) sb.addEventListener('click', openSafety);
+  var sp = $('bnPathSafetyPanel'); if (sp) sp.addEventListener('click', openSafety);
+  /* Conditions card: mirror the strip, add the plain-English verdict. */
+  function verdictFor(pct){
+    if (pct == null || isNaN(pct)) return null;
+    if (pct >= 85) return 'A great day to be on the water.';
+    if (pct >= 70) return 'A good day \u2014 normal care and you\u2019re fine.';
+    if (pct >= 55) return 'Fair \u2014 small boats and new boaters, take it easy.';
+    if (pct >= 40) return 'Rough out there \u2014 experienced boaters only.';
+    return 'Not a boating day \u2014 best to stay in.';
+  }
+  function copy(idFrom, idTo){ var a = $(idFrom), b = $(idTo); if (a && b) { var t = a.textContent || ''; if (t && b.textContent !== t) b.textContent = t; } }
+  function mirror(){
+    copy('bnWxPlace', 'bnHomePlace');
+    copy('bnWxWind', 'bnHomeWind');
+    copy('bnWxTide', 'bnHomeTide');
+    copy('bnWxWater', 'bnHomeWater');
+    copy('bnWxAir', 'bnHomeAir');
+    copy('bnWxUpdated', 'bnHomeUpdated');
+    var pctEl = $('bnWxScorePct'), homePct = $('bnHomeScorePct');
+    if (pctEl && homePct) {
+      var t = pctEl.textContent || '';
+      if (t && homePct.textContent !== t) homePct.textContent = t;
+      var v = verdictFor(parseInt(t, 10));
+      var vEl = $('bnHomeVerdict');
+      if (v && vEl && vEl.textContent !== v) vEl.textContent = v;
+    }
+    var cond = $('bnWxCond'), line = $('bnHomeLine'), water = $('bnWxWater');
+    if (cond && line) {
+      var c = (cond.textContent || '').trim(), w = (water ? (water.textContent || '').trim() : '');
+      if (c && c !== 'Weather unavailable right now') {
+        var txt = c + (w && w !== '--\u00b0' ? ' \u00b7 water ' + w : '');
+        if (line.textContent !== txt) line.textContent = txt;
+      }
+    }
+    var gust = $('bnWxGust');
+    if (gust) { var g = (gust.textContent || '').trim(); if (/^\d+$/.test(g)) gust.textContent = g + ' mph'; }
+  }
+  mirror();
+  setInterval(mirror, 700);
+  var tgl = $('bnHomeDetailsBtn'), det = $('bnHomeDetails');
+  if (tgl && det) tgl.addEventListener('click', function(){
+    var open = det.hidden;
+    det.hidden = !open;
+    tgl.setAttribute('aria-expanded', open ? 'true' : 'false');
+    tgl.textContent = open ? 'Hide details' : 'Show details';
+    if (open) mirror();
   });
 })();
 </script>
