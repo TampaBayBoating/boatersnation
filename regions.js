@@ -49,7 +49,8 @@ var BN_REGIONS = [
     slug: "great-lakes",
     name: "Great Lakes",
     blurb: "Lakes Michigan, Erie, Ontario, Huron and Superior — freshwater boating country.",
-    status: "building",
+    status: "live",
+    page: "region-great-lakes.html",
     zipPrefixes: ["142", "146", "436", "440", "441", "480", "482", "494", "496", "532", "543", "558", "600", "606"]
   },
   {
