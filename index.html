@@ -264,6 +264,48 @@ body{top:0 !important}
 </style>
 </head>
 <body>
+<script>
+/* Location gate (PREVIEW, Nov 9): with no saved location, the homepage
+   opens on the hero + Find-your-water card only. The class is set here,
+   before first paint; the gate script at the end of the page lifts it.
+   Saved = the site's own storage (bnChosenRegion / bnWxPos), so the
+   gate and the rest of the site can never disagree. */
+try {
+  var __bp = JSON.parse(localStorage.getItem('bnWxPos') || 'null');
+  var __bc = localStorage.getItem('bnChosenRegion');
+  if (!__bc && !(__bp && isFinite(__bp.lat))) document.documentElement.classList.add('bn-gate-on');
+} catch (e) { document.documentElement.classList.add('bn-gate-on'); }
+</script>
+<style>
+/* Location gate (PREVIEW): while .bn-gate-on is set, the page has no
+   frame at all: every direct body child except .wrap is hidden, and
+   inside .wrap only the hero's kicker, headline, intro and
+   Find-your-water card render. That removes the top bar, weather
+   strip, build-status/progress band, features, newsletter, advertise
+   band, footer and crawlable SEO note from the first screen; all of
+   them return unchanged when the gate lifts after entry. Gate-only
+   extras (GPS button, prompt note) appear only in this state. */
+html.bn-gate-on body > *:not(.wrap) { display: none !important; }
+html.bn-gate-on .bn-header, html.bn-gate-on #bn-wxbar, html.bn-gate-on .bn-wx-note { display: none !important; }
+html.bn-gate-on .wrap { padding-bottom: 0 !important; }
+html.bn-gate-on .wrap > *:not(.hero) { display: none !important; }
+html.bn-gate-on .hero { margin-top: 0 !important; margin-bottom: 0 !important; }
+html.bn-gate-on .hero > *:not(.kicker):not(h1):not(.intro):not(#find) { display: none !important; }
+html.bn-gate-on footer.tbb-foot { display: none !important; }
+html.bn-gate-on .bn-seo-note { display: none !important; }
+.bn-gate-only { display: none !important; }
+html.bn-gate-on p.bn-gate-only { display: block !important; }
+html.bn-gate-on button.bn-gate-only { display: inline-block !important; }
+.bn-sugg { margin-top: 10px; text-align: left; border-radius: 12px; overflow: hidden; border: 1px solid #123c5e; background: #0d2c49; }
+.bn-sugg button { display: flex; width: 100%; gap: 10px; align-items: center; background: none; border: 0; border-bottom: 1px solid #123c5e; color: #e8eef4; font: inherit; font-size: .95rem; padding: 11px 13px; cursor: pointer; text-align: left; }
+.bn-sugg button:last-child { border-bottom: 0; }
+.bn-sugg button:hover { background: #123c5e; }
+.bn-sugg .sg-ic { flex: 0 0 auto; }
+.bn-sugg .sg-sub { color: #9db4c6; font-size: .8rem; }
+.bn-sugg .sg-tag { margin-left: auto; font-size: .72rem; font-weight: 700; letter-spacing: .4px; padding: 2px 8px; border-radius: 999px; background: #14532d; color: #4ade80; white-space: nowrap; }
+.bn-sugg .sg-tag.build { background: #4a2c12; color: #f5b04c; }
+.bn-sugg .sg-tag.none { background: #4a1620; color: #ff8f9b; }
+</style>
 <header class="bn-header"><div class="topbar"><a href="index.html"><img class="anchor" src="assets/bn-logo2.webp" alt="Boaters Nation logo"><b>Boaters<span>Nation</span></b></a><button class="tb-lang" id="lang-btn" aria-label="Translate this page" title="Translate"><span id="bnLangFlag">🇺🇸</span> Language</button></div>
 <div class="tb-translate" id="translate-panel"><div class="lang-search"><input id="lang-q" type="text" placeholder="Search languages\u2026" aria-label="Search languages" autocomplete="off"></div><div class="lang-list" role="menu" aria-label="Choose language">
 <button class="lang-row active" data-lang="en"><span class="flag">🇺🇸</span>English<span class="check">&#10003;</span></button>
@@ -414,6 +456,9 @@ body{top:0 !important}
       <input id="bn-zip" placeholder="ZIP, city, lake or river — try Lanier" aria-label="ZIP code or place name" autocomplete="off">
       <button type="submit">Find My Water</button>
     </form>
+    <div class="bn-sugg" id="bnGateSugg" hidden></div>
+    <button type="button" class="btn ghost bn-gate-only" id="bnGateGps" style="margin-top:12px">&#128205; Use my location</button>
+    <p class="bn-gate-only" id="bnGateNote" style="font-size:.82rem;color:#9db4c6;margin:8px auto 0;max-width:430px">Your phone will ask to share your location once &mdash; tap <b>Allow</b> and you&rsquo;re in. We remember it on this phone, so next time it just opens. Rather type? Enter your water, city or ZIP above, or tap your state on the map.</p>
     <div id="bn-zip-out" style="margin-top:10px;font-size:.92rem"></div>
   </div>
   <div class="bn-stack" id="bnStack">
@@ -1833,6 +1878,177 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
       } catch (e) {}
       return ret;
     };
+  }
+})();
+</script>
+
+<section class="bn-seo-note" aria-label="About Boaters Nation" style="max-width:1120px;margin:18px auto;padding:0 16px;color:#9db4c6;font-size:.85rem;line-height:1.55">
+  <h2 style="color:#e8eef4;font-size:1rem;margin:0 0 6px">Boaters Nation &mdash; every body of water in America, on one free site</h2>
+  <p style="margin:0 0 8px">Boaters Nation is a free guide to boating in America: tides and forecasts, boater&rsquo;s maps with ramps, fuel and marinas, today&rsquo;s bite, events calendars and local rules for each region &mdash; every listing cross-checked. Pick your water and everything on the site resolves to it.</p>
+  <p style="margin:0">Regions: <a href="region-tampa-bay.html">Tampa Bay, FL</a> · <a href="region-gulf-coast-fl.html">Gulf Coast, FL</a> · <a href="region-south-florida-keys.html">South Florida & the Keys</a> · <a href="region-chesapeake.html">Chesapeake Bay</a> · <a href="region.html?r=great-lakes">Great Lakes</a> · <a href="region.html?r=lake-country">Lake Country</a> · <a href="region.html?r=texas-gulf-coast">Texas Gulf Coast</a> · <a href="region-new-england.html">New England</a> · <a href="region.html?r=pacific-northwest">Pacific Northwest</a> · <a href="region-mid-atlantic.html">Mid-Atlantic Coast</a> · <a href="region-carolinas.html">Carolina Coast</a> · <a href="region.html?r=california-coast">California Coast</a> · <a href="region-tennessee-river-lakes.html">Tennessee River Lakes</a> · <a href="region.html?r=colorado-river-lakes">Colorado River Lakes</a> · <a href="region-florida-atlantic.html">Florida Atlantic</a></p>
+</section>
+<script>
+/* Location gate (PREVIEW, David's order Nov 9): the homepage opens on
+   the hero + Find-your-water card ONLY -- everything else waits until
+   a water/area is set. Priority: (1) a saved location skips the gate
+   entirely (the early script after <body> adds .bn-gate-on only when
+   neither bnChosenRegion nor bnWxPos exists, and the site's own
+   return-visit logic takes it from there); (2) a new visitor's
+   first-open GPS auto-ask -- the site's existing script -- resolves
+   and the gate lifts by itself, no tap needed; (3) typing (with the
+   suggestion rows below), the tap-a-state map and the gate's own
+   "Use my location" button are the fallbacks, and an area that is not
+   live yet shows the finder's waitlist right here in the card.
+   Every path saves through the site's existing storage (bnWxPos /
+   bnChosenRegion / bnWaterPick), so the gate and the rest of the site
+   never disagree, and the finder card stays the change-location
+   control after entry. */
+(function(){
+  var root = document.documentElement;
+  var input = document.getElementById('bn-zip');
+  var sugg = document.getElementById('bnGateSugg');
+  var note = document.getElementById('bnGateNote');
+  var gpsBtn = document.getElementById('bnGateGps');
+  function gated(){ return root.classList.contains('bn-gate-on'); }
+  function regionOf(slug){ return (typeof bnRegionBySlug === 'function') ? bnRegionBySlug(slug) : null; }
+  function lift(){
+    if (!gated()) return;
+    root.classList.remove('bn-gate-on');
+    var stack = document.getElementById('bnStack');
+    if (stack) setTimeout(function(){ try { stack.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) { try { stack.scrollIntoView(); } catch (e2) {} } }, 60);
+  }
+  /* The stack router is the one choke point every recognition path
+     already flows through (finder, zone taps, GPS pairing, the
+     first-open auto-ask). A LIVE area chosen while gated lifts it. */
+  if (typeof window.bnStackChoose === 'function') {
+    var prevChoose = window.bnStackChoose;
+    window.bnStackChoose = function(slug){
+      var was = gated();
+      prevChoose(slug);
+      var r = slug ? regionOf(slug) : null;
+      if (was && r && r.status === 'live') lift();
+    };
+  }
+  /* Ship-time fix (build-note flag 5): a building-area map tap also
+     fires the live handler's jump to the Regions panel -- it switches
+     the main tab and scrolls to a card that is hidden while gated, so
+     the state change would ambush the visitor after entry. Guard the
+     two tab switchers: inert while the gate is up, untouched
+     pass-through the moment it lifts. The tap's visible part (the
+     map info line's waitlist prompt, set before that jump) is not
+     affected. */
+  ['bnMainTab', 'bnSubTab'].forEach(function(fnName){
+    var origFn = window[fnName];
+    if (typeof origFn === 'function') {
+      window[fnName] = function(){ if (gated()) return; return origFn.apply(this, arguments); };
+    }
+  });
+  /* Position watcher: covers GPS answers that land without a live
+     stack choice (building area, uncovered point) so the gate shows
+     the waitlist state instead of sitting silent. Same 30x500ms poll
+     the site's own first-open script uses. Acts once per session. */
+  var resolved = false;
+  function savedPos(){ try { var p = JSON.parse(localStorage.getItem('bnWxPos') || 'null'); return (p && isFinite(p.lat) && isFinite(p.lon)) ? p : null; } catch (e) { return null; } }
+  function showFallbackNote(){
+    if (note && gated() && !resolved) note.textContent = 'Location didn\'t come through \u2014 no problem: type your water, city or ZIP above, or tap your state on the map.';
+  }
+  function onPos(p){
+    if (resolved || !gated()) return;
+    resolved = true;
+    var r = (typeof bnRegionForPoint === 'function') ? bnRegionForPoint(p.lat, p.lon) : null;
+    if (typeof bnZipResult === 'function') bnZipResult(r, '', null);
+    /* bnZipResult's wrappers call bnStackChoose: a live area lifts
+       the gate above; a building or uncovered area renders its
+       waitlist right here in the card. */
+  }
+  function watchPos(beforeT){
+    var tries = 0;
+    var iv = setInterval(function(){
+      tries++;
+      var p = savedPos();
+      if (p && (p.t || 0) !== beforeT) { clearInterval(iv); onPos(p); }
+      else if (tries >= 30) {
+        clearInterval(iv);
+        try { if (localStorage.getItem('bnAutoLoc')) showFallbackNote(); } catch (e) {}
+      }
+    }, 500);
+  }
+  if (gated()) { var p0 = savedPos(); watchPos(p0 ? (p0.t || 0) : 0); }
+  /* The gate's own GPS button re-asks through the site's own weather
+     button, so a tap here behaves exactly like the site's locate:
+     same save, same pairing, same watchers. */
+  if (gpsBtn) gpsBtn.addEventListener('click', function(){
+    if (!navigator.geolocation) { showFallbackNote(); return; }
+    var before = savedPos();
+    watchPos(before ? (before.t || 0) : 0);
+    var b = document.getElementById('bnWxBtn');
+    if (b) b.click();
+  });
+  /* Suggestion rows for the finder input (Google-style): waters from
+     the site's water index, areas from regions.js, and a verdict row
+     for a full ZIP -- all resolved by the site's own tables. Tapping
+     a row runs the same finder path as typing it and pressing
+     Find My Water. */
+  function norm(s){ return String(s || '').toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim(); }
+  function core(n){ var x = norm(n); [' lake',' pond',' river',' reservoir',' bay',' harbor',' brook',' stream',' creek',' cove',' sound',' flowage',' lakes',' ponds'].forEach(function(w){ x = x.split(w).join(' '); }); return x.replace(/\s+/g, ' ').trim(); }
+  function esc(s){ return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function tagFor(r){ if (!r) return '<span class="sg-tag none">Not covered yet</span>'; return r.status === 'live' ? '<span class="sg-tag">Live now</span>' : '<span class="sg-tag build">In the works</span>'; }
+  function hideSugg(){ if (sugg) { sugg.hidden = true; sugg.innerHTML = ''; } }
+  function runFinder(){ hideSugg(); if (typeof bnZip === 'function') bnZip({ preventDefault: function(){} }); }
+  function row(html, fn){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.innerHTML = html;
+    b.addEventListener('mousedown', function(ev){ ev.preventDefault(); fn(); });
+    sugg.appendChild(b);
+  }
+  function renderSugg(){
+    if (!input || !sugg) return;
+    var q = (input.value || '').trim();
+    if (q.length < 2) { hideSugg(); return; }
+    sugg.innerHTML = '';
+    var made = 0;
+    if (/^\d{5}$/.test(q)) {
+      var r = (typeof bnRegionForZip === 'function') ? bnRegionForZip(q) : null;
+      row('<span class="sg-ic">&#128205;</span><span>ZIP ' + esc(q) + (r ? ' \u2014 ' + esc(r.name) : '') + '</span>' + tagFor(r), runFinder);
+      made++;
+    } else if (!/^\d+$/.test(q)) {
+      var cq = core(q);
+      if (cq.length >= 2 && typeof BN_WATERS !== 'undefined') {
+        for (var i = 0; i < BN_WATERS.length && made < 5; i++) {
+          var w = BN_WATERS[i];
+          if (core(w.n).indexOf(cq) === 0 || norm(w.n).indexOf(norm(q)) >= 0) {
+            (function(w){
+              var wr = (typeof bnRegionForPoint === 'function') ? bnRegionForPoint(w.la, w.lo) : null;
+              row('<span class="sg-ic">&#127754;</span><span>' + esc(w.n) + ' <span class="sg-sub">' + esc(w.s) + '</span></span>' + tagFor(wr), function(){ input.value = w.n; runFinder(); });
+            })(w);
+            made++;
+          }
+        }
+      }
+      if (typeof BN_REGIONS !== 'undefined') {
+        for (var j = 0; j < BN_REGIONS.length && made < 7; j++) {
+          var rg = BN_REGIONS[j];
+          if (norm(rg.name).indexOf(norm(q)) >= 0) {
+            (function(rg){
+              row('<span class="sg-ic">&#128506;</span><span>' + esc(rg.name) + ' <span class="sg-sub">area</span></span>' + tagFor(rg), function(){
+                input.value = rg.name; hideSugg();
+                if (rg.status === 'live') { if (window.bnStackChoose) window.bnStackChoose(rg.slug); }
+                else if (typeof bnZipResult === 'function') bnZipResult(rg, '', null);
+              });
+            })(rg);
+            made++;
+          }
+        }
+      }
+    }
+    if (made) sugg.hidden = false; else hideSugg();
+  }
+  if (input && sugg) {
+    input.addEventListener('input', renderSugg);
+    input.addEventListener('focus', renderSugg);
+    input.addEventListener('blur', function(){ setTimeout(hideSugg, 180); });
+    input.addEventListener('keydown', function(e){ if (e.key === 'Escape') hideSugg(); });
   }
 })();
 </script>
