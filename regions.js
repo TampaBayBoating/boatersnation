@@ -57,7 +57,8 @@ var BN_REGIONS = [
     slug: "lake-country",
     name: "Lake Country",
     blurb: "The big inland lakes — Lake of the Ozarks, Table Rock, Lake Lanier and Lake Travis.",
-    status: "building",
+    status: "live",
+    page: "region-lake-country.html",
     zipPrefixes: ["300", "305", "650", "654", "656", "657", "786", "787"]
   },
   {
