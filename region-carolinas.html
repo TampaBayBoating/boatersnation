@@ -507,6 +507,14 @@ main{display:block}
 .tfwrap .day-btn .db-num{display:block;font-weight:800;font-size:1.15rem;line-height:1.25;margin-top:2px}
 .tfwrap .day-btn.active{background:#B31942;border-color:#B31942;color:#fff}
 .tfwrap .day-btn.active .db-dow{background:rgba(10,37,64,.25);color:#fff}
+.tfwrap .day-btn .db-ico{display:block;width:32px;height:32px;margin:3px auto 1px;border-radius:6px}
+.tfwrap .day-btn .pop{display:block;font-size:.62rem;font-weight:700;color:#7dd3fc}
+.tfwrap .day-btn .pop.none{color:#5b7186}
+.tfwrap .day-btn .db-hi{display:block;font-weight:800;font-size:1rem;line-height:1.15;margin-top:2px}
+.tfwrap .day-btn .db-lo{display:block;font-size:.78rem;color:#9db4c6;line-height:1.1}
+.tfwrap .day-btn .db-night{display:flex;align-items:center;justify-content:center;gap:2px;margin-top:5px;padding-top:5px;border-top:1px solid #33536e}
+.tfwrap .day-btn .db-night .db-ico-s{width:18px;height:18px;border-radius:4px}
+.tfwrap .day-btn .db-night .pop{display:inline;font-size:.58rem}
 .tfwrap #week-detail{color:#e8f1f8;background:rgba(255,255,255,.04);border:1px solid #24405a;border-radius:10px;padding:10px 12px;margin-top:6px}
 .tfwrap #week-detail:empty{display:none}
 .tfwrap .week-part{padding:8px 0;border-bottom:1px solid rgba(140,170,190,.25)}
@@ -1152,18 +1160,23 @@ function tfWaveWindow(marine, dateStr, isDay){
   }
   return max === null ? null : max * 3.28084;
 }
+function tfIcon(code, isDay){
+  var map = {0:'skc',1:'few',2:'sct',3:'ovc',45:'fog',48:'fog',51:'rain_showers',53:'rain_showers',55:'rain_showers',56:'fzra',57:'fzra',61:'rain',63:'rain',65:'rain',66:'fzra',67:'fzra',71:'snow',73:'snow',75:'snow',77:'snow',80:'rain_showers',81:'rain_showers',82:'rain_showers',85:'snow',86:'snow',95:'tsra',96:'tsra',99:'tsra'};
+  var s = map[code];
+  return s ? 'https://api.weather.gov/icons/land/' + (isDay ? 'day' : 'night') + '/' + s + '?size=medium' : '';
+}
 function tfSynthPeriods(fc){
   var D = fc.daily, out = [];
   for (var i = 0; i < D.time.length; i++){
     var dateStr = D.time[i];
     var dw = tfWindow(fc, dateStr, true), nw = tfWindow(fc, dateStr, false);
     var dname = i === 0 ? 'Today' : new Date(dateStr + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long' });
-    out.push({ name: dname, isDaytime: true, startTime: dateStr + 'T06:00:00',
+    out.push({ name: dname, isDaytime: true, startTime: dateStr + 'T06:00:00', icon: tfIcon(D.weather_code[i], true),
       temperature: Math.round(D.temperature_2m_max[i]), temperatureUnit: 'F',
       windSpeed: Math.round(dw.maxMph) + ' mph', windDirection: tfCompass(dw.dirDeg),
       probabilityOfPrecipitation: { value: D.precipitation_probability_max[i] || 0 },
       shortForecast: tfWxText(D.weather_code[i]), detailedForecast: tfDayText(fc, i, dw, true) });
-    out.push({ name: i === 0 ? 'Tonight' : dname + ' Night', isDaytime: false, startTime: dateStr + 'T18:00:00',
+    out.push({ name: i === 0 ? 'Tonight' : dname + ' Night', isDaytime: false, startTime: dateStr + 'T18:00:00', icon: tfIcon(nw.code, false),
       temperature: Math.round(D.temperature_2m_min[i]), temperatureUnit: 'F',
       windSpeed: Math.round(nw.maxMph) + ' mph', windDirection: tfCompass(nw.dirDeg),
       probabilityOfPrecipitation: { value: nw.pop || 0 },
@@ -1381,6 +1394,29 @@ async function loadWeek(){
       const num = document.createElement("span"); num.className = "db-num";
       num.textContent = wd.date.getDate();
       btn.append(dow, num);
+      const dp = wd.day, np = wd.night, ip = dp || np;
+      const ico = document.createElement("img"); ico.className = "db-ico";
+      if(ip && ip.icon){ ico.src = ip.icon; ico.alt = ip.shortForecast || ""; } else { ico.style.display = "none"; }
+      const pop = document.createElement("span"); pop.className = "pop";
+      const pv = dp && dp.probabilityOfPrecipitation ? dp.probabilityOfPrecipitation.value : null;
+      pop.textContent = pv == null ? "\u{1F4A7}\u2014" : "\u{1F4A7}" + pv + "%";
+      if(pv == null) pop.classList.add("none");
+      const hi = document.createElement("span"); hi.className = "db-hi";
+      hi.textContent = dp && dp.temperature != null ? dp.temperature + "\u00B0" : "\u2014";
+      const lo = document.createElement("span"); lo.className = "db-lo";
+      lo.textContent = np && np.temperature != null ? np.temperature + "\u00B0" : "\u2014";
+      btn.append(ico, pop, hi, lo);
+      if(np){
+        const nrow = document.createElement("span"); nrow.className = "db-night";
+        const nico = document.createElement("img"); nico.className = "db-ico-s";
+        if(np.icon){ nico.src = np.icon; nico.alt = np.shortForecast || ""; } else { nico.style.display = "none"; }
+        const npop = document.createElement("span"); npop.className = "pop";
+        const nv = np.probabilityOfPrecipitation ? np.probabilityOfPrecipitation.value : null;
+        npop.textContent = nv == null ? "\u{1F4A7}\u2014" : "\u{1F4A7}" + nv + "%";
+        if(nv == null) npop.classList.add("none");
+        nrow.append(nico, npop);
+        btn.appendChild(nrow);
+      }
       strip.appendChild(btn);
     });
     let wstamp = document.getElementById("week-stamp");
