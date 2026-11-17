@@ -1156,6 +1156,7 @@ function bnZip(ev){
     return false;
   }
   if (/^\d+$/.test(q)) { out.innerHTML = 'That looks like part of a ZIP — type all 5 digits, or a place name.'; return false; }
+  if (window.bnWaterSearch && window.bnWaterSearch(q)) return false;
   out.innerHTML = 'Finding ' + q.replace(/</g, '&lt;') + '…';
   fetch('https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=us&addressdetails=1&q=' + encodeURIComponent(q), { headers: { 'Accept': 'application/json' } })
     .then(function(r){ return r.json(); })
@@ -1989,6 +1990,7 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
 </script>
 
 <script src="bn-water-data.js"></script>
+<script src="bn-water-index.js"></script>
 <script>
 /* Water-level routing (PREVIEW, Nov 5 2026): when the finder resolves a
    named water or a ZIP, the stack stops resolving to the REGION and
@@ -2095,6 +2097,128 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
       return ret;
     };
   }
+})();
+</script>
+<script>
+/* Water-name search (Nov 16, 2026 — David's order): typing a water's name
+   takes the visitor DIRECTLY to that water. The match runs against the
+   site's own water index — BN_WATERS (New England's registry, shipped in
+   bn-water-data.js) plus BN_WATER_INDEX (every other live zone, derived
+   from the live pages' own pins/census) — BEFORE any geocoding. One
+   confident match routes straight to the water on its region page
+   (?bnw= pick + #bn-water, the transport the region pages already read);
+   several matches offer a chooser; no match falls through to the
+   existing place/ZIP behavior, untouched. A bare name with no water
+   generic (lake/river/bay/…) only routes when it is one unique,
+   distinctive match (core >= 6 chars) — so plain city names like
+   "Tampa" keep their existing city routing. */
+(function(){
+  var GENS = ['lake','pond','river','reservoir','bay','harbor','brook','stream','creek','cove','sound','flowage','inlet','lagoon','slough','channel','marsh','run','fork'];
+  var GENSX = GENS.concat(['lakes','ponds','rivers']);
+  function norm(s){ return String(s || '').toLowerCase().replace(/&/g, ' and ').replace(/[’']/g, '').replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim().replace(/saint /g, 'st '); }
+  /* core() and genOf() are literal ports of the index builder's core() and
+     canon() (database/water-search-build/build_index.py) — the shipped
+     index keys (k/g in bn-water-index.js) come from those exact functions,
+     and BN_WATERS keys are computed here with the same code, so query keys
+     and entry keys can never drift apart. */
+  function coreOf(name){
+    var x = norm(name), i, g;
+    for (i = 0; i < GENS.length; i++) { g = GENS[i];
+      if (x.slice(0, g.length + 1) === g + ' ') { x = x.slice(g.length + 1); break; } }
+    var changed = true;
+    while (changed) { changed = false;
+      for (i = 0; i < GENSX.length; i++) { g = GENSX[i];
+        if (x.slice(-(g.length + 1)) === ' ' + g) { x = x.slice(0, -(g.length + 1)).trim(); changed = true; } } }
+    return x.trim();
+  }
+  function genOf(name){
+    var x = norm(name), i, g;
+    for (i = 0; i < GENSX.length; i++) { g = GENSX[i];
+      if (x.slice(-(g.length + 1)) === ' ' + g || x === g) return g.replace(/s$/, '');
+      if (x.slice(0, g.length + 1) === g + ' ') return g; }
+    return '';
+  }
+  function parts(name){ return { core: coreOf(name), gen: genOf(name) }; }
+  var pool = null;
+  function getPool(){
+    if (pool) return pool;
+    pool = [];
+    if (typeof BN_WATERS !== 'undefined') BN_WATERS.forEach(function(w){
+      var p = parts(w.n);
+      pool.push({ n: w.n, s: w.s, r: 'new-england', la: w.la, lo: w.lo, c: w.c || '', k: p.core, g: p.gen, d: '' });
+    });
+    if (typeof BN_WATER_INDEX !== 'undefined') BN_WATER_INDEX.forEach(function(w){ pool.push(w); });
+    return pool;
+  }
+  function bnWaterMatch(q){
+    var qp = parts(q);
+    if (!qp.core || qp.core.length < 2) return { list: [], qp: qp };
+    var P = getPool();
+    function genOK(e){ return !qp.gen || !e.g || qp.gen === e.g; }
+    var exact = P.filter(function(e){ return e.k === qp.core && genOK(e); });
+    if (exact.length) return { list: exact, qp: qp, tier: 'exact' };
+    var pre = P.filter(function(e){ return e.k && qp.core.length >= 4 && (e.k.indexOf(qp.core) === 0 || qp.core.indexOf(e.k) === 0) && genOK(e); });
+    return { list: pre, qp: qp, tier: 'prefix' };
+  }
+  window.bnWaterMatch = bnWaterMatch;
+  function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function regionOf(slug){ return (typeof bnRegionBySlug === 'function') ? bnRegionBySlug(slug) : null; }
+  function destFor(e){
+    var r = regionOf(e.r);
+    var page = (r && r.page) || ('region.html?r=' + e.r);
+    var pick = { kind: 'water', region: e.r, name: e.n, state: e.s || '', lat: e.la, lon: e.lo,
+      cls: e.c || '', ctx: e.c === 'coastal' ? 'marine' : ((e.c === 'lake' || e.c === 'river') ? 'freshwater' : ''), nearest: e.n, dist: 0 };
+    return { href: page + '?bnw=' + encodeURIComponent(JSON.stringify(pick)) + '#bn-water', pick: pick, region: r };
+  }
+  function labelFor(e){
+    var r = regionOf(e.r);
+    var bits = [];
+    if (e.d) bits.push(e.d);
+    else if (e.s) bits.push(e.s);
+    if (r) bits.push(r.name);
+    return bits.join(' · ');
+  }
+  window.bnWaterSearch = function(q){
+    var m = bnWaterMatch(q);
+    var list = m.list;
+    if (!list.length) return false;
+    /* Gate the bare-name case: no generic in the query routes only on a
+       single distinctive exact match (protects plain city routing). */
+    if (!m.qp.gen) {
+      if (!(m.tier === 'exact' && list.length === 1 && m.qp.core.length >= 6)) return false;
+    }
+    var out = document.getElementById('bn-zip-out');
+    if (!out) return false;
+    function prime(e){
+      window.__bnNear = e.la + ',' + e.lo;
+      window.__bnNearLabel = e.n;
+      if (window.bnWxUse) bnWxUse(e.la, e.lo, e.n);
+      if (e.r === 'new-england' && typeof window.bnWaterRoute === 'function') window.bnWaterRoute(destFor(e).pick);
+      if (window.bnStackChoose) window.bnStackChoose(e.r);
+    }
+    if (list.length === 1) {
+      var e = list[0], d = destFor(e);
+      prime(e);
+      out.innerHTML = '<span style="color:#9db4c6">Found: ' + esc(e.n) + '</span><br>'
+        + '<b style="color:#4ade80">' + esc(d.region ? d.region.name : e.r) + ' is LIVE.</b><br>'
+        + 'Straight to your water — the map opens centered on ' + esc(e.n) + ', and everything on its page is scoped to that spot.'
+        + '<br><a class="btn" href="' + d.href + '">Open ' + esc(e.n) + ' →</a>';
+      return true;
+    }
+    list.sort(function(a, b){ return (a.n + a.d + a.s) < (b.n + b.d + b.s) ? -1 : 1; });
+    var shown = list.slice(0, 8);
+    var html = '<span style="color:#9db4c6">More than one water matches “' + esc(q) + '” — pick yours:</span><br>';
+    shown.forEach(function(e){
+      var d = destFor(e);
+      html += '<a class="btn" style="margin:4px 6px 0 0" href="' + d.href + '">' + esc(e.n) + ' — ' + esc(labelFor(e)) + '</a>';
+    });
+    if (list.length > shown.length) html += '<br><span style="color:#9db4c6">…and ' + (list.length - shown.length) + ' more — add the state or county to narrow it down.</span>';
+    out.innerHTML = html;
+    /* Stack follows the first candidate's region for context (same lift
+       behavior as a region-level finder result). */
+    if (window.bnStackChoose) window.bnStackChoose(shown[0].r);
+    return true;
+  };
 })();
 </script>
 
@@ -2238,6 +2362,19 @@ document.addEventListener('click',function(e){ var p=document.getElementById('tr
               var wr = (typeof bnRegionForPoint === 'function') ? bnRegionForPoint(w.la, w.lo) : null;
               row('<span class="sg-ic">&#127754;</span><span>' + esc(w.n) + ' <span class="sg-sub">' + esc(w.s) + '</span></span>' + tagFor(wr), function(){ input.value = w.n; runFinder(); });
             })(w);
+            made++;
+          }
+        }
+      }
+      if (cq.length >= 2 && typeof BN_WATER_INDEX !== 'undefined') {
+        for (var i2 = 0; i2 < BN_WATER_INDEX.length && made < 7; i2++) {
+          var w2 = BN_WATER_INDEX[i2];
+          if (w2.k.indexOf(cq) === 0 || norm(w2.n).indexOf(norm(q)) >= 0) {
+            (function(w){
+              var wr = (typeof bnRegionBySlug === 'function') ? bnRegionBySlug(w.r) : null;
+              var sub = w.d ? w.d : (w.s + (wr ? ' · ' + wr.name : ''));
+              row('<span class="sg-ic">&#127754;</span><span>' + esc(w.n) + ' <span class="sg-sub">' + esc(sub) + '</span></span>' + tagFor(wr), function(){ input.value = w.n; runFinder(); });
+            })(w2);
             made++;
           }
         }

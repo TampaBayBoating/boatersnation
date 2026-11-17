@@ -2066,4 +2066,43 @@ function renderUpcoming(){
 }
 
 </script>
+
+<script>
+/* Water landing (Nov 16, 2026): the homepage water-name search routes
+   here with a ?bnw= pick — open the map view, center the map on the
+   picked water, mark it, and name it in a banner. No pick, no-op. */
+(function(){
+  var p = null;
+  try { var q = /[?&]bnw=([^&]+)/.exec(location.search || ''); if (q) { var j = JSON.parse(decodeURIComponent(q[1])); if (j && j.lat != null) p = j; } } catch (e) {}
+  if (!p) return;
+  function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function banner(){
+    if (document.getElementById('bnw-banner')) return;
+    var mapEl = document.getElementById('bay-leaflet-map') || document.getElementById('map');
+    if (!mapEl || !mapEl.parentNode) return;
+    var b = document.createElement('div');
+    b.id = 'bnw-banner';
+    b.style.cssText = 'background:#0a2540;color:#fff;border-left:5px solid #B31942;padding:10px 14px;margin:0 0 10px;border-radius:8px;font-size:.98rem';
+    b.innerHTML = '📍 <b>' + esc(p.name) + '</b> — the water you searched for. The map is centered on it; everything on this page is its area.';
+    mapEl.parentNode.insertBefore(b, mapEl);
+  }
+  function go(){
+    if (typeof show === 'function') { try { show(0); } catch (e) {} }
+    banner();
+    var tries = 0;
+    var iv = setInterval(function(){
+      tries++;
+      var m = window.tbbMap || window.map;
+      if (m && typeof m.setView === 'function' && typeof L !== 'undefined') {
+        clearInterval(iv);
+        try { m.setView([p.lat, p.lon], 11); L.marker([p.lat, p.lon]).addTo(m).bindPopup('<b>' + esc(p.name) + '</b><br>The water you picked').openPopup(); } catch (e) {}
+        banner();
+        var el = document.getElementById('bnw-banner');
+        if (el) el.scrollIntoView();
+      } else if (tries > 40) clearInterval(iv);
+    }, 250);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
+})();
+</script>
 </body></html>
