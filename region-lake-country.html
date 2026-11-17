@@ -80,7 +80,7 @@ function draw(cat){
   return list.length;
 }
 document.querySelectorAll('.map-filter').forEach(function(b){ b.addEventListener('click', function(){ document.querySelectorAll('.map-filter').forEach(function(x){x.classList.remove('active');}); b.classList.add('active'); draw(b.getAttribute('data-cat')); }); });
-if(typeof L!=='undefined'){ map = L.map('map').setView([34.2,-91.3],5); L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors'}).addTo(map); }
+if(typeof L!=='undefined'){ map = L.map('map').setView([34.2,-91.3],5); var streetBase = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors'}).addTo(map); var satBase = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:18, attribution:'Esri, Maxar, Earthstar Geographics'}); L.control.layers({'Street map': streetBase, 'Satellite': satBase}, {}, {collapsed: true}).addTo(map); }
 draw('all');
 </script>
 </body></html>
