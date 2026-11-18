@@ -1221,7 +1221,7 @@ async function loadWeek(){
  if(ip && ip.icon){ ico.src = ip.icon; ico.alt = ip.shortForecast || ""; } else { ico.style.display = "none"; }
  const pop = document.createElement("span"); pop.className = "pop";
  const pv = dp && dp.probabilityOfPrecipitation ? dp.probabilityOfPrecipitation.value : null;
- pop.textContent = pv == null ? "\u{1F4A7}\u2014" : "\u{1F4A7}" + pv + "%";
+ pop.textContent = pv == null ? "\u2014" : "" + pv + "%";
  if(pv == null) pop.classList.add("none");
  const hi = document.createElement("span"); hi.className = "db-hi";
  hi.textContent = dp && dp.temperature != null ? dp.temperature + "\u00B0" : "\u2014";
@@ -1234,7 +1234,7 @@ async function loadWeek(){
  if(np.icon){ nico.src = np.icon; nico.alt = np.shortForecast || ""; } else { nico.style.display = "none"; }
  const npop = document.createElement("span"); npop.className = "pop";
  const nv = np.probabilityOfPrecipitation ? np.probabilityOfPrecipitation.value : null;
- npop.textContent = nv == null ? "\u{1F4A7}\u2014" : "\u{1F4A7}" + nv + "%";
+ npop.textContent = nv == null ? "\u2014" : "" + nv + "%";
  if(nv == null) npop.classList.add("none");
  nrow.append(nico, npop);
  btn.appendChild(nrow);

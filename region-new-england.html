@@ -799,7 +799,7 @@ main{display:block}
 
 <section class="panel notranslate" id="bn-emergency" translate="no"><div class="bnport"><h2>Emergency &mdash; Trouble on the water? Start here.</h2><div class="card" style="border:2px solid #b3001b"><p><strong>Life-threatening emergency:</strong><a href="tel:911">Call 911</a></p><p><strong>Distress on the water:</strong> VHF <strong>Channel 16</strong> &mdash; say &ldquo;Mayday&rdquo; three times, then your boat name, your position, what&rsquo;s wrong, and how many people are aboard. The Coast Guard monitors Channel 16 around the clock.</p><p><strong>U.S. Coast Guard sectors for this coast</strong> &mdash; command centers, staffed around the clock:</p><p><strong>Maine &amp; the New Hampshire coast &mdash; Sector Northern New England:</strong><a href="tel:8334492407">(833) 449-2407</a></p><p><strong>Massachusetts, New Hampshire border to Plymouth &mdash; Sector Boston:</strong><a href="tel:8334490539">833-449-0539</a></p><p><strong>Cape Cod, the islands &amp; Rhode Island &mdash; Sector Southeastern New England:</strong><a href="tel:8668199128">(866) 819-9128</a></p><p><strong>Connecticut &amp; Long Island Sound &mdash; Sector Long Island Sound:</strong><a href="tel:18662998031">1-866-299-8031</a></p><p><strong>Maine Marine Patrol:</strong> for marine emergencies during non-business hours, Maine&rsquo;s regional dispatch centers take the call &mdash; <a href="tel:18004524664">1-800-452-4664</a> (New Hampshire border to the Penobscot River) &middot; <a href="tel:18004327381">1-800-432-7381</a> (Penobscot River to the Canadian border).</p><p><strong>New Hampshire Marine Patrol:</strong><a href="tel:6032932037">(603) 293-2037</a> &middot; toll free <a href="tel:8776429700">(877) 642-9700</a></p><p><strong>Massachusetts Environmental Police</strong> &mdash; 24/7 statewide dispatch: <a href="tel:18006328075">1-800-632-8075</a></p><p><strong>Rhode Island DEM Division of Law Enforcement</strong> &mdash; 24/7 dispatch: <a href="tel:4012223070">401-222-3070</a></p><p><strong>Connecticut DEEP Environmental Conservation Police</strong> &mdash; 24-hour emergency dispatch: <a href="tel:8604243333">(860) 424-3333</a></p><p><strong>Vermont:</strong> boating laws are enforced by the Vermont State Police Marine Division, and Sector Northern New England covers Vermont&rsquo;s waters &mdash; in an emergency, call 911 or the sector above.</p><p><strong>Sheriffs &amp; harbor patrols:</strong> county sheriffs and local harbor patrols work these waters alongside the Coast Guard &mdash; reach them through 911.</p><p><strong>Poison Control:</strong><a href="tel:8002221222">800-222-1222</a></p><p><strong>Fuel or oil spill:</strong> National Response Center <a href="tel:8004248802">800-424-8802</a></p><p><strong>VHF quick list:</strong><strong>16</strong> distress &amp; hailing &middot; <strong>9</strong> hailing &amp; bridge tenders &middot; <strong>22A</strong> Coast Guard working channel &middot; <strong>13</strong> bridge-to-bridge</p><p>Sources: U.S. Coast Guard sector pages and Northeast District releases (atlanticarea.uscg.mil / news.uscg.mil); Maine DMR Marine Patrol, NH State Police Marine Patrol, Massachusetts Environmental Police, RI DEM, CT DEEP official pages. Verified Nov 6, 2026.</p></div></div></section>
 </main>
- <p class="fine">&#127482;&#127480; <b>Boaters Nation</b> &mdash; Everything boating in America, free for boaters.</p>
+ <p class="fine"> <b>Boaters Nation</b> &mdash; Everything boating in America, free for boaters.</p>
 </div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
@@ -1013,7 +1013,7 @@ window.tbbMapInit();
  var m = {0:'Clear',1:'Mainly clear',2:'Partly cloudy',3:'Overcast',45:'Fog',48:'Fog',51:'Light drizzle',53:'Drizzle',55:'Drizzle',56:'Freezing drizzle',57:'Freezing drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',66:'Freezing rain',67:'Freezing rain',71:'Light snow',73:'Snow',75:'Heavy snow',77:'Snow grains',80:'Light showers',81:'Showers',82:'Heavy showers',85:'Snow showers',86:'Snow showers',95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'};
  return m[c] || 'Weather';
  }
- window.bnWxUse = function(lat, lon, label){ savePos(lat, lon); loadWeather(lat, lon, label ? ('\u{1F4CD} ' + label) : null, label ? 'From your search \u2014 tap \u21BB for your device location' : null); };
+ window.bnWxUse = function(lat, lon, label){ savePos(lat, lon); loadWeather(lat, lon, label ? (' ' + label) : null, label ? 'From your search \u2014 tap \u21BB for your device location' : null); };
  function savePos(lat, lon){
  try { localStorage.setItem('bnWxPos', JSON.stringify({lat:lat, lon:lon, t:Date.now()})); } catch(e){}
  }
@@ -1642,7 +1642,7 @@ async function loadWeek(){
  if(ip && ip.icon){ ico.src = ip.icon; ico.alt = ip.shortForecast || ""; } else { ico.style.display = "none"; }
  const pop = document.createElement("span"); pop.className = "pop";
  const pv = dp && dp.probabilityOfPrecipitation ? dp.probabilityOfPrecipitation.value : null;
- pop.textContent = pv == null ? "\u{1F4A7}\u2014" : "\u{1F4A7}" + pv + "%";
+ pop.textContent = pv == null ? "\u2014" : "" + pv + "%";
  if(pv == null) pop.classList.add("none");
  const hi = document.createElement("span"); hi.className = "db-hi";
  hi.textContent = dp && dp.temperature != null ? dp.temperature + "\u00B0" : "\u2014";
@@ -1655,7 +1655,7 @@ async function loadWeek(){
  if(np.icon){ nico.src = np.icon; nico.alt = np.shortForecast || ""; } else { nico.style.display = "none"; }
  const npop = document.createElement("span"); npop.className = "pop";
  const nv = np.probabilityOfPrecipitation ? np.probabilityOfPrecipitation.value : null;
- npop.textContent = nv == null ? "\u{1F4A7}\u2014" : "\u{1F4A7}" + nv + "%";
+ npop.textContent = nv == null ? "\u2014" : "" + nv + "%";
  if(nv == null) npop.classList.add("none");
  nrow.append(nico, npop);
  btn.appendChild(nrow);

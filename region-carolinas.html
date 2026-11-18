@@ -769,7 +769,7 @@ main{display:block}
 </div></section>
 <section class="panel notranslate" id="bn-emergency" translate="no"><div class="bnport"><h2>Emergency &mdash; Trouble on the water? Start here.</h2><div class="card" style="border:2px solid #b3001b"><p><strong>Life-threatening emergency:</strong><a href="tel:911">Call 911</a></p><p><strong>Distress on the water:</strong> VHF <strong>Channel 16</strong> &mdash; say &ldquo;Mayday&rdquo; three times, then your boat name, your position, what&rsquo;s wrong, and how many people are aboard. The Coast Guard monitors Channel 16 around the clock.</p><p><strong>U.S. Coast Guard sectors for this coast</strong> &mdash; command centers, staffed around the clock:</p><p><strong>North Carolina &mdash; Sector North Carolina</strong> command center: <a href="tel:8337328628">(833) 732-8628</a></p><p><strong>South Carolina &mdash; Sector Charleston</strong> command center (search &amp; rescue): <a href="tel:8334531261">833-453-1261</a></p><p><strong>North Carolina Wildlife Resources Commission</strong> &mdash; report violations or after-hours emergencies to Wildlife Enforcement: <a href="tel:8006627137">800-662-7137</a></p><p><strong>South Carolina DNR</strong> &mdash; a 24-hour toll-free line for emergencies and conservation violations (Operation Game Thief): <a href="tel:18009225431">1-800-922-5431</a></p><p><strong>County sheriff marine patrols:</strong> sheriffs along both Carolina coasts run marine units on the sounds, rivers and ocean &mdash; in an emergency, call 911 and the nearest marine unit is dispatched.</p><p><strong>Poison Control:</strong><a href="tel:8002221222">800-222-1222</a></p><p><strong>Fuel or oil spill:</strong> National Response Center <a href="tel:8004248802">800-424-8802</a></p><p><strong>VHF quick list:</strong><strong>16</strong> distress &amp; hailing &middot; <strong>9</strong> hailing &amp; bridge tenders &middot; <strong>22A</strong> Coast Guard working channel &middot; <strong>13</strong> bridge-to-bridge</p><p>Sources: U.S. Coast Guard sector pages (atlanticarea.uscg.mil) and the East District Local Notice to Mariners, Feb 25, 2026 (navcen.uscg.gov); NC Wildlife Resources Commission and SC DNR official pages. Verified Nov 6, 2026.</p></div></div></section>
 </main>
-<p class="fine">&#127482;&#127480; <b>Boaters Nation</b> &mdash; Everything boating in America, free for boaters.</p>
+<p class="fine"> <b>Boaters Nation</b> &mdash; Everything boating in America, free for boaters.</p>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 function show(i){
@@ -1400,7 +1400,7 @@ async function loadWeek(){
  if(ip && ip.icon){ ico.src = ip.icon; ico.alt = ip.shortForecast || ""; } else { ico.style.display = "none"; }
  const pop = document.createElement("span"); pop.className = "pop";
  const pv = dp && dp.probabilityOfPrecipitation ? dp.probabilityOfPrecipitation.value : null;
- pop.textContent = pv == null ? "\u{1F4A7}\u2014" : "\u{1F4A7}" + pv + "%";
+ pop.textContent = pv == null ? "\u2014" : "" + pv + "%";
  if(pv == null) pop.classList.add("none");
  const hi = document.createElement("span"); hi.className = "db-hi";
  hi.textContent = dp && dp.temperature != null ? dp.temperature + "\u00B0" : "\u2014";
@@ -1413,7 +1413,7 @@ async function loadWeek(){
  if(np.icon){ nico.src = np.icon; nico.alt = np.shortForecast || ""; } else { nico.style.display = "none"; }
  const npop = document.createElement("span"); npop.className = "pop";
  const nv = np.probabilityOfPrecipitation ? np.probabilityOfPrecipitation.value : null;
- npop.textContent = nv == null ? "\u{1F4A7}\u2014" : "\u{1F4A7}" + nv + "%";
+ npop.textContent = nv == null ? "\u2014" : "" + nv + "%";
  if(nv == null) npop.classList.add("none");
  nrow.append(nico, npop);
  btn.appendChild(nrow);
