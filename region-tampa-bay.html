@@ -4,7 +4,49 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
-<style>:root{color-scheme:light}</style>
+<style>:root{color-scheme:light}.tc-tool{background:linear-gradient(120deg,#0a2540,#103a5f);color:#fff;border-radius:16px;padding:18px 14px 20px;margin-bottom:26px}
+.tc-tool .tc-step{display:flex;align-items:center;gap:9px;margin:18px 0 8px}
+.tc-tool .tc-step:first-child{margin-top:0}
+.tc-num{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:#E63946;color:#0a2540;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.95rem}
+.tc-tool .tc-step h3{font-size:1.08rem;color:#fff}
+.tc-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:16px}
+.tc-tool label{display:block;font-size:.78rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8fd0f0;margin:12px 0 5px}
+.tc-tool label:first-child{margin-top:0}
+.tc-tool select,.tc-tool input[type=number]{width:100%;padding:11px 12px;border-radius:10px;border:1.5px solid rgba(185,210,228,.45);background:#0E2A3F;color:#fff;font-size:1rem;font-family:inherit}
+.tc-hint{font-size:.8rem;color:#a9c6c5;margin-top:4px}
+.tc-tool table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.88rem}
+.tc-tool th{font-size:.72rem;letter-spacing:1.2px;text-transform:uppercase;color:#8fb0c9;text-align:right;padding:5px 6px;border-bottom:1px solid rgba(185,210,228,.3)}
+.tc-tool th:first-child{text-align:left}
+.tc-tool td{padding:7px 4px;text-align:right;border-bottom:1px solid rgba(185,210,228,.12);white-space:nowrap;color:#fff}
+.tc-tool td:first-child{text-align:left;font-weight:700}
+.tc-tool tbody tr{cursor:pointer}
+.tc-tool tbody tr.sel{background:rgba(255,183,3,.18)}
+.tc-tool tbody tr.sel td:first-child{color:#E63946}
+.tc-best{font-size:.68rem;background:#1e9e6a;color:#fff;border-radius:99px;padding:1px 7px;margin-left:6px;vertical-align:middle}
+.tc-cruiseline{margin-top:10px;font-size:.93rem;color:#dcebf5}
+.tc-cruiseline b{color:#E63946}
+.tc-tabs{display:flex;gap:6px;margin-bottom:12px}
+.tc-tab{flex:1;padding:9px 4px;border-radius:10px;border:1px solid rgba(185,210,228,.45);background:transparent;color:#dcebf5;font-weight:700;font-size:.86rem;cursor:pointer;font-family:inherit}
+.tc-tab.on{background:#8fd0f0;color:#0a2540;border-color:#8fd0f0}
+.tc-panel[hidden]{display:none}
+#tcMap{height:320px;border-radius:12px;border:1px solid rgba(255,255,255,.16);background:#0d2f4d}
+.tc-mapbar{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
+.tc-mbtn{padding:8px 14px;border-radius:999px;border:1.5px solid rgba(185,210,228,.45);background:transparent;color:#dcebf5;font-weight:700;font-size:.85rem;cursor:pointer;font-family:inherit}
+.tc-mbtn.gold{background:#E63946;border-color:#E63946;color:#0a2540}
+.tc-result{background:#0E2A3F;border:2px solid #E63946;border-radius:14px;padding:16px}
+.tc-big{font-size:2rem;font-weight:800;line-height:1.1;color:#fff}
+.tc-big small{font-size:.95rem;font-weight:600;color:#b9d2e4}
+.tc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin-top:12px;font-size:.95rem}
+.tc-grid span{color:#b9d2e4}
+.tc-grid b{color:#fff}
+.tc-math{font-size:.82rem;color:#8fb0c9;margin-top:12px;border-top:1px dashed rgba(185,210,228,.3);padding-top:10px}
+.tc-note{font-size:.83rem;color:#a9c6c5;text-align:center;margin-top:12px}
+.tc-trackbig{font-size:2.4rem;font-weight:800;text-align:center;color:#fff}
+.tc-tracksub{text-align:center;color:#b9d2e4;font-size:.9rem}
+#bn-tripcost label{display:block;font-weight:600;margin:12px 0 4px;color:#cfe3f5}
+#bn-tripcost select,#bn-tripcost input[type=number]{width:100%;padding:12px;border-radius:10px;background:#0d2f47;color:#fff;border:1px solid rgba(255,255,255,.28);font-size:1rem;box-sizing:border-box}
+#bn-tripcost .tc-card{background:#0a2540;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:16px;margin:12px 0}
+</style>
 <title>Tampa Bay Boating Guide | Boaters Nation</title>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/app-icon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/app-icon-16.png">
@@ -625,7 +667,7 @@ main{display:block}
   <h1 style="text-align:left">Tampa Bay, FL</h1>
   <p class="intro" style="text-align:left;margin:0 0 6px">Tampa, St. Pete, Clearwater, Bradenton and Sarasota &mdash; the bay where Boaters Nation started. <b>802 places, cross-checked one by one</b>: every card below was checked against a source that states it, and anything we couldn't prove stayed off. Spot a mistake? Every card has a report link &mdash; that's how this stays right.</p>
 <main>
-<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button><button class="tab" data-sec="bite" onclick="show(24)">Today's Bite</button><button class="tab" data-sec="calendar" onclick="show(25)">Calendar</button><button class="tab" data-sec="newb" onclick="show(26)">New to Boating</button><button class="tab" data-sec="emergency" onclick="show(27)">Emergency</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-filters" id="ramp-fee-filters" style="text-align:center; margin-bottom:10px; display:none">
+<div class="tabs bn-secnav" role="navigation" aria-label="Sections"><button class="tab on" data-sec="map" onclick="show(0)">Map</button><button class="tab" data-sec="tides" onclick="show(23)">Tides &amp; Forecast</button><button class="tab" data-sec="bite" onclick="show(24)">Today's Bite</button><button class="tab" data-sec="calendar" onclick="show(25)">Calendar</button><button class="tab" data-sec="newb" onclick="show(26)">New to Boating</button><button class="tab" data-sec="emergency" onclick="show(27)">Emergency</button><button class="tab" data-sec="tripcost" onclick="show(28)">Trip Cost</button></div><section class="panel on" id="p0"><div id="bay-leaflet-map" style="height:480px; border-radius:14px; border:1px solid var(--line); z-index:1"></div><div class="map-filters" id="ramp-fee-filters" style="text-align:center; margin-bottom:10px; display:none">
       <button class="map-filter" id="fee-btn-free" onclick="rampFeeFilter('free')">Free Launches</button>
       <button class="map-filter" id="fee-btn-paid" onclick="rampFeeFilter('paid')">Paid Launches</button>
     </div>
@@ -923,6 +965,161 @@ main{display:block}
 <div class="wrap"><div class="nb-note"><b class="t">Beginner mistakes that cost money</b><p style="color:#5b6b7c;font-size:.88rem;margin:6px 0 0">Running aground on a falling tide &middot; getting caught in an afternoon storm &middot; boating with no tow coverage &middot; buying the wrong boat before ever renting one.</p></div></div>
 </div></section>
 <section class="panel notranslate" id="bn-emergency" translate="no"><div class="bnport"><h2>Emergency &mdash; Trouble on the water? Start here.</h2><div class="card" style="border:2px solid #b3001b"><p><strong>Life-threatening emergency:</strong> <a href="tel:911">Call 911</a></p><p><strong>Distress on the water:</strong> VHF <strong>Channel 16</strong> &mdash; say &ldquo;Mayday&rdquo; three times, then your boat name, your position, what&rsquo;s wrong, and how many people are aboard. The Coast Guard monitors Channel 16 around the clock.</p><p><strong>U.S. Coast Guard &mdash; Sector St. Petersburg</strong>, 24-hour command center: <a href="tel:8668811392">866-881-1392</a>. The sector covers Florida&rsquo;s west coast, including all of Tampa Bay.</p><p><strong>Florida Fish &amp; Wildlife Conservation Commission (FWC)</strong> &mdash; boating accidents, dangerous boating and wildlife violations, 24 hours a day: <a href="tel:8884043922">888-404-3922</a> (or *FWC / #FWC from a cell phone).</p><p><strong>County sheriff marine patrols:</strong> the Hillsborough, Pinellas, Pasco, Hernando, Manatee and Sarasota county sheriffs all run marine units on these waters &mdash; in an emergency, call 911 and the nearest marine unit is dispatched.</p><p><strong>Poison Control:</strong> <a href="tel:8002221222">800-222-1222</a></p><p><strong>Fuel or oil spill:</strong> National Response Center <a href="tel:8004248802">800-424-8802</a></p><p><strong>VHF quick list:</strong> <strong>16</strong> distress &amp; hailing &middot; <strong>9</strong> hailing &amp; bridge tenders &middot; <strong>22A</strong> Coast Guard working channel &middot; <strong>13</strong> bridge-to-bridge</p><p>Sources: U.S. Coast Guard Sector St. Petersburg Command Center page and USCG news releases (atlanticarea.uscg.mil / news.uscg.mil); FWC Wildlife Alert page (myfwc.com). Verified Nov 6, 2026.</p></div></div></section>
+<div class="panel" id="bn-tripcost">
+<h2>Trip Cost Calculator</h2>
+<p>What will the run cost in fuel? Three steps: your boat's fuel economy, your distance, your fuel price. Route a trip from A to B and the no-wake miles are counted for you.</p>
+<div class="tc-step"><div class="tc-num">1</div><h3>Your boat&rsquo;s fuel economy</h3></div>
+  <div class="tc-card">
+    <div id="tcPickWrap">
+      <label for="tcSize">Choose the size of your boat</label>
+      <select id="tcSize">
+        <option value="17">17 ft</option>
+        <option value="20">20 ft</option>
+        <option value="21">21 ft</option>
+        <option value="22">22 ft</option>
+        <option value="23">23 ft</option>
+        <option value="24" selected>24 ft</option>
+        <option value="25">25 ft</option>
+        <option value="26">26 ft</option>
+        <option value="28">28 ft</option>
+        <option value="30">30 ft</option>
+        <option value="34">34 ft</option>
+        <option value="35">35 ft</option>
+      </select>
+      <label for="tcType">Choose the type of boat</label>
+      <select id="tcType">
+        <option value="cc" selected>Center console</option>
+        <option value="dc">Dual console</option>
+        <option value="bay">Bay boat</option>
+        <option value="flats">Flats skiff</option>
+        <option value="wa">Walkaround</option>
+        <option value="pontoon">Pontoon</option>
+        <option value="deck">Deck boat</option>
+        <option value="cruiser">Cruiser / express</option>
+      </select>
+      <label for="tcMotorType">Choose your motor</label>
+      <select id="tcMotorType">
+        <option value="ob" selected>Outboard</option>
+        <option value="ib">Inboard</option>
+        <option value="io">I/O (sterndrive)</option>
+      </select>
+      <label for="tcMotor">Motor size</label>
+      <select id="tcMotor"></select>
+      <div id="tcBrandWrap">
+        <label for="tcBrand">Motor brand</label>
+        <select id="tcBrand">
+          <option value="yamaha" selected>Yamaha</option>
+          <option value="mercury">Mercury</option>
+          <option value="suzuki">Suzuki</option>
+          <option value="honda">Honda</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <p class="tc-hint" id="tcPairNote"></p>
+    </div>
+    <button type="button" class="tc-mbtn" id="tcOwnBtn" onclick="tcToggleOwn()">Know your own numbers? Enter them instead</button>
+    <p class="tc-hint" id="tcAvgNote"><b>Averages, not exact:</b> the numbers in this calculator are averages for a boat like yours — not 100% accurate for your exact boat. Your real burn moves with load, wind, current and sea state.</p>
+    <div id="tcRpmWrap">
+      <table>
+        <thead><tr><th>RPM</th><th>Speed</th><th>Burn</th><th>Economy</th></tr></thead>
+        <tbody id="tcRpmBody"></tbody>
+      </table>
+      <p class="tc-hint" id="tcSrcHint"></p>
+    </div>
+    <div id="tcCustomWrap" style="display:none">
+      <label for="tcMyMph">Your cruise speed (mph)</label>
+      <input type="number" id="tcMyMph" value="25" min="1" step="0.5">
+      <label for="tcMyMpg">Your economy at cruise (mpg)</label>
+      <input type="number" id="tcMyMpg" value="2.5" min="0.1" step="0.1">
+    </div>
+    <p class="tc-cruiseline" id="tcCruiseLine"></p>
+  </div>
+
+  <div class="tc-step"><div class="tc-num">2</div><h3>Your distance</h3></div>
+  <div class="tc-tabs">
+    <button type="button" class="tc-tab" id="tcTab-trips" onclick="tcShowTab('trips')">Popular Trips</button>
+    <button type="button" class="tc-tab" id="tcTab-ab" onclick="tcShowTab('ab')">A to B</button>
+    <button type="button" class="tc-tab on" id="tcTab-measure" onclick="tcShowTab('measure')">Measure on Map</button>
+    <button type="button" class="tc-tab" id="tcTab-track" onclick="tcShowTab('track')">Track My Day</button>
+  </div>
+  <div class="tc-panel" id="tcPanel-ab" hidden>
+    <div class="tc-card">
+      <label for="tcFrom">From</label>
+      <select id="tcFrom"></select>
+      <label for="tcTo">To</label>
+      <select id="tcTo"></select>
+      <div class="tc-mapbar">
+        <button type="button" class="tc-mbtn gold" onclick="tcRouteAB()">Route it</button>
+        <button type="button" class="tc-mbtn" onclick="tcShowTab('measure')">See it on the map</button>
+      </div>
+      <p class="tc-hint" id="tcRouteSummary">Pick two places and hit Route it — the course follows the channels, and the no-wake stretches are counted for you. The short hop from the dock to the channel is local water: go by what's posted.</p>
+    </div>
+  </div>
+  <div class="tc-panel" id="tcPanel-trips" hidden>
+    <div class="tc-card">
+      <label for="tcRoute">Your trip</label>
+      <select id="tcRoute">
+        <option value="50.1" data-wake="4">Riverview Civic Center → 357 12th Ave, Indian Rocks Beach</option>
+        <option value="41.6" data-wake="3.5">Riverview Civic Center → Treasure Island</option>
+        <option value="18.1" data-wake="1">Apollo Beach → St. Pete Pier</option>
+        <option value="29.8" data-wake="2.5">Davis Islands → Clearwater Beach</option>
+        <option value="21.9" data-wake="0.5">Ruskin → Egmont Key</option>
+        <option value="29.6" data-wake="0.5">Alafia River Mouth → Anna Maria Island</option>
+      </select>
+      <p class="tc-hint">Distances measured along the channels — the way you actually drive the boat, not a straight line.</p>
+    </div>
+  </div>
+  <div class="tc-panel" id="tcPanel-measure">
+    <div class="tc-card">
+      <p style="font-size:.92rem">Tap the map to drop points along your course — out the river, down the channel, anywhere. The line measures itself as you go.</p>
+      <div id="tcMap" style="margin-top:10px"></div>
+      <div class="tc-mapbar">
+        <span>Course: <b id="tcMapMiles">0.0 mi</b></span>
+        <button type="button" class="tc-mbtn" onclick="tcUndoPt()">Undo point</button>
+        <button type="button" class="tc-mbtn" onclick="tcClearPts()">Clear</button>
+        <button type="button" class="tc-mbtn gold" onclick="tcUseMapMiles()">Use this distance ↓</button>
+      </div>
+    </div>
+  </div>
+  <div class="tc-panel" id="tcPanel-track" hidden>
+    <div class="tc-card">
+      <div class="tc-trackbig"><span id="tcTrackMiles">0.00</span> mi</div>
+      <p class="tc-tracksub" id="tcTrackState">Not tracking. Hit Start at the ramp and your phone logs the day — then send the miles to the calculator to see what the day cost.</p>
+      <div class="tc-mapbar" style="justify-content:center;margin-top:12px">
+        <button type="button" class="tc-mbtn gold" id="tcTrackBtn" onclick="tcToggleTrack()">Start tracking</button>
+        <button type="button" class="tc-mbtn" onclick="tcUseTrackMiles()">Use these miles ↓</button>
+      </div>
+      <p class="tc-hint" style="text-align:center">Your track stays on your phone — nothing is uploaded or shared. Tracking runs while this page is open; a locked screen can pause it.</p>
+    </div>
+  </div>
+  <div class="tc-card" style="margin-top:14px">
+    <label for="tcMiles">Trip miles (one way)</label>
+    <input type="number" id="tcMiles" value="50.1" min="0" step="0.1">
+    <label for="tcWakeMiles">No-wake / idle-speed miles</label>
+    <input type="number" id="tcWakeMiles" value="4" min="0" step="0.1">
+    <p class="tc-hint">Slow zones burn less fuel per mile but eat time. Listed trips come with an estimate — change it to match your run.</p>
+  </div>
+
+  <div class="tc-step"><div class="tc-num">3</div><h3>Your fuel price</h3></div>
+  <div class="tc-card">
+    <label for="tcPrice">Price per gallon ($)</label>
+    <input type="number" id="tcPrice" value="" min="0" step="0.01">
+    <p class="tc-hint" id="tcPriceHint">Enter what you actually pay at the pump — marina fuel usually runs more than street gas.</p>
+  </div>
+
+  <div class="tc-step"><div class="tc-num">✓</div><h3>What the trip costs</h3></div>
+  <div class="tc-result">
+    <div class="tc-big"><span id="tcCostRT">$137</span> <small>round trip</small></div>
+    <div class="tc-grid">
+      <span>Distance one way</span><b id="tcDistOut">50.1 mi</b>
+      <span>Fuel one way</span><b id="tcGalOW">17.9 gal</b>
+      <span>Cost one way</span><b id="tcCostOW">$69</b>
+      <span>Fuel round trip</span><b id="tcGalRT">35.8 gal</b>
+    </div>
+    <p class="tc-math" id="tcMath"></p>
+  </div>
+  <p class="tc-note">An estimate, not a promise — load, wind, current and throttle all move your real burn. When in doubt, plan on the high side and carry reserve.</p>
+</div>
 </main>
   <p class="fine">&#127482;&#127480; <b>Boaters Nation</b> &mdash; Everything boating in America, free for boaters.</p>
 </div>
@@ -2642,6 +2839,7 @@ function fishGo(side,slug){fwDoor(side);var chartBtn=document.querySelectorAll('
     if (i === 25) { goSection('calendar', 'bn-calendar'); return; }
     if (i === 26) { goSection('newb', 'bn-newb'); return; }
     if (i === 27) { goSection('emergency', 'bn-emergency'); return; }
+    if (i === 28) { goSection('tripcost', 'bn-tripcost'); if (window.tcInit) tcInit(); return; }
   };
   if (window.mapFilter) {
     var origFilter = window.mapFilter;
@@ -2897,5 +3095,263 @@ async function tfLoadWaves(){
 }
 </script>
 
+<script>
+/* trip-calc-nov18 */
+(function(){
+  var BOATS = {
+    cobia240cc: {src:"factory", rows:[[1000,5.5,1.3],[1500,7.4,2.3],[2000,8.3,3.6],[2500,11.4,5.5],[3000,15.0,6.7],[3500,27.3,9.1],[4000,33.3,12.2],[4500,37.9,15.4],[5000,42.7,20.3],[5500,46.4,24.7],[5850,49.3,26.2]]},
+    cobia240dc: {src:"factory", rows:[[1000,4.8,1.2],[1500,6.9,2.0],[2000,8.5,3.1],[2500,9.5,5.1],[3000,11.7,6.5],[3500,16.3,8.2],[4000,29.2,11.2],[4500,33.2,14.1],[5000,37.7,17.2],[5500,42.0,22.2],[6000,45.7,25.9]]},
+    flats115:   {src:"typical", rows:[[1000,4,0.7],[2000,7,1.6],[2500,11,2.4],[3000,18,3.4],[3500,23,4.6],[4000,27,6.2],[4500,31,8.4],[5000,35,11.2],[5600,39,14.8]]},
+    bay115:     {src:"typical", rows:[[1000,4.5,0.8],[2000,7,2.0],[2500,11,3.0],[3000,17,4.3],[3500,21,5.8],[4000,25,7.9],[4500,28,10.6],[5000,31,13.8],[5600,34,17.2]]},
+    bay150:     {src:"typical", rows:[[1000,4.5,0.9],[2000,7.5,2.6],[2500,12,3.8],[3000,19,5.2],[3500,24,6.8],[4000,28,9.0],[4500,32,12.0],[5000,36,15.5],[5600,41,20.6]]},
+    bay200:     {src:"typical", rows:[[1000,5,1.1],[2000,7.5,2.8],[2500,12,4.2],[3000,20,5.9],[3500,25,7.9],[4000,29,10.6],[4500,33,14.2],[5000,37,18.6],[5600,41,23.4]]},
+    bay250:     {src:"typical", rows:[[1000,5,1.5],[2000,8,3.3],[2500,11,5.2],[3000,20,7.6],[3500,25,9.9],[4000,29,12.8],[4500,33,16.9],[5000,37,22.0],[5700,42,26.8]]},
+    cc150:      {src:"typical", rows:[[1000,4.5,0.9],[2000,7.5,2.7],[2500,12,4.0],[3000,18,5.6],[3500,23,7.4],[4000,27,9.8],[4500,31,13.0],[5000,34,16.8],[5600,38,21.0]]},
+    cc200:      {src:"typical", rows:[[1000,5,1.2],[2000,8,3.0],[2500,11.5,4.6],[3000,20,6.4],[3500,25,8.6],[4000,29,11.5],[4500,33,15.4],[5000,37,20.0],[5600,41,24.6]]},
+    cc250:      {src:"typical", rows:[[1000,5,1.6],[2000,8,3.4],[2500,11,5.4],[3000,21,7.5],[3500,26,9.8],[4000,30,12.6],[4500,35,16.8],[5000,40,22.0],[5800,47,27.6]]},
+    cc300:      {src:"typical", rows:[[1000,5.5,1.4],[2000,8.5,3.5],[2500,12,5.6],[3000,22,8.0],[3500,27,10.4],[4000,31,13.6],[4500,36,18.0],[5000,40,23.4],[5800,46,28.6]]},
+    cc28twin200:{src:"typical", rows:[[1000,5.5,2.2],[2000,8.5,4.8],[2500,12,7.6],[3000,23,11.8],[3500,28,15.4],[4000,32,20.0],[4500,36,26.0],[5000,40,33.0],[5700,45,40.5]]},
+    cc300twin:  {src:"typical", rows:[[1000,6,3.0],[2000,9,6.5],[2500,13,10.5],[3000,24,16.5],[3500,29,21.0],[4000,34,26.5],[4500,39,34.0],[5000,44,43.0],[5800,52,55.0]]},
+    cc34trip300:{src:"typical", rows:[[1000,6,3.4],[2000,9,7.4],[2500,14,12.0],[3000,26,19.0],[3500,31,25.0],[4000,36,32.5],[4500,41,42.0],[5000,46,54.0],[5800,53,72.0]]},
+    pontoon90:  {src:"typical", rows:[[1000,4,0.7],[2000,6.5,1.6],[2500,9,2.5],[3000,12,3.6],[3500,15,5.0],[4000,17,6.8],[4500,19,9.2],[5000,21,12.0],[5600,22,14.6]]},
+    pontoon115: {src:"typical", rows:[[1000,4,0.8],[2000,7,1.9],[2500,10,2.9],[3000,14,4.1],[3500,17,5.6],[4000,20,7.8],[4500,22,10.5],[5000,24,14.0],[5600,26,17.5]]},
+    pontoon150: {src:"typical", rows:[[1000,4.5,0.9],[2000,7,2.1],[2500,10,3.2],[3000,14,4.6],[3500,18,6.4],[4000,21,8.8],[4500,23,12.0],[5000,25,15.6],[5600,27,19.4]]},
+    deck200:    {src:"typical", rows:[[1000,4.5,1.1],[2000,7.5,2.7],[2500,11,4.2],[3000,18,6.2],[3500,23,8.4],[4000,27,11.4],[4500,30,15.4],[5000,33,20.0],[5600,36,24.8]]},
+    deck150:    {src:"typical", rows:[[1000,4.5,1.0],[2000,7,2.4],[2500,10.5,3.7],[3000,17,5.6],[3500,21,7.6],[4000,25,10.4],[4500,28,14.2],[5000,31,18.6],[5600,34,23.0]]},
+    cruiser:    {src:"typical", rows:[[1000,5,2.6],[2000,8,6.0],[2500,11,10.0],[3000,17,16.0],[3500,22,22.5],[4000,26,30.0],[4500,30,39.0]]},
+    cruiser35twin:{src:"typical", rows:[[1000,5,3.2],[2000,8,7.4],[2500,11,12.5],[3000,16,20.0],[3500,21,28.0],[4000,25,37.0],[4500,28,47.0]]}
+  };
+    var curKey = "cobia240cc";
+  var ownMode = false;
+  var SETUPS_OB = [["s90","Single 90 hp",90],["s115","Single 115 hp",115],["s150","Single 150 hp",150],["s200","Single 200 hp",200],["s250","Single 250 hp",250],["s300","Single 300 hp",300],["s350","Single 350 hp",350],["t150","Twin 150 hp",300],["t200","Twin 200 hp",400],["t250","Twin 250 hp",500],["t300","Twin 300 hp",600],["trip300","Triple 300 hp",900]];
+  var SETUPS_IB = [["ib1","Single inboard",350],["ib2","Twin inboards",700]];
+  var KEYMETA = {cobia240cc:[24,300,"center console 24 ft, single 300"],cobia240dc:[24,300,"dual console 24 ft, single 300"],flats115:[17,115,"flats skiff 17 ft, single 115"],bay115:[20,115,"bay boat 20 ft, single 115"],bay150:[21,150,"bay boat 21 ft, single 150"],bay200:[22,200,"bay boat 22 ft, single 200"],bay250:[24,250,"bay boat 24 ft, single 250"],cc150:[21,150,"center console 21 ft, single 150"],cc200:[23,200,"center console 23 ft, single 200"],cc250:[24,250,"center console 24 ft, single 250"],cc300:[25,300,"center console 25 ft, single 300"],cc28twin200:[28,400,"center console 28 ft, twin 200s"],cc300twin:[30,500,"center console 30 ft, twin 250s"],cc34trip300:[34,900,"center console 34 ft, triple 300s"],pontoon90:[22,90,"pontoon 22 ft, single 90"],pontoon115:[24,115,"pontoon 24 ft, single 115"],pontoon150:[26,150,"pontoon 26 ft, single 150"],deck150:[24,150,"deck boat 24 ft, single 150"],deck200:[24,200,"deck boat 24 ft, single 200"],cruiser:[30,500,"cruiser 30 ft, twin inboards"],cruiser35twin:[35,700,"cruiser 35 ft, twin inboards"]};
+  var TYPEMAP = {flats:{"17:s115":"flats115"},bay:{"20:s115":"bay115","20:s150":"bay150","22:s150":"bay150","22:s200":"bay200","24:s200":"bay200","24:s250":"bay250"},cc:{"21:s150":"cc150","23:s200":"cc200","23:s250":"cc250","24:s300":"cobia240cc","25:s250":"cc250","25:s300":"cc300","28:s300":"cc300","28:t200":"cc28twin200","30:t250":"cc300twin","30:t300":"cc300twin","34:t300":"cc300twin","34:trip300":"cc34trip300"},dc:{"24:s300":"cobia240dc","24:s250":"cc250","23:s200":"cc200"},wa:{"21:s150":"cc150","23:s200":"cc200","23:s250":"cc250","25:s250":"cc250","25:s300":"cc300","28:s300":"cc300","28:t200":"cc28twin200","30:t250":"cc300twin"},pontoon:{"22:s90":"pontoon90","22:s115":"pontoon115","24:s115":"pontoon115","24:s150":"pontoon150","26:s150":"pontoon150"},deck:{"24:s150":"deck150","24:s200":"deck200"},cruiser:{}};
+  function setupHp(v){ for (var i = 0; i < SETUPS_OB.length; i++) if (SETUPS_OB[i][0] === v) return SETUPS_OB[i][2]; return 250; }
+  function fillSetups(){
+    var mt = $("tcMotorType").value, list = (mt === "ob") ? SETUPS_OB : SETUPS_IB, cur = $("tcMotor").value, html = "", keep = false;
+    list.forEach(function(s){ html += '<option value="' + s[0] + '">' + s[1] + '</option>'; if (s[0] === cur) keep = true; });
+    $("tcMotor").innerHTML = html;
+    $("tcMotor").value = keep ? cur : (mt === "ob" ? "s300" : "ib2");
+  }
+  function resolvePairing(){
+    if (ownMode) { curKey = "custom"; $("tcPairNote").textContent = ""; renderBoat(); calc(); return; }
+    var size = +$("tcSize").value, type = $("tcType").value, mt = $("tcMotorType").value, setup = $("tcMotor").value, note = "";
+    $("tcBrandWrap").style.display = (mt === "ob") ? "block" : "none";
+    if (mt !== "ob" || type === "cruiser") {
+      curKey = size >= 33 ? "cruiser35twin" : "cruiser";
+      if (type !== "cruiser") note = "Inboard and I/O boats run on the cruiser tables — closest numbers we have for a " + size + " ft boat.";
+      else if (mt === "ob") note = "Cruisers run inboards — the outboard pick doesn't apply here; using the twin-inboard table.";
+    } else {
+      var map = TYPEMAP[type] || {}, kk = map[size + ":" + setup];
+      if (kk) { curKey = kk; if (BOATS[kk].src === "factory") note = "Factory test data — a manufacturer's published test for this size, type and motor."; }
+      else {
+        var hp = setupHp(setup), best = null, bd = 1e9;
+        for (var key in BOATS) { if (key === "cobia240dc" && type !== "dc") continue; var d = Math.abs(KEYMETA[key][0]-size)*1.5 + Math.abs(KEYMETA[key][1]-hp)/15; if (d < bd) { bd = d; best = key; } }
+        curKey = best; note = "Closest numbers we have: " + KEYMETA[best][2] + ". Your exact setup isn't in the library yet.";
+      }
+    }
+    $("tcPairNote").textContent = note;
+    renderBoat(); calc();
+  }
+  window.tcToggleOwn = function(){
+    ownMode = !ownMode;
+    $("tcOwnBtn").textContent = ownMode ? "Back to the library numbers" : "Know your own numbers? Enter them instead";
+    $("tcPickWrap").style.display = ownMode ? "none" : "block";
+    resolvePairing();
+  };
+  var selRpm = null, inited = false, tcMap = null, tcLine = null, tcDots = null;
+  var pts = [
+    [27.866,-82.323],[27.862,-82.355],[27.855,-82.380],[27.850,-82.402],
+    [27.825,-82.430],[27.790,-82.465],[27.745,-82.520],[27.700,-82.575],
+    [27.660,-82.625],[27.618,-82.657],[27.660,-82.700],[27.690,-82.735],
+    [27.720,-82.745],[27.750,-82.760],[27.785,-82.785],[27.805,-82.790],
+    [27.830,-82.797],[27.855,-82.810],[27.875,-82.825],[27.892,-82.834],[27.895,-82.840]
+  ];
+  function $(id){ return document.getElementById(id); }
+  function fmt(n, d){ return n.toLocaleString("en-US",{minimumFractionDigits:d, maximumFractionDigits:d}); }
+  function cruise(){
+    if (curKey === "custom") return [null, parseFloat($("tcMyMph").value) || 0, parseFloat($("tcMyMpg").value) || 0];
+    return selRpm || [0,0,0];
+  }
+  function markSel(){
+    var tb = $("tcRpmBody"); if (!tb) return;
+    var key = curKey;
+    for (var i = 0; i < tb.children.length; i++) tb.children[i].classList.remove("sel");
+    if (!selRpm || !BOATS[key]) return;
+    BOATS[key].rows.forEach(function(r, i){ if (r[0] === selRpm[0] && tb.children[i]) tb.children[i].classList.add("sel"); });
+  }
+  function updateCruiseLine(){
+    var c = cruise(), el = $("tcCruiseLine"); if (!el) return;
+    el.innerHTML = c[0]
+      ? "Your cruise: <b>" + c[0].toLocaleString() + " RPM</b> · " + c[1] + " mph · <b>" + c[2].toFixed(1) + " mpg</b> — this economy runs the trip math below."
+      : "Your cruise: <b>" + c[1] + " mph</b> · <b>" + c[2].toFixed(1) + " mpg</b> — this economy runs the trip math below.";
+  }
+  function renderBoat(){
+    var key = curKey, custom = (key === "custom");
+    if (!custom && BOATS[key]) $("tcSrcHint").textContent = (BOATS[key].src === "factory")
+      ? "Tap the row you cruise at — that row's economy runs the math. Factory test data — Yamaha Performance Bulletin for this exact boat & motor, run light on a test boat; your real numbers will vary."
+      : "Tap the row you cruise at — that row's economy runs the math. Averages for this setup from typical published tests; your boat will vary with load and conditions.";
+    $("tcRpmWrap").style.display = custom ? "none" : "block";
+    $("tcCustomWrap").style.display = custom ? "block" : "none";
+    if (custom) { updateCruiseLine(); calc(); return; }
+    var rows = BOATS[key].rows, best = 0, bestMpg = 0;
+    rows.forEach(function(r, i){ var m = r[1]/r[2]; if (r[1] >= 15 && m > bestMpg) { bestMpg = m; best = i; } });
+    var tb = $("tcRpmBody"); tb.innerHTML = "";
+    rows.forEach(function(r, i){
+      var mpg = r[1]/r[2];
+      var tr = document.createElement("tr");
+      tr.innerHTML = "<td>" + r[0].toLocaleString() + (i === best ? '<span class="tc-best">BEST</span>' : "") + "</td><td>" + r[1] + " mph</td><td>" + r[2].toFixed(1) + " gph</td><td>" + mpg.toFixed(1) + " mpg</td>";
+      tr.addEventListener("click", function(){ selRpm = [r[0], r[1], mpg]; markSel(); updateCruiseLine(); calc(); });
+      tb.appendChild(tr);
+    });
+    var b = rows[best];
+    selRpm = [b[0], b[1], b[1]/b[2]];
+    markSel(); updateCruiseLine();
+  }
+  function idleRow(){
+    var key = curKey;
+    if (key === "custom" || !BOATS[key]) return null;
+    var r = BOATS[key].rows[0];
+    return [r[1], r[1]/r[2]]; // [idle mph, idle mpg]
+  }
+  function calc(){
+    var milesEl = $("tcMiles"); if (!milesEl) return;
+    var miles = parseFloat(milesEl.value) || 0;
+    var c = cruise(), mph = c[1], mpg = c[2];
+    var price = parseFloat($("tcPrice").value) || 0;
+    if (miles <= 0 || mpg <= 0) return;
+    var wake = Math.min(parseFloat($("tcWakeMiles").value) || 0, miles);
+    var cruiseMi = miles - wake;
+    var idle = idleRow();
+    var idleMph = idle ? idle[0] : 5, idleMpg = idle ? idle[1] : mpg;
+    var gal = (cruiseMi / mpg) + (wake / idleMpg), cost = gal * price;
+    $("tcDistOut").textContent = fmt(miles,1) + " mi";
+    $("tcGalOW").textContent = fmt(gal,1) + " gal";
+    $("tcCostOW").textContent = "$" + fmt(cost,0);
+    $("tcGalRT").textContent = fmt(gal*2,1) + " gal";
+    $("tcCostRT").textContent = "$" + fmt(cost*2,0);
+    var math;
+    if (wake > 0) {
+      math = cruiseMi.toFixed(1) + " mi at cruise (" + mpg.toFixed(1) + " mpg" + (c[0] ? ", " + c[0].toLocaleString() + " RPM" : "") + ") + " + wake.toFixed(1) + " mi no-wake at idle (" + idleMpg.toFixed(1) + " mpg) = " + gal.toFixed(1) + " gal · × $" + price.toFixed(2) + "/gal = $" + cost.toFixed(2) + " one way";
+    } else {
+      math = miles.toFixed(1) + " mi ÷ " + mpg.toFixed(1) + " mpg" + (c[0] ? " at " + c[0].toLocaleString() + " RPM" : "") + " = " + gal.toFixed(1) + " gal · × $" + price.toFixed(2) + "/gal = $" + cost.toFixed(2) + " one way";
+    }
+    if (mph > 0) {
+      var hrs = (cruiseMi / mph) + (wake / idleMph), h = Math.floor(hrs), m = Math.round((hrs - h) * 60);
+      math += " · About " + (h ? h + " hr " : "") + m + " min on the water" + (wake > 0 ? ", counting the slow zones" : "") + ".";
+    }
+    $("tcMath").textContent = math;
+  }
+  function redraw(){
+    if (!tcMap) return 0;
+    tcLine.setLatLngs(pts);
+    tcDots.clearLayers();
+    pts.forEach(function(p){ L.circleMarker(p, {radius:4, color:"#0a2540", weight:2, fillColor:"#E63946", fillOpacity:1}).addTo(tcDots); });
+    var d = 0;
+    for (var i = 1; i < pts.length; i++) d += tcMap.distance(pts[i-1], pts[i]);
+    $("tcMapMiles").textContent = (d / 1609.344).toFixed(1) + " mi";
+    return d / 1609.344;
+  }
+  window.tcShowTab = function(name){
+    ["trips","ab","measure","track"].forEach(function(t){
+      $("tcPanel-"+t).hidden = (t !== name);
+      $("tcTab-"+t).classList.toggle("on", t === name);
+    });
+    if (name === "measure" && tcMap) setTimeout(function(){ tcMap.invalidateSize(); }, 50);
+  };
+  window.tcUndoPt = function(){ pts.pop(); redraw(); };
+  window.tcClearPts = function(){ pts = []; redraw(); };
+  window.tcUseMapMiles = function(){ var d = redraw(); if (d > 0) { $("tcMiles").value = d.toFixed(1); calc(); } };
+  var tracking = false, watchId = null, lastPos = null, trackD = 0;
+  window.tcToggleTrack = function(){
+    var btn = $("tcTrackBtn"), st = $("tcTrackState");
+    if (!tracking) {
+      if (!navigator.geolocation) { st.textContent = "This phone's browser doesn't offer location — tracking can't start."; return; }
+      tracking = true; btn.textContent = "Stop tracking";
+      st.textContent = "Tracking… keep this page open while you're out.";
+      watchId = navigator.geolocation.watchPosition(function(pos){
+        var p = [pos.coords.latitude, pos.coords.longitude];
+        if (lastPos) {
+          var R = 3958.8, la1 = lastPos[0]*Math.PI/180, la2 = p[0]*Math.PI/180;
+          var dla = (p[0]-lastPos[0])*Math.PI/180, dlo = (p[1]-lastPos[1])*Math.PI/180;
+          var a = Math.sin(dla/2)*Math.sin(dla/2) + Math.cos(la1)*Math.cos(la2)*Math.sin(dlo/2)*Math.sin(dlo/2);
+          var seg = 2 * R * Math.asin(Math.sqrt(a));
+          if (seg > 0.01) { trackD += seg; $("tcTrackMiles").textContent = trackD.toFixed(2); }
+        }
+        lastPos = p;
+      }, function(){ st.textContent = "Location permission is off — allow it to track your day."; }, {enableHighAccuracy:true});
+    } else {
+      tracking = false; btn.textContent = "Start tracking";
+      if (watchId !== null) navigator.geolocation.clearWatch(watchId);
+      st.textContent = "Day logged: " + trackD.toFixed(2) + " miles on the water.";
+    }
+  };
+  window.tcUseTrackMiles = function(){ if (trackD > 0) { $("tcMiles").value = trackD.toFixed(1); calc(); } };
+  
+  var TCNODES = {A1:[27.866,-82.323],A2:[27.862,-82.355],A3:[27.855,-82.380],A4:[27.850,-82.402],H0:[27.985,-82.465],H1:[27.942,-82.456],H2:[27.935,-82.462],H3:[27.925,-82.452],H4:[27.905,-82.455],H5:[27.880,-82.450],B2:[27.825,-82.430],B3:[27.790,-82.465],B4:[27.745,-82.520],B5:[27.700,-82.575],B6:[27.660,-82.625],B7:[27.618,-82.657],B8:[27.600,-82.720],B9:[27.585,-82.770],AB1:[27.762,-82.440],LM1:[27.720,-82.435],C1:[27.700,-82.600],C2:[27.730,-82.630],C3:[27.760,-82.635],P1:[27.660,-82.700],P2:[27.690,-82.735],P3:[27.720,-82.745],P4:[27.750,-82.760],P5:[27.785,-82.785],P6:[27.805,-82.790],P7:[27.830,-82.797],P8:[27.855,-82.810],P9:[27.875,-82.825],P10:[27.892,-82.834],P11:[27.920,-82.845],P12:[27.945,-82.845],P13:[27.977,-82.828],FD1:[27.640,-82.720],GP1:[27.738,-82.720],O2:[27.895,-82.510],O3:[27.920,-82.560],O4:[27.950,-82.620],O5:[27.965,-82.690],O6:[27.980,-82.760],CW1:[27.977,-82.810],CC1:[27.970,-82.600],BP1:[27.895,-82.475],M1:[27.570,-82.700],M2:[27.530,-82.720],M3:[27.515,-82.635]};
+  var TCEDGES = [["A1","A2",1],["A2","A3",1],["A3","A4",0],["H0","H1",1],["H1","H2",1],["H2","H3",1],["H3","H4",0],["H4","H5",0],["A4","B2",0],["B2","B3",0],["B3","B4",0],["B4","B5",0],["B5","B6",0],["B6","B7",0],["B7","B8",0],["B8","B9",0],["B3","AB1",0],["B4","AB1",0],["B4","LM1",0],["H5","B2",0],["H5","O2",0],["H5","BP1",0],["BP1","O2",0],["O2","O3",0],["O3","CC1",0],["CC1","O4",0],["O3","O4",0],["O4","O5",0],["O5","O6",0],["O6","CW1",0],["CW1","P13",0],["B5","C1",0],["C1","C2",0],["C2","C3",0],["B7","P1",0],["P1","FD1",0],["FD1","B8",0],["P1","P2",0],["P2","P3",0],["P3","GP1",0],["GP1","P4",0],["P3","P4",0],["P4","P5",0],["P5","P6",1],["P6","P7",0],["P7","P8",0],["P8","P9",0],["P9","P10",0],["P10","P11",0],["P11","P12",0],["P12","P13",1],["B7","M1",0],["M1","M2",0],["M1","M3",0]];
+  var TCPLACES = [["Riverview Civic Center Ramp",27.866,-82.323,"A1"],["357 12th Ave, Indian Rocks Beach",27.895,-82.840,"P10"],["Treasure Island (John's Pass)",27.785,-82.790,"P5"],["Davis Islands Boat Ramp",27.925,-82.460,"H3"],["Downtown Tampa (Convention Center)",27.942,-82.456,"H1"],["Lowry Park Ramp",27.985,-82.465,"H0"],["Apollo Beach",27.765,-82.415,"AB1"],["Ruskin (Little Manatee River)",27.720,-82.435,"LM1"],["St. Pete Pier",27.773,-82.630,"C3"],["Egmont Key",27.590,-82.760,"B9"],["Fort De Soto Boat Ramp",27.633,-82.725,"FD1"],["Pass-a-Grille",27.695,-82.740,"P2"],["Gulfport Marina",27.740,-82.705,"GP1"],["Clearwater Beach Marina",27.977,-82.830,"P13"],["Dunedin Marina",27.975,-82.795,"CW1"],["Safety Harbor Marina",27.990,-82.685,"O5"],["Courtney Campbell Ramp",27.975,-82.600,"CC1"],["Ballast Point Ramp",27.890,-82.480,"BP1"],["Anna Maria Island (Kingfish Ramp)",27.530,-82.725,"M2"],["Bradenton (Manatee River)",27.515,-82.635,"M3"],["Tierra Verde",27.655,-82.725,"P1"],["Seminole Boat Ramp",27.820,-82.790,"P6"],["Gandy Boat Ramp",27.880,-82.445,"H5"]];
+  function havNet(a, b){ var R = 3958.8, dla = (b[0]-a[0])*Math.PI/180, dlo = (b[1]-a[1])*Math.PI/180, s = Math.sin(dla/2)*Math.sin(dla/2) + Math.cos(a[0]*Math.PI/180)*Math.cos(b[0]*Math.PI/180)*Math.sin(dlo/2)*Math.sin(dlo/2); return 2*R*Math.asin(Math.sqrt(s)); }
+  function fillPlaces(){
+    var html = ""; TCPLACES.forEach(function(p, i){ html += '<option value="' + i + '">' + p[0] + '</option>'; });
+    $("tcFrom").innerHTML = html; $("tcTo").innerHTML = html; $("tcTo").value = "1";
+  }
+  window.tcRouteAB = function(){
+    var a = TCPLACES[+$("tcFrom").value], b = TCPLACES[+$("tcTo").value];
+    if (!a || !b) return;
+    if (a[0] === b[0]) { $("tcRouteSummary").textContent = "Those are the same place — pick two different spots."; return; }
+    var adj = {};
+    TCEDGES.forEach(function(e){ var w = havNet(TCNODES[e[0]], TCNODES[e[1]]); (adj[e[0]] = adj[e[0]] || []).push([e[1], w, e[2]]); (adj[e[1]] = adj[e[1]] || []).push([e[0], w, e[2]]); });
+    var dist = {}, prev = {}, seen = {}, cur = a[3]; dist[cur] = 0;
+    while (cur && cur !== b[3]) {
+      seen[cur] = 1;
+      (adj[cur] || []).forEach(function(nb){ var nd = dist[cur] + nb[1]; if (dist[nb[0]] === undefined || nd < dist[nb[0]]) { dist[nb[0]] = nd; prev[nb[0]] = [cur, nb[2]]; } });
+      cur = null; var bd = 1e18; for (var kk in dist) { if (!seen[kk] && dist[kk] < bd) { bd = dist[kk]; cur = kk; } }
+    }
+    if (dist[b[3]] === undefined) { $("tcRouteSummary").textContent = "No channel route mapped between those two yet — the network is still growing. Use Measure on Map for that run."; return; }
+    var path = [], wakeMi = 0, n = b[3];
+    while (n) { path.unshift(n); if (prev[n]) { if (prev[n][1]) wakeMi += havNet(TCNODES[n], TCNODES[prev[n][0]]); n = prev[n][0]; } else n = null; }
+    var coords = [[a[1], a[2]]]; path.forEach(function(id){ coords.push(TCNODES[id]); }); coords.push([b[1], b[2]]);
+    var total = 0; for (var i = 1; i < coords.length; i++) total += havNet(coords[i-1], coords[i]);
+    pts = coords; redraw();
+    $("tcMiles").value = total.toFixed(1);
+    $("tcWakeMiles").value = wakeMi.toFixed(1);
+    $("tcRouteSummary").innerHTML = "<b>Routed: " + a[0] + " \u2192 " + b[0] + "</b> — " + total.toFixed(1) + " miles along the channels, " + wakeMi.toFixed(1) + " of them no-wake (counted at idle). Distance and no-wake miles are filled in below. The short hops from each dock to the channel are local water — go by what's posted.";
+    calc();
+  };
+  window.tcInit = function(){
+    if (inited) { if (tcMap) setTimeout(function(){ tcMap.invalidateSize(); }, 60); return; }
+    inited = true;
+    var deal = window.TBB_FUEL_DEAL;
+    if (deal && deal.price) {
+      $("tcPrice").value = Number(deal.price).toFixed(2);
+      $("tcPriceHint").textContent = "Prefilled with the lowest verified non-ethanol price on our Fuel page — " + deal.where + " (" + deal.reported + "). Enter what you actually paid.";
+    }
+    fillPlaces(); fillSetups(); resolvePairing();
+    ["tcMiles","tcWakeMiles","tcPrice","tcMyMph","tcMyMpg"].forEach(function(id){
+      $(id).addEventListener("input", function(){ updateCruiseLine(); calc(); });
+    });
+    ["tcSize","tcType","tcBrand"].forEach(function(id){ $(id).addEventListener("change", resolvePairing); });
+    $("tcMotorType").addEventListener("change", function(){ fillSetups(); resolvePairing(); });
+    $("tcMotor").addEventListener("change", resolvePairing);
+    $("tcRoute").addEventListener("change", function(){ $("tcMiles").value = this.value; var w = this.options[this.selectedIndex].getAttribute("data-wake"); if (w !== null) $("tcWakeMiles").value = w; calc(); });
+    calc();
+    if (window.L) {
+      tcMap = L.map("tcMap").setView([27.80,-82.55], 9);
+      L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {maxZoom: 18, attribution: "Esri World Imagery"}).addTo(tcMap);
+      tcLine = L.polyline(pts, {color:"#E63946", weight:3}).addTo(tcMap);
+      tcDots = L.layerGroup().addTo(tcMap);
+      tcMap.on("click", function(e){ pts.push([e.latlng.lat, e.latlng.lng]); redraw(); });
+      redraw();
+      tcMap.fitBounds(tcLine.getBounds(), {padding:[12,12]});
+      setTimeout(function(){ tcMap.invalidateSize(); }, 120);
+    }
+  };
+  if ((location.hash || '') === '#bn-tripcost') window.tcInit();
+})();
+
+
+</script>
 </body>
 </html>
