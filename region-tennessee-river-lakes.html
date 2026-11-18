@@ -17,7 +17,7 @@ nav button.on,.map-filter.active{background:#0b2a4a;color:#fff}
 section{margin:26px 0} .dirhead{margin-top:26px}
 footer{background:#0b2a4a;color:#fff;padding:16px;font-size:14px}
 </style></head><body>
-<header><h1>🌊 Tennessee River Lakes</h1><p>The TVA chain across Tennessee — Kentucky Lake to Fort Loudoun — plus Reelfoot Lake. Built only from records that passed the Nov 6, 2026 verification pass; Alabama waters of this zone are not built yet.</p></header>
+<header><h1> Tennessee River Lakes</h1><p>The TVA chain across Tennessee — Kentucky Lake to Fort Loudoun — plus Reelfoot Lake. Built only from records that passed the Nov 6, 2026 verification pass; Alabama waters of this zone are not built yet.</p></header>
 <div class="banner">Tennessee waters only — verified coverage: 89 pins that passed check + independent recheck (ramps 69 · marinas &amp; fuel 9 · hazards 11). Alabama waters (9 of this zone&#x27;s 35 census waters) are NOT covered yet — no provenance-clean Alabama access layer exists, and nothing was invented to fill the gap. Coverage is partial: records still being verified are not pinned.</div>
 <div class="wrap">
 <nav>
@@ -72,12 +72,12 @@ var markers=[], map=null;
 function show(i){ document.querySelectorAll('.view').forEach(function(v,j){ v.hidden = j!==i; }); document.querySelectorAll('nav button').forEach(function(b,j){ b.classList.toggle('on', j===i); }); if(i===0 && map) setTimeout(function(){ map.invalidateSize(); },50); }
 document.querySelectorAll('nav button').forEach(function(b){ b.addEventListener('click', function(){ show(parseInt(b.getAttribute('data-show'),10)); }); });
 function draw(cat){
-  var list = MAP_PINS.filter(function(p){ return cat==='all' || p[1]===cat; });
-  window.__lastDraw = list.length;
-  document.getElementById('pincount').textContent = list.length + ' pins shown';
-  markers.forEach(function(m){ if(map) map.removeLayer(m); }); markers=[];
-  if(map && typeof L!=='undefined'){ list.forEach(function(p){ var m=L.marker([p[2],p[3]]).addTo(map).bindPopup('<strong>'+p[0]+'</strong><br>'+p[4]); markers.push(m); }); }
-  return list.length;
+ var list = MAP_PINS.filter(function(p){ return cat==='all' || p[1]===cat; });
+ window.__lastDraw = list.length;
+ document.getElementById('pincount').textContent = list.length + ' pins shown';
+ markers.forEach(function(m){ if(map) map.removeLayer(m); }); markers=[];
+ if(map && typeof L!=='undefined'){ list.forEach(function(p){ var m=L.marker([p[2],p[3]]).addTo(map).bindPopup('<strong>'+p[0]+'</strong><br>'+p[4]); markers.push(m); }); }
+ return list.length;
 }
 document.querySelectorAll('.map-filter').forEach(function(b){ b.addEventListener('click', function(){ document.querySelectorAll('.map-filter').forEach(function(x){x.classList.remove('active');}); b.classList.add('active'); draw(b.getAttribute('data-cat')); }); });
 if(typeof L!=='undefined'){ map = L.map('map').setView([35.55,-86.35],7); var streetBase = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors'}).addTo(map); var satBase = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:18, attribution:'Esri, Maxar, Earthstar Geographics'}); L.control.layers({'Street map': streetBase, 'Satellite': satBase}, {}, {collapsed: true}).addTo(map); }
@@ -86,40 +86,40 @@ draw('all');
 
 <script>
 /* Water landing (Nov 16, 2026): the homepage water-name search routes
-   here with a ?bnw= pick — open the map view, center the map on the
-   picked water, mark it, and name it in a banner. No pick, no-op. */
+ here with a ?bnw= pick — open the map view, center the map on the
+ picked water, mark it, and name it in a banner. No pick, no-op. */
 (function(){
-  var p = null;
-  try { var q = /[?&]bnw=([^&]+)/.exec(location.search || ''); if (q) { var j = JSON.parse(decodeURIComponent(q[1])); if (j && j.lat != null) p = j; } } catch (e) {}
-  if (!p) return;
-  function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
-  function banner(){
-    if (document.getElementById('bnw-banner')) return;
-    var mapEl = document.getElementById('bay-leaflet-map') || document.getElementById('map');
-    if (!mapEl || !mapEl.parentNode) return;
-    var b = document.createElement('div');
-    b.id = 'bnw-banner';
-    b.style.cssText = 'background:#0a2540;color:#fff;border-left:5px solid #B31942;padding:10px 14px;margin:0 0 10px;border-radius:8px;font-size:.98rem';
-    b.innerHTML = '📍 <b>' + esc(p.name) + '</b> — the water you searched for. The map is centered on it; everything on this page is its area.';
-    mapEl.parentNode.insertBefore(b, mapEl);
-  }
-  function go(){
-    if (typeof show === 'function') { try { show(0); } catch (e) {} }
-    banner();
-    var tries = 0;
-    var iv = setInterval(function(){
-      tries++;
-      var m = window.tbbMap || window.map;
-      if (m && typeof m.setView === 'function' && typeof L !== 'undefined') {
-        clearInterval(iv);
-        try { m.setView([p.lat, p.lon], 11); L.marker([p.lat, p.lon]).addTo(m).bindPopup('<b>' + esc(p.name) + '</b><br>The water you picked').openPopup(); } catch (e) {}
-        banner();
-        var el = document.getElementById('bnw-banner');
-        if (el) el.scrollIntoView();
-      } else if (tries > 40) clearInterval(iv);
-    }, 250);
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
+ var p = null;
+ try { var q = /[?&]bnw=([^&]+)/.exec(location.search || ''); if (q) { var j = JSON.parse(decodeURIComponent(q[1])); if (j && j.lat != null) p = j; } } catch (e) {}
+ if (!p) return;
+ function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+ function banner(){
+ if (document.getElementById('bnw-banner')) return;
+ var mapEl = document.getElementById('bay-leaflet-map') || document.getElementById('map');
+ if (!mapEl || !mapEl.parentNode) return;
+ var b = document.createElement('div');
+ b.id = 'bnw-banner';
+ b.style.cssText = 'background:#0a2540;color:#fff;border-left:5px solid #B31942;padding:10px 14px;margin:0 0 10px;border-radius:8px;font-size:.98rem';
+ b.innerHTML = ' <b>' + esc(p.name) + '</b> — the water you searched for. The map is centered on it; everything on this page is its area.';
+ mapEl.parentNode.insertBefore(b, mapEl);
+ }
+ function go(){
+ if (typeof show === 'function') { try { show(0); } catch (e) {} }
+ banner();
+ var tries = 0;
+ var iv = setInterval(function(){
+ tries++;
+ var m = window.tbbMap || window.map;
+ if (m && typeof m.setView === 'function' && typeof L !== 'undefined') {
+ clearInterval(iv);
+ try { m.setView([p.lat, p.lon], 11); L.marker([p.lat, p.lon]).addTo(m).bindPopup('<b>' + esc(p.name) + '</b><br>The water you picked').openPopup(); } catch (e) {}
+ banner();
+ var el = document.getElementById('bnw-banner');
+ if (el) el.scrollIntoView();
+ } else if (tries > 40) clearInterval(iv);
+ }, 250);
+ }
+ if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
 })();
 </script>
 </body></html>
